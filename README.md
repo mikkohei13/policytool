@@ -11,9 +11,9 @@ User Stories and Requirements Document: https://docs.google.com/spreadsheets/d/1
 Meeting Notes: https://docs.google.com/document/d/13UtDedI7uyYYL2sDtE903iTHRILvGq0kcNUhqfBkY50/edit
 
 ## DiSSCo Milestones
-DiSSCo MS7.5 DiSSCo Policy Tool Design Blueprint: https://drive.google.com/file/d/1r6dXM9ec9gHXlzlbp1pdeGh3SP9kjHaY/view?usp=sharing
+MS7.5 DiSSCo Policy Tool Design Blueprint: https://drive.google.com/file/d/1r6dXM9ec9gHXlzlbp1pdeGh3SP9kjHaY/view?usp=sharing
 
-DiSSCo MS3.2 DiSSCo Digital Maturity Tool Design Blueprint: https://drive.google.com/file/d/1WlBwiheB0GgxB45AoFIgWi8LL4QpbGWi/view?usp=sharing
+MS3.2 DiSSCo Digital Maturity Tool Design Blueprint: https://drive.google.com/file/d/1WlBwiheB0GgxB45AoFIgWi8LL4QpbGWi/view?usp=sharing
 
 ## Prior Work
 
