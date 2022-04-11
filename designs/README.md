@@ -1,6 +1,6 @@
 # Policy Tool Rough Designs
 
-These rough (!) designs have been created in [Excalidraw](
+These rough (!) designs have been created in [Excalidraw](https://excalidraw.com/)
 
 They all live in the same view so you can load them up all at once by loading the
 designs.excalidraw file into excalidraw directly.
