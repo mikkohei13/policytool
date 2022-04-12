@@ -5,6 +5,7 @@ build
 *egg-info
 .idea
 .coverage
+.pytest_cache
 
 # ignore the default local dev db
 dissco/db.sqlite3
