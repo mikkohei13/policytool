@@ -4,5 +4,12 @@ venv
 build
 *egg-info
 .idea
-dissco/db.sqlite3
 .coverage
+
+# ignore the default local dev db
+dissco/db.sqlite3
+
+# ignore all django settings files except __init__ and base
+dissco/dissco/settings/*
+!dissco/dissco/settings/__init__.py
+!dissco/dissco/settings/base.py
