@@ -24,3 +24,5 @@ jobs:
       - name: Run tests
         working-directory: dissco
         run: pytest --cov=dissco --cov=common --cov=policy
+        env:
+          DJANGO_SETTINGS_MODULE: dissco.settings.tests

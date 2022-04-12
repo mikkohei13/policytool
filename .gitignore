@@ -13,3 +13,4 @@ dissco/db.sqlite3
 dissco/dissco/settings/*
 !dissco/dissco/settings/__init__.py
 !dissco/dissco/settings/base.py
+!dissco/dissco/settings/tests.py
