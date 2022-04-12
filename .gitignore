@@ -1,4 +1,8 @@
+__pycache__/
+*.py[cod]
 venv
 build
 *egg-info
 .idea
+sats/db.sqlite3
+.coverage
