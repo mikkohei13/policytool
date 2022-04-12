@@ -19,7 +19,7 @@ jobs:
           architecture: 'x64'
 
       - name: Set up virtual environment
-        run: pip install -e .[tests]
+        run: pip install -e .[test]
 
       - name: Run tests
         working-directory: dissco
