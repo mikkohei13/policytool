@@ -7,16 +7,25 @@ class Service(models.Model):
     description = models.TextField()
     name = models.TextField()
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class PolicyArea(models.Model):
     name = models.TextField()
     number = models.IntegerField()
     scope = models.TextField()  # TODO: ?
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class PolicyCategory(models.Model):
     name = models.TextField()
     policy_area = models.ForeignKey(PolicyArea, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class ServiceCategory(models.Model):
@@ -24,11 +33,17 @@ class ServiceCategory(models.Model):
     name = models.TextField()
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class ServiceSubcategory(models.Model):
     description = models.TextField()
     name = models.TextField()
     category = models.ForeignKey(ServiceCategory, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class ServiceSubcategoryPolicyComponent(models.Model):

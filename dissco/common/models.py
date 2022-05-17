@@ -9,4 +9,4 @@ class Institution(models.Model):
     ror_id = models.CharField(max_length=9, blank=True)
 
     def __str__(self) -> str:
-        return f'Institution - {self.name}'
+        return f'{self.name} [{self.code}]'
