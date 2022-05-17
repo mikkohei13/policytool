@@ -4,8 +4,8 @@
 From the root of this repo (so one up from here):
 
 ```bash
-python3.10 -m venv venv
-source venv/bin/activate
+python3.10 -m venv .venv
+source .venv/bin/activate
 pip install -e .
 ```
 
