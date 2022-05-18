@@ -1,0 +1,89 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 1
+  fields:
+    name: Publication of specimen data to an open access repository
+    description: >-
+      Publish specimen data to a trusted publicly accessible (no restrictions) repository, to allow
+      for aggregation of data by  DiSSCo services (e.g. ELViS).
+    type: list_multiple
+    policy_area: 1
+
+# the option definitions
+- model: policy.PolicyComponentOption
+  pk: 101
+  fields:
+    value: Geoscience Collections Access Service (GeoCASe)
+    policy_component: 1
+
+- model: policy.PolicyComponentOption
+  pk: 102
+  fields:
+    value: Global Biodiversity Information Facility (GBIF)
+    policy_component: 1
+
+- model: policy.PolicyComponentOption
+  pk: 103
+  fields:
+    value: Index Herbariorum
+    policy_component: 1
+
+- model: policy.PolicyComponentOption
+  pk: 104
+  fields:
+    value: Wikidata
+    policy_component: 1
+
+- model: policy.PolicyComponentOption
+  pk: 105
+  fields:
+    value: National Biodiversity Network (NBN)
+    policy_component: 1
+
+- model: policy.PolicyComponentOption
+  pk: 106
+  fields:
+    value: Global Genome Biodiversity Network (GGBN)
+    policy_component: 1
+
+- model: policy.PolicyComponentOption
+  pk: 107
+  fields:
+    value: GenBank
+    policy_component: 1
+
+- model: policy.PolicyComponentOption
+  pk: 108
+  fields:
+    value: Europeana
+    policy_component: 1
+
+- model: policy.PolicyComponentOption
+  pk: 109
+  fields:
+    value: JACQ
+    policy_component: 1
+
+- model: policy.PolicyComponentOption
+  pk: 110
+  fields:
+    value: Institution open access repository
+    policy_component: 1
+
+- model: policy.PolicyComponentOption
+  pk: 111
+  fields:
+    value: Other
+    policy_component: 1
+
+- model: policy.PolicyComponentOption
+  pk: 112
+  fields:
+    value: Not specified
+    policy_component: 1
+
+- model: policy.PolicyComponentOption
+  pk: 113
+  fields:
+    value: None
+    policy_component: 1

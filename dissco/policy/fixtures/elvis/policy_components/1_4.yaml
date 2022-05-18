@@ -1,0 +1,143 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 4
+  fields:
+    name: Default license(s) for research data
+    description: >-
+      Restrictions on the copyrights/sharing and usage of research data. Research data meaning  any
+      information collected, stored, and processed in relation to the collection specimen.
+    type: list_multiple
+    policy_area: 1
+
+# the option definitions
+- model: policy.PolicyComponentOption
+  pk: 401
+  fields:
+    value: Creative Commons Public Domain Dedication (CC0)
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 402
+  fields:
+    value: Creative Commons Attribution (CC BY)
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 403
+  fields:
+    value: Creative Commons ShareAlike (CC BY-SA)
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 404
+  fields:
+    value: Creative commons Noncommercial ShareAlike (CC BY-NC-SA)
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 405
+  fields:
+    value: Creative Commons NonCommercial (CC BY-NC)
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 406
+  fields:
+    value: Creative Commons NoDerivatives (CC BY-ND)
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 407
+  fields:
+    value: Creative CommonsNonCommercial NoDerivatives (CC BY-NC-ND)
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 408
+  fields:
+    value: Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4)
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 409
+  fields:
+    value: GNU Free Documentation License
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 410
+  fields:
+    value: UK Open Government Licence (OGL)
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 411
+  fields:
+    value: Open Data Commons Public Domain Dedication and License (PDDL)
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 412
+  fields:
+    value: Open Data Commons Attribution License
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 413
+  fields:
+    value: Open Data Commons Open Database License (ODbL)
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 414
+  fields:
+    value: Other (Attribution)
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 415
+  fields:
+    value: Other (Not Open)
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 416
+  fields:
+    value: Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 417
+  fields:
+    value: Other (Open)
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 418
+  fields:
+    value: Other (Public Domain)
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 419
+  fields:
+    value: Other (request a licence)
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 420
+  fields:
+    value: Other (Private and scientific use)
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 421
+  fields:
+    value: None
+    policy_component: 4
+
+- model: policy.PolicyComponentOption
+  pk: 422
+  fields:
+    value: Not specified
+    policy_component: 4

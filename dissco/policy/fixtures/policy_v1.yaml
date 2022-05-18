@@ -1,5 +1,0 @@
-- model: policy.service
-  pk: 1
-  fields:
-    description: The European Loans and Visits System
-    name: ELViS

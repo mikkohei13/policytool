@@ -1,0 +1,83 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 37
+  fields:
+    name: Digitisation strategy
+    description: >-
+      For Digitisation on Demand, institutions should have digitisation strategy that includes their
+      digitisation capacity, workflows, techniques, and prioritisation.
+    type: list_multiple
+    policy_area: 9
+
+# the option definitions
+- model: policy.PolicyComponentOption
+  pk: 3701
+  fields:
+    value: Oversight and governance
+    policy_component: 37
+
+- model: policy.PolicyComponentOption
+  pk: 3702
+  fields:
+    value: Digitisation goals and prioritisation
+    policy_component: 37
+
+- model: policy.PolicyComponentOption
+  pk: 3703
+  fields:
+    value: Digitisation workflows
+    policy_component: 37
+
+- model: policy.PolicyComponentOption
+  pk: 3704
+  fields:
+    value: Digitisation capacity
+    policy_component: 37
+
+- model: policy.PolicyComponentOption
+  pk: 3705
+  fields:
+    value: Mass digitisation
+    policy_component: 37
+
+- model: policy.PolicyComponentOption
+  pk: 3706
+  fields:
+    value: 2D imaging
+    policy_component: 37
+
+- model: policy.PolicyComponentOption
+  pk: 3707
+  fields:
+    value: 3D imaging
+    policy_component: 37
+
+- model: policy.PolicyComponentOption
+  pk: 3708
+  fields:
+    value: DNA sequencing
+    policy_component: 37
+
+- model: policy.PolicyComponentOption
+  pk: 3709
+  fields:
+    value: Digitisation data standards
+    policy_component: 37
+
+- model: policy.PolicyComponentOption
+  pk: 3710
+  fields:
+    value: Other
+    policy_component: 37
+
+- model: policy.PolicyComponentOption
+  pk: 3711
+  fields:
+    value: Not Specified
+    policy_component: 37
+
+- model: policy.PolicyComponentOption
+  pk: 3712
+  fields:
+    value: None
+    policy_component: 37

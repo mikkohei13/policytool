@@ -1,0 +1,9 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 33
+  fields:
+    name: Visitor access
+    description: >-
+      Policies governing access to the collections by non staff.
+    type: bool
+    policy_area: 8

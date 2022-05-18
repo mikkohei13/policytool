@@ -1,0 +1,13 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 27
+  fields:
+    name: Benefit sharing
+    description: >-
+      An institutional policy that reflects national, EU or supranational regulations on benefit
+      sharing of genetic resources.  benefit-sharing is based on prior informed consent (PIC) being
+      granted by a provider to a user and negotiations between both parties to develop mutually
+      agreed terms (MAT) to ensure the fair and equitable sharing of genetic resources and
+      associated benefits.
+    type: bool
+    policy_area: 6

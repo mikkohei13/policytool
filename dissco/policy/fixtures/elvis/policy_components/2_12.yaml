@@ -1,0 +1,61 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 12
+  fields:
+    name: Specimen data description standards
+    description: >-
+      Controlled metadata schemas/vocabularies used to describe specimen data, including images and
+      level of digitisation. The Open Digital Specimen is at the core of the DiSSCo research
+      infrastructure and its services, and will be based on TDWG data standards (e.g. ABCD, and
+      Darwin core).
+    type: list_multiple
+    policy_area: 2
+
+# the option definitions
+- model: policy.PolicyComponentOption
+  pk: 1201
+  fields:
+    value: ABCD-EFG (for geological objects)
+    policy_component: 12
+
+- model: policy.PolicyComponentOption
+  pk: 1202
+  fields:
+    value: Darwin Core
+    policy_component: 12
+
+- model: policy.PolicyComponentOption
+  pk: 1203
+  fields:
+    value: ABCD (for biological objects)
+    policy_component: 12
+
+- model: policy.PolicyComponentOption
+  pk: 1204
+  fields:
+    value: OpenDS
+    policy_component: 12
+
+- model: policy.PolicyComponentOption
+  pk: 1205
+  fields:
+    value: ABCD-DNA
+    policy_component: 12
+
+- model: policy.PolicyComponentOption
+  pk: 1206
+  fields:
+    value: MIDS
+    policy_component: 12
+
+- model: policy.PolicyComponentOption
+  pk: 1207
+  fields:
+    value: Other
+    policy_component: 12
+
+- model: policy.PolicyComponentOption
+  pk: 1208
+  fields:
+    value: Non-Specified
+    policy_component: 12

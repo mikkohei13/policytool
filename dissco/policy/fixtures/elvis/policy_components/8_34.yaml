@@ -1,0 +1,9 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 34
+  fields:
+    name: Recording visitor numbers
+    description: >-
+      The number of non staff visitors to your collections.
+    type: bool
+    policy_area: 8

@@ -1,0 +1,11 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 36
+  fields:
+    name: Destructive sampling
+    description: >-
+      Destructive sampling is the removal of material from a specimen, or permanent modification of
+      a specimen, including molecular analyses, SEM studies and chemical analyses. A policy that
+      directs the permission and procedures for destructive sampling of specimens.
+    type: bool
+    policy_area: 8

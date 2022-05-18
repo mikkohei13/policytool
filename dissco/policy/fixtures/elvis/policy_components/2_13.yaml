@@ -1,0 +1,13 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 13
+  fields:
+    name: Collection description granularity
+    description: >-
+      Collection description granularity should be based on the categorization presented in of the
+      SYNTHESYS+ collection classification schema, to at least the lowest granularity (broadest
+      categories). See here (https://twk.pm/3ax5evp2mm) for more information about the SYNTHESYS+
+      collection classification schema. The SYNTHESYS+ classification scheme is used for the DiSSCo
+      dashboard, which will be embedded into ELViS.
+    type: bool
+    policy_area: 2

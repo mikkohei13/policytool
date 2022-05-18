@@ -1,0 +1,14 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 29
+  fields:
+    name: Access to information and associated data on genetic resources
+    description: >-
+      An institutional policy that reflects national, EU or supranational regulations o providing
+      access to information and associated data from genetic resources, that includes the protocols
+      on providing upon request available information and relevant documents on 1) date and place of
+      access to the genetic resource-GR and/or associated traditional knowledge-sTK, 2) description
+      of GR or aTK, 3) source of GR or aTK, 4) presece or absence of ABS-rights or ABS-obligations,
+      5) access permits, 6) relevant content of mutually agreed terms-MAT".
+    type: bool
+    policy_area: 6

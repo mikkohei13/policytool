@@ -1,0 +1,10 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 20
+  fields:
+    name: Data management plan
+    description: >-
+      Institutions should have their own institutional level data management plan referring to
+      specimen, collection, research and institutional data.
+    type: bool
+    policy_area: 4
