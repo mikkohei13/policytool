@@ -1,0 +1,26 @@
+- model: common.Institution
+  pk: 1
+  fields:
+    name: Natural History Museum, London
+    created: 2022-05-18T17:53:43+00:00
+    modified: 2022-05-18T17:53:43+00:00
+    code: NHMUK
+    wikidata_id: Q309388
+
+- model: common.Institution
+  pk: 2
+  fields:
+    name: Museum für Naturkunde
+    created: 2022-05-18T17:53:43+00:00
+    modified: 2022-05-18T17:53:43+00:00
+    code: MfN
+    wikidata_id: Q233098
+
+- model: common.Institution
+  pk: 3
+  fields:
+    name: Naturalis
+    created: 2022-05-18T17:53:43+00:00
+    modified: 2022-05-18T17:53:43+00:00
+    code: WAG
+    wikidata_id: Q641676
