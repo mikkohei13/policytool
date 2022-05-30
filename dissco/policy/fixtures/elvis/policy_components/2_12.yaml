@@ -8,7 +8,7 @@
       level of digitisation. The Open Digital Specimen is at the core of the DiSSCo research
       infrastructure and its services, and will be based on TDWG data standards (e.g. ABCD, and
       Darwin core).
-    type: list_multiple
+    type: options
     policy_area: 2
 
 # the option definitions

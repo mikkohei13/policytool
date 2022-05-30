@@ -6,7 +6,7 @@
     description: >-
       The criteria/factors that guide the institution's strategy on the digitisation of their
       collections.
-    type: list_multiple
+    type: options
     policy_area: 9
 
 # the option definitions

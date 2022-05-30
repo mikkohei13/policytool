@@ -7,7 +7,7 @@
       A globally unique and persistent identifier for collections. Collection data sets should have
       community recognised globally Unique Persistent Identifiers that are resolvable on the web and
       descriptive metadata to assist discovery and verification.
-    type: list_multiple
+    type: options
     policy_area: 3
 
 # the option definitions

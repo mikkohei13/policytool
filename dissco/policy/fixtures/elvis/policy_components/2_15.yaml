@@ -6,7 +6,7 @@
     description: >-
       The identifier can be persistently resolved (digitally actionable) to meaningful metadata
       state information about the object.
-    type: list_multiple
+    type: options
     policy_area: 2
 
 # the option definitions

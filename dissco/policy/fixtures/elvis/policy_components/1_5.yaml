@@ -5,7 +5,7 @@
     name: Default license(s) for 2D images
     description: >-
       Restrictions on the copyrights/sharing and usage of 2D images.
-    type: list_multiple
+    type: options
     policy_area: 1
 
 # the option definitions

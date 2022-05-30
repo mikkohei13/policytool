@@ -6,7 +6,7 @@
     description: >-
       The restrictions on sharing and usage of specimen data. Specimen data including Name, type of
       object, locality, geographic origin, collector, associated annotations (label information).
-    type: list_multiple
+    type: options
     policy_area: 1
 
 # the option definitions

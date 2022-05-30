@@ -7,7 +7,7 @@
       Publish institutional facilities data/information  (e.g. technical equipment, expertise) 
       to a trusted publicly accessible (no restrictions) repository, to allow for aggregation of
       data by DiSSCo services (e.g. ELViS).
-    type: list_multiple
+    type: options
     policy_area: 1
 
 # the option definitions

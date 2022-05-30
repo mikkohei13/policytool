@@ -6,7 +6,7 @@
     description: >-
       A globally unique and persistent identifier that is resolved to the geo-coordinates on the
       internet.
-    type: list_multiple
+    type: options
     policy_area: 2
 
 # the option definitions

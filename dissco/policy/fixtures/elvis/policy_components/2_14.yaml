@@ -6,7 +6,7 @@
     description: >-
       Controlled metadata schemas/vocabularies used to describe natural science collection's,
       including images and level of digitisation.
-    type: list_multiple
+    type: options
     policy_area: 2
 
 # the option definitions

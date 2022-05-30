@@ -6,7 +6,7 @@
     description: >-
       For Digitisation on Demand, institutions should have digitisation strategy that includes their
       digitisation capacity, workflows, techniques, and prioritisation.
-    type: list_multiple
+    type: options
     policy_area: 9
 
 # the option definitions

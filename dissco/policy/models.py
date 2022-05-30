@@ -69,15 +69,14 @@ class PolicyComponent(models.Model):
 
     # define the options for the value type
     class PolicyComponentOptionType(models.TextChoices):
-        BOOL = 'b'
-        NUMBER = 'n'
-        TEXT = 't'
-        # all list types are lists of text options
-        LIST_SINGLE = 'l'
-        LIST_MULTIPLE = 'l+'
+        BOOL = 'bool'
+        NUMBER = 'number'
+        OPTION_SINGLE = 'option'
+        OPTION_MULTIPLE = 'options'
 
     # the name of the policy component
     name = models.TextField()
+    question = models.TextField()
     # a short and informative description of the policy component
     description = models.TextField(blank=True)
     # the type of data representing the component
@@ -170,9 +169,9 @@ class InstitutionPolicyComponent(models.Model):
     Value representing the status of a specific institution with respect to a specific policy
     component.
     """
-    # value representing the status of a specific institution with respect to a specific policy
-    # component
-    value = models.TextField()
+    value = models.TextField(blank=True)
+    chosen_options = models.ManyToManyField(PolicyComponentOption)
+    comment = models.TextField(blank=True)
     institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
     policy_component = models.ForeignKey(PolicyComponent, on_delete=models.CASCADE)
 

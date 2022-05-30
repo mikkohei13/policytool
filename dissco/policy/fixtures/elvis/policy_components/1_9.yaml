@@ -7,7 +7,7 @@
       Publish collection data (e.g. Object types, size of collection, digitisation status,
       geographic origin, location were held, preservation type) to a trusted and publicly accessible
       repository, that allows data aggregation  by  DiSSCo services (e.g ELViS).
-    type: list_multiple
+    type: options
     policy_area: 1
 
 # the option definitions
