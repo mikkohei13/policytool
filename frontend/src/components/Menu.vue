@@ -5,7 +5,7 @@
         <VueFeather type="menu" size="2rem"></VueFeather>
       </button>
     </div>
-    <ul v-if="visible" class="bg-white p-0 border-solid border-t-2 border-yellow">
+    <ul v-if="visible" class="bg-white p-0 border-solid border-t-2 border-yellow cursor-pointer">
       <li v-for="item in visibleItems" class="text-lg hover:bg-grey py-1 px-5">
         <a :href="item.link" @click="hide">
           {{ item.title }}
