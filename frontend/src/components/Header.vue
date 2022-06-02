@@ -1,5 +1,5 @@
 <template>
-  <header class="mx-auto p-6 h-28 flex bg-blue-dark">
+  <header class="w-full p-6 h-28 flex bg-blue">
     <a href="/" class="flex-none">
       <img src="/dissco-logo-web.svg" alt="DiSSCo logo" class="h-full">
     </a>
