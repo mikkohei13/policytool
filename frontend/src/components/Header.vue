@@ -1,8 +1,8 @@
 <template>
   <header class="w-full p-6 h-28 flex bg-blue">
-    <a href="/" class="flex-none">
+    <router-link :to="{name: 'home'}" class="flex-none">
       <img src="/dissco-logo-web.svg" alt="DiSSCo logo" class="h-full">
-    </a>
+    </router-link>
     <div class="grow" />
     <Menu :items="items" class="flex-none"/>
   </header>
