@@ -13,9 +13,9 @@ import {reactive} from "vue";
 import Menu from "@/components/Menu.vue";
 
 const items = reactive([
-  {title: 'Dashboards', link: '/dashboards', visible: true},
-  {title: 'Policies', link: '/policies', visible: true},
-  {title: 'Institutions', link: '/institutions', visible: true},
-  {title: 'Log in', link: '/login', visible: true}
+  {title: 'Dashboards', to: {name: 'dashboards'}, visible: true},
+  {title: 'Policies', to: {name: 'policies'}, visible: true},
+  {title: 'Institutions', to: {name: 'institutions'}, visible: true},
+  {title: 'Log in', to: {name: 'login'}, visible: true}
 ])
 </script>
