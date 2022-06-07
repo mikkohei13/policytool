@@ -1,11 +1,13 @@
 <template>
-    <article class="bg-home-image flex flex-col items-stretch min-h-screen bg-center bg-cover">
-      <Header class="shrink-0" />
-      <main class="grow shrink-0">
+  <article class="bg-home-image flex flex-col items-stretch min-h-screen bg-top bg-cover">
+    <Header class="shrink-0"/>
+    <main class="grow shrink-0">
+      <div class="p-4 py-8 mx-auto max-w-screen-2xl">
         <router-view/>
-      </main>
-      <Footer class="shrink-0" />
-    </article>
+      </div>
+    </main>
+    <Footer class="shrink-0"/>
+  </article>
 </template>
 
 <script setup>
