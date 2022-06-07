@@ -38,6 +38,9 @@ module.exports = {
                     '"Open Sans"',
                     ...defaultTheme.fontFamily.sans],
             },
+            backgroundImage: {
+                'home-image': "url('/zdenek-machacek-HYTwWSE5ztw-unsplash.jpg')",
+            }
         },
     },
     plugins: [
