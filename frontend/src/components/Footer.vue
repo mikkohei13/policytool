@@ -1,12 +1,16 @@
 <template>
-  <footer class="w-full p-6 flex bg-grey-light bottom-0 fixed text-blue-dark">
+  <footer class="w-full p-6 flex text-blue-dark bg-white/70 border-t-2 border-white/25">
     <div class="flex flex-col justify-center">
       <a href="https://dissco.eu" target="_blank" class="block py-1">
         DiSSCo
         <VueFeather type="external-link" size="1rem"/>
       </a>
-      <a href="https://github.com/DiSSCo/policytool" target="_blank" class="block">
+      <a href="https://github.com/DiSSCo/policytool" target="_blank" class="block py-1">
         Source code
+        <VueFeather type="external-link" size="1rem"/>
+      </a>
+      <a href="https://unsplash.com/photos/HYTwWSE5ztw" target="_blank" class="block py-1">
+        Background photo by Zdeněk Macháček on Unsplash
         <VueFeather type="external-link" size="1rem"/>
       </a>
     </div>

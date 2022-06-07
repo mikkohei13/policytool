@@ -1,8 +1,8 @@
 <template>
   <div class="p-4 mx-auto max-w-screen-2xl">
-    <p class="text-3xl text-blue-dark font-bold">DiSSCo Policy and Digital Readiness Assessment Tool</p>
+    <p class="text-4xl text-white font-bold">DiSSCo Policy and Digital Readiness Assessment Tool</p>
     <!-- TODO: need some copy here! -->
-    <p>Some text about the Policy Tool.</p>
+    <p class="text-white">Some text about the Policy Tool.</p>
     <br/>
     <br/>
     <br/>

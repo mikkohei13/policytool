@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full p-6 h-28 flex bg-blue">
+  <header class="w-full p-6 h-28 flex bg-transparent border-b-2 border-white/25">
     <router-link :to="{name: 'home'}" class="flex-none">
       <img src="/dissco-logo-web.svg" alt="DiSSCo logo" class="h-full">
     </router-link>
