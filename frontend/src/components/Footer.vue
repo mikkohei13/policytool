@@ -15,12 +15,11 @@
       </a>
     </div>
     <div class="grow"></div>
-    <div class="flex flex-row justify-center">
-      <a href="https://joint-research-centre.ec.europa.eu" target="_blank"
-         class="place-self-center">
+    <div class="flex flex-col items-end md:flex-row md:justify-center md:items-center">
+      <a href="https://joint-research-centre.ec.europa.eu" target="_blank">
         <img src="/eu-logo.png" alt="european union" class="object-contain h-16">
       </a>
-      <a href="https://www.eosc-portal.eu" target="_blank" title="EOSC" class="place-self-center">
+      <a href="https://www.eosc-portal.eu" target="_blank" title="EOSC">
         <img src="/eosc_logo.png" alt="eosc logo" class="object-contain h-20">
       </a>
     </div>
