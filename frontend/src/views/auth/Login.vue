@@ -21,14 +21,19 @@
 import {ref} from 'vue';
 import {useAuth} from '@/store/auth'
 import {storeToRefs} from "pinia";
+import {useRouter} from 'vue-router'
 
 const username = ref(null);
 const password = ref(null);
 const authStore = useAuth()
-const user = storeToRefs(authStore)
+const {user} = storeToRefs(authStore)
 const {login, logout} = authStore
+const router = useRouter()
 
 const submit = async () => {
   await login(username.value, password.value)
+  // redirect back to the previous page (or the homepage if there is no previous page)
+  const previous = router.options.history.state.back || '/'
+  await router.push(previous)
 }
 </script>
