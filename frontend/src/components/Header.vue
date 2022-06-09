@@ -7,7 +7,7 @@
     <div v-if="loggedIn" class="text-white pr-2 border-r">
       {{ displayName }}
     </div>
-    <Menu :items="items" />
+    <Menu :items="items"/>
   </header>
 </template>
 
