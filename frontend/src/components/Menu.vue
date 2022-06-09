@@ -18,7 +18,7 @@ import {computed, ref} from 'vue'
 import VueFeather from 'vue-feather'
 
 const {items} = defineProps(['items'])
-let visible = ref(false);
+let visible = ref(false)
 
 /**
  * Returns a list of menu items that should be shown when the menu is displayed.
