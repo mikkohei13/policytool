@@ -1,10 +1,9 @@
 <template>
-  <div @mouseover="show" @mouseleave="hide" class="flex flex-col">
+  <div @mouseover="show" @mouseleave="hide" class="flex flex-col relative">
     <button class="p-2 pb-1 rounded text-white hover:text-grey place-self-end">
       <VueFeather type="menu" size="2rem"></VueFeather>
     </button>
-    <ul v-if="visible"
-        class="bg-white p-0 border-solid border-t-2 border-yellow cursor-pointer z-10">
+    <ul v-if="visible" class="absolute right-0 top-full bg-white p-0 border-solid border-t-2 border-yellow cursor-pointer z-10">
       <li v-for="item in visibleItems">
         <router-link v-if="item.to" :to="item.to" @click="hide"
                      class="text-lg hover:bg-grey first:pt-2 pb-2 px-8 block w-full">
