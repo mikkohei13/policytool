@@ -4,18 +4,22 @@
       <img src="/dissco-logo-web.svg" alt="DiSSCo logo" class="h-16">
     </router-link>
     <div class="grow"/>
-    <Menu :items="items" class="flex-none"/>
+    <div v-if="loggedIn" class="text-white pr-2 border-r">
+      {{ displayName }}
+    </div>
+    <Menu :items="items" />
   </header>
 </template>
 
 <script setup>
-import {reactive} from "vue"
+import {computed, reactive} from "vue"
 import Menu from "@/components/Menu.vue"
 import {useAuth} from '@/store/auth'
 import {storeToRefs} from 'pinia'
 
 const {user, loggedIn, notLoggedIn} = storeToRefs(useAuth())
 
+const displayName = computed(() => `${user.value.first_name} ${user.value.last_name}`)
 
 const items = reactive([
   {title: 'Dashboards', to: {name: 'dashboards'}, visible: true},
