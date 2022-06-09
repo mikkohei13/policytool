@@ -9,28 +9,19 @@
 </template>
 
 <script setup>
-import {reactive, watch} from "vue"
+import {reactive} from "vue"
 import Menu from "@/components/Menu.vue"
 import {useAuth} from '@/store/auth'
 import {storeToRefs} from 'pinia'
 
-const authStore = useAuth()
-const {user} = storeToRefs(authStore)
+const {user, loggedIn, notLoggedIn} = storeToRefs(useAuth())
 
-const loginItem = {title: 'Log in', to: {name: 'login'}, visible: true}
-const logoutItem = {title: 'Log out', to: {name: 'logout'}, visible: true}
 
 const items = reactive([
   {title: 'Dashboards', to: {name: 'dashboards'}, visible: true},
   {title: 'Policies', to: {name: 'policies'}, visible: true},
-  // the login/logout item is always last
-  loginItem
+  {title: 'Log in', to: {name: 'login'}, visible: notLoggedIn},
+  {title: 'Log out', to: {name: 'logout'}, visible: loggedIn}
 ])
-
-const updateLoginLogoutItem = (newUser) => {
-  items[items.length - 1] = !newUser ? loginItem : logoutItem
-}
-updateLoginLogoutItem(user.value)
-watch(user, updateLoginLogoutItem)
 
 </script>
