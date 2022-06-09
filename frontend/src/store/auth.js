@@ -5,9 +5,25 @@ import {api} from '@/utils/api'
 export const useAuth = defineStore('auth', {
     state: () => ({
         user: null,
-        token: null
+        token: null,
     }),
-    getters: {},
+    getters: {
+        /**
+         * Getter that tells you if there is a logged-in user or not.
+         *
+         * @param state the state
+         * @returns {boolean}
+         */
+        loggedIn: (state) => !!state.user,
+        /**
+         * The inverse of loggedIn. This is provided for convenience because if loggedIn is used as
+         * a ref it can't be inverted directly with a "!" and maintain reactivity.
+         *
+         * @param state
+         * @returns {boolean}
+         */
+        notLoggedIn: (state) => !state.user,
+    },
     actions: {
         async login(username, password) {
             // if there is a currently logged-in user, log them out first
