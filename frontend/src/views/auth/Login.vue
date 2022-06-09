@@ -1,6 +1,6 @@
 <template>
   <form class="flex flex-col py-4 gap-y-0.5 items-center">
-    <input v-model="username" type="text" placeholder="username" class="w-72">
+    <input v-model="username" ref="usernameInput" type="text" placeholder="username" class="w-72">
     <input v-model="password" type="password" placeholder="password" class="w-72">
     <button @click.prevent="submit" class="bg-yellow my-4 p-3 rounded hover:bg-yellow-dark w-72">
       Login
@@ -18,17 +18,20 @@
 </template>
 
 <script setup>
-import {ref} from 'vue';
+import {onMounted, ref} from 'vue';
 import {useAuth} from '@/store/auth'
 import {storeToRefs} from "pinia";
 import {useRouter} from 'vue-router'
 
 const username = ref(null);
 const password = ref(null);
+const usernameInput = ref(null)
 const authStore = useAuth()
 const {user} = storeToRefs(authStore)
 const {login, logout} = authStore
 const router = useRouter()
+
+onMounted(() => usernameInput.value.focus())
 
 const submit = async () => {
   await login(username.value, password.value)
