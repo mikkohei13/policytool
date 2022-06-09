@@ -18,25 +18,25 @@
 </template>
 
 <script setup>
-import {onMounted, ref} from 'vue';
+import {onMounted, ref} from 'vue'
 import {useAuth} from '@/store/auth'
-import {storeToRefs} from "pinia";
+import {storeToRefs} from 'pinia'
 import {useRouter} from 'vue-router'
 
-const username = ref(null);
-const password = ref(null);
+const username = ref(null)
+const password = ref(null)
 const usernameInput = ref(null)
+
+const router = useRouter()
 const authStore = useAuth()
 const {user} = storeToRefs(authStore)
 const {login, logout} = authStore
-const router = useRouter()
 
 onMounted(() => usernameInput.value.focus())
 
 const submit = async () => {
   await login(username.value, password.value)
   // redirect back to the previous page (or the homepage if there is no previous page)
-  const previous = router.options.history.state.back || '/'
-  await router.push(previous)
+  await router.push(router.options.history.state.back || '/')
 }
 </script>
