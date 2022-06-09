@@ -2,7 +2,7 @@
   <form class="flex flex-col py-4 gap-y-0.5 items-center">
     <input v-model="username" type="text" placeholder="username" class="w-72">
     <input v-model="password" type="password" placeholder="password" class="w-72">
-    <button @click="submit" class="bg-yellow my-4 p-3 rounded hover:bg-yellow-dark w-72">
+    <button @click.prevent="submit" class="bg-yellow my-4 p-3 rounded hover:bg-yellow-dark w-72">
       Login
     </button>
 
@@ -28,8 +28,7 @@ const authStore = useAuth()
 const user = storeToRefs(authStore)
 const {login, logout} = authStore
 
-const submit = async (e) => {
-  e.preventDefault()
+const submit = async () => {
   await login(username.value, password.value)
 }
 </script>
