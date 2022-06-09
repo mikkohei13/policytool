@@ -2,7 +2,7 @@
   <article class="bg-home-image flex flex-col items-stretch min-h-screen bg-top bg-cover">
     <Header class="shrink-0"/>
     <main class="grow shrink-0">
-      <div class="p-4 py-8 mx-auto max-w-screen-2xl">
+      <div class="p-4 py-8 mx-auto max-w-screen-xl">
         <router-view/>
       </div>
     </main>
