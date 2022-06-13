@@ -12,11 +12,11 @@
         </div>
         <div class="grow"></div>
         <!-- TODO: create button component -->
-        <button class="bg-yellow border py-1 pr-3">
+        <button class="bg-yellow border py-1 pr-3 hover:bg-yellow-dark">
           <VueFeather type="plus" size="1.4rem" class="align-middle mx-1 -mt-1"/>
           Start new
         </button>
-        <button class="bg-grey border py-1 pr-3">
+        <button class="bg-grey border py-1 pr-3 hover:bg-grey-dark">
           <VueFeather type="chevron-down" size="1.4rem" class="align-middle mx-1 -mt-1"/>
           Filter
         </button>
