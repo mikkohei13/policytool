@@ -15,5 +15,5 @@ export const routes = [
   { path: '/logout', component: Logout, name: 'logout', meta: { title: 'Logout' } },
   { path: '/register', component: RequestAccount, name: 'requestAccount', meta: { title: 'Request Account' } },
   { path: '/reset', component: ResetPassword, name: 'resetPassword', meta: { title: 'Reset Password' } },
-  { path: '/:path(.*)', component: NotFound },
+  { path: '/:path(.*)', component: NotFound, meta: {title: 'Page not found'} },
 ]
