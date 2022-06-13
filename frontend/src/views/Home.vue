@@ -1,5 +1,5 @@
 <template>
-  <p class="text-4xl text-white font-bold">DiSSCo Policy and Digital Readiness Assessment Tool</p>
+  <p class="text-5xl text-white font-bold">DiSSCo Policy and Digital Readiness Assessment Tool</p>
   <!-- TODO: need some copy here! -->
   <p class="text-white">Some text about the Policy Tool.</p>
   <br/>
