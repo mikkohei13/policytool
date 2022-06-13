@@ -9,8 +9,7 @@ export const useStore = defineStore('main', {
     getters: {},
     actions: {
         async updatePolicyPacks() {
-            const response = await api.get('/api/policy/pack')
-            this.policyPacks = response.data
-        }
+            this.policyPacks = await api.get('/api/policy/pack')
+        },
     }
 })
