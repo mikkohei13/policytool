@@ -8,7 +8,7 @@ module.exports = {
             transparent: 'transparent',
             current: 'currentColor',
             blue: {
-                DEFAULT: '#0C86C6',
+                DEFAULT: '#0c86c6',
                 dark: '#205692',
             },
             yellow: {
@@ -29,6 +29,13 @@ module.exports = {
                 approved: '#3dca77',
                 denied: '#e74c3c',
                 resolved: '#b4b4bf',
+            },
+            statusDark: {
+                new: '#0c86c6',
+                handled: '#de9110',
+                approved: '#37b66b',
+                denied: '#d04436',
+                resolved: '#868696',
             }
         },
         extend: {
