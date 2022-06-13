@@ -5,7 +5,7 @@
   <br/>
   <br/>
   <br/>
-  <div class="flex flex-row gap-4">
+  <div class="flex flex-row gap-4 justify-evenly sm:justify-start">
     <router-link :to="{name: 'policies'}" class="bg-yellow p-3 rounded hover:bg-yellow-dark">
       Explore policies
       <VueFeather type="chevron-right" size="2rem" class="align-middle "></VueFeather>
