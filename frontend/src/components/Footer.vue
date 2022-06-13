@@ -10,7 +10,7 @@
         <VueFeather type="external-link" size="1rem"/>
       </a>
       <a href="https://unsplash.com/photos/HYTwWSE5ztw" target="_blank" class="block py-1">
-        Background photo by Zdeněk Macháček on Unsplash
+        Background photo from Unsplash
         <VueFeather type="external-link" size="1rem"/>
       </a>
     </div>
