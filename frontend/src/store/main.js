@@ -1,6 +1,11 @@
 import {defineStore} from 'pinia'
 import {api} from '@/utils/api'
 
+export const PACK_STATUS = {
+    COMPLETE: 'complete',
+    INCOMPLETE: 'incomplete',
+    NOT_STARTED: 'not_started',
+}
 
 export const useStore = defineStore('main', {
     state: () => ({
