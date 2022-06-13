@@ -47,6 +47,10 @@ class Question:
     options: list[str] | None = None
     answer: Answer | None = None
 
+    @property
+    def answered(self) -> bool:
+        return self.answer is not None
+
     def to_dict(self) -> dict[str, Any]:
         return {
             'id': self.id,
@@ -59,17 +63,34 @@ class Question:
         }
 
 
+class PackStatus(Enum):
+    COMPLETE = 'complete'
+    INCOMPLETE = 'incomplete'
+    NOT_STARTED = 'not_started'
+
+
 @dataclass
 class Pack(ABC):
     id: int
     name: str
     questions: list[Question]
 
+    @property
+    def pack_status(self) -> PackStatus:
+        number_of_answers = sum(1 for question in self.questions if question.answered)
+        if number_of_answers == len(self.questions):
+            return PackStatus.COMPLETE
+        elif number_of_answers == 0:
+            return PackStatus.NOT_STARTED
+        else:
+            return PackStatus.INCOMPLETE
+
     def to_dict(self) -> dict[str, Any]:
         return {
             'id': self.id,
             'name': self.name,
-            'questions': [question.to_dict() for question in self.questions]
+            'status': self.pack_status.value,
+            'questions': [question.to_dict() for question in self.questions],
         }
 
 
