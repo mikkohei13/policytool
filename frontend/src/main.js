@@ -5,8 +5,10 @@ import {routes} from './routes.js'
 import {createRouter, createWebHistory} from 'vue-router'
 import {createPinia} from 'pinia'
 import {useAuth} from "@/store/auth";
+import VueFeather from 'vue-feather'
 
 const app = createApp(App)
+app.component('VueFeather', VueFeather)
 
 const router = createRouter({
     history: createWebHistory(),

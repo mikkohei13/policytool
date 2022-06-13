@@ -25,7 +25,3 @@
     </div>
   </footer>
 </template>
-
-<script setup>
-import VueFeather from 'vue-feather'
-</script>

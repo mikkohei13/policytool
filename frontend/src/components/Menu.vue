@@ -23,7 +23,6 @@
 
 <script setup>
 import {computed, ref} from 'vue'
-import VueFeather from 'vue-feather'
 import Fade from '@/components/transitions/Fade.vue'
 
 const {items} = defineProps(['items'])
