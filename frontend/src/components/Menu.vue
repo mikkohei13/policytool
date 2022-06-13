@@ -5,7 +5,7 @@
     </button>
     <Fade>
       <ul v-if="visible"
-          class="absolute right-0 top-full bg-white p-0 border-solid border-t-2 border-yellow cursor-pointer z-10">
+          class="absolute right-0 top-full bg-white p-0 border-solid border-t-2 border-yellow cursor-pointer z-10 w-48">
         <li v-for="item in visibleItems">
           <router-link v-if="item.to" :to="item.to" @click="hide"
                        class="text-lg hover:bg-grey first:pt-2 pb-2 px-8 block w-full">
