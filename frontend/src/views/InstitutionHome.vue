@@ -4,8 +4,8 @@
       Institution - {{ institutionName }}
     </div>
   </div>
-  <div class="flex flex-col md:flex-row gap-8">
-    <div class="w-3/5 border-2 bg-white p-3">
+  <div class="flex flex-col lg:flex-row gap-8">
+    <div class="w-full lg:w-3/5 border-2 bg-white p-3">
       <div class="flex flex-row gap-2 pb-2 border-b-2 border-black">
         <div class="text-black text-2xl">
           Review Policies
@@ -30,7 +30,13 @@
         </div>
       </div>
     </div>
-    <div class="w-2/5 text-blue">
+    <div class="w-full lg:w-2/5 border-2 bg-white p-3">
+      <div class="text-black text-2xl pb-2 border-b-2 border-black">
+        Institutional Policies
+      </div>
+      <div class="pt-2 text-sm">
+        Insert a list of institution policies...
+      </div>
     </div>
   </div>
 </template>
