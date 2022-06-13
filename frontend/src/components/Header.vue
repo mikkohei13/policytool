@@ -25,8 +25,7 @@ const {user, institution, loggedIn, notLoggedIn} = storeToRefs(useAuth())
 const displayName = computed(() => `${user.value.first_name} ${user.value.last_name}`)
 
 const items = reactive([
-  {title: 'Dashboards', to: {name: 'dashboards'}, visible: true},
-  {title: 'Policies', to: {name: 'policies'}, visible: true},
+  {title: 'Institution', to: {name: 'institution_home'}, visible: loggedIn},
   {title: 'Log in', to: {name: 'login'}, visible: notLoggedIn},
   {title: 'Log out', to: {name: 'logout'}, visible: loggedIn}
 ])
