@@ -1,12 +1,14 @@
 import {defineStore} from 'pinia'
 import {api} from '@/utils/api'
+import {StorageSerializers, useLocalStorage} from '@vueuse/core'
 
 
 export const useAuth = defineStore('auth', {
     state: () => ({
         user: null,
         institution: null,
-        token: null,
+        token: useLocalStorage('policy-tool-auth-token', null,
+            {serializer: StorageSerializers.string}),
     }),
     getters: {
         /**
@@ -36,9 +38,7 @@ export const useAuth = defineStore('auth', {
             this.token = data.key
             // must set the API token before getting the user data
             api.setToken(this.token)
-            const whoami = await api.get('/api/whoami')
-            this.user = whoami.user
-            this.institution = whoami.institution || null
+            await this.refreshDetails()
         },
         async logout() {
             if (!!this.token) {
@@ -46,8 +46,18 @@ export const useAuth = defineStore('auth', {
                 api.unsetToken()
             }
             this.token = null
-            this.user = null
-            this.institution = null
+            await this.refreshDetails()
+        },
+        async refreshDetails() {
+            if (!!this.token) {
+                api.setToken(this.token)
+                const whoami = await api.get('/api/whoami')
+                this.user = whoami.user
+                this.institution = whoami.institution || null
+            } else {
+                this.user = null
+                this.institution = null
+            }
         }
     }
 })

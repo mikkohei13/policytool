@@ -4,6 +4,7 @@ import App from './App.vue'
 import {routes} from './routes.js'
 import {createRouter, createWebHistory} from 'vue-router'
 import {createPinia} from 'pinia'
+import {useAuth} from "@/store/auth";
 
 const app = createApp(App)
 
@@ -26,3 +27,6 @@ router.afterEach(async (to) => {
 app.use(createPinia())
 app.use(router)
 app.mount('#app')
+
+const {refreshDetails} = useAuth()
+await refreshDetails()
