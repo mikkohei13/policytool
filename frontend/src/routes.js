@@ -1,4 +1,5 @@
 import Home from '@/views/Home.vue'
+import InstitutionHome from '@/views/InstitutionHome.vue'
 import NotFound from '@/views/NotFound.vue'
 import Login from '@/views/auth/Login.vue'
 import Logout from '@/views/auth/Logout.vue'
@@ -9,6 +10,7 @@ import Policies from '@/views/Policies.vue'
 /** @type {import('vue-router').RouterOptions['routes']} */
 export const routes = [
   { path: '/', component: Home, name: 'home', meta: { title: 'Home' } },
+  { path: '/institution', component: InstitutionHome, name: 'institution_home', meta: { title: 'Institution Home' } },
   { path: '/dashboards', component: NotFound, name: 'dashboards', meta: { title: 'Dashboards' } },
   { path: '/policies', component: Policies, name: 'policies', meta: { title: 'Policies' } },
   { path: '/login', component: Login, name: 'login', meta: { title: 'Login' } },
