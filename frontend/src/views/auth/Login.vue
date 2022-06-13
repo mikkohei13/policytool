@@ -34,9 +34,14 @@ const {login, logout} = authStore
 
 onMounted(() => usernameInput.value.focus())
 
+const logoutPath = router.resolve({name: 'logout'}).href
 const submit = async () => {
   await login(username.value, password.value)
-  // redirect to the institution home view
-  await router.push({name: 'institution_home'})
+  // redirect back to the previous page (or the institution homepage if there is no previous page)
+  let previous = router.options.history.state.back
+  if (!previous || previous === logoutPath || previous === '/') {
+    previous = {name: 'institution_home'}
+  }
+  await router.push(previous)
 }
 </script>
