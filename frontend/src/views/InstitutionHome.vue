@@ -22,7 +22,10 @@
         </button>
       </div>
       <div>
-
+        <!-- TODO: create a list component? -->
+        <div v-for="pack in policyPacks">
+          {{ pack.name }} - {{ pack.status }}
+        </div>
       </div>
     </div>
     <div class="w-2/5 text-blue">
