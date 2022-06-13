@@ -6,7 +6,7 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 
 from common.models import Institution
-from common.serializers import InstitutionSerializer, InstitutionUserSerializer
+from common.serializers import InstitutionSerializer, InstitutionUserSerializer, UserSerializer
 
 
 class InstitutionViewSet(viewsets.ModelViewSet):
@@ -18,5 +18,9 @@ class InstitutionViewSet(viewsets.ModelViewSet):
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def whoami(request: Request) -> Response:
-    # TODO: what do we do if the user has no associated institution?
-    return Response(InstitutionUserSerializer(request.user.institutionuser).data)
+    user = request.user
+    if hasattr(user, 'institutionuser'):
+        return Response(InstitutionUserSerializer(request.user.institutionuser).data)
+    else:
+        user_data = UserSerializer(user).data
+        return Response({'user': user_data})
