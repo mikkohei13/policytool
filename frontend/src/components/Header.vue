@@ -6,6 +6,9 @@
     <div class="grow"/>
     <div v-if="loggedIn" class="text-white pr-2 border-r">
       {{ displayName }}
+      <span v-if="institution">
+        / {{ institution.name }}
+      </span>
     </div>
     <Menu :items="items"/>
   </header>
@@ -17,7 +20,7 @@ import Menu from "@/components/Menu.vue"
 import {useAuth} from '@/store/auth'
 import {storeToRefs} from 'pinia'
 
-const {user, loggedIn, notLoggedIn} = storeToRefs(useAuth())
+const {user, institution, loggedIn, notLoggedIn} = storeToRefs(useAuth())
 
 const displayName = computed(() => `${user.value.first_name} ${user.value.last_name}`)
 
