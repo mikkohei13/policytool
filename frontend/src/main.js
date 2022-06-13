@@ -28,5 +28,6 @@ app.use(createPinia())
 app.use(router)
 app.mount('#app')
 
+// update the user details if we have a persisted token
 const {refreshDetails} = useAuth()
 await refreshDetails()
