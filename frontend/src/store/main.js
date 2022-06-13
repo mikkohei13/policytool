@@ -7,11 +7,17 @@ export const PACK_STATUS = {
     NOT_STARTED: 'not_started',
 }
 
+const IN_PROGRESS = [PACK_STATUS.COMPLETE, PACK_STATUS.INCOMPLETE]
+
 export const useStore = defineStore('main', {
     state: () => ({
         policyPacks: []
     }),
-    getters: {},
+    getters: {
+        inProgressPolicyPacks: (state) => {
+            return state.policyPacks.filter((pack) => IN_PROGRESS.includes(pack.status))
+        }
+    },
     actions: {
         async updatePolicyPacks() {
             this.policyPacks = await api.get('/api/policy/pack')
