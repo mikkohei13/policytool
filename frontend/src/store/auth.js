@@ -5,6 +5,7 @@ import {api} from '@/utils/api'
 export const useAuth = defineStore('auth', {
     state: () => ({
         user: null,
+        institution: null,
         token: null,
     }),
     getters: {
@@ -35,7 +36,9 @@ export const useAuth = defineStore('auth', {
             this.token = data.key
             // must set the API token before getting the user data
             api.setToken(this.token)
-            this.user = await api.get('/api/user')
+            const whoami = await api.get('/api/whoami')
+            this.user = whoami.user
+            this.institution = whoami.institution || null
         },
         async logout() {
             if (!!this.token) {
@@ -44,6 +47,7 @@ export const useAuth = defineStore('auth', {
             }
             this.token = null
             this.user = null
+            this.institution = null
         }
     }
 })
