@@ -1,16 +1,25 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from common.models import Institution
+from common.models import Institution, InstitutionUser
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class InstitutionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Institution
+        fields = ['id', 'name', 'code', 'wikidata_id']
+
+
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['username', 'email', 'first_name', 'last_name']
 
 
-class InstitutionSerializer(serializers.HyperlinkedModelSerializer):
+class InstitutionUserSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    institution = InstitutionSerializer(read_only=True)
+
     class Meta:
-        model = Institution
-        fields = ['id', 'name', 'code', 'wikidata_id']
+        model = InstitutionUser
+        fields = ['user', 'institution']

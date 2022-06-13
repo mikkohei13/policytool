@@ -2,6 +2,7 @@ from django.db import models
 
 from common.models import Institution
 from policy.utils import available_language_codes
+from qa.packs import Pack
 
 
 class Service(models.Model):
@@ -26,7 +27,7 @@ class ServiceComponent(models.Model):
     # a short description of the service component
     description = models.TextField(blank=True)
     # the component this service belongs to
-    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, related_name='components', on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return f'{self.name} [{self.service}]'
@@ -82,10 +83,18 @@ class PolicyComponent(models.Model):
     # the type of data representing the component
     type = models.TextField(choices=PolicyComponentOptionType.choices)
     # the policy area this component belongs to
-    policy_area = models.ForeignKey(PolicyArea, on_delete=models.CASCADE)
+    policy_area = models.ForeignKey(PolicyArea, related_name='components', on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return f'{self.name}, {self.type} on {self.policy_area}'
+
+    def get_type(self) -> PolicyComponentOptionType:
+        return PolicyComponent.PolicyComponentOptionType(self.type)
+
+    def is_option_based(self) -> bool:
+        option_type = self.get_type()
+        return option_type == PolicyComponent.PolicyComponentOptionType.OPTION_SINGLE or \
+               option_type == PolicyComponent.PolicyComponentOptionType.OPTION_MULTIPLE
 
 
 class PolicyComponentOption(models.Model):
@@ -96,7 +105,8 @@ class PolicyComponentOption(models.Model):
     """
     value = models.TextField()
     # the component this option belongs to
-    policy_component = models.ForeignKey(PolicyComponent, on_delete=models.CASCADE)
+    policy_component = models.ForeignKey(PolicyComponent, related_name='options',
+                                         on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return f'Option: {self.value} on {self.policy_component}'
@@ -141,7 +151,7 @@ class InstitutionPolicyArea(models.Model):
     # any additional notes relevant to the information or its use
     additional_notes = models.TextField(blank=True)
     # the institution this policy belongs to
-    institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
+    institution = models.ForeignKey(Institution, related_name='policies', on_delete=models.CASCADE)
     # the policy area this policy applies to
     policy_area = models.ForeignKey(PolicyArea, on_delete=models.CASCADE)
 
@@ -153,7 +163,8 @@ class InstitutionPolicyOwner(models.Model):
     # TODO: should this be a choice?
     role = models.TextField()
     # the institutional policy area this owner presides over
-    institution_policy_area = models.ForeignKey(InstitutionPolicyArea, on_delete=models.CASCADE)
+    institution_policy_area = models.ForeignKey(InstitutionPolicyArea, related_name='owners',
+                                                on_delete=models.CASCADE)
 
 
 class InstitutionPolicyLanguage(models.Model):
@@ -161,7 +172,8 @@ class InstitutionPolicyLanguage(models.Model):
     Language(s) in which the policy documentation has been written.
     """
     code = models.TextField(choices=sorted(available_language_codes().items()))
-    institution_policy_area = models.ForeignKey(InstitutionPolicyArea, on_delete=models.CASCADE)
+    institution_policy_area = models.ForeignKey(InstitutionPolicyArea, related_name='languages',
+                                                on_delete=models.CASCADE)
 
 
 class InstitutionPolicyComponent(models.Model):
@@ -172,8 +184,11 @@ class InstitutionPolicyComponent(models.Model):
     value = models.TextField(blank=True)
     chosen_options = models.ManyToManyField(PolicyComponentOption)
     comment = models.TextField(blank=True)
-    institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
-    policy_component = models.ForeignKey(PolicyComponent, on_delete=models.CASCADE)
+    institution = models.ForeignKey(Institution, related_name='components',
+                                    on_delete=models.CASCADE)
+    policy_component = models.ForeignKey(PolicyComponent,
+                                         related_name='institution_policy_components',
+                                         on_delete=models.CASCADE)
 
 
 class ServicePolicyMapping(models.Model):

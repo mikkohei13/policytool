@@ -1,17 +1,15 @@
 from django.contrib import admin
 
-from policy.models import Service, ServiceComponent, PolicyCategory, PolicyArea, PolicyComponent, \
-    PolicyComponentOption, InstitutionPolicyArea, InstitutionPolicyOwner, \
-    InstitutionPolicyLanguage, InstitutionPolicyComponent, ServicePolicyMapping
+from policy import models
 
-admin.site.register(Service)
-admin.site.register(ServiceComponent)
-admin.site.register(PolicyCategory)
-admin.site.register(PolicyArea)
-admin.site.register(PolicyComponent)
-admin.site.register(PolicyComponentOption)
-admin.site.register(InstitutionPolicyArea)
-admin.site.register(InstitutionPolicyOwner)
-admin.site.register(InstitutionPolicyLanguage)
-admin.site.register(InstitutionPolicyComponent)
-admin.site.register(ServicePolicyMapping)
+admin.site.register(models.Service)
+admin.site.register(models.ServiceComponent)
+admin.site.register(models.PolicyCategory)
+admin.site.register(models.PolicyArea)
+admin.site.register(models.PolicyComponent)
+admin.site.register(models.PolicyComponentOption)
+admin.site.register(models.InstitutionPolicyArea)
+admin.site.register(models.InstitutionPolicyOwner)
+admin.site.register(models.InstitutionPolicyLanguage)
+admin.site.register(models.InstitutionPolicyComponent)
+admin.site.register(models.ServicePolicyMapping)
