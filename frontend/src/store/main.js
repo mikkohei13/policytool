@@ -16,6 +16,9 @@ export const useStore = defineStore('main', {
     getters: {
         inProgressPolicyPacks: (state) => {
             return state.policyPacks.filter((pack) => IN_PROGRESS.includes(pack.status))
+        },
+        getPack: (state) => {
+            return (id) => state.policyPacks.find((pack) => pack.id === Number(id))
         }
     },
     actions: {
