@@ -46,7 +46,9 @@ import {useAuth} from '@/store/auth'
 import {PACK_STATUS, useStore} from '@/store/main'
 import {storeToRefs} from 'pinia'
 import {computed, onMounted} from 'vue'
+import {useRouter} from 'vue-router'
 
+const router = useRouter()
 const {institution} = storeToRefs(useAuth())
 const mainStore = useStore()
 const {policyPacks} = storeToRefs(mainStore)
@@ -72,7 +74,7 @@ onMounted(async () => {
 })
 
 const packAction = (pack) => {
-
+  router.push({name: 'pack', params: { id: pack.id}})
 }
 
 </script>
