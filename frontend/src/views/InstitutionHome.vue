@@ -73,6 +73,7 @@ onMounted(async () => {
   await updatePolicyPacks()
 })
 
+// TODO: this probably doesn't need to be a function tbh, could just use router-link component
 const packAction = (pack) => {
   router.push({name: 'pack', params: { id: pack.id}})
 }
