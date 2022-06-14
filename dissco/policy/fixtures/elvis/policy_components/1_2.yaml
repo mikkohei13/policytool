@@ -3,6 +3,7 @@
   pk: 2
   fields:
     name: Publication of images to an open access repository.
+    question: Which open access repository(ies) do you use to publish images?
     description: >-
       Publish images to a trusted publically accessible (no restrictions) repository, to allow for
       aggregation of data by DiSSCo services (e.g. ELViS).

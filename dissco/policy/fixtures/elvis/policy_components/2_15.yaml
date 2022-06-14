@@ -3,6 +3,8 @@
   pk: 15
   fields:
     name: Unique persistent identifier for specimens (non digitised and digitised)
+    question: >-
+      What Unique persistent identifiers to you use for specimens (non digitised and digitised)?
     description: >-
       The identifier can be persistently resolved (digitally actionable) to meaningful metadata
       state information about the object.

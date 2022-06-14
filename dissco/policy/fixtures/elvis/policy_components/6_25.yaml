@@ -3,6 +3,9 @@
   pk: 25
   fields:
     name: Traditional Knowledge
+    question: >-
+      Do you have institutional policy that reflects national, EU/Supranational regulations on
+      Traditional Knowledge related to genetic resources?
     description: >-
       An institutional policy that reflects national, EU or supranational (e.g. EU) regulations on
       Traditional knowledge related to genetic resources. Traditional knowledge refers to the

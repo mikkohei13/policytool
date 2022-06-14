@@ -3,6 +3,7 @@
   pk: 20
   fields:
     name: Data management plan
+    question: Does your institution follow a documented data management plan?
     description: >-
       Institutions should have their own institutional level data management plan referring to
       specimen, collection, research and institutional data.

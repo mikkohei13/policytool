@@ -3,6 +3,7 @@
   pk: 19
   fields:
     name: General Data Protection Regulation (EU) 2016/679 (GDPR)
+    question: Do you follow the General Data Protection Regulation (GDPR) (EU)?
     description: >-
       A policy inline or equivalent to GDPR requirements. Definition provided by EU GDPR regulation:
       processing: means any operation or set of operations which is performed on personal data or on

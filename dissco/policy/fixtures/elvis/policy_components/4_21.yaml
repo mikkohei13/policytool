@@ -3,6 +3,9 @@
   pk: 21
   fields:
     name: Protection of sensitive data
+    question: >-
+      Do you have procedure or policy on the protection of sensitive data that is not covered by
+      GDPR?
     description: >-
       Sensitive data for this component refers to data not covered by GDPR, and refers to data that
       may impede the protection of endangered/vulnerable species, etc.

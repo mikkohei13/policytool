@@ -3,6 +3,7 @@
   pk: 33
   fields:
     name: Visitor access
+    question: Is there a documented policy of how non-staff access your collections?
     description: >-
       Policies governing access to the collections by non staff.
     type: bool

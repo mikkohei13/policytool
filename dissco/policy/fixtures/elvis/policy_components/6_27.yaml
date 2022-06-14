@@ -3,6 +3,9 @@
   pk: 27
   fields:
     name: Benefit sharing
+    question: >-
+      Do you have an institutional policy that reflects national or supranational regulations on
+      benefit sharing of genetic resources?
     description: >-
       An institutional policy that reflects national, EU or supranational regulations on benefit
       sharing of genetic resources.  benefit-sharing is based on prior informed consent (PIC) being

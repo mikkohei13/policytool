@@ -3,6 +3,7 @@
   pk: 12
   fields:
     name: Specimen data description standards
+    question: What specimen data standards do you use?
     description: >-
       Controlled metadata schemas/vocabularies used to describe specimen data, including images and
       level of digitisation. The Open Digital Specimen is at the core of the DiSSCo research

@@ -3,6 +3,7 @@
   pk: 4
   fields:
     name: Default license(s) for research data
+    question: What default license(s) do you use for research data?
     description: >-
       Restrictions on the copyrights/sharing and usage of research data. Research data meaning  any
       information collected, stored, and processed in relation to the collection specimen.

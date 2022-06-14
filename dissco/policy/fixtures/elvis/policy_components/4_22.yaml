@@ -3,6 +3,9 @@
   pk: 22
   fields:
     name: Information incident management processes defined
+    question: >-
+      Does your institution have a documented incident management process for breaches of data
+      security?
     description: >-
       A defined process for dealing with breaches of data security, e.g. people, specimen,
       institutional/facilities and collection data, that has been published illegally.

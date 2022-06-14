@@ -3,6 +3,8 @@
   pk: 36
   fields:
     name: Destructive sampling
+    question: >-
+      How is destructive sampling managed in your institution? Do you have a documented policy?
     description: >-
       Destructive sampling is the removal of material from a specimen, or permanent modification of
       a specimen, including molecular analyses, SEM studies and chemical analyses. A policy that

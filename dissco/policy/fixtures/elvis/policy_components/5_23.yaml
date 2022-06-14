@@ -3,6 +3,7 @@
   pk: 23
   fields:
     name: Incoming and outgoing loans
+    question: Does your institution follow a documented loans policy?
     description: >-
       A policy that governs the provision and return of loans  e.g. timeframes, number of objects,
       cataloging and documentation, assessment, location control.This includes internal and external

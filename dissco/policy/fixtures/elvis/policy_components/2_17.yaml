@@ -3,6 +3,7 @@
   pk: 17
   fields:
     name: Unique, persistent identifiers for collections.
+    question: What Unique persistent identifiers do you use for your collections?
     description: >-
       A globally unique and persistent identifier for collections. Collection data sets should have
       community recognised globally Unique Persistent Identifiers that are resolvable on the web and

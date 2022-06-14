@@ -3,6 +3,9 @@
   pk: 29
   fields:
     name: Access to information and associated data on genetic resources
+    question: >-
+      Do you have an institutional policy that reflects national or supranational regulations on
+      providing access to information and associated data on genetic resources?
     description: >-
       An institutional policy that reflects national, EU or supranational regulations o providing
       access to information and associated data from genetic resources, that includes the protocols
