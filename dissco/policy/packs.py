@@ -57,7 +57,10 @@ class PolicyPackProvider(PackProvider):
     """
 
     def get_packs(self, institution: Institution) -> list[Pack]:
-        return [to_pack(institution, policy_area) for policy_area in PolicyArea.objects.all()]
+        return [
+            to_pack(institution, policy_area)
+            for policy_area in PolicyArea.objects.all().order_by('id')
+        ]
 
     def get_pack(self, institution: Institution, pack_id: int) -> Pack:
         try:
