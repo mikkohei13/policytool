@@ -13,7 +13,8 @@
           </button>
         </div>
         <div class="h-10 w-10">
-          <button class="bg-grey p-1 w-full h-full rounded hover:bg-grey-dark p-1 h-10 w-10" v-if="showNext">
+          <button class="bg-grey p-1 w-full h-full rounded hover:bg-grey-dark p-1 h-10 w-10"
+                  v-if="showNext">
             <VueFeather type="chevron-right" size="2rem" class="cursor-pointer"
                         @click="currentIndex++"/>
           </button>
