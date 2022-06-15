@@ -5,7 +5,10 @@
         {{ pack.name }}
       </div>
       <div class="grow"></div>
-      <div class="flex flex-row gap-2">
+      <div class="flex flex-row gap-2 h-10">
+        <div class="self-center pr-2 border-r-2">
+          {{ currentIndex + 1}} / {{ pack.questions?.length }}
+        </div>
         <div class="h-10 w-10">
           <button class="bg-grey p-1 w-full h-full rounded hover:bg-grey-dark" v-if="showPrevious">
             <VueFeather type="chevron-left" size="2rem"
