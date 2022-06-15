@@ -70,26 +70,31 @@ class PackStatus(Enum):
 
 
 @dataclass
-class Pack(ABC):
+class PackSummary:
     id: int
     name: str
-    questions: list[Question]
-
-    @property
-    def pack_status(self) -> PackStatus:
-        number_of_answers = sum(1 for question in self.questions if question.answered)
-        if number_of_answers == len(self.questions):
-            return PackStatus.COMPLETE
-        elif number_of_answers == 0:
-            return PackStatus.NOT_STARTED
-        else:
-            return PackStatus.INCOMPLETE
+    size: int
+    answered: int
 
     def to_dict(self) -> dict[str, Any]:
         return {
             'id': self.id,
             'name': self.name,
-            'status': self.pack_status.value,
+            'size': self.size,
+            'answered': self.answered,
+        }
+
+
+@dataclass
+class Pack:
+    id: int
+    name: str
+    questions: list[Question]
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            'id': self.id,
+            'name': self.name,
             'questions': [question.to_dict() for question in self.questions],
         }
 
@@ -97,7 +102,7 @@ class Pack(ABC):
 class PackProvider(ABC):
 
     @abstractmethod
-    def get_packs(self, institution: Institution) -> list[Pack]:
+    def get_packs(self, institution: Institution) -> list[PackSummary]:
         ...
 
     @abstractmethod

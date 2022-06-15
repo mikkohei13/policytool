@@ -4,7 +4,7 @@ from common.models import Institution
 from policy.models import PolicyArea, PolicyComponent, PolicyComponentOption, \
     InstitutionPolicyComponent
 from qa.packs import PackProvider, Pack, Answer, Question, PackDoesNotExist, QuestionDoesNotExist, \
-    QuestionType
+    QuestionType, PackSummary
 
 option_mapping: dict[PolicyComponent.PolicyComponentOptionType, QuestionType] = {
     PolicyComponent.PolicyComponentOptionType.BOOL: QuestionType.BOOL,
@@ -12,6 +12,17 @@ option_mapping: dict[PolicyComponent.PolicyComponentOptionType, QuestionType] = 
     PolicyComponent.PolicyComponentOptionType.OPTION_SINGLE: QuestionType.OPTION_SINGLE,
     PolicyComponent.PolicyComponentOptionType.OPTION_MULTIPLE: QuestionType.OPTION_MULTIPLE,
 }
+
+
+def to_pack_summary(institution: Institution, policy_area: PolicyArea) -> PackSummary:
+    question_count = 0
+    answered_count = 0
+    for policy_component in policy_area.components.all():
+        question_count += 1
+        if policy_component.institution_policy_components.filter(institution=institution).exists():
+            answered_count += 1
+
+    return PackSummary(policy_area.id, policy_area.name, question_count, answered_count)
 
 
 def to_pack(institution: Institution, policy_area: PolicyArea) -> Pack:
@@ -29,7 +40,7 @@ def to_question(institution: Institution, policy_component: PolicyComponent) -> 
 
     try:
         institutional_policy_component = policy_component.institution_policy_components \
-            .get(institution_id=institution.id)
+            .get(institution=institution)
         answer = to_answer(policy_component, institutional_policy_component)
     except ObjectDoesNotExist:
         answer = None
@@ -56,9 +67,9 @@ class PolicyPackProvider(PackProvider):
         - Answer -> InstitutionPolicyComponent (answer) + PolicyComponentOption (choices)
     """
 
-    def get_packs(self, institution: Institution) -> list[Pack]:
+    def get_packs(self, institution: Institution) -> list[PackSummary]:
         return [
-            to_pack(institution, policy_area)
+            to_pack_summary(institution, policy_area)
             for policy_area in PolicyArea.objects.all().order_by('id')
         ]
 
@@ -99,5 +110,5 @@ class PolicyPackProvider(PackProvider):
             raise QuestionDoesNotExist() from e
 
         policy_component.institution_policy_components \
-            .filter(institution_id=institution.id) \
+            .filter(institution=institution) \
             .delete()

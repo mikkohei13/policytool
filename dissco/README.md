@@ -95,18 +95,24 @@ Read only, anonymous access, all endpoints only support `GET` requests.
 
 ```
 /{type}/pack [GET]
-    list all available question packs + status
-    - name
+    list all available question packs statuses
     # TODO: question order
-    - questions [
-        - text
-        - type
-        - options
-        - required
-        - answer: null or:
-            - value
-            - comment
-    ]
+    - name
+    - size (i.e. number of questions)
+    - answered (i.e. number of questions with answers)
+```
+
+```
+/{type}/pack/{pack_id} [GET]
+    get the details of a single pack
+    - text
+    - hint
+    - type
+    - required
+    - options
+    - answer: null or:
+        - value
+        - comment
 ```
 
 ```
