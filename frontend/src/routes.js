@@ -12,7 +12,7 @@ import Pack from '@/views/Pack.vue'
 export const routes = [
   { path: '/', component: Home, name: 'home', meta: { title: 'Home' } },
   { path: '/institution', component: InstitutionHome, name: 'institution_home', meta: { title: 'Institution Home' } },
-  { path: '/pack/:id', component: Pack, name: 'pack', meta: { title: 'Question Pack'}, props: true },
+  { path: '/pack/:type/:id', component: Pack, name: 'pack', meta: { title: 'Question Pack'}, props: true },
   { path: '/dashboards', component: NotFound, name: 'dashboards', meta: { title: 'Dashboards' } },
   { path: '/policies', component: Policies, name: 'policies', meta: { title: 'Policies' } },
   { path: '/login', component: Login, name: 'login', meta: { title: 'Login' } },

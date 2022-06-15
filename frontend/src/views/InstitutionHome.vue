@@ -18,15 +18,10 @@
         </button>
       </div>
       <div class="flex flex-col gap-y-3 pt-2">
-        <!-- TODO: create a list component? -->
-        <div v-for="pack in policyPacks" class="flex flex-row items-center p-2 hover:bg-grey-light">
+        <div v-for="pack in packs" class="flex flex-row items-center p-2 hover:bg-grey-light">
           <div>{{ pack.name }}</div>
           <div class="grow"></div>
-          <button :class="packActionButtonClass[pack.status]" @click="packAction(pack)"
-                  class="py-1 pl-4 pr-2">
-            {{ packActionButtonTexts[pack.status] }}
-            <VueFeather type="chevron-right" size="1.4rem" class="align-middle -mt-1"/>
-          </button>
+          <PackAction :pack="pack"></PackAction>
         </div>
       </div>
     </div>
@@ -42,40 +37,24 @@
 </template>
 
 <script setup>
+import PackAction from '@/components/packs/PackAction.vue'
 import {useAuth} from '@/store/auth'
-import {PACK_STATUS, useStore} from '@/store/main'
+import {computed, onMounted, ref} from 'vue'
 import {storeToRefs} from 'pinia'
-import {computed, onMounted} from 'vue'
-import {useRouter} from 'vue-router'
+import {api} from '@/utils/api'
 
-const router = useRouter()
 const {institution} = storeToRefs(useAuth())
-const mainStore = useStore()
-const {policyPacks} = storeToRefs(mainStore)
-const {updatePolicyPacks} = mainStore
 
-// TODO: make components out of the policy action buttons and then we don't need this?
-const packActionButtonClass = {
-  [PACK_STATUS.COMPLETE]: ['bg-status-approved', 'hover:bg-statusDark-approved'],
-  [PACK_STATUS.INCOMPLETE]: ['bg-status-handled', 'hover:bg-statusDark-handled'],
-  [PACK_STATUS.NOT_STARTED]: ['bg-status-new', 'hover:bg-statusDark-new'],
-}
-const packActionButtonTexts = {
-  [PACK_STATUS.COMPLETE]: 'Edit',
-  [PACK_STATUS.INCOMPLETE]: 'Continue',
-  [PACK_STATUS.NOT_STARTED]: 'Start',
-}
+const packs = ref([])
 
 // use a computed guard for the institution name in case the institution hasn't been loaded yet
 const institutionName = computed(() => !institution.value ? '' : institution.value.name)
 
-onMounted(async () => {
-  await updatePolicyPacks()
-})
 
-// TODO: this probably doesn't need to be a function tbh, could just use router-link component
-const packAction = (pack) => {
-  router.push({name: 'pack', params: { id: pack.id}})
+const updatePolicyPacks = async () => {
+  packs.value = await api.get('/api/policy/pack')
 }
+
+onMounted(updatePolicyPacks)
 
 </script>
