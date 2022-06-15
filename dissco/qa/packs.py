@@ -73,6 +73,7 @@ class PackStatus(Enum):
 class PackSummary:
     id: int
     name: str
+    type: str
     size: int
     answered: int
 
@@ -80,6 +81,7 @@ class PackSummary:
         return {
             'id': self.id,
             'name': self.name,
+            'type': self.type,
             'size': self.size,
             'answered': self.answered,
         }
@@ -89,17 +91,22 @@ class PackSummary:
 class Pack:
     id: int
     name: str
+    type: str
     questions: list[Question]
 
     def to_dict(self) -> dict[str, Any]:
         return {
             'id': self.id,
             'name': self.name,
+            'type': self.type,
             'questions': [question.to_dict() for question in self.questions],
         }
 
 
 class PackProvider(ABC):
+
+    def __init__(self, pack_type: str):
+        self.pack_type = pack_type
 
     @abstractmethod
     def get_packs(self, institution: Institution) -> list[PackSummary]:
@@ -138,5 +145,5 @@ def load_providers(config: dict[str, str] | None) -> dict[str, PackProvider]:
     providers = {}
     if config:
         for pack_type, pack_provider_class in config.items():
-            providers[pack_type] = import_string(pack_provider_class)()
+            providers[pack_type] = import_string(pack_provider_class)(pack_type)
     return providers

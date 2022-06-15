@@ -14,7 +14,8 @@ option_mapping: dict[PolicyComponent.PolicyComponentOptionType, QuestionType] = 
 }
 
 
-def to_pack_summary(institution: Institution, policy_area: PolicyArea) -> PackSummary:
+def to_pack_summary(pack_type: str, institution: Institution, policy_area: PolicyArea) \
+        -> PackSummary:
     question_count = 0
     answered_count = 0
     for policy_component in policy_area.components.all():
@@ -22,14 +23,14 @@ def to_pack_summary(institution: Institution, policy_area: PolicyArea) -> PackSu
         if policy_component.institution_policy_components.filter(institution=institution).exists():
             answered_count += 1
 
-    return PackSummary(policy_area.id, policy_area.name, question_count, answered_count)
+    return PackSummary(policy_area.id, policy_area.name, pack_type, question_count, answered_count)
 
 
-def to_pack(institution: Institution, policy_area: PolicyArea) -> Pack:
+def to_pack(pack_type: str, institution: Institution, policy_area: PolicyArea) -> Pack:
     questions = []
     for policy_component in policy_area.components.all():
         questions.append(to_question(institution, policy_component))
-    return Pack(policy_area.id, policy_area.name, questions)
+    return Pack(policy_area.id, policy_area.name, pack_type, questions)
 
 
 def to_question(institution: Institution, policy_component: PolicyComponent) -> Question:
@@ -69,13 +70,13 @@ class PolicyPackProvider(PackProvider):
 
     def get_packs(self, institution: Institution) -> list[PackSummary]:
         return [
-            to_pack_summary(institution, policy_area)
+            to_pack_summary(self.pack_type, institution, policy_area)
             for policy_area in PolicyArea.objects.all().order_by('id')
         ]
 
     def get_pack(self, institution: Institution, pack_id: int) -> Pack:
         try:
-            return to_pack(institution, PolicyArea.objects.get(pk=pack_id))
+            return to_pack(self.pack_type, institution, PolicyArea.objects.get(pk=pack_id))
         except ObjectDoesNotExist as e:
             raise PackDoesNotExist() from e
 

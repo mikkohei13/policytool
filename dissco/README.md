@@ -98,6 +98,7 @@ Read only, anonymous access, all endpoints only support `GET` requests.
     list all available question packs statuses
     # TODO: question order
     - name
+    - type
     - size (i.e. number of questions)
     - answered (i.e. number of questions with answers)
 ```
@@ -105,14 +106,18 @@ Read only, anonymous access, all endpoints only support `GET` requests.
 ```
 /{type}/pack/{pack_id} [GET]
     get the details of a single pack
-    - text
-    - hint
+    - name
     - type
-    - required
-    - options
-    - answer: null or:
-        - value
-        - comment
+    - questions [
+        - text
+        - hint
+        - type
+        - required
+        - options
+        - answer: null or:
+            - value
+            - comment
+    ]
 ```
 
 ```
