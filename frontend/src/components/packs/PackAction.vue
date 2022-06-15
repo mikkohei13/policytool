@@ -20,7 +20,7 @@ const options = {
     'text': 'Continue'
   },
   [PACK_STATUS.COMPLETE]: {
-    'class': ['bg-grey', 'hover:bg-grey-dark'],
+    'class': ['bg-status-approved', 'hover:bg-statusDark-approved'],
     'text': 'Edit'
   }
 }
