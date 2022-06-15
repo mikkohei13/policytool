@@ -50,16 +50,21 @@
 
 <script setup>
 import Bool from '@/components/packs/questions/Bool.vue'
+import String from '@/components/packs/questions/String.vue'
+import Text from '@/components/packs/questions/Text.vue'
+import Number from '@/components/packs/questions/Number.vue'
+import OptionSingle from '@/components/packs/questions/OptionSingle.vue'
+import OptionMultiple from '@/components/packs/questions/OptionMultiple.vue'
 import {computed, onMounted, ref} from 'vue'
 import {api} from '@/utils/api'
 
 const types = {
   'bool': Bool,
-  'string': Bool,
-  'text': Bool,
-  'number': Bool,
-  'option': Bool,
-  'options': Bool,
+  'string': String,
+  'text': Text,
+  'number': Number,
+  'option': OptionSingle,
+  'options': OptionMultiple,
 }
 
 const {id, type} = defineProps(['id', 'type'])
