@@ -56,7 +56,7 @@ const types = {
 
 const {id, type} = defineProps(['id', 'type'])
 const pack = ref({})
-const updatedAnswers = {}
+const updatedQuestionIds = new Set()
 // TODO: start at first incomplete answer
 let currentIndex = ref(0)
 
@@ -69,6 +69,11 @@ const showNext = computed(() => {
   }
 })
 
+const getQuestion = (questionId) => {
+  return pack.value.questions.find((question) => question.id === questionId)
+}
+
+
 const updatePack = async () => {
   pack.value = await api.get(`/api/${type}/pack/${id}`)
 }
@@ -76,7 +81,8 @@ const updatePack = async () => {
 onMounted(updatePack)
 
 const updateAnswer = (questionId, value, comment) => {
-  updatedAnswers[questionId] = {value, comment}
+  getQuestion(questionId).answer = {value, comment}
+  updatedQuestionIds.add(questionId)
 }
 
 </script>
