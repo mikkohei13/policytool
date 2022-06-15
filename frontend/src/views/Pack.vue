@@ -87,6 +87,7 @@ const saveAnswers = async () => {
     await api.post(`/api/${type}/pack/answer/${questionId}`, getQuestion(questionId).answer)
   }
   updatedQuestionIds.clear()
+  // TODO: show some visual indication that the save worked
 }
 
 const updatePack = async () => {
