@@ -12,7 +12,7 @@
         </div>
         <div class="grow"></div>
         <!-- TODO: create button component -->
-        <button class="bg-grey border py-1 pl-3 pr-1 hover:bg-grey-dark">
+        <button class="bg-grey border rounded py-1 pl-3 pr-1 hover:bg-grey-dark">
           Filter
           <VueFeather type="chevron-down" size="1.4rem" class="align-middle mx-1 -mt-1"/>
         </button>
