@@ -85,7 +85,11 @@ const updatePack = async () => {
   pack.value = await api.get(`/api/${type}/pack/${id}`)
 }
 
-onMounted(updatePack)
+onMounted(async () => {
+  await updatePack()
+  const index = pack.value.questions.findIndex((question) => !question.answer)
+  currentIndex.value = Math.max(index, 0)
+})
 
 const updateAnswer = (questionId, value, comment) => {
   getQuestion(questionId).answer = {value, comment}
