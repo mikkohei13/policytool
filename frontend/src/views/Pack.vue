@@ -5,16 +5,16 @@
         {{ pack.name }}
       </div>
       <div class="grow"></div>
-      <div class="flex flex-row gap-2 h-8">
-        <button class="bg-grey rounded hover:bg-grey-dark">
+      <div class="flex flex-row gap-2">
+        <button class="bg-grey rounded hover:bg-grey-dark p-1 h-10 w-10">
           <VueFeather type="chevron-left" size="2rem" v-if="showPrevious"
                       @click="currentIndex--" class="cursor-pointer"/>
         </button>
-        <button class="bg-grey rounded hover:bg-grey-dark">
+        <button class="bg-grey rounded hover:bg-grey-dark p-1 h-10 w-10">
           <VueFeather type="chevron-right" size="2rem" class="cursor-pointer" v-if="showNext"
                       @click="currentIndex++"/>
         </button>
-        <button class="bg-yellow rounded hover:bg-yellow-dark" @click="saveAnswers">
+        <button class="bg-yellow rounded hover:bg-yellow-dark p-1 h-10 w-10" @click="saveAnswers">
           <VueFeather type="save" size="2rem" class="cursor-pointer"/>
         </button>
       </div>
