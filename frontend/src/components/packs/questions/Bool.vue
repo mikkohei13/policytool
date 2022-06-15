@@ -25,11 +25,11 @@ const {question} = defineProps(['question'])
 const value = ref(question.answer ? question.answer.value : null)
 const comment = ref(question.answer ? question.answer.comment : null)
 
-const group = `radio-${question.id}`
-const commentId = `comment-${question.id}`
-const yesId = `yes-${question.id}`
-const noId = `no-${question.id}`
-const notSpecifiedId = `notSpecified-${question.id}`
+const group = `bool-${question.id}`
+const commentId = `bool-comment-${question.id}`
+const yesId = `bool-yes-${question.id}`
+const noId = `bool-no-${question.id}`
+const notSpecifiedId = `bool-notSpecified-${question.id}`
 
 watch([value, comment], ([newValue, newComment]) => {
   emit('updateAnswer', question.id, newValue, newComment)
