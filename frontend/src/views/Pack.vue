@@ -6,14 +6,18 @@
       </div>
       <div class="grow"></div>
       <div class="flex flex-row gap-2">
-        <button class="bg-grey rounded hover:bg-grey-dark p-1 h-10 w-10">
-          <VueFeather type="chevron-left" size="2rem" v-if="showPrevious"
-                      @click="currentIndex--" class="cursor-pointer"/>
-        </button>
-        <button class="bg-grey rounded hover:bg-grey-dark p-1 h-10 w-10">
-          <VueFeather type="chevron-right" size="2rem" class="cursor-pointer" v-if="showNext"
-                      @click="currentIndex++"/>
-        </button>
+        <div class="h-10 w-10">
+          <button class="bg-grey p-1 w-full h-full rounded hover:bg-grey-dark" v-if="showPrevious">
+            <VueFeather type="chevron-left" size="2rem"
+                        @click="currentIndex--" class="cursor-pointer"/>
+          </button>
+        </div>
+        <div class="h-10 w-10">
+          <button class="bg-grey p-1 w-full h-full rounded hover:bg-grey-dark p-1 h-10 w-10" v-if="showNext">
+            <VueFeather type="chevron-right" size="2rem" class="cursor-pointer"
+                        @click="currentIndex++"/>
+          </button>
+        </div>
         <button class="bg-yellow rounded hover:bg-yellow-dark p-1 h-10 w-10" @click="saveAnswers">
           <VueFeather type="save" size="2rem" class="cursor-pointer"/>
         </button>
