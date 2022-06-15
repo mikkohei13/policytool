@@ -14,7 +14,7 @@
           <VueFeather type="chevron-right" size="2rem" class="cursor-pointer" v-if="showNext"
                       @click="currentIndex++"/>
         </button>
-        <button class="bg-yellow rounded hover:bg-yellow-dark">
+        <button class="bg-yellow rounded hover:bg-yellow-dark" @click="saveAnswers">
           <VueFeather type="save" size="2rem" class="cursor-pointer"/>
         </button>
       </div>
@@ -73,6 +73,13 @@ const getQuestion = (questionId) => {
   return pack.value.questions.find((question) => question.id === questionId)
 }
 
+
+const saveAnswers = async () => {
+  for (const questionId of updatedQuestionIds) {
+    await api.post(`/api/${type}/pack/answer/${questionId}`, getQuestion(questionId).answer)
+  }
+  updatedQuestionIds.clear()
+}
 
 const updatePack = async () => {
   pack.value = await api.get(`/api/${type}/pack/${id}`)
