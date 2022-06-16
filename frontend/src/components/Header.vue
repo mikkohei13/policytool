@@ -22,7 +22,13 @@ import {storeToRefs} from 'pinia'
 
 const {user, institution, loggedIn, notLoggedIn} = storeToRefs(useAuth())
 
-const displayName = computed(() => `${user.value.first_name} ${user.value.last_name}`)
+const displayName = computed(() => {
+  if (!!user.value.first_name && !!user.value.last_name) {
+    return `${user.value.first_name} ${user.value.last_name}`
+  } else {
+    return user.value.username
+  }
+})
 
 const items = reactive([
   {title: 'Institution', to: {name: 'institution_home'}, visible: loggedIn},
