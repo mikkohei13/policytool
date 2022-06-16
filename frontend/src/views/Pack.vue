@@ -36,7 +36,7 @@
             <div class="text-xl pb-2 font-bold">
               {{ question.text }}
             </div>
-            <div class="pb-6">
+            <div class="pb-6" v-if="question.type !== 'maturity'">
               {{ question.hint }}
             </div>
             <component :is="types[question.type]" :question="question"
@@ -56,6 +56,7 @@ import Text from '@/components/packs/questions/Text.vue'
 import Number from '@/components/packs/questions/Number.vue'
 import OptionSingle from '@/components/packs/questions/OptionSingle.vue'
 import OptionMultiple from '@/components/packs/questions/OptionMultiple.vue'
+import Maturity from '@/components/packs/questions/Maturity.vue'
 import {computed, onMounted, ref} from 'vue'
 import {api} from '@/utils/api'
 
@@ -66,6 +67,7 @@ const types = {
   'number': Number,
   'option': OptionSingle,
   'options': OptionMultiple,
+  'maturity': Maturity,
 }
 
 const {id, type} = defineProps(['id', 'type'])
