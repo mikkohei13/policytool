@@ -4,6 +4,7 @@
   fields:
     name: Recording visitor numbers
     question: Are visitor numbers to your collection recorded?
+    order: 2
     description: >-
       The number of non staff visitors to your collections.
     type: bool

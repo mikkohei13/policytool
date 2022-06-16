@@ -4,6 +4,7 @@
   fields:
     name: Default licence(s) for videos and audio recordings
     question: What default license(s) do you use for videos and audio recordings?
+    order: 7
     description: >-
       Restrictions on the copyrights/sharing and usage of videos and audio recordings.
     type: options

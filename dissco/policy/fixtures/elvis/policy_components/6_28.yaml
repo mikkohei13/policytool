@@ -6,6 +6,7 @@
     question: >-
       Do you have an institutional policy that reflects  national or supranational regulations on
       the commercial use of genetic resources?
+    order: 5
     description: >-
       A policy that covers the protocols for users intending to borrow specimens (or receive tissue
       samples from specimens) originating in a country/an area with benefit-sharing obligations.

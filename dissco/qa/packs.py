@@ -43,6 +43,7 @@ class Answer:
 @dataclass
 class Question:
     id: int
+    order: int
     text: str
     hint: str
     type: QuestionType
@@ -57,6 +58,7 @@ class Question:
     def to_dict(self) -> dict[str, Any]:
         return {
             'id': self.id,
+            'order': self.order,
             'text': self.text,
             'hint': self.hint,
             'type': self.type.value,

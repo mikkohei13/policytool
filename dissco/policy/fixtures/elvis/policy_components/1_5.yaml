@@ -4,6 +4,7 @@
   fields:
     name: Default license(s) for 2D images
     question: What default license(s) do you use for 2D images?
+    order: 5
     description: >-
       Restrictions on the copyrights/sharing and usage of 2D images.
     type: options

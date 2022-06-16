@@ -4,6 +4,7 @@
   fields:
     name: Default license(s) for 3D images
     question: What default license(s) do you use for 3D images?
+    order: 6
     description: >-
       Restrictions on the copyrights/sharing and usage of 3D images
     type: options

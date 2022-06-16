@@ -4,6 +4,7 @@
   fields:
     name: Identifiers for person authentication
     question: What system do you use for authenticating institution personal?
+    order: 1
     description: >-
       A globally unique and persistent identifier for collections. Collection data sets should have
       community recognised globally Unique Persistent Identifiers that are resolvable on the web and

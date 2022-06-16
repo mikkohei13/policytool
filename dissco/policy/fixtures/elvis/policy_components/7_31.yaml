@@ -4,6 +4,7 @@
   fields:
     name: Gender equality plan/strategy
     question: Does your institution have a public gender equality plan?
+    order: 2
     description: >-
       A Gender Equality Plan (GEP) is a set of commitments and actions that aim to promote gender
       equality in an organisation through institutional and cultural change. When developing a GEP

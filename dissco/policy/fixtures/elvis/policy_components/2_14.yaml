@@ -4,6 +4,7 @@
   fields:
     name: Collection data description standards
     question: What collection data description standards to you use?
+    order: 3
     description: >-
       Controlled metadata schemas/vocabularies used to describe natural science collection's,
       including images and level of digitisation.

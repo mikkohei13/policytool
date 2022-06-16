@@ -4,6 +4,7 @@
   fields:
     name: Default license(s) for specimen data
     question: What default licence(s) do you use for specimen data?
+    order: 3
     description: >-
       The restrictions on sharing and usage of specimen data. Specimen data including Name, type of
       object, locality, geographic origin, collector, associated annotations (label information).

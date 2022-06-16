@@ -4,6 +4,7 @@
   fields:
     name: Publication of specimen data to an open access repository
     question: Which open access repository(ies) do you use to publish specimen data?
+    order: 1
     description: >-
       Publish specimen data to a trusted publicly accessible (no restrictions) repository, to allow
       for aggregation of data by  DiSSCo services (e.g. ELViS).

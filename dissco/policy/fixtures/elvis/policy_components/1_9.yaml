@@ -4,6 +4,7 @@
   fields:
     name: Publication of collection data to an open access repository
     question: Where do you publish your collections data?
+    order: 9
     description: >-
       Publish collection data (e.g. Object types, size of collection, digitisation status,
       geographic origin, location were held, preservation type) to a trusted and publicly accessible

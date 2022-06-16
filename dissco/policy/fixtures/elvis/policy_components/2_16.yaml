@@ -4,6 +4,7 @@
   fields:
     name: Unique persistent identifiers for institutions
     question: What Unique persistent identifiers do you use for your institution?
+    order: 5
     description: >-
       A globally unique and persistent identifier that is resolved to the geo-coordinates on the
       internet.

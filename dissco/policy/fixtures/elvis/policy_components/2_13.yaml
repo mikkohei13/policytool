@@ -6,6 +6,7 @@
     question: >-
       Does your institution have a granular collection categorisation system, like that
       described in the SYNTHESYS+ collection categorisation schema?
+    order: 2
     description: >-
       Collection description granularity should be based on the categorization presented in of the
       SYNTHESYS+ collection classification schema, to at least the lowest granularity (broadest

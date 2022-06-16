@@ -78,6 +78,7 @@ class PolicyComponent(models.Model):
     # the name of the policy component
     name = models.TextField()
     question = models.TextField()
+    order = models.IntegerField(default=0)
     # a short and informative description of the policy component
     description = models.TextField(blank=True)
     # the type of data representing the component

@@ -28,7 +28,7 @@ def to_pack_summary(pack_type: str, institution: Institution, policy_area: Polic
 
 def to_pack(pack_type: str, institution: Institution, policy_area: PolicyArea) -> Pack:
     questions = []
-    for policy_component in policy_area.components.all():
+    for policy_component in policy_area.components.all().order_by('order', 'id'):
         questions.append(to_question(institution, policy_component))
     return Pack(policy_area.id, policy_area.name, pack_type, questions)
 
@@ -47,8 +47,9 @@ def to_question(institution: Institution, policy_component: PolicyComponent) -> 
         answer = None
 
     # TODO: right now all questions are required...
-    return Question(policy_component.id, policy_component.question, policy_component.description,
-                    option_mapping[policy_component.get_type()], True, options, answer)
+    return Question(policy_component.id, policy_component.order, policy_component.question,
+                    policy_component.description, option_mapping[policy_component.get_type()],
+                    True, options, answer)
 
 
 def to_answer(policy_component: PolicyComponent,

@@ -5,6 +5,7 @@
     name: Prioritisation criteria
     question: >-
       Which criteria does your institution use to prioritise digitisation of your collections?
+    order: 3
     description: >-
       The criteria/factors that guide the institution's strategy on the digitisation of their
       collections.

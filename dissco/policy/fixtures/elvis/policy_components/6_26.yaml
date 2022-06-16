@@ -6,6 +6,7 @@
     question: >-
       Do you follow any national or EU/Supranational regulations on the utilisation of Genetic
       resources related to genetic resources?
+    order: 3
     description: >-
       A institutional policy that reflects national, EU or inter supranational (e.g. EU)
       regulations on the utilisation of genetic resources’ i.e. means to conducting research and

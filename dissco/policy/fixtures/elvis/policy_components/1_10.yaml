@@ -4,6 +4,7 @@
   fields:
     name: FAIR principles
     question: Do you follow FAIR principles when publishing NSCs data?
+    order: 10
     description: >-
       Guidelines to improve the Findability, Accessibility, Interoperability, and Reuse of digital
       assets. The principles emphasise machine-actionability (i.e., the capacity of computational

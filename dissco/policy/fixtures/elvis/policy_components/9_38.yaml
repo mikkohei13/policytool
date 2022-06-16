@@ -4,6 +4,7 @@
   fields:
     name: Minting of Digital Specimens with Unique Persistent Identifiers
     question: TODO
+    order: 2
     description: >-
       Each DiSSCo Facility shall be responsible for creating (minting) and managing their own Unique
       Persistent Identifiers in accordance with the DiSSCo policy for Persistent Unique Identifiers,

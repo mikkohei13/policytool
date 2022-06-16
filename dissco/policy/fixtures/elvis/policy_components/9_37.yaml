@@ -4,6 +4,7 @@
   fields:
     name: Digitisation strategy
     question: Do you have a documented institutional policy on digitization strategy?
+    order: 1
     description: >-
       For Digitisation on Demand, institutions should have digitisation strategy that includes their
       digitisation capacity, workflows, techniques, and prioritisation.
