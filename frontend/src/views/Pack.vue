@@ -73,7 +73,6 @@ const types = {
 const {id, type} = defineProps(['id', 'type'])
 const pack = ref({})
 const updatedQuestionIds = new Set()
-// TODO: start at first incomplete answer
 let currentIndex = ref(0)
 
 const showPrevious = computed(() => currentIndex.value !== 0)
