@@ -35,7 +35,7 @@ def to_pack(pack_type: str, institution: Institution, policy_area: PolicyArea) -
 
 def to_question(institution: Institution, policy_component: PolicyComponent) -> Question:
     # TODO: do we want to include the id as well as the value for each option?
-    options = [option.value for option in policy_component.options.all().order_by('id')]
+    options = [option.value for option in policy_component.options.all().order_by('value')]
     if not options:
         options = None
 
