@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class DigitalReadinessConfig(AppConfig):
+class DigitalMaturityConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'digital_readiness'
+    name = 'maturity'

@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'common.apps.CommonConfig',
     'policy.apps.PolicyConfig',
+    'maturity.apps.DigitalMaturityConfig',
     'rest_framework',
     'rest_framework.authtoken',
     'dj_rest_auth',
@@ -125,4 +126,5 @@ REST_FRAMEWORK = {
 
 QA_PACK_PROVIDERS = {
     'policy': 'policy.packs.PolicyPackProvider',
+    'maturity': 'maturity.packs.DigitalMaturityPackProvider',
 }

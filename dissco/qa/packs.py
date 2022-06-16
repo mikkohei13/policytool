@@ -15,6 +15,7 @@ class QuestionType(Enum):
     NUMBER = 'number'
     OPTION_SINGLE = 'option'
     OPTION_MULTIPLE = 'options'
+    MATURITY = 'maturity'
 
 
 # TODO: could turn this into an abstract class and use polymorphism for each type?
