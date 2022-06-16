@@ -21,7 +21,7 @@ class QuestionType(Enum):
 @dataclass
 class Answer:
     value: Any
-    comment: str | None
+    comment: str = ''
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -33,7 +33,10 @@ class Answer:
     def from_dict(data: dict[str, Any]) -> 'Answer':
         if not data.get('value'):
             raise InvalidAnswer()
-        return Answer(data['value'], data.get('comment'))
+        if data.get('comment') is None:
+            # django says store empty strings instead of nulls so here we go
+            data['comment'] = ''
+        return Answer(data['value'], data['comment'])
 
 
 # TODO: could turn this into an abstract class and use polymorphism for each type?
