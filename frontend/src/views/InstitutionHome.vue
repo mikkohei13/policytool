@@ -8,7 +8,7 @@
     <div class="w-full lg:w-3/5 border-2 bg-white p-3">
       <div class="flex flex-row gap-2 pb-2 border-b-2 border-black">
         <div class="text-black text-2xl">
-          Review Policies
+          Review Policy Alignment Responses
         </div>
         <div class="grow"></div>
         <!-- TODO: create button component -->
