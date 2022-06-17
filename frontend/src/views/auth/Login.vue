@@ -37,10 +37,10 @@ onMounted(() => usernameInput.value.focus())
 const logoutPath = router.resolve({name: 'logout'}).href
 const submit = async () => {
   await login(username.value, password.value)
-  // redirect back to the previous page (or the institution homepage if there is no previous page)
+  // redirect back to the previous page (or the homepage if there is no previous page)
   let previous = router.options.history.state.back
-  if (!previous || previous === logoutPath || previous === '/') {
-    previous = {name: 'institution_home'}
+  if (!previous || previous === logoutPath) {
+    previous = {name: 'home'}
   }
   await router.push(previous)
 }
