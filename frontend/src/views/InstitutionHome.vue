@@ -19,7 +19,10 @@
       </div>
       <div class="flex flex-col gap-y-3 pt-2">
         <div v-for="pack in packs" class="flex flex-row items-center p-2 hover:bg-grey-light">
-          <div>{{ pack.name }}</div>
+          <div>
+            <span>{{ pack.name }} - </span>
+            <span class="italic">{{ pack.size }} questions</span>
+          </div>
           <div class="grow"></div>
           <PackAction :pack="pack"></PackAction>
         </div>
