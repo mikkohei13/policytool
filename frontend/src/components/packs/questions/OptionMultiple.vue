@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    <select v-model="value" :id="inputId" multiple>
+    <select v-model="value" :id="inputId" :size="Math.min(question.options.length, 10) + 1" multiple>
       <option disabled value="">Select as many as apply</option>
       <option v-for="option in question.options">{{ option }}</option>
     </select>
