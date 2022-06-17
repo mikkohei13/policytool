@@ -1,4 +1,8 @@
 <template>
+  <div v-if="error" class="absolute top-0 text-white bg-status-denied p-4 left-1/2 w-96 text-center transform -translate-x-1/2">
+    {{ error }}
+  </div>
+
   <form class="flex flex-col py-4 gap-y-0.5 items-center">
     <input v-model="username" ref="usernameInput" type="text" placeholder="username" class="w-72">
     <input v-model="password" type="password" placeholder="password" class="w-72">
@@ -26,6 +30,7 @@ import {useRouter} from 'vue-router'
 const username = ref(null)
 const password = ref(null)
 const usernameInput = ref(null)
+const error = ref(null)
 
 const router = useRouter()
 const authStore = useAuth()
@@ -36,12 +41,16 @@ onMounted(() => usernameInput.value.focus())
 
 const logoutPath = router.resolve({name: 'logout'}).href
 const submit = async () => {
-  await login(username.value, password.value)
-  // redirect back to the previous page (or the homepage if there is no previous page)
-  let previous = router.options.history.state.back
-  if (!previous || previous === logoutPath) {
-    previous = {name: 'home'}
+  if (await login(username.value, password.value)) {
+    // redirect back to the previous page (or the homepage if there is no previous page)
+    let previous = router.options.history.state.back
+    if (!previous || previous === logoutPath) {
+      previous = {name: 'home'}
+    }
+    await router.push(previous)
+  } else {
+    error.value = 'Failed to login'
+    setTimeout(() => error.value = null, 3000)
   }
-  await router.push(previous)
 }
 </script>
