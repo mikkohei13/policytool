@@ -5,18 +5,15 @@ import Login from '@/views/auth/Login.vue'
 import Logout from '@/views/auth/Logout.vue'
 import RequestAccount from '@/views/auth/RequestAccount.vue'
 import ResetPassword from '@/views/auth/ResetPassword.vue'
-import Policies from '@/views/Policies.vue'
 import Pack from '@/views/Pack.vue'
 import MaturityHome from '@/views/MaturityHome.vue'
 
 /** @type {import('vue-router').RouterOptions['routes']} */
 export const routes = [
   { path: '/', component: Home, name: 'home', meta: { title: 'Home' } },
-  { path: '/institution', component: InstitutionHome, name: 'institution_home', meta: { title: 'Institution Home' } },
+  { path: '/policy', component: InstitutionHome, name: 'policy', meta: { title: 'Policy' } },
   { path: '/maturity', component: MaturityHome, name: 'maturity', meta: { title: 'Maturity Home' }},
   { path: '/pack/:type/:id', component: Pack, name: 'pack', meta: { title: 'Question Pack'}, props: true },
-  { path: '/dashboards', component: NotFound, name: 'dashboards', meta: { title: 'Dashboards' } },
-  { path: '/policies', component: Policies, name: 'policies', meta: { title: 'Policies' } },
   { path: '/login', component: Login, name: 'login', meta: { title: 'Login' } },
   { path: '/logout', component: Logout, name: 'logout', meta: { title: 'Logout' } },
   { path: '/register', component: RequestAccount, name: 'requestAccount', meta: { title: 'Request Account' } },
