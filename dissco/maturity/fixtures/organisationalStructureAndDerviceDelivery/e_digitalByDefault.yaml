@@ -1,0 +1,46 @@
+- model: maturity.SubCategory
+  pk: 515
+  fields:
+    prompt: >-
+      Digital by default: In my organisation, key collections management processes such as
+      acquisitions and loans are supported by digital services (e.g. a centralised process and/or
+      team for imaging acquisitions)
+    period: current
+    order: 8
+    category: 5
+
+- model: maturity.SubCategory
+  pk: 516
+  fields:
+    prompt: >-
+      Digital by default: In my organisation, key collections management processes such as
+      acquisitions and loans are supported by digital services (e.g. a centralised process and/or
+      team for imaging acquisitions)
+    period: future_12
+    order: 8
+    category: 5
+
+
+- model: maturity.SubCategory
+  pk: 517
+  fields:
+    prompt: >-
+      Digital by default: In my organisation, collections processes and access are ‘digital first’
+      or digital by default i.e. people discover our collections online, and can request additional
+      digital services such as imaging and analyses if they prefer this to accessing the physical
+      collections
+    period: current
+    order: 9
+    category: 5
+
+- model: maturity.SubCategory
+  pk: 518
+  fields:
+    prompt: >-
+      Digital by default: In my organisation, collections processes and access are ‘digital first’
+      or digital by default i.e. people discover our collections online, and can request additional
+      digital services such as imaging and analyses if they prefer this to accessing the physical
+      collections
+    period: future_12
+    order: 9
+    category: 5

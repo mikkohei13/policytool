@@ -2,3 +2,8 @@
   pk: 1
   fields:
     name: Leadership and management
+
+- model: maturity.Category
+  pk: 5
+  fields:
+    name: Organisational structure and service delivery

@@ -1,0 +1,40 @@
+- model: maturity.SubCategory
+  pk: 511
+  fields:
+    prompt: >-
+      Digitisation: In my organisation, we understand the digitisation workflows required to
+      digitise the objects in our collections
+    period: current
+    order: 6
+    category: 5
+
+- model: maturity.SubCategory
+  pk: 512
+  fields:
+    prompt: >-
+      Digitisation: In my organisation, we understand the digitisation workflows required to
+      digitise the objects in our collections
+    period: future_12
+    order: 6
+    category: 5
+
+
+- model: maturity.SubCategory
+  pk: 513
+  fields:
+    prompt: >-
+      Digitisation: In my organisation, our collections have been or are being digitised at a large
+      scale (even if we have a long way still to go)
+    period: current
+    order: 7
+    category: 5
+
+- model: maturity.SubCategory
+  pk: 514
+  fields:
+    prompt: >-
+      Digitisation: In my organisation, our collections have been or are being digitised at a large
+      scale (even if we have a long way still to go)
+    period: future_12
+    order: 7
+    category: 5
