@@ -1,14 +1,14 @@
 import {defineStore} from 'pinia'
 import {api} from '@/utils/api'
-import {StorageSerializers, useLocalStorage} from '@vueuse/core'
+import {useLocalStorage} from '@vueuse/core'
 
+const DEFAULT_TOKEN = ''
 
 export const useAuth = defineStore('auth', {
     state: () => ({
         user: null,
         institution: null,
-        token: useLocalStorage('policy-tool-auth-token', null,
-            {serializer: StorageSerializers.string}),
+        token: useLocalStorage('policy-tool-auth-token', DEFAULT_TOKEN),
     }),
     getters: {
         /**
@@ -34,18 +34,31 @@ export const useAuth = defineStore('auth', {
                 await this.logout()
             }
 
-            const data = await api.post('/auth/login/', {username, password})
-            this.token = data.key
+            api.unsetToken()
+
+            try {
+                const data = await api.post('/auth/login/', {username, password})
+                this.token = data.key
+            } catch (error) {
+                console.log('Failed to login, ignoring')
+                // TODO: show an error?
+                this.token = DEFAULT_TOKEN
+            }
             // must set the API token before getting the user data
             api.setToken(this.token)
             await this.refreshDetails()
+            return !!this.token
         },
         async logout() {
             if (!!this.token) {
-                await api.post('/auth/logout/', {})
-                api.unsetToken()
+                try {
+                    await api.post('/auth/logout/', {})
+                } catch (error) {
+                    console.log('Failed to logout, ignoring')
+                }
             }
-            this.token = null
+            api.unsetToken()
+            this.token = DEFAULT_TOKEN
             await this.refreshDetails()
         },
         async refreshDetails() {
