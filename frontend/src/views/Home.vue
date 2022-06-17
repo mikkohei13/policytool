@@ -6,9 +6,28 @@
   <br/>
   <br/>
   <div class="flex flex-row gap-4 justify-evenly sm:justify-start">
-    <router-link :to="{name: 'login'}" class="bg-yellow p-3 rounded hover:bg-yellow-dark">
-      Login/Register
-      <VueFeather type="chevron-right" size="2rem" class="align-middle "></VueFeather>
-    </router-link>
+    <template v-if="loggedIn">
+      <router-link :to="{name: 'policy'}" class="bg-yellow p-3 rounded hover:bg-yellow-dark">
+        Review institutional policies
+        <VueFeather type="chevron-right" size="2rem" class="align-middle "></VueFeather>
+      </router-link>
+      <router-link :to="{name: 'maturity'}" class="bg-yellow p-3 rounded hover:bg-yellow-dark">
+        Review institutional maturity
+        <VueFeather type="chevron-right" size="2rem" class="align-middle "></VueFeather>
+      </router-link>
+    </template>
+    <template v-else>
+      <router-link :to="{name: 'login'}" class="bg-yellow p-3 rounded hover:bg-yellow-dark">
+        Login/Register
+        <VueFeather type="chevron-right" size="2rem" class="align-middle "></VueFeather>
+      </router-link>
+    </template>
   </div>
 </template>
+
+<script setup>
+import {useAuth} from '@/store/auth'
+import {storeToRefs} from 'pinia'
+
+const {loggedIn} = storeToRefs(useAuth())
+</script>
