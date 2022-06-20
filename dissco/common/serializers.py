@@ -7,7 +7,7 @@ from common.models import Institution, InstitutionUser
 class InstitutionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Institution
-        fields = ['id', 'name', 'code', 'wikidata_id']
+        fields = ['id', 'name', 'ror_id']
 
 
 class UserSerializer(serializers.ModelSerializer):
