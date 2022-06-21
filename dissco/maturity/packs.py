@@ -14,14 +14,17 @@ def to_pack_summary(pack_type: str, institution: Institution, category: Category
         if subcategory.institution_subcategories.filter(institution=institution).exists():
             answered_count += 1
 
-    return PackSummary(category.id, category.name, pack_type, question_count, answered_count)
+    return PackSummary(p_id=category.id, name=category.name, p_type=pack_type,
+                       size=question_count, answered=answered_count,
+                       description=category.description)
 
 
 def to_pack(pack_type: str, institution: Institution, category: Category) -> Pack:
     questions = []
     for subcategory in category.subcategories.all().order_by('order', 'id'):
         questions.append(to_question(institution, subcategory))
-    return Pack(category.id, category.name, pack_type, questions)
+    return Pack(p_id=category.id, name=category.name, p_type=pack_type, questions=questions,
+                description=category.description)
 
 
 def to_question(institution: Institution, subcategory: SubCategory) -> Question:
@@ -32,8 +35,8 @@ def to_question(institution: Institution, subcategory: SubCategory) -> Question:
         answer = None
 
     # TODO: right now all questions are required...
-    return Question(subcategory.id, subcategory.order, subcategory.prompt, subcategory.period,
-                    QuestionType.MATURITY, True, None, answer)
+    return Question(q_id=subcategory.id, order=subcategory.order, text=subcategory.prompt,
+                    q_type=QuestionType.MATURITY, answer=answer, period=subcategory.period)
 
 
 class DigitalMaturityPackProvider(PackProvider):

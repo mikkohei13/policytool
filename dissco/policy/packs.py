@@ -30,7 +30,8 @@ def to_pack(pack_type: str, institution: Institution, policy_area: PolicyArea) -
     questions = []
     for policy_component in policy_area.components.all().order_by('order', 'id'):
         questions.append(to_question(institution, policy_component))
-    return Pack(policy_area.id, policy_area.name, pack_type, questions)
+    return Pack(p_id=policy_area.id, name=policy_area.name, p_type=pack_type, questions=questions,
+                category=dict(name=policy_area.category.name, scope=policy_area.category.scope))
 
 
 def to_question(institution: Institution, policy_component: PolicyComponent) -> Question:
@@ -47,9 +48,10 @@ def to_question(institution: Institution, policy_component: PolicyComponent) -> 
         answer = None
 
     # TODO: right now all questions are required...
-    return Question(policy_component.id, policy_component.order, policy_component.question,
-                    policy_component.description, option_mapping[policy_component.get_type()],
-                    True, options, answer)
+    return Question(q_id=policy_component.id, order=policy_component.order,
+                    text=policy_component.question, hint=policy_component.description,
+                    q_type=option_mapping[policy_component.get_type()], options=options,
+                    answer=answer)
 
 
 def to_answer(policy_component: PolicyComponent,

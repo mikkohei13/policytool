@@ -41,16 +41,20 @@ class Answer:
 
 
 # TODO: could turn this into an abstract class and use polymorphism for each type?
-@dataclass
 class Question:
-    id: int
-    order: int
-    text: str
-    hint: str
-    type: QuestionType
-    required: bool
-    options: list[str] | None = None
-    answer: Answer | None = None
+
+    def __init__(self, q_id: int, text: str, q_type: QuestionType, hint: str = '', order: int = 0,
+                 required: bool = True, options: list[str] | None = None,
+                 answer: Answer | None = None, **extra):
+        self.id = q_id
+        self.order = order
+        self.text = text
+        self.hint = hint
+        self.type = q_type
+        self.required = required
+        self.options = options
+        self.answer = answer
+        self.extra = extra
 
     @property
     def answered(self) -> bool:
@@ -66,6 +70,7 @@ class Question:
             'required': self.required,
             'options': self.options,
             'answer': self.answer if self.answer is None else self.answer.to_dict(),
+            **self.extra,
         }
 
 
@@ -75,13 +80,15 @@ class PackStatus(Enum):
     NOT_STARTED = 'not_started'
 
 
-@dataclass
 class PackSummary:
-    id: int
-    name: str
-    type: str
-    size: int
-    answered: int
+
+    def __init__(self, p_id: int, name: str, p_type: str, size: int, answered: int, **extra):
+        self.id = p_id
+        self.name = name
+        self.type = p_type
+        self.size = size
+        self.answered = answered
+        self.extra = extra
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -90,15 +97,18 @@ class PackSummary:
             'type': self.type,
             'size': self.size,
             'answered': self.answered,
+            **self.extra,
         }
 
 
-@dataclass
 class Pack:
-    id: int
-    name: str
-    type: str
-    questions: list[Question]
+
+    def __init__(self, p_id: int, name: str, p_type: str, questions: list[Question], **extra):
+        self.id = p_id
+        self.name = name
+        self.type = p_type
+        self.questions = questions
+        self.extra = extra
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -106,6 +116,7 @@ class Pack:
             'name': self.name,
             'type': self.type,
             'questions': [question.to_dict() for question in self.questions],
+            **self.extra,
         }
 
 
