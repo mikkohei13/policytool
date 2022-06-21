@@ -75,6 +75,11 @@ class PolicyComponent(models.Model):
         OPTION_SINGLE = 'option'
         OPTION_MULTIPLE = 'options'
 
+        @property
+        def requires_options(self) -> bool:
+            return self in (PolicyComponent.PolicyComponentOptionType.OPTION_SINGLE,
+                            PolicyComponent.PolicyComponentOptionType.OPTION_MULTIPLE)
+
     # the name of the policy component
     name = models.TextField()
     question = models.TextField()
@@ -93,9 +98,7 @@ class PolicyComponent(models.Model):
         return PolicyComponent.PolicyComponentOptionType(self.type)
 
     def is_option_based(self) -> bool:
-        option_type = self.get_type()
-        return option_type == PolicyComponent.PolicyComponentOptionType.OPTION_SINGLE or \
-               option_type == PolicyComponent.PolicyComponentOptionType.OPTION_MULTIPLE
+        return self.get_type().requires_options
 
 
 class PolicyComponentOption(models.Model):
