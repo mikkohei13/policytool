@@ -2,7 +2,6 @@ from django.db import models
 
 from common.models import Institution
 from policy.utils import available_language_codes
-from qa.packs import Pack
 
 
 class Service(models.Model):
