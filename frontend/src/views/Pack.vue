@@ -36,7 +36,7 @@
             <div class="text-xl pb-2 font-bold">
               {{ question.text }}
             </div>
-            <div class="pb-6" v-if="question.type !== 'maturity'">
+            <div class="pb-6">
               {{ question.hint }}
             </div>
             <component :is="types[question.type]" :question="question"
