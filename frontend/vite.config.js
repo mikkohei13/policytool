@@ -12,4 +12,8 @@ export default defineConfig({
   server: {
     open: true,
   },
+  build: {
+    outDir: '../dissco/static/',
+    emptyOutDir: true
+  }
 })
