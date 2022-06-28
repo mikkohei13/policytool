@@ -1,8 +1,4 @@
 <template>
-  <div v-if="error" class="absolute top-0 text-white bg-status-denied p-4 left-1/2 w-96 text-center transform -translate-x-1/2">
-    {{ error }}
-  </div>
-
   <form class="flex flex-col py-4 gap-y-0.5 items-center">
     <input v-model="username" ref="usernameInput" type="text" placeholder="username" class="w-72">
     <input v-model="password" type="password" placeholder="password" class="w-72">
@@ -26,11 +22,11 @@ import {onMounted, ref} from 'vue'
 import {useAuth} from '@/store/auth'
 import {storeToRefs} from 'pinia'
 import {useRouter} from 'vue-router'
+import {notify} from '@kyvg/vue3-notification'
 
 const username = ref(null)
 const password = ref(null)
 const usernameInput = ref(null)
-const error = ref(null)
 
 const router = useRouter()
 const authStore = useAuth()
@@ -41,6 +37,8 @@ onMounted(() => usernameInput.value.focus())
 
 const logoutPath = router.resolve({name: 'logout'}).href
 const submit = async () => {
+  const notification = {}
+
   if (await login(username.value, password.value)) {
     // redirect back to the previous page (or the homepage if there is no previous page)
     let previous = router.options.history.state.back
@@ -48,9 +46,14 @@ const submit = async () => {
       previous = {name: 'home'}
     }
     await router.push(previous)
+    notification.title = 'Logged in'
+    notification.type = 'success'
   } else {
-    error.value = 'Failed to login'
-    setTimeout(() => error.value = null, 3000)
+    notification.title = 'Login failed, please try again'
+    notification.type = 'error'
   }
+  notify(notification);
+  username.value = null
+  password.value = null
 }
 </script>
