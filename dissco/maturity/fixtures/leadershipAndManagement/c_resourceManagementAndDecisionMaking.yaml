@@ -6,7 +6,7 @@
       making are driven by relevant data e.g. about the costs, benefits and outcomes of what we have
       done before
     period: current
-    order: 6
+    order: 7
     category: 1
 
 - model: maturity.SubCategory
@@ -17,7 +17,7 @@
       making are driven by relevant data e.g. about the costs, benefits and outcomes of what we have
       done before
     period: future_12
-    order: 6
+    order: 7
     category: 1
 
 
@@ -28,7 +28,7 @@
       Resource management & decision making:  In my organisation, resources are allocated to the
       priorities in our strategy, and this allocation is changed if those priorities change
     period: current
-    order: 7
+    order: 8
     category: 1
 
 - model: maturity.SubCategory
@@ -38,5 +38,5 @@
       Resource management & decision making:  In my organisation, resources are allocated to the
       priorities in our strategy, and this allocation is changed if those priorities change
     period: future_12
-    order: 7
+    order: 8
     category: 1

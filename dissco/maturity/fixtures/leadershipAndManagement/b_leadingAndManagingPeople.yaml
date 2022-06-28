@@ -68,7 +68,7 @@
       Leading and managing people: In my organisation, leaders and managers communicate effectively
       with their teams so that we understand strategic priorities and our part in delivering them
     period: current
-    order: 5
+    order: 6
     category: 1
 
 - model: maturity.SubCategory
@@ -78,5 +78,5 @@
       Leading and managing people: In my organisation, leaders and managers communicate effectively
       with their teams so that we understand strategic priorities and our part in delivering them
     period: future_12
-    order: 5
+    order: 6
     category: 1

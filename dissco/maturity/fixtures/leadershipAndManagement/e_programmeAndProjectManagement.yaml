@@ -6,7 +6,7 @@
       trained and/or qualified in the relevant tools and techniques e.g. waterfall and agile project
       management
     period: current
-    order: 10
+    order: 11
     category: 1
 
 - model: maturity.SubCategory
@@ -17,5 +17,5 @@
       trained and/or qualified in the relevant tools and techniques e.g. waterfall and agile project
       management
     period: future_12
-    order: 10
+    order: 11
     category: 1
