@@ -7,6 +7,8 @@ from .base import *
 # this is set in the heroku config vars
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
+ALLOWED_HOSTS = [".herokuapp.com"]
+
 DEBUG = True
 
 MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
