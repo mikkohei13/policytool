@@ -1,10 +1,17 @@
 import axios from 'axios';
 
+
+// in the dev env we want the base URL for the API point to the django server, in prod we do not
+let BASE_URL = ''
+if (import.meta.env.DEV) {
+    BASE_URL = 'http://localhost:5000'
+}
+
 class API {
 
     constructor() {
         this.api = axios.create({
-            baseURL: 'http://localhost:5000',
+            baseURL: BASE_URL,
             timeout: 10000,
             headers: {
                 'Content-Type': 'application/json'
