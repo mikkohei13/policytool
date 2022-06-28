@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
     <select v-model="value" :id="inputId" :size="Math.min(question.options.length, 10) + 1" multiple>
-      <option disabled value="">Select as many as apply</option>
+      <option disabled value="">Select as many as apply (press and hold ctrl to select multiple options)</option>
       <option v-for="option in question.options">{{ option }}</option>
     </select>
     <textarea v-model="comment" :id="commentId" placeholder="Comments" class="mt-8"></textarea>
