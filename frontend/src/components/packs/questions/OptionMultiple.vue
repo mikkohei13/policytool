@@ -14,7 +14,7 @@ import {ref, watch} from 'vue'
 const emit = defineEmits(['updateAnswer'])
 const {question} = defineProps(['question'])
 
-const value = ref(question.answer ? question.answer.value : null)
+const value = ref(question.answer ? question.answer.value : [])
 const comment = ref(question.answer ? question.answer.comment : null)
 
 const inputId = `optionSingle-${question.id}`
