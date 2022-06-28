@@ -6,6 +6,7 @@ import {createRouter, createWebHistory} from 'vue-router'
 import {createPinia} from 'pinia'
 import {useAuth} from "@/store/auth";
 import VueFeather from 'vue-feather'
+import Notifications from '@kyvg/vue3-notification'
 
 const app = createApp(App)
 app.component('VueFeather', VueFeather)
@@ -26,6 +27,7 @@ router.afterEach(async (to) => {
     document.title = title
 });
 
+app.use(Notifications)
 app.use(createPinia())
 app.use(router)
 app.mount('#app')

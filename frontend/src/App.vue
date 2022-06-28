@@ -1,4 +1,5 @@
 <template>
+  <notifications position="top center" width="400"/>
   <article class="bg-home-image flex flex-col items-stretch min-h-screen bg-top bg-cover">
     <Header class="shrink-0"/>
     <main class="grow shrink-0">
