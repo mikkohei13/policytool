@@ -1,0 +1,15 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 11
+  fields:
+    name: Link images to IIIF compatible servers
+    question: Are your images linked to IIIF compatible servers?
+    order: 11
+    description: >-
+      International Image Interoperability Framework ((IIIF, pronounced ‘triple eye eff’) is an open
+      standard for delivering high-quality, attributed digital objects online at scale. Over the
+      long-term DiSSCo aims to apply the recommendations of the International Image Interoperability
+      Framework for access to digital images, particularly images from cultural heritage
+      institutions, museums, libraries and archives, which includes natural science collections.
+    type: bool
+    policy_area: 1

@@ -1,0 +1,49 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 16
+  fields:
+    name: Unique persistent identifiers for institutions
+    question: What Unique persistent identifiers do you use for your institution?
+    order: 5
+    description: >-
+      A globally unique and persistent identifier that is resolved to the geo-coordinates on the
+      internet.
+    type: options
+    policy_area: 2
+
+# the option definitions
+- model: policy.PolicyComponentOption
+  pk: 1601
+  fields:
+    value: GRID (Global Research Identifier Database)
+    policy_component: 16
+
+- model: policy.PolicyComponentOption
+  pk: 1602
+  fields:
+    value: Wikidata
+    policy_component: 16
+
+- model: policy.PolicyComponentOption
+  pk: 1603
+  fields:
+    value: ROR (Research Organisation Registry community)
+    policy_component: 16
+
+- model: policy.PolicyComponentOption
+  pk: 1604
+  fields:
+    value: Other
+    policy_component: 16
+
+- model: policy.PolicyComponentOption
+  pk: 1605
+  fields:
+    value: Non-specified
+    policy_component: 16
+
+- model: policy.PolicyComponentOption
+  pk: 1606
+  fields:
+    value: None
+    policy_component: 16

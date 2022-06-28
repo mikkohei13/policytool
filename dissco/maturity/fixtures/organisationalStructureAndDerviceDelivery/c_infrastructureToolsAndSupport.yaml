@@ -1,0 +1,67 @@
+- model: maturity.SubCategory
+  pk: 505
+  fields:
+    prompt: >-
+      Infrastructure, tools and support: In my organisation, we have the right general technological
+      infrastructure and tools available to do our work (e.g. Wi-Fi, data storage, remote working
+      tools)
+    period: current
+    order: 3
+    category: 5
+
+- model: maturity.SubCategory
+  pk: 506
+  fields:
+    prompt: >-
+      Infrastructure, tools and support: In my organisation, we have the right general technological
+      infrastructure and tools available to do our work (e.g. Wi-Fi, data storage, remote working
+      tools)
+    period: future_12
+    order: 3
+    category: 5
+
+
+- model: maturity.SubCategory
+  pk: 507
+  fields:
+    prompt: >-
+      Infrastructure, tools and support: In my organisation, we have the right specialist
+      technological infrastructure and tools available to do our work (e.g. imaging and laboratory
+      equipment, collections management system)
+    period: current
+    order: 4
+    category: 5
+
+- model: maturity.SubCategory
+  pk: 508
+  fields:
+    prompt: >-
+      Infrastructure, tools and support: In my organisation, we have the right specialist
+      technological infrastructure and tools available to do our work (e.g. imaging and laboratory
+      equipment, collections management system)
+    period: future_12
+    order: 4
+    category: 5
+
+
+- model: maturity.SubCategory
+  pk: 509
+  fields:
+    prompt: >-
+      Infrastructure, tools and support: In my organisation, our use of general and specialist
+      technological infrastructure and tools is appropriately supported (e.g. by an internal or
+      external helpdesk, technology team and/or lab management team)
+    period: current
+    order: 5
+    category: 5
+
+- model: maturity.SubCategory
+  pk: 510
+  fields:
+    prompt: >-
+      Infrastructure, tools and support: In my organisation, our use of general and specialist
+      technological infrastructure and tools is appropriately supported (e.g. by an internal or
+      external helpdesk, technology team and/or lab management team)
+    period: future_12
+    order: 5
+    category: 5

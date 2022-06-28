@@ -1,0 +1,50 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 15
+  fields:
+    name: Unique persistent identifier for specimens (non digitised and digitised)
+    question: >-
+      What Unique persistent identifiers to you use for specimens (non digitised and digitised)?
+    order: 4
+    description: >-
+      The identifier can be persistently resolved (digitally actionable) to meaningful metadata
+      state information about the object.
+    type: options
+    policy_area: 2
+
+# the option definitions
+- model: policy.PolicyComponentOption
+  pk: 1501
+  fields:
+    value: CETAF stable identifiers
+    policy_component: 15
+
+- model: policy.PolicyComponentOption
+  pk: 1502
+  fields:
+    value: Natural Science Identifier, NSId
+    policy_component: 15
+
+- model: policy.PolicyComponentOption
+  pk: 1503
+  fields:
+    value: DOIs
+    policy_component: 15
+
+- model: policy.PolicyComponentOption
+  pk: 1504
+  fields:
+    value: Other
+    policy_component: 15
+
+- model: policy.PolicyComponentOption
+  pk: 1505
+  fields:
+    value: Non-specified
+    policy_component: 15
+
+- model: policy.PolicyComponentOption
+  pk: 1506
+  fields:
+    value: None
+    policy_component: 15

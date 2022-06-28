@@ -1,0 +1,14 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 30
+  fields:
+    name: Public Engagement
+    question: TODO
+    order: 1
+    description: >-
+      Public engagement is about "co-creating the future with the public and civil society
+      organisations and also bringing on board the widest possible diversity of people that would
+      not normally interact on matters of science and technology". An institution should have their
+      own policy that is in line with the EU or equivalent.
+    type: bool
+    policy_area: 7

@@ -1,0 +1,20 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 25
+  fields:
+    name: Traditional Knowledge
+    question: >-
+      Do you have institutional policy that reflects national, EU/Supranational regulations on
+      Traditional Knowledge related to genetic resources?
+    order: 2
+    description: >-
+      An institutional policy that reflects national, EU or supranational (e.g. EU) regulations on
+      Traditional knowledge related to genetic resources. Traditional knowledge refers to the
+      knowledge, innovations and practices of indigenous and local communities (IPLCs) related to
+      genetic resources (e.g. Know-how, innovations, practices, medicines etc.) that are relevant
+      for the conservation and sustainable use of biological diversity. ‘User’ countries need to
+      take measures to ensure that genetic resources used in their country were accessed in
+      accordance with the ABS rules of the provider country (with prior informed consent obtained
+      and mutually agreed terms established).
+    type: bool
+    policy_area: 6

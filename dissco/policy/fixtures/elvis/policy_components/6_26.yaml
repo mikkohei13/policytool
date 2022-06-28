@@ -1,0 +1,16 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 26
+  fields:
+    name: Utilisation of Genetic Resources
+    question: >-
+      Do you follow any national or EU/Supranational regulations on the utilisation of Genetic
+      resources related to genetic resources?
+    order: 3
+    description: >-
+      A institutional policy that reflects national, EU or inter supranational (e.g. EU)
+      regulations on the utilisation of genetic resources’ i.e. means to conducting research and
+      development on the genetic and/or biochemical composition of genetic resources, including
+      through the application of biotechnology.
+    type: bool
+    policy_area: 6

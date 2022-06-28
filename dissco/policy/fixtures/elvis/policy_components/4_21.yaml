@@ -1,0 +1,18 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 21
+  fields:
+    name: Protection of sensitive data
+    question: >-
+      Do you have procedure or policy on the protection of sensitive data that is not covered by
+      GDPR?
+    order: 2
+    description: >-
+      Sensitive data for this component refers to data not covered by GDPR, and refers to data that
+      may impede the protection of endangered/vulnerable species, etc.
+      DiSSCo's mandate for the protection of sensitive data is as open as possible and as closed as
+      necessary. Institution's should have a policy that governs the authentication, authorisation
+      and permission of person roles (e.g. collection managers) to access, provide access and amend
+      sensitive data.
+    type: bool
+    policy_area: 4

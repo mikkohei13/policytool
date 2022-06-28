@@ -1,0 +1,16 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 10
+  fields:
+    name: FAIR principles
+    question: Do you follow FAIR principles when publishing NSCs data?
+    order: 10
+    description: >-
+      Guidelines to improve the Findability, Accessibility, Interoperability, and Reuse of digital
+      assets. The principles emphasise machine-actionability (i.e., the capacity of computational
+      systems to find, access, interoperate, and reuse data with none or minimal human intervention)
+      because humans increasingly rely on computational support to deal with data as a result of the
+      increase in volume, complexity, and creation speed of data. (from
+      https://www.go-fair.org/fair-principles/ July 2nd, 2021).
+    type: bool
+    policy_area: 1

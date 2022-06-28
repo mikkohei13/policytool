@@ -1,0 +1,82 @@
+- model: maturity.SubCategory
+  pk: 105
+  fields:
+    prompt: >-
+      Leading and managing people: In my organisation, all line managers are trained in the
+      processes and practices of managing people
+    period: current
+    order: 3
+    category: 1
+
+- model: maturity.SubCategory
+  pk: 106
+  fields:
+    prompt: >-
+      Leading and managing people: In my organisation, all line managers are trained in the
+      processes and practices of managing people
+    period: future_12
+    order: 3
+    category: 1
+
+
+- model: maturity.SubCategory
+  pk: 107
+  fields:
+    prompt: >-
+      Leading and managing people: In my organisation, part of performance management or appraisal
+      for line managers is to assess how well they are managing people
+    period: current
+    order: 4
+    category: 1
+
+- model: maturity.SubCategory
+  pk: 108
+  fields:
+    prompt: >-
+      Leading and managing people: In my organisation, part of performance management or appraisal
+      for line managers is to assess how well they are managing people
+    period: future_12
+    order: 4
+    category: 1
+
+
+- model: maturity.SubCategory
+  pk: 109
+  fields:
+    prompt: >-
+      Leading and managing people: In my organisation, leaders and managers communicate effectively
+      with one another and work together to achieve strategic goals
+    period: current
+    order: 5
+    category: 1
+
+- model: maturity.SubCategory
+  pk: 110
+  fields:
+    prompt: >-
+      Leading and managing people: In my organisation, leaders and managers communicate effectively
+      with one another and work together to achieve strategic goals
+    period: future_12
+    order: 5
+    category: 1
+
+
+- model: maturity.SubCategory
+  pk: 111
+  fields:
+    prompt: >-
+      Leading and managing people: In my organisation, leaders and managers communicate effectively
+      with their teams so that we understand strategic priorities and our part in delivering them
+    period: current
+    order: 5
+    category: 1
+
+- model: maturity.SubCategory
+  pk: 112
+  fields:
+    prompt: >-
+      Leading and managing people: In my organisation, leaders and managers communicate effectively
+      with their teams so that we understand strategic priorities and our part in delivering them
+    period: future_12
+    order: 5
+    category: 1

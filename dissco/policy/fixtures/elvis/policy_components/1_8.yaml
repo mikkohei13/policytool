@@ -1,0 +1,50 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 8
+  fields:
+    name: Publication of Institutional facilities data to open access repository
+    question: Where do you publish your institutional facilities data/information?
+    order: 8
+    description: >-
+      Publish institutional facilities data/information  (e.g. technical equipment, expertise) 
+      to a trusted publicly accessible (no restrictions) repository, to allow for aggregation of
+      data by DiSSCo services (e.g. ELViS).
+    type: options
+    policy_area: 1
+
+# the option definitions
+- model: policy.PolicyComponentOption
+  pk: 801
+  fields:
+    value: CETAF Registry of Collections
+    policy_component: 8
+
+- model: policy.PolicyComponentOption
+  pk: 802
+  fields:
+    value: Institution repository
+    policy_component: 8
+
+- model: policy.PolicyComponentOption
+  pk: 803
+  fields:
+    value: Wikidata
+    policy_component: 8
+
+- model: policy.PolicyComponentOption
+  pk: 804
+  fields:
+    value: Other
+    policy_component: 8
+
+- model: policy.PolicyComponentOption
+  pk: 805
+  fields:
+    value: Not specified
+    policy_component: 8
+
+- model: policy.PolicyComponentOption
+  pk: 806
+  fields:
+    value: None
+    policy_component: 8

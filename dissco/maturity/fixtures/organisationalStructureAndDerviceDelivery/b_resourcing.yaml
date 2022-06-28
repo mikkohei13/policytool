@@ -1,0 +1,21 @@
+- model: maturity.SubCategory
+  pk: 503
+  fields:
+    prompt: >-
+      Resourcing: In my organisation, we have sufficient human and other resources available
+      (including outsourced / contracted resources) to deliver our strategic aims for digitisation
+      and digital transformation
+    period: current
+    order: 2
+    category: 5
+
+- model: maturity.SubCategory
+  pk: 504
+  fields:
+    prompt: >-
+      Resourcing: In my organisation, we have sufficient human and other resources available
+      (including outsourced / contracted resources) to deliver our strategic aims for digitisation
+      and digital transformation
+    period: future_12
+    order: 2
+    category: 5

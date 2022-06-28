@@ -1,0 +1,15 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 32
+  fields:
+    name: Ethics
+    question: >-
+      Does your institution have a research ethics approval procedure? How do you receive advice on
+      ethics?
+    order: 3
+    description: >-
+      A institutional policy, which promotes the highest standards of ethics and integrity in the
+      performance and governance of research, outreach and innovation actions, in alignment with EU
+      policy or equivalent.
+    type: bool
+    policy_area: 7

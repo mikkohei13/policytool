@@ -1,0 +1,62 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 9
+  fields:
+    name: Publication of collection data to an open access repository
+    question: Where do you publish your collections data?
+    order: 9
+    description: >-
+      Publish collection data (e.g. Object types, size of collection, digitisation status,
+      geographic origin, location were held, preservation type) to a trusted and publicly accessible
+      repository, that allows data aggregation  by  DiSSCo services (e.g ELViS).
+    type: options
+    policy_area: 1
+
+# the option definitions
+- model: policy.PolicyComponentOption
+  pk: 901
+  fields:
+    value: CETAF Registry of Collections
+    policy_component: 9
+
+- model: policy.PolicyComponentOption
+  pk: 902
+  fields:
+    value: Index Herbariorum
+    policy_component: 9
+
+- model: policy.PolicyComponentOption
+  pk: 903
+  fields:
+    value: Wikidata
+    policy_component: 9
+
+- model: policy.PolicyComponentOption
+  pk: 904
+  fields:
+    value: GBIF registry of scientific collections
+    policy_component: 9
+
+- model: policy.PolicyComponentOption
+  pk: 905
+  fields:
+    value: Institution open access repository
+    policy_component: 9
+
+- model: policy.PolicyComponentOption
+  pk: 906
+  fields:
+    value: Other
+    policy_component: 9
+
+- model: policy.PolicyComponentOption
+  pk: 907
+  fields:
+    value: Not specified
+    policy_component: 9
+
+- model: policy.PolicyComponentOption
+  pk: 908
+  fields:
+    value: None
+    policy_component: 9

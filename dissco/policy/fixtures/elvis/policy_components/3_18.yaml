@@ -1,0 +1,50 @@
+# the policy component definition
+- model: policy.PolicyComponent
+  pk: 18
+  fields:
+    name: Identifiers for person authentication
+    question: What system do you use for authenticating institution personal?
+    order: 1
+    description: >-
+      A globally unique and persistent identifier for collections. Collection data sets should have
+      community recognised globally Unique Persistent Identifiers that are resolvable on the web and
+      descriptive metadata to assist discovery and verification.
+    type: options
+    policy_area: 3
+
+# the option definitions
+- model: policy.PolicyComponentOption
+  pk: 1801
+  fields:
+    value: ORCID IDs
+    policy_component: 18
+
+- model: policy.PolicyComponentOption
+  pk: 1802
+  fields:
+    value: VIAF
+    policy_component: 18
+
+- model: policy.PolicyComponentOption
+  pk: 1803
+  fields:
+    value: Institution credentials
+    policy_component: 18
+
+- model: policy.PolicyComponentOption
+  pk: 1804
+  fields:
+    value: Other
+    policy_component: 18
+
+- model: policy.PolicyComponentOption
+  pk: 1805
+  fields:
+    value: Non-specified
+    policy_component: 18
+
+- model: policy.PolicyComponentOption
+  pk: 1806
+  fields:
+    value: None
+    policy_component: 17

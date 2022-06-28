@@ -1,0 +1,569 @@
+- model: common.Institution
+  pk: 1
+  fields:
+    name: Aarhus University
+    ror_id: 01aj84f44
+
+- model: common.Institution
+  pk: 2
+  fields:
+    name: Aristotle University of Thessaloniki
+    ror_id: 02j61yw88
+
+- model: common.Institution
+  pk: 3
+  fields:
+    name: Bavarian Natural History Collections, Munich
+    ror_id: 05th1v540
+
+- model: common.Institution
+  pk: 4
+  fields:
+    name: Biological Museum, Lund University
+    ror_id: 048555y32
+
+- model: common.Institution
+  pk: 5
+  fields:
+    name: Botanic Garden and Botanical Museum Berlin
+    ror_id: 00bv4cx53
+
+- model: common.Institution
+  pk: 6
+  fields:
+    name: Centre de Coopération Internationale en Recherche Agronomique pour le Développement, Paris
+    ror_id: 05kpkpg04
+
+- model: common.Institution
+  pk: 7
+  fields:
+    name: Charles University, Prague
+    ror_id: 024d6js02
+
+- model: common.Institution
+  pk: 8
+  fields:
+    name: Claude Bernard University Lyon 1, Villeurbanne
+    ror_id: 029brtt94
+
+- model: common.Institution
+  pk: 9
+  fields:
+    name: Comenius University, Bratislava
+    ror_id: 0587ef340
+
+- model: common.Institution
+  pk: 10
+  fields:
+    name: Complutense University of Madrid
+    ror_id: 02p0gd045
+
+- model: common.Institution
+  pk: 11
+  fields:
+    name: Consortium of European Taxonomic Facilities, Brussels
+    ror_id: 0058ctf29
+
+- model: common.Institution
+  pk: 12
+  fields:
+    name: De Bastei, Nijmegen
+    ror_id: 04y2aw426
+
+- model: common.Institution
+  pk: 13
+  fields:
+    name: Estonian Academy of Sciences, Tallinn
+    ror_id: 01pewsd85
+
+- model: common.Institution
+  pk: 14
+  fields:
+    name: Estonian University of Life Sciences, Tartu
+    ror_id: 00s67c790
+
+- model: common.Institution
+  pk: 15
+  fields:
+    name: Finnish Museum of Natural History, Helsinki
+    ror_id: 03tcx6c30
+
+- model: common.Institution
+  pk: 16
+  fields:
+    name: Flanders Marine Institute, Ostend
+    ror_id: 0496vr396
+
+- model: common.Institution
+  pk: 17
+  fields:
+    name: Gothenburg Botanic Garden
+    ror_id: 035tz7392
+
+- model: common.Institution
+  pk: 18
+  fields:
+    name: Gothenburg Natural History Museum, Gothenburg Municipality
+    ror_id: 01yhex183
+
+- model: common.Institution
+  pk: 19
+  fields:
+    name: Goulandris Natural History Museum, Athens
+    ror_id: 032qvyh31
+
+- model: common.Institution
+  pk: 20
+  fields:
+    name: Hungarian Natural History Museum, Budapest
+    ror_id: 04y1zat75
+
+- model: common.Institution
+  pk: 21
+  fields:
+    name: Institut de Recherche pour le Développement, Marseille
+    ror_id: 05q3vnk25
+
+- model: common.Institution
+  pk: 22
+  fields:
+    name: Institute of Biodiversity and Ecosystem Research, Sofia
+    ror_id: 03eywck07
+
+- model: common.Institution
+  pk: 23
+  fields:
+    name: Institute of Botany, Bratislava
+    ror_id: 00ayvpa66
+
+- model: common.Institution
+  pk: 24
+  fields:
+    name: Institute of Botany, Průhonice
+    ror_id: 03qqnc658
+
+- model: common.Institution
+  pk: 25
+  fields:
+    name: Institute of Vertebrate Biology, Brno
+    ror_id: 05bcgdd94
+
+- model: common.Institution
+  pk: 26
+  fields:
+    name: Instituto Geológico y Minero de España, Madrid
+    ror_id: 04cadha73
+
+- model: common.Institution
+  pk: 27
+  fields:
+    name: Masaryk University, Brno
+    ror_id: 02j46qs45
+
+- model: common.Institution
+  pk: 28
+  fields:
+    name: Mediterranean Agronomic Institute of Chania
+    ror_id: 01pbz7c04
+
+- model: common.Institution
+  pk: 29
+  fields:
+    name: Meise Botanic Garden
+    ror_id: 01h1jbk91
+
+- model: common.Institution
+  pk: 30
+  fields:
+    name: Museo Nacional de Ciencias Naturales, Madrid
+    ror_id: 02v6zg374
+
+- model: common.Institution
+  pk: 31
+  fields:
+    name: Museon, The Hague
+    ror_id: 03scjwb12
+
+- model: common.Institution
+  pk: 32
+  fields:
+    name: Museum and Institute of Zoology, Warsaw
+    ror_id: 00r9k8q20
+
+- model: common.Institution
+  pk: 33
+  fields:
+    name: Museum für Naturkunde, Berlin
+    ror_id: 052d1a351
+
+- model: common.Institution
+  pk: 34
+  fields:
+    name: Musée National d'Histoire Naturelle, Luxembourg
+    ror_id: 05natt857
+
+- model: common.Institution
+  pk: 35
+  fields:
+    name: National Computer Center for Higher Education, Montpellier
+    ror_id: 00gnrwz95
+
+- model: common.Institution
+  pk: 36
+  fields:
+    name: National Museum of Natural History, Paris
+    ror_id: 03wkt5x30
+
+- model: common.Institution
+  pk: 37
+  fields:
+    name: National Museum of Natural History, Sofia
+    ror_id: 04a4v0j95
+
+- model: common.Institution
+  pk: 38
+  fields:
+    name: National and Kapodistrian University of Athens
+    ror_id: 04gnjpq42
+
+- model: common.Institution
+  pk: 39
+  fields:
+    name: Natural History Museum Aarhus
+    ror_id: 0166x0j30
+
+- model: common.Institution
+  pk: 40
+  fields:
+    name: Natural History Museum Maastricht, Gemeente Maastricht
+    ror_id: 0488nj033
+
+- model: common.Institution
+  pk: 41
+  fields:
+    name: Natural History Museum Rotterdam
+    ror_id: 01s8f2180
+
+- model: common.Institution
+  pk: 42
+  fields:
+    name: Natural History Museum Vienna
+    ror_id: 01tv5y993
+
+- model: common.Institution
+  pk: 43
+  fields:
+    name: Natural History Museum, London
+    ror_id: 039zvsn29
+
+- model: common.Institution
+  pk: 44
+  fields:
+    name: Naturalis Biodiversity Center, Leiden
+    ror_id: 0566bfb96
+
+- model: common.Institution
+  pk: 45
+  fields:
+    name: Nature Conservation Agency of the Czech Republic, Prague
+    ror_id: 036ak4h42
+
+- model: common.Institution
+  pk: 46
+  fields:
+    name: Natuurmuseum Brabant, Tilburg
+    ror_id: 04py0zz23
+
+- model: common.Institution
+  pk: 47
+  fields:
+    name: Norwegian University of Science and Technology, Trondheim
+    ror_id: 05xg72x27
+
+- model: common.Institution
+  pk: 48
+  fields:
+    name: Národní muzeum, Prague
+    ror_id: 04z6gwv56
+
+- model: common.Institution
+  pk: 49
+  fields:
+    name: Paul Sabatier University, Toulouse
+    ror_id: 02v6kpv12
+
+- model: common.Institution
+  pk: 50
+  fields:
+    name: Research Institute for Nature and Forest, Geraardsbergen
+    ror_id: 00j54wy13
+
+- model: common.Institution
+  pk: 51
+  fields:
+    name: Royal Belgian Institute of Natural Sciences, Brussels
+    ror_id: 02y22ws83
+
+- model: common.Institution
+  pk: 52
+  fields:
+    name: Royal Botanic Garden Edinburgh
+    ror_id: 0349vqz63
+
+- model: common.Institution
+  pk: 53
+  fields:
+    name: Royal Botanic Gardens, Kew, London
+    ror_id: 00ynnr806
+
+- model: common.Institution
+  pk: 54
+  fields:
+    name: Royal Museum for Central Africa, Tervuren
+    ror_id: 001805t51
+
+- model: common.Institution
+  pk: 55
+  fields:
+    name: Royal Netherlands Institute for Sea Research, Den Burg
+    ror_id: 01gntjh03
+
+- model: common.Institution
+  pk: 56
+  fields:
+    name: Royal Zoological Society of Antwerp
+    ror_id: 00ed5y156
+
+- model: common.Institution
+  pk: 57
+  fields:
+    name: Senckenberg Society for Nature Research, Frankfurt am Main
+    ror_id: 00xmqmx64
+
+- model: common.Institution
+  pk: 58
+  fields:
+    name: Sorbonne University, Paris
+    ror_id: 02en5vm52
+
+- model: common.Institution
+  pk: 59
+  fields:
+    name: Staatliches Museum für Naturkunde Stuttgart
+    ror_id: 05k35b119
+
+- model: common.Institution
+  pk: 60
+  fields:
+    name: Swedish Museum of Natural History, Stockholm
+    ror_id: 05k323c76
+
+- model: common.Institution
+  pk: 61
+  fields:
+    name: Tallinn University of Technology
+    ror_id: 0443cwa12
+
+- model: common.Institution
+  pk: 62
+  fields:
+    name: Teylers Museum, Haarlem
+    ror_id: 01f0ym620
+
+- model: common.Institution
+  pk: 63
+  fields:
+    name: UiT The Arctic University of Norway, Tromsø
+    ror_id: 00wge5k78
+
+- model: common.Institution
+  pk: 64
+  fields:
+    name: Umeå University
+    ror_id: 05kb8h459
+
+- model: common.Institution
+  pk: 65
+  fields:
+    name: University of Amsterdam
+    ror_id: 04dkp9463
+
+- model: common.Institution
+  pk: 66
+  fields:
+    name: University of Bergen
+    ror_id: 03zga2b32
+
+- model: common.Institution
+  pk: 67
+  fields:
+    name: University of Burgundy, Dijon
+    ror_id: 03k1bsr36
+
+- model: common.Institution
+  pk: 68
+  fields:
+    name: University of Clermont Auvergne, Clermont-Ferrand
+    ror_id: 01a8ajp46
+
+- model: common.Institution
+  pk: 69
+  fields:
+    name: University of Coimbra
+    ror_id: 04z8k9a98
+
+- model: common.Institution
+  pk: 70
+  fields:
+    name: University of Copenhagen
+    ror_id: 035b05819
+
+- model: common.Institution
+  pk: 71
+  fields:
+    name: University of Crete, Rethymno
+    ror_id: 00dr28g20
+
+- model: common.Institution
+  pk: 72
+  fields:
+    name: University of Florence
+    ror_id: 04jr1s763
+
+- model: common.Institution
+  pk: 73
+  fields:
+    name: University of Gothenburg
+    ror_id: 01tm6cn81
+
+- model: common.Institution
+  pk: 74
+  fields:
+    name: University of Jyväskylä, Jyvaskyla
+    ror_id: 05n3dz165
+
+- model: common.Institution
+  pk: 75
+  fields:
+    name: University of Lille
+    ror_id: 02kzqn938
+
+- model: common.Institution
+  pk: 76
+  fields:
+    name: University of Lisbon
+    ror_id: 01c27hj86
+
+- model: common.Institution
+  pk: 77
+  fields:
+    name: University of Montpellier
+    ror_id: 051escj72
+
+- model: common.Institution
+  pk: 78
+  fields:
+    name: University of Namur
+    ror_id: 03d1maw17
+
+- model: common.Institution
+  pk: 79
+  fields:
+    name: University of Navarra, Pamplona
+    ror_id: 02rxc7m23
+
+- model: common.Institution
+  pk: 80
+  fields:
+    name: University of Oslo
+    ror_id: 01xtthb56
+
+- model: common.Institution
+  pk: 81
+  fields:
+    name: University of Oulu
+    ror_id: 03yj89h83
+
+- model: common.Institution
+  pk: 82
+  fields:
+    name: University of Patras, Pátrai
+    ror_id: 017wvtq80
+
+- model: common.Institution
+  pk: 83
+  fields:
+    name: University of Pavol Jozef Šafárik, Košice
+    ror_id: 039965637
+
+- model: common.Institution
+  pk: 84
+  fields:
+    name: University of Porto
+    ror_id: 043pwc612
+
+- model: common.Institution
+  pk: 85
+  fields:
+    name: University of Rennes 1
+    ror_id: 015m7wh34
+
+- model: common.Institution
+  pk: 86
+  fields:
+    name: University of Strasbourg
+    ror_id: 00pg6eq24
+
+- model: common.Institution
+  pk: 87
+  fields:
+    name: University of Tartu
+    ror_id: 03z77qz90
+
+- model: common.Institution
+  pk: 88
+  fields:
+    name: University of Turku
+    ror_id: 05vghhr25
+
+- model: common.Institution
+  pk: 89
+  fields:
+    name: University of Warsaw
+    ror_id: 039bjqg32
+
+- model: common.Institution
+  pk: 90
+  fields:
+    name: Universität Hamburg
+    ror_id: 00g30e956
+
+- model: common.Institution
+  pk: 91
+  fields:
+    name: Université Libre de Bruxelles, Brussels
+    ror_id: 01r9htc13
+
+- model: common.Institution
+  pk: 92
+  fields:
+    name: Uppsala University
+    ror_id: 048a87296
+
+- model: common.Institution
+  pk: 93
+  fields:
+    name: Utrecht University
+    ror_id: 04pp8hn57
+
+- model: common.Institution
+  pk: 94
+  fields:
+    name: Westerdijk Fungal Biodiversity Institute, Utrecht
+    ror_id: 030a5r161
+
+- model: common.Institution
+  pk: 95
+  fields:
+    name: Zoological Research Museum Alexander Koenig, Bonn
+    ror_id: 00wz4b049
