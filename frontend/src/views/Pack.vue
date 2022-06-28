@@ -61,6 +61,7 @@ import OptionMultiple from '@/components/packs/questions/OptionMultiple.vue'
 import Maturity from '@/components/packs/questions/Maturity.vue'
 import {computed, onMounted, ref} from 'vue'
 import {api} from '@/utils/api'
+import {notify} from '@kyvg/vue3-notification'
 
 const types = {
   'bool': Bool,
@@ -96,7 +97,11 @@ const saveAnswers = async () => {
     await api.post(`/api/${type}/pack/answer/${questionId}`, getQuestion(questionId).answer)
   }
   updatedQuestionIds.clear()
-  // TODO: show some visual indication that the save worked
+  notify({
+    title: 'Success',
+    text: 'Answers saved',
+    type: 'success'
+  });
 }
 
 const updatePack = async () => {
