@@ -32,7 +32,8 @@ class Answer:
 
     @staticmethod
     def from_dict(data: dict[str, Any]) -> 'Answer':
-        if not data.get('value'):
+        value = data.get('value')
+        if value is None or value == '':
             raise InvalidAnswer()
         if data.get('comment') is None:
             # django says store empty strings instead of nulls so here we go
