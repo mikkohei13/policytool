@@ -24,7 +24,7 @@
       </button>
     </div>
 
-    <div class="p-2 border-b border-grey-dark">
+    <div class="p-2 pt-4 border-b border-grey-dark">
       Completed
     </div>
     <div class="flex flex-col gap-y-3 pt-2">
