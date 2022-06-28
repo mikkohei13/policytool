@@ -34,7 +34,7 @@
 
     <div class="px-12">
       <div class="grow justify-self-start">
-        <div v-for="(question, index) in questionGroups[groupIndex]">
+        <div v-for="(question, index) in questionGroups[groupIndex]" :key="question.id">
           <div class="p-4">
             <div class="text-xl pb-2 font-bold" v-if="index === 0">
               {{ question.text }}
