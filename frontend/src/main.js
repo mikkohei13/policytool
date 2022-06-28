@@ -32,4 +32,4 @@ app.mount('#app')
 
 // update the user details if we have a persisted token
 const {refreshDetails} = useAuth()
-await refreshDetails()
+refreshDetails().then()
