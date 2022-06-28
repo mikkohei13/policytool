@@ -25,7 +25,9 @@
         <button class="bg-yellow rounded hover:bg-yellow-dark p-1 h-10 w-10" @click="saveAnswers">
           <VueFeather type="save" size="2rem" class="cursor-pointer"/>
         </button>
-        <!-- TODO: probably need a back button? -->
+        <router-link class="bg-yellow rounded hover:bg-yellow-dark p-1 h-10 w-10" :to="{name: type}">
+          <VueFeather type="home" size="2rem" class="cursor-pointer"/>
+        </router-link>
       </div>
     </div>
 
