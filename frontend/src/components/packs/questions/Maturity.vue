@@ -2,7 +2,7 @@
   <!-- TODO: this needs to be made responsive as it's horrible on a small screen -->
   <div class="flex flex-col">
     <div class="flex flex-row gap-4 bg-grey-light">
-      <div class="pr-4 w-1/5 bg-white">{{ periods[question.period] }}</div>
+      <div class="pr-4 w-1/5 bg-white italic">{{ periods[question.period] }}</div>
       <div v-for="(score, label) in scores"
            class="flex flex-col items-center gap-2 w-1/4 py-3">
         <label :for="generateScoreId(score)" class="text-center">{{ label }}</label>
