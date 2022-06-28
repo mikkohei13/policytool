@@ -1,7 +1,9 @@
 from django.conf import settings
 from django.contrib import admin
+from django.http import HttpRequest
 from django.urls import path, include, re_path
 from django.views import static
+from django.views.defaults import page_not_found
 from rest_framework import routers
 
 from common.api_views import InstitutionViewSet, whoami
@@ -44,3 +46,16 @@ urlpatterns = [
         'document_root': settings.BASE_DIR / 'static',
     }, name='static.file.serve'),
 ]
+
+
+def handler404(request: HttpRequest, *args, **kwargs):
+    """
+    404 handler which ensures invalid django paths are routed to the Vue app.
+    """
+    # if the path starts with any of our known non-SPA paths, use the default django 404 function
+    non_spa_paths = {'/api/', '/admin/', '/auth/'}
+    if any(request.path.startswith(non_spa_path) for non_spa_path in non_spa_paths):
+        return page_not_found(request, *args, **kwargs)
+
+    # otherwise, serve the index.html
+    return static.serve(request, path='index.html', document_root=settings.BASE_DIR / 'static')
