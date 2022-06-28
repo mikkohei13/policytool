@@ -131,7 +131,9 @@ const updatePack = async () => {
 onMounted(async () => {
   await updatePack()
 
-  const index = pack.value.questions.findIndex((question) => !question.answer)
+  const index = questionGroups.value.findIndex(
+      (questions) => questions.some(question => !question.answer)
+  )
   groupIndex.value = Math.max(index, 0)
 })
 
