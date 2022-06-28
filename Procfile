@@ -1,2 +1,2 @@
 release: ./release-tasks.sh
-web: gunicorn dissco.wsgi
+web: gunicorn --pythonpath dissco dissco.wsgi
