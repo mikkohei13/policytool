@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-4xl text-white font-bold pb-6">
-      Institution - {{ institutionName }}
+      Institution - {{ institution?.name }}
     </div>
   </div>
 
@@ -23,12 +23,8 @@
 <script setup>
 import PackStatusList from '@/components/packs/PackStatusList.vue'
 import {useAuth} from '@/store/auth'
-import {computed} from 'vue'
 import {storeToRefs} from 'pinia'
 
 const {institution} = storeToRefs(useAuth())
-
-// use a computed guard for the institution name in case the institution hasn't been loaded yet
-const institutionName = computed(() => !institution.value ? '' : institution.value.name)
 
 </script>
