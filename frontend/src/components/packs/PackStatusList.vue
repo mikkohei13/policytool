@@ -24,7 +24,7 @@
       </button>
     </div>
 
-    <div class="p-2 pt-4 border-b border-grey-dark">
+    <div class="p-2 pt-4 border-b border-grey-dark text-lg font-bold">
       Completed
     </div>
     <div class="flex flex-col gap-y-3 pt-2">
@@ -36,7 +36,7 @@
       </template>
     </div>
 
-    <div class="p-2 mt-6 border-b border-grey-dark">
+    <div class="p-2 mt-6 border-b border-grey-dark text-lg font-bold">
       In Progress
     </div>
     <div class="flex flex-col gap-y-3 py-2">
