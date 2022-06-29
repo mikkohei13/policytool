@@ -21,7 +21,7 @@
 import {onMounted, ref} from 'vue'
 import {useAuth} from '@/store/auth'
 import {storeToRefs} from 'pinia'
-import {useRouter} from 'vue-router'
+import {useRouter, useRoute} from 'vue-router'
 import {notify} from '@kyvg/vue3-notification'
 
 const username = ref(null)
@@ -29,6 +29,7 @@ const password = ref(null)
 const usernameInput = ref(null)
 
 const router = useRouter()
+const route = useRoute()
 const authStore = useAuth()
 const {user} = storeToRefs(authStore)
 const {login, logout} = authStore
@@ -40,14 +41,17 @@ const submit = async () => {
   const notification = {}
 
   if (await login(username.value, password.value)) {
-    // redirect back to the previous page (or the homepage if there is no previous page)
-    let previous = router.options.history.state.back
-    if (!previous || previous === logoutPath) {
-      previous = {name: 'home'}
+    let onwards = route.query.to
+    if (!onwards) {
+      // redirect back to the previous page (or the homepage if there is no previous page)
+      let previous = router.options.history.state.back
+      if (!previous || previous === logoutPath) {
+        onwards = {name: 'home'}
+      }
     }
-    await router.push(previous)
     notification.title = 'Logged in'
     notification.type = 'success'
+    await router.push(onwards)
   } else {
     notification.title = 'Login failed, please try again'
     notification.type = 'error'

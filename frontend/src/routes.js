@@ -11,13 +11,23 @@ import MaturityHome from '@/views/MaturityHome.vue'
 /** @type {import('vue-router').RouterOptions['routes']} */
 export const routes = [
     {path: '/', component: Home, name: 'home', meta: {title: 'Home'}},
-    {path: '/policy', component: InstitutionHome, name: 'policy', meta: {title: 'Policy'}},
-    {path: '/maturity', component: MaturityHome, name: 'maturity', meta: {title: 'Maturity Home'}},
+    {
+        path: '/policy',
+        component: InstitutionHome,
+        name: 'policy',
+        meta: {title: 'Policy', auth: true}
+    },
+    {
+        path: '/maturity',
+        component: MaturityHome,
+        name: 'maturity',
+        meta: {title: 'Maturity Home', auth: true}
+    },
     {
         path: '/pack/:type/:id',
         component: Pack,
         name: 'pack',
-        meta: {title: 'Question Pack'},
+        meta: {title: 'Question Pack', auth: true},
         props: true
     },
     {path: '/login', component: Login, name: 'login', meta: {title: 'Login'}},
