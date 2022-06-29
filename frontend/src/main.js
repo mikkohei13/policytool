@@ -7,9 +7,10 @@ import {createPinia} from 'pinia'
 import {useAuth} from '@/store/auth'
 import VueFeather from 'vue-feather'
 import Notifications from '@kyvg/vue3-notification'
-import {storeToRefs} from "pinia/dist/pinia";
+import {storeToRefs} from 'pinia/dist/pinia'
 
 const app = createApp(App)
+// register VueFeather so that it's available for all components implicitly
 app.component('VueFeather', VueFeather)
 
 const router = createRouter({
@@ -22,13 +23,14 @@ app.use(createPinia())
 app.use(router)
 app.mount('#app')
 
-// update the user details if we have a persisted token
 const auth = useAuth()
 const {refreshDetails} = auth
 const {notLoggedIn} = storeToRefs(auth)
+// update the user details if we have a persisted token
 refreshDetails().then()
 
 router.beforeEach(async (to) => {
+    // if the route we're going to is auth only, redirect to the login route
     if (to.meta.auth && notLoggedIn.value) {
         await router.push({name: 'login', query: {to: to.fullPath}})
     }
@@ -38,6 +40,7 @@ router.beforeEach(async (to) => {
 const DEFAULT_TITLE = document.title
 router.afterEach(async (to) => {
     await nextTick()
+    // set the title of the page using the route meta, if it's available
     let title = DEFAULT_TITLE
     if (!!to.meta.title) {
         title = `${DEFAULT_TITLE} - ${to.meta.title}`
