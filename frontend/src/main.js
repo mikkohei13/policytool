@@ -29,10 +29,10 @@ const {notLoggedIn} = storeToRefs(auth)
 // update the user details if we have a persisted token
 refreshDetails().then()
 
-router.beforeEach(async (to) => {
+router.beforeEach((to) => {
     // if the route we're going to is auth only, redirect to the login route
     if (to.meta.auth && notLoggedIn.value) {
-        await router.push({name: 'login', query: {to: to.fullPath}})
+        return {name: 'login', query: {to: to.fullPath}}
     }
 })
 
