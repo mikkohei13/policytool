@@ -12,12 +12,12 @@
   </div>
 
   <div class="border-2 bg-white p-3">
-    <div class="flex flex-row gap-2 pb-2 border-b-2 border-black">
+    <div class="flex flex-row gap-2 pb-3 border-b-2 border-black">
       <div class="text-black text-2xl">
         {{ title }}
       </div>
       <div class="grow"></div>
-      <button class="bg-yellow border rounded py-1 pr-3 pl-1 hover:bg-yellow-dark"
+      <button class="bg-yellow rounded py-1 pr-3 pl-1 hover:bg-yellow-dark"
               @click="showPicker = true">
         <VueFeather type="plus" size="1.4rem" class="align-middle mx-1 -mt-1"/>
         Start new response
