@@ -3,7 +3,7 @@
        class="fixed inset-0 bg-grey-dark bg-opacity-50 overflow-y-auto h-full w-full">
     <div @click.stop=""
          class="absolute w-1/2 left-1/2 transform -translate-x-1/2 top-24 p-5 border shadow-lg rounded-md bg-white">
-      <div class="pb-4">
+      <div class="pb-2 mb-2 border-b-2 text-xl">
         Select an option from the list below to start a response.
       </div>
 
