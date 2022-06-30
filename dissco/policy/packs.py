@@ -2,7 +2,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from common.models import Institution
 from policy.models import PolicyArea, PolicyComponent, PolicyComponentOption, \
-    InstitutionPolicyComponent
+    InstitutionPolicyComponent, PolicyCategory
 from qa.packs import PackProvider, Pack, Answer, Question, PackDoesNotExist, QuestionDoesNotExist, \
     QuestionType, PackSummary
 
@@ -23,15 +23,26 @@ def to_pack_summary(pack_type: str, institution: Institution, policy_area: Polic
         if policy_component.institution_policy_components.filter(institution=institution).exists():
             answered_count += 1
 
-    return PackSummary(policy_area.id, policy_area.name, pack_type, question_count, answered_count)
+    return PackSummary(p_id=policy_area.id, name=policy_area.name, p_type=pack_type,
+                       size=question_count, answered=answered_count, **get_pack_extras(policy_area))
 
 
 def to_pack(pack_type: str, institution: Institution, policy_area: PolicyArea) -> Pack:
     questions = []
     for policy_component in policy_area.components.all().order_by('order', 'id'):
         questions.append(to_question(institution, policy_component))
-    return Pack(p_id=policy_area.id, name=policy_area.name, p_type=pack_type, questions=questions,
-                category=dict(name=policy_area.category.name, scope=policy_area.category.scope))
+    return Pack(p_id=policy_area.id, name=policy_area.name, p_type=pack_type,
+                questions=questions, **get_pack_extras(policy_area))
+
+
+def get_pack_extras(policy_area: PolicyArea) -> dict:
+    return {
+        'scope': policy_area.scope,
+        'category': {
+            'name': policy_area.category.name,
+            'scope': policy_area.category.scope,
+        },
+    }
 
 
 def to_question(institution: Institution, policy_component: PolicyComponent) -> Question:
