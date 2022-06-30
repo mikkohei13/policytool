@@ -13,6 +13,11 @@ DEBUG = False
 
 MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
 
+# redirect http -> https
+MIDDLEWARE.insert(1, 'django.middleware.security.SecurityMiddleware')
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+
 # allow cross-origin so that we can run the vite server on a different port but still get to the API
 CORS_ALLOW_ALL_ORIGINS = True
 
