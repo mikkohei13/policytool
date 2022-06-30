@@ -40,7 +40,7 @@
               {{ question.text }}
             </div>
             <div class="pb-6">
-              {{ question.hint }}
+              <Markdown :markdown="question.hint"></Markdown>
             </div>
             <component :is="types[question.type]" :question="question"
                        @update-answer="updateAnswer">
@@ -60,6 +60,7 @@ import Number from '@/components/packs/questions/Number.vue'
 import OptionSingle from '@/components/packs/questions/OptionSingle.vue'
 import OptionMultiple from '@/components/packs/questions/OptionMultiple.vue'
 import Maturity from '@/components/packs/questions/Maturity.vue'
+import Markdown from '@/components/Markdown.vue'
 import {computed, onMounted, ref} from 'vue'
 import {api} from '@/utils/api'
 import {notify} from '@kyvg/vue3-notification'
