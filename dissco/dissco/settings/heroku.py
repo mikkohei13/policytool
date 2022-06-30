@@ -22,5 +22,5 @@ SECURE_SSL_REDIRECT = True
 CORS_ALLOW_ALL_ORIGINS = True
 
 # pull the db config from env and apply
-db_from_env = dj_database_url.config(conn_max_age=600)
+db_from_env = dj_database_url.config(conn_max_age=60)
 DATABASES['default'].update(db_from_env)
