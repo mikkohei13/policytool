@@ -23,15 +23,13 @@ app.use(createPinia())
 app.use(router)
 app.mount('#app')
 
-const auth = useAuth()
-const {refreshDetails} = auth
-const {notLoggedIn} = storeToRefs(auth)
-// update the user details if we have a persisted token
-refreshDetails().then()
+const {check} = useAuth()
 
-router.beforeEach((to) => {
+router.beforeEach(async (to) => {
+    // check if we're logged in
+    const loggedIn = await check()
     // if the route we're going to is auth only, redirect to the login route
-    if (to.meta.auth && notLoggedIn.value) {
+    if (to.meta.auth && !loggedIn) {
         return {name: 'login', query: {to: to.fullPath}}
     }
 })

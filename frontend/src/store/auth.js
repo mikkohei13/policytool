@@ -1,6 +1,7 @@
 import {defineStore} from 'pinia'
 import {api} from '@/utils/api'
 import {useLocalStorage} from '@vueuse/core'
+import {DateTime} from 'luxon'
 
 const DEFAULT_TOKEN = ''
 
@@ -9,6 +10,7 @@ export const useAuth = defineStore('auth', {
         user: null,
         institution: null,
         token: useLocalStorage('policy-tool-auth-token', DEFAULT_TOKEN),
+        nextCheck: null
     }),
     getters: {
         /**
@@ -71,6 +73,19 @@ export const useAuth = defineStore('auth', {
                 this.user = null
                 this.institution = null
             }
+        },
+        /**
+         * Checks if there is a logged in user or not and returns a boolean to indicate as such.
+         * This action can be called repeatedly and will only check every hour.
+         *
+         * @returns {Promise<Boolean>}
+         */
+        async check() {
+            if (this.nextCheck === null || this.nextCheck < DateTime.now()) {
+                await this.refreshDetails()
+                this.nextCheck = DateTime.now().plus({hours: 1})
+            }
+            return this.loggedIn
         }
     }
 })

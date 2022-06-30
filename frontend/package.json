@@ -10,6 +10,7 @@
     "@kyvg/vue3-notification": "^2.3.4",
     "@vueuse/core": "^8.6.0",
     "axios": "^0.27.2",
+    "luxon": "^2.4.0",
     "marked": "^4.0.17",
     "pinia": "^2.0.14",
     "vue": "^3.2.33",
