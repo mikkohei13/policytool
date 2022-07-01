@@ -48,6 +48,7 @@ const submit = async () => {
     }
     notification.title = 'Logged in'
     notification.type = 'success'
+    notification.duration = 5000
     await router.push(onwards)
   } else {
     notification.title = 'Login failed, please try again'

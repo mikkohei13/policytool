@@ -102,7 +102,8 @@ const saveAnswers = async () => {
   notify({
     title: 'Success',
     text: 'Answers saved',
-    type: 'success'
+    type: 'success',
+    duration: 5000
   });
 }
 
