@@ -28,7 +28,7 @@ const {check} = useAuth()
 router.beforeEach(async (to) => {
     // check if we're logged in
     const loggedIn = await check()
-    // if the route we're going to is auth only, redirect to the login route
+    // if the route we're going to is auth only and we're not logged in, redirect to the login route
     if (to.meta.auth && !loggedIn) {
         return {name: 'login', query: {to: to.fullPath}}
     }
