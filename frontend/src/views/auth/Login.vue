@@ -41,13 +41,10 @@ const submit = async () => {
   const notification = {}
 
   if (await login(username.value, password.value)) {
-    let onwards = route.query.to
-    if (!onwards) {
-      // redirect back to the previous page (or the homepage if there is no previous page)
-      let previous = router.options.history.state.back
-      if (!previous || previous === logoutPath) {
-        onwards = {name: 'home'}
-      }
+    let onwards = route.query.to || router.options.history.state.back
+    // if neither the query string nor the previous page have a valid value, just go home
+    if (!onwards || onwards === logoutPath) {
+      onwards = {name: 'home'}
     }
     notification.title = 'Logged in'
     notification.type = 'success'
