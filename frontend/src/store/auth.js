@@ -81,7 +81,7 @@ export const useAuth = defineStore('auth', {
          * @returns {Promise<Boolean>}
          */
         async check() {
-            if (this.nextCheck === null || this.nextCheck < DateTime.now()) {
+            if (!!this.token && (this.nextCheck === null || this.nextCheck < DateTime.now())) {
                 await this.refreshDetails()
                 this.nextCheck = DateTime.now().plus({hours: 1})
             }
