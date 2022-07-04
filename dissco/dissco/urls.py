@@ -16,6 +16,10 @@ router.register('institution', InstitutionViewSet)
 router.register('service', public_policy_views.ServiceViewSet)
 router.register('policy', public_policy_views.PolicyAreaViewSet)
 
+# frontend document root location
+FRONTEND_ROOT: Path = settings.BASE_DIR / 'static' / 'frontend'
+
+
 urlpatterns = [
     # admin site
     path('admin/', admin.site.urls),
@@ -37,14 +41,9 @@ urlpatterns = [
     path('api/', include(router.urls)),
 
     # catch the base URL at / and serve the Vite generated index.html
-    path('', static.serve, {
-        'document_root': settings.BASE_DIR / 'static',
-        'path': 'index.html',
-    }, name='static.file.serve'),
+    path('', static.serve, {'document_root': FRONTEND_ROOT, 'path': 'index.html'}),
     # catch all other paths and serve static content, this should let the SPA work as expected
-    re_path('^(?P<path>.*)/$', static.serve, {
-        'document_root': settings.BASE_DIR / 'static',
-    }, name='static.file.serve'),
+    re_path('^(?P<path>.*)/$', static.serve, {'document_root': FRONTEND_ROOT}),
 ]
 
 
@@ -58,4 +57,4 @@ def handler404(request: HttpRequest, *args, **kwargs):
         return page_not_found(request, *args, **kwargs)
 
     # otherwise, serve the index.html
-    return static.serve(request, path='index.html', document_root=settings.BASE_DIR / 'static')
+    return static.serve(request, path='index.html', document_root=FRONTEND_ROOT)
