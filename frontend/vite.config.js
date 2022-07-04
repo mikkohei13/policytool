@@ -13,7 +13,7 @@ export default defineConfig({
         open: true,
     },
     build: {
-        outDir: '../dissco/static/',
+        outDir: '../dissco/static/frontend/',
         emptyOutDir: true
     }
 })
