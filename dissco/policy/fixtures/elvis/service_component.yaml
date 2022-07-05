@@ -2,7 +2,7 @@
   pk: 1
   fields:
     name: Providing people data
-    description: >
+    description: >-
       This refers to providing people data to ELViS. ELViS will provide detailed information on
       requesters, TAF admins, and experts associated with institutions' collections (Curators,
       Collection Managers). People data include: Name, Email, Affiliation, ORCID's, Researcher and
@@ -13,7 +13,7 @@
   pk: 2
   fields:
     name: Providing specimen data
-    description: >
+    description: >-
       This refers to the workflow of providing data on your institutions' specimen holdings via
       authoritative data sources. ELViS is a transactional platform and so will not store data but
       rather aggregate it from different authoritative data sources. ELViS will provide information
@@ -27,7 +27,7 @@
   pk: 3
   fields:
     name: Providing collection data
-    description: >
+    description: >-
       This refers to the workflow of providing data via authoritative data sources on your
       institutions' collection holdings. ELViS will provide a catalogue of Institutional Collections
       and the specimens within them, so that users can discover the collections and request them for
@@ -40,7 +40,7 @@
   pk: 4
   fields:
     name: Providing Institution/facilities data
-    description: >
+    description: >-
       This refers to the workflow of providing data via authoritative data sources on your
       institution and facilities. ELViS requires institutions to provide the following information:
       Institution names, identifiers, facilities, digitisation priority, policy and workflow.
@@ -50,7 +50,7 @@
   pk: 5
   fields:
     name: User Authentication and Authorisation Infrastructure (AAI)
-    description: >
+    description: >-
       The AAI layer provides authentication (ascertaining that somebody really is who they claim to
       be / who you are) and authorisation (refers to rules and policies that determine who is
       allowed to do what / what you are allowed to do)'. Authorisation will be via institutional
@@ -62,7 +62,7 @@
   pk: 6
   fields:
     name: Providing virtual access through Digitisation on Demand (DOD)
-    description: >
+    description: >-
       This service category workflow  refers to the requirements needed to fulfill digitisation on
       demand requests: from dealing with the requesters proposal, the ability to carry-out the
       digitisation of specimens that are requested, data curation and data publication in a open
@@ -78,7 +78,7 @@
   pk: 7
   fields:
     name: Providing physical access
-    description: >
+    description: >-
       This service category refers to the policies needed for the for physical visits to
       collections: receiving the application from the researcher, processing the requesters
       information including (name, email,), selection of visitors, to be able to provide the
@@ -92,7 +92,7 @@
   pk: 8
   fields:
     name: Providing loans
-    description: >
+    description: >-
       This refers to the workflow of dealing with loan requests, which involves processing requester
       information (i.e. names and contact details)  As part of ELViS institutions will need provide
       information for collection usage monitoring (e.g. numbers of Loans) digitisation status,
@@ -104,7 +104,7 @@
   pk: 9
   fields:
     name: Integrating local collection management systems
-    description: >
+    description: >-
       This refers to technical requirements for linking ELViS to the institutional Collection
       management systems. API Criteria etc.
     service: 1
@@ -113,7 +113,7 @@
   pk: 10
   fields:
     name: Providing destructive sampling
-    description: >
+    description: >-
       This refers to the workflow of dealing with sampling requests, which involves processing
       requester information (i.e. names and contact details). These requests may form part of a
       visit or a loan, or may be independent of these. Any requests will require permissions to be
