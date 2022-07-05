@@ -2,7 +2,7 @@
   pk: 1
   fields:
     name: Data Strategy and Management
-    scope: >
+    scope: >-
       Covers policy areas on data related to people, natural science collections and research, and
       its governance and stewardship: data accessibility, usability, reuse, shareability, protection
       from misuse, privacy, standards, quality, publication and attribution.
@@ -11,6 +11,6 @@
   pk: 2
   fields:
     name: Physical Collections Strategy and Management
-    scope: >
+    scope: >-
       Covers policy areas related to care, conservation, compliance and digital transformation of
       Natural Science Collections.

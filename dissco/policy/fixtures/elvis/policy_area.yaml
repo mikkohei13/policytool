@@ -3,7 +3,7 @@
   fields:
     name: Data & Digital Media sharing and publication
     number: 1
-    scope: >
+    scope: >-
       Relates to policies covering the releasing of data in published form for external use by
       others. The area covers FAIR and open data principles, licences, publication of data and
       digital media linked to Natural Science Collections and research data derived from
@@ -15,7 +15,7 @@
   fields:
     name: Data standards
     number: 2
-    scope: >
+    scope: >-
       Policies that refer to technical specifications that describes how data should be organised,
       stored, exchanged, referenced for the consistent collection and interoperability of data
       across DiSSCo services, systems, users.
@@ -26,7 +26,7 @@
   fields:
     name: Personal data
     number: 3
-    scope: >
+    scope: >-
       Policies that refer to any information that relates to an identified or identifiable living
       individual.
     category: 1
@@ -36,7 +36,7 @@
   fields:
     name: Data management and curation
     number: 4
-    scope: >
+    scope: >-
       This covers the maintenance, security and risk management of collection and specimen data.
       Data curation is concerned with curating digital specimen and collection data
     category: 1
@@ -46,7 +46,7 @@
   fields:
     name: Collections loans management
     number: 5
-    scope: >
+    scope: >-
       Refers to policy components related to collection loan management
     category: 2
 
@@ -55,7 +55,7 @@
   fields:
     name: Collections access & benefit sharing (ABS)
     number: 6
-    scope: >
+    scope: >-
       Refers to policy components related to compliance with national laws on access and on access
       to genetic resources, related traditional knowledge and resultant benefit sharing, including
       Natural History Collection sectoral best practice.
@@ -66,7 +66,7 @@
   fields:
     name: Responsible Research & Innovation (RRI)
     number: 7
-    scope: >
+    scope: >-
       Policy components referring to responsible research and innovation that anticipates and
       assesses potential implications and societal expectations with regard to research and
       innovation, with the aim to foster the design of inclusive and sustainable research and
@@ -78,7 +78,7 @@
   fields:
     name: Physical collections management
     number: 8
-    scope: >
+    scope: >-
       Policies components related to collection curation, development, housing, environment, care
       and preservation.
     category: 2
@@ -88,7 +88,7 @@
   fields:
     name: Digitisation strategy & prioritisation
     number: 9
-    scope: >
+    scope: >-
       Refers to policy components that address institutions' strategies, prioritisations and best
       practices towards digitising their collections.
     category: 2
