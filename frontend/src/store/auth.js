@@ -41,14 +41,13 @@ export const useAuth = defineStore('auth', {
             try {
                 const data = await api.post('/auth/login/', {username, password})
                 this.token = data.key
+                // must set the API token before getting the user data
+                api.setToken(this.token)
+                await this.refreshDetails()
             } catch (error) {
-                console.log('Failed to login, ignoring')
                 // TODO: show an error?
-                this.token = DEFAULT_TOKEN
+                this.reset()
             }
-            // must set the API token before getting the user data
-            api.setToken(this.token)
-            await this.refreshDetails()
             return !!this.token
         },
         async logout() {
@@ -59,19 +58,31 @@ export const useAuth = defineStore('auth', {
                     console.log('Failed to logout, ignoring')
                 }
             }
-            api.unsetToken()
+            this.reset()
+        },
+        /**
+         * Resets the auth state back to logged out defaults.
+         */
+        reset() {
             this.token = DEFAULT_TOKEN
-            await this.refreshDetails()
+            this.user = null
+            this.institution = null
+            api.unsetToken()
         },
         async refreshDetails() {
             if (!!this.token) {
                 api.setToken(this.token)
-                const whoami = await api.get('/api/whoami')
-                this.user = whoami.user
-                this.institution = whoami.institution || null
+                try {
+                    const whoami = await api.get('/api/whoami')
+                    this.user = whoami.user
+                    this.institution = whoami.institution || null
+                } catch (error) {
+                    // good chance this means the token is wrong, log them out so that they have to
+                    // get a new one
+                    this.reset()
+                }
             } else {
-                this.user = null
-                this.institution = null
+                this.reset()
             }
         },
         /**
