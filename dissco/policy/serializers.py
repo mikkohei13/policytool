@@ -17,21 +17,6 @@ class ServiceSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'description', 'components']
 
 
-class PolicyCategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.PolicyCategory
-        fields = ['name', 'scope']
-
-
-class PolicyAreaSerializer(serializers.ModelSerializer):
-    # this produces a lot of repetition but I think it's better this way
-    category = PolicyCategorySerializer(read_only=True)
-
-    class Meta:
-        model = models.PolicyArea
-        fields = ['id', 'name', 'number', 'scope', 'category']
-
-
 class PolicyComponentOptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.PolicyComponentOption
@@ -44,6 +29,22 @@ class PolicyComponentSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.PolicyComponent
         fields = ['id', 'name', 'question', 'description', 'type', 'options']
+
+
+class PolicyCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.PolicyCategory
+        fields = ['name', 'scope']
+
+
+class PolicyAreaSerializer(serializers.ModelSerializer):
+    # this produces a lot of repetition but I think it's better this way
+    category = PolicyCategorySerializer(read_only=True)
+    components = PolicyComponentSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = models.PolicyArea
+        fields = ['id', 'name', 'number', 'scope', 'category', 'components']
 
 
 # TODO: should this be publicly available? (I think maybe no?)
@@ -59,7 +60,6 @@ class InstitutionPolicyLanguageSerializer(serializers.ModelSerializer):
         fields = ['code']
 
 
-# TODO: should this be publicly available? (I think yes)
 class InstitutionPolicyAreaSerializer(serializers.ModelSerializer):
     owners = InstitutionPolicyOwnerSerializer(many=True, read_only=True)
     languages = InstitutionPolicyLanguageSerializer(many=True, read_only=True)

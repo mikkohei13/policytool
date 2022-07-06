@@ -1,5 +1,5 @@
-from rest_framework import viewsets
-from rest_framework.decorators import action, api_view
+from rest_framework import permissions, authentication
+from rest_framework.decorators import api_view
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -7,32 +7,54 @@ from rest_framework.views import APIView
 from common.models import Institution
 from policy import models
 from policy import serializers
+from policy.models import InstitutionPolicyArea
 
 
-class ServiceViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = models.Service.objects.prefetch_related('components').all()
-    serializer_class = serializers.ServiceSerializer
-    filterset_fields = ['name']
+@api_view(['GET'])
+def get_dissco_service_list(request: Request) -> Response:
+    services = models.Service.objects.prefetch_related('components').all()
+    serializer = serializers.ServiceSerializer(services, many=True)
+    return Response(serializer.data)
 
 
-class PolicyAreaViewSet(viewsets.ModelViewSet):
-    queryset = models.PolicyArea.objects.prefetch_related('category').all()
-    serializer_class = serializers.PolicyAreaSerializer
-    filterset_fields = ['name', 'category']
+@api_view(['GET'])
+def get_dissco_policy_list(request: Request) -> Response:
+    policies = models.PolicyArea.objects \
+        .prefetch_related('category') \
+        .prefetch_related('components') \
+        .all()
+    serializer = serializers.PolicyAreaSerializer(policies, many=True)
+    return Response(serializer.data)
 
-    @action(detail=True)
-    def components(self, request: Request, pk=None):
-        policy_area = self.get_object()
-        serializer = serializers.PolicyComponentSerializer(policy_area.components, many=True)
-        return Response(serializer.data)
+
+@api_view(['GET'])
+def get_institution_public_policy_list(request: Request) -> Response:
+    # TODO: filter for public policies
+    policies = models.InstitutionPolicyArea.objects.all()
+    serializer = serializers.InstitutionPolicyAreaSerializer(policies, many=True)
+    return Response(serializer.data)
 
 
 class InstitutionPolicyAreaAPIView(APIView):
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
 
-    def get(self, request: Request, institution_id: int):
-        institution = Institution.objects.get(id=institution_id)
+    def get(self, request: Request):
+        institution = request.user.institutionuser.institution
         serializer = serializers.InstitutionPolicyAreaSerializer(institution.policies, many=True)
         return Response(serializer.data)
+
+    def post(self, request: Request) -> Response:
+        institution = request.user.institutionuser.institution
+
+        data = {**request.data, 'institution': institution.pk}
+
+        serializer = serializers.InstitutionPolicyAreaSerializer()
+        valid_data = serializer.run_validation(data)
+
+        policy = InstitutionPolicyArea(**valid_data)
+        policy.save()
+        return Response({'id': policy.id}, status=201)
 
 
 class InstitutionPolicyComponentAPIView(APIView):
