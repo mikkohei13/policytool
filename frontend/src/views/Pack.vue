@@ -96,7 +96,7 @@ const getQuestion = (questionId) => {
 
 const saveAnswers = async () => {
   for (const questionId of updatedQuestionIds) {
-    await api.post(`/api/${type}/pack/answer/${questionId}`, getQuestion(questionId).answer)
+    await api.post(`/api/${type}/pack/${id}/${questionId}/`, getQuestion(questionId).answer)
   }
   updatedQuestionIds.clear()
   notify({
