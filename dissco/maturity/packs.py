@@ -62,7 +62,7 @@ class DigitalMaturityPackProvider(PackProvider):
         if (InstitutionSubCategory.objects.filter(institution=institution, subcategory=subcategory)
                 .exists()):
             # this will actually delete all previous answers
-            self.delete_answer(institution, question_id)
+            self.delete_answer(institution, pack_id, question_id)
 
         # create a new institution subcomponent as an answer
         isub = InstitutionSubCategory(value=int(answer.value), comment=answer.comment,
