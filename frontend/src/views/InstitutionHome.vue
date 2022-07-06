@@ -24,7 +24,17 @@
 import PackStatusList from '@/components/packs/PackStatusList.vue'
 import {useAuth} from '@/store/auth'
 import {storeToRefs} from 'pinia'
+import {onMounted, ref} from 'vue'
+import {api} from '@/utils/api'
 
 const {institution} = storeToRefs(useAuth())
+
+const policies = ref([])
+
+const updatePolicies = async () => {
+  policies.value = await api.get(`/api/policy/`)
+}
+
+onMounted(updatePolicies)
 
 </script>
