@@ -140,7 +140,7 @@ class PackProvider(ABC):
 
     @abstractmethod
     def delete_answer(self, institution: Institution, pack_id: int, question_id: int):
-        pass
+        ...
 
 
 class PackDoesNotExist(Exception):
