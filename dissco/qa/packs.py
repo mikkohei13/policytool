@@ -135,11 +135,11 @@ class PackProvider(ABC):
         ...
 
     @abstractmethod
-    def save_answer(self, institution: Institution, question_id: int, answer: Answer):
+    def save_answer(self, institution: Institution, pack_id: int, question_id: int, answer: Answer):
         ...
 
     @abstractmethod
-    def delete_answer(self, institution: Institution, question_id: int):
+    def delete_answer(self, institution: Institution, pack_id: int, question_id: int):
         pass
 
 

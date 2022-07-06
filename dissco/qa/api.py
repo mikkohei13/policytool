@@ -37,23 +37,24 @@ def get_pack(request: Request, pack_type: str, pack_id: int) -> Response:
 @api_view(['POST', 'DELETE'])
 @authentication_classes([authentication.TokenAuthentication])
 @permission_classes([permissions.IsAuthenticated])
-def handle_answer(request: Request, pack_type: str, question_id: int) -> Response:
+def handle_answer(request: Request, pack_type: str, pack_id: int, question_id: int) -> Response:
     provider = get_provider(pack_type)
     institution = request.user.institutionuser.institution
     match request.method:
         case 'POST':
-            return create_answer(provider, institution, question_id, request.data)
+            return create_answer(provider, institution, pack_id, question_id, request.data)
         case 'DELETE':
-            return delete_answer(provider, institution, question_id)
+            return delete_answer(provider, institution, pack_id, question_id)
 
 
-def create_answer(provider: PackProvider, institution: Institution, question_id: int,
+def create_answer(provider: PackProvider, institution: Institution, pack_id: int, question_id: int,
                   data: dict) -> Response:
     answer = Answer.from_dict(data)
-    provider.save_answer(institution, question_id, answer)
+    provider.save_answer(institution, pack_id, question_id, answer)
     return Response(status=201)
 
 
-def delete_answer(provider: PackProvider, institution: Institution, question_id: int) -> Response:
-    provider.delete_answer(institution, question_id)
+def delete_answer(provider: PackProvider, institution: Institution, pack_id: int,
+                  question_id: int) -> Response:
+    provider.delete_answer(institution, pack_id, question_id)
     return Response(status=200)

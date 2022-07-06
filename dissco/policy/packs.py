@@ -2,7 +2,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from common.models import Institution
 from policy.models import PolicyArea, PolicyComponent, PolicyComponentOption, \
-    InstitutionPolicyComponent, PolicyCategory
+    InstitutionPolicyComponent
 from qa.packs import PackProvider, Pack, Answer, Question, PackDoesNotExist, QuestionDoesNotExist, \
     QuestionType, PackSummary
 
@@ -94,7 +94,7 @@ class PolicyPackProvider(PackProvider):
         except ObjectDoesNotExist as e:
             raise PackDoesNotExist() from e
 
-    def save_answer(self, institution: Institution, question_id: int, answer: Answer):
+    def save_answer(self, institution: Institution, pack_id: int, question_id: int, answer: Answer):
         try:
             policy_component = PolicyComponent.objects.get(pk=question_id)
         except ObjectDoesNotExist as e:
@@ -103,7 +103,7 @@ class PolicyPackProvider(PackProvider):
         if (InstitutionPolicyComponent.objects
                 .filter(institution=institution, policy_component=policy_component).exists()):
             # this will actually delete all previous answers
-            self.delete_answer(institution, question_id)
+            self.delete_answer(institution, pack_id, question_id)
 
         # create a new institution policy component as an answer
         ipc = InstitutionPolicyComponent(comment=answer.comment, institution=institution,
@@ -118,7 +118,7 @@ class PolicyPackProvider(PackProvider):
             ipc.value = answer.value
         ipc.save()
 
-    def delete_answer(self, institution: Institution, question_id: int):
+    def delete_answer(self, institution: Institution, pack_id: int, question_id: int):
         try:
             policy_component = PolicyComponent.objects.get(pk=question_id)
         except ObjectDoesNotExist as e:

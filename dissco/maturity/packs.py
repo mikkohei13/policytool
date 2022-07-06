@@ -53,7 +53,7 @@ class DigitalMaturityPackProvider(PackProvider):
         except ObjectDoesNotExist as e:
             raise PackDoesNotExist() from e
 
-    def save_answer(self, institution: Institution, question_id: int, answer: Answer):
+    def save_answer(self, institution: Institution, pack_id: int, question_id: int, answer: Answer):
         try:
             subcategory = SubCategory.objects.get(pk=question_id)
         except ObjectDoesNotExist as e:
@@ -69,7 +69,7 @@ class DigitalMaturityPackProvider(PackProvider):
                                       institution=institution, subcategory=subcategory)
         isub.save()
 
-    def delete_answer(self, institution: Institution, question_id: int):
+    def delete_answer(self, institution: Institution, pack_id: int, question_id: int):
         try:
             subcategory = SubCategory.objects.get(pk=question_id)
         except ObjectDoesNotExist as e:
