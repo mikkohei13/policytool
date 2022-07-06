@@ -6,7 +6,7 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 
 from common.models import Institution
-from common.serializers import InstitutionSerializer, InstitutionUserSerializer, UserSerializer
+from common.serializers import InstitutionSerializer, UserSerializer
 
 
 class InstitutionViewSet(viewsets.ModelViewSet):
@@ -19,8 +19,9 @@ class InstitutionViewSet(viewsets.ModelViewSet):
 @permission_classes([IsAuthenticated])
 def whoami(request: Request) -> Response:
     user = request.user
+    data = {
+        'user': UserSerializer(user).data,
+    }
     if hasattr(user, 'institutionuser'):
-        return Response(InstitutionUserSerializer(request.user.institutionuser).data)
-    else:
-        user_data = UserSerializer(user).data
-        return Response({'user': user_data})
+        data['institution'] = InstitutionSerializer(request.user.institutionuser.institution).data
+    return Response(data)
