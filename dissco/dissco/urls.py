@@ -19,6 +19,10 @@ urlpatterns = [
     # admin site
     path('admin/', admin.site.urls),
 
+    # openapi landing page and definition
+    path('openapi/', static.serve, {'document_root': STATIC_ROOT, 'path': 'openapi.html'}),
+    path('openapi.yaml', static.serve, {'document_root': STATIC_ROOT, 'path': 'openapi.yaml'}),
+
     # endpoints for web app token auth
     path('auth/', include('dj_rest_auth.urls')),
 

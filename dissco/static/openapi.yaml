@@ -1,0 +1,368 @@
+openapi: 3.0.0
+info:
+  title: DiSSCo Policy and Maturity Tool API
+  description: API for the DiSSCo policy and maturity tool
+  version: 0.0.1
+
+servers:
+  - url: http://localhost:5000
+    description: Local dev server
+  - url: https://dissco-policy-tool.herokuapp.com
+    description: Test server running on Heroku free account
+
+components:
+  securitySchemes:
+    token_auth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        Token authentication for this API. Only some endpoints require authentication. Note that the
+        token in the header must be passed with the word _Token_ and a single _space_ in front of
+        it, for example: "Token thisisnotarealtokenvalue"_.
+
+paths:
+  /api/whoami:
+    get:
+      summary: Returns details about who the logged in user is
+      security:
+        - token_auth: [ ]
+      responses:
+        '200':
+          description: A JSON document of user details + their home institution
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - user
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      username:
+                        type: string
+                      email:
+                        type: string
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                  institution:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      ror_id:
+                        type: string
+  /api/{pack_type}/pack:
+    get:
+      summary: Returns pack summary details for the logged in user for the given pack type
+      description: >-
+        A pack defines a set of related questions. This endpoint provides a list of packs available
+        to the user as well as information about how many questions are in the pack and how many
+        have been answered.
+      security:
+        - token_auth: [ ]
+      parameters:
+        - in: path
+          name: pack_type
+          schema:
+            type: string
+          required: true
+          description: >-
+            The type of pack to retrieve the summary details of (currently supported: `policy` and
+            `maturity`).
+      responses:
+        '200':
+          description: A list of JSON documents containing the pack summaries for each pack
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    type:
+                      type: string
+                    size:
+                      type: integer
+                    answered:
+                      type: integer
+                    scope:
+                      type: string
+                    category:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        scope:
+                          type: string
+  /api/{pack_type}/pack/{pack_id}:
+    get:
+      summary: Returns the details about a single pack
+      description: >-
+        This endpoint provides the details of the pack, including the questions and answers
+      security:
+        - token_auth: [ ]
+      parameters:
+        - in: path
+          name: pack_type
+          schema:
+            type: string
+          required: true
+          description: >-
+            The type of pack to retrieve the summary details of (currently supported: `policy` and
+            `maturity`).
+        - in: path
+          name: pack_id
+          schema:
+            type: integer
+          required: true
+          description: >-
+            The id of the pack.
+      responses:
+        '200':
+          description: A JSON document describing a pack of questions with their answers
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  questions:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                        - id
+                        - order
+                        - text
+                        - hint
+                        - required
+                      properties:
+                        id:
+                          type: integer
+                        order:
+                          type: integer
+                        text:
+                          type: string
+                        hint:
+                          type: string
+                        type:
+                          type: string
+                        required:
+                          type: boolean
+                        options:
+                          type: array
+                          items:
+                            type: string
+                        answer:
+                          type: object
+                          required:
+                            - value
+                          properties:
+                            value:
+                              anyOf:
+                                - type: integer
+                                - type: string
+                                - type: array
+                                  items:
+                                    type: string
+                            comment:
+                              type: string
+  /api/{pack_type}/pack/{pack_id}/{question_id}:
+    post:
+      summary: Saves the answer to the specified question in the specified pack
+      security:
+        - token_auth: [ ]
+      parameters:
+        - in: path
+          name: pack_type
+          schema:
+            type: string
+          required: true
+          description: >-
+            The type of pack to retrieve the summary details of (currently supported: `policy` and
+            `maturity`).
+        - in: path
+          name: pack_id
+          schema:
+            type: integer
+          required: true
+          description: >-
+            The id of the pack.
+        - in: path
+          name: question_id
+          schema:
+            type: integer
+          required: true
+          description: >-
+            The id of the question.
+      responses:
+        '201':
+          description: If the answer was successfully saved, 201 is returned
+    delete:
+      summary: Deletes the answer to the specified question in the specified pack
+      security:
+        - token_auth: [ ]
+      parameters:
+        - in: path
+          name: pack_type
+          schema:
+            type: string
+          required: true
+          description: >-
+            The type of pack to retrieve the summary details of (currently supported: `policy` and
+            `maturity`).
+        - in: path
+          name: pack_id
+          schema:
+            type: integer
+          required: true
+          description: >-
+            The id of the pack.
+        - in: path
+          name: question_id
+          schema:
+            type: integer
+          required: true
+          description: >-
+            The id of the question.
+      responses:
+        '200':
+          description: If the answer was successfully deleted, 200 is returned
+  /api/policy:
+    get:
+      summary: Returns the policy details for the institution of the currently logged in user
+      security:
+        - token_auth: [ ]
+      responses:
+        '200':
+          description: A list of JSON documents containing the policy details
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    status:
+                      type: string
+                      enum:
+                        - documented
+                        - undocumented
+                        - not_in_place
+                    documentation_date:
+                      type: string
+                    documentation_next_review_date:
+                      type: string
+                    documentation_public:
+                      type: string
+                    documentation_shareable:
+                      type: string
+                    documentation_provided:
+                      type: boolean
+                    documentation_details:
+                      type: string
+                    policy_summary:
+                      type: string
+                    additional_notes:
+                      type: string
+                    institution:
+                      type: integer
+                    policy_area:
+                      type: integer
+                    owners:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          role:
+                            type: string
+                    languages:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+    post:
+      summary: Creates a new policy entry against the currently logged in user's institution
+      security:
+        - token_auth: [ ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum:
+                    - documented
+                    - undocumented
+                    - not_in_place
+                documentation_date:
+                  type: string
+                documentation_next_review_date:
+                  type: string
+                documentation_public:
+                  type: string
+                documentation_shareable:
+                  type: string
+                documentation_provided:
+                  type: boolean
+                documentation_details:
+                  type: string
+                policy_summary:
+                  type: string
+                additional_notes:
+                  type: string
+                institution:
+                  type: integer
+                policy_area:
+                  type: integer
+                owners:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      role:
+                        type: string
+                languages:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+      responses:
+        '201':
+          description: Confirmation that the policy has been created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: The ID of the new policy entry
