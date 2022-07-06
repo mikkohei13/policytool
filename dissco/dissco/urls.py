@@ -20,7 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # openapi landing page and definition
-    path('openapi/', static.serve, {'document_root': STATIC_ROOT, 'path': 'openapi.html'}),
+    path('api/', static.serve, {'document_root': STATIC_ROOT, 'path': 'openapi.html'}),
     path('openapi.yaml', static.serve, {'document_root': STATIC_ROOT, 'path': 'openapi.yaml'}),
 
     # endpoints for web app token auth
