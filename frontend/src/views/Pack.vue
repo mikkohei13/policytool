@@ -11,23 +11,22 @@
         </div>
         <div class="h-10 w-10">
           <button class="bg-grey p-1 w-full h-full rounded hover:bg-grey-dark" v-if="showPrevious"
-                  @click="groupIndex--">
+                  @click="move(-1)">
             <VueFeather type="chevron-left" size="2rem" class="cursor-pointer"/>
           </button>
         </div>
         <div class="h-10 w-10">
           <button class="bg-grey p-1 w-full h-full rounded hover:bg-grey-dark p-1 h-10 w-10"
-                  v-if="showNext" @click="groupIndex++">
+                  v-if="showNext" @click="move(1)">
             <VueFeather type="chevron-right" size="2rem" class="cursor-pointer"/>
           </button>
         </div>
-        <button class="bg-yellow rounded hover:bg-yellow-dark p-1 h-10 w-10" @click="saveAnswers">
-          <VueFeather type="save" size="2rem" class="cursor-pointer"/>
-        </button>
-        <router-link class="bg-yellow rounded hover:bg-yellow-dark p-1 h-10 w-10"
-                     :to="{name: type}">
-          <VueFeather type="home" size="2rem" class="cursor-pointer"/>
-        </router-link>
+        <div class="h-10 w-10">
+          <button class="bg-yellow rounded hover:bg-yellow-dark p-1 h-10 w-10"
+                  @click="leave">
+            <VueFeather type="home" size="2rem" class="cursor-pointer"/>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -63,6 +62,8 @@ import Markdown from '@/components/Markdown.vue'
 import {computed, onMounted, ref} from 'vue'
 import {api} from '@/utils/api'
 import {notify} from '@kyvg/vue3-notification'
+import {clamp} from '@/utils/utils'
+import {useRouter} from 'vue-router'
 
 const types = {
   'bool': Bool,
@@ -75,6 +76,7 @@ const types = {
 }
 
 const {id, type} = defineProps(['id', 'type'])
+const router = useRouter()
 const pack = ref({})
 const updatedQuestionIds = new Set()
 const questionGroups = ref([])
@@ -93,17 +95,29 @@ const getQuestion = (questionId) => {
   return pack.value.questions.find((question) => question.id === questionId)
 }
 
+const move = async (distance) => {
+  groupIndex.value = clamp(groupIndex.value + distance, 0, questionGroups.value.length - 1)
+  await saveAnswers()
+}
+
+const leave = async () => {
+  await saveAnswers()
+  await router.push({name: type})
+}
+
 const saveAnswers = async () => {
-  for (const questionId of updatedQuestionIds) {
-    await api.post(`/api/${type}/pack/${id}/${questionId}/`, getQuestion(questionId).answer)
+  if (updatedQuestionIds.size) {
+    for (const questionId of updatedQuestionIds) {
+      await api.post(`/api/${type}/pack/${id}/${questionId}/`, getQuestion(questionId).answer)
+    }
+    updatedQuestionIds.clear()
+    notify({
+      title: 'Success',
+      text: 'Answers saved',
+      type: 'success',
+      duration: 5000
+    })
   }
-  updatedQuestionIds.clear()
-  notify({
-    title: 'Success',
-    text: 'Answers saved',
-    type: 'success',
-    duration: 5000
-  });
 }
 
 const updatePack = async () => {
