@@ -35,7 +35,7 @@
         <div v-for="(question, index) in questionGroups[groupIndex]" :key="question.id">
           <div class="p-4">
             <div class="text-xl pb-2 font-bold" v-if="index === 0">
-              {{ question.text }}
+              {{ groupIndex + 1 }}. {{ question.text }}
             </div>
             <div class="pb-6">
               <Markdown :markdown="question.hint"></Markdown>
