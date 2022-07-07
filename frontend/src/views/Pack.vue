@@ -40,7 +40,7 @@
             <div class="pb-6">
               <Markdown :markdown="question.hint"></Markdown>
             </div>
-            <component :is="types[question.type]" :question="question"
+            <component :is="types[question.type]" :question="question" :allowComment="commentable()"
                        @update-answer="updateAnswer">
             </component>
           </div>
@@ -94,6 +94,10 @@ const showNext = computed(() => {
 const getQuestion = (questionId) => {
   return pack.value.questions.find((question) => question.id === questionId)
 }
+
+// policy packs can't be commented on
+// TODO: make this part of the API pack response? Like add an options/settings section or something?
+const commentable = () => type !== 'policy'
 
 const move = async (distance) => {
   groupIndex.value = clamp(groupIndex.value + distance, 0, questionGroups.value.length - 1)

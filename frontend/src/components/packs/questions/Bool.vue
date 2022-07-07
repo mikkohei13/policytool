@@ -12,7 +12,8 @@
       <input v-model="value" type="radio" :id="notSpecifiedId" :name="group" value="notSpecified">
       <label :for="notSpecifiedId">Not specified</label>
     </div>
-    <textarea v-model="comment" :id="commentId" placeholder="Comments" class="mt-8"></textarea>
+    <textarea v-if="allowComment" v-model="comment" :id="commentId" placeholder="Comments"
+              class="mt-8"></textarea>
   </div>
 </template>
 
@@ -20,7 +21,10 @@
 import {ref, watch} from 'vue'
 
 const emit = defineEmits(['updateAnswer'])
-const {question} = defineProps(['question'])
+const {question, allowComment} = defineProps({
+  'question': {type: Array},
+  'allowComment': {type: Boolean, default: true}
+})
 
 const value = ref(question.answer ? question.answer.value : null)
 const comment = ref(question.answer ? question.answer.comment : null)

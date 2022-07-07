@@ -11,7 +11,8 @@
                :value="score" class="w-5 h-5">
       </div>
     </div>
-    <textarea v-model="comment" :id="commentId" placeholder="Comments" class="mt-8"></textarea>
+    <textarea v-if="allowComment" v-model="comment" :id="commentId" placeholder="Comments"
+              class="mt-8"></textarea>
   </div>
 </template>
 
@@ -19,7 +20,10 @@
 import {ref, watch} from 'vue'
 
 const emit = defineEmits(['updateAnswer'])
-const {question} = defineProps(['question'])
+const {question, allowComment} = defineProps({
+  'question': {type: Array},
+  'allowComment': {type: Boolean, default: true}
+})
 
 const value = ref(question.answer ? Number(question.answer.value) : null)
 const comment = ref(question.answer ? question.answer.comment : null)
