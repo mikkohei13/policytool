@@ -100,7 +100,7 @@
 - model: policy.PolicyComponentOption
   pk: 3915
   fields:
-    value: ‘Relevance for economic
+    value: Relevance for economic
     policy_component: 39
 
 - model: policy.PolicyComponentOption
