@@ -34,7 +34,7 @@ urlpatterns = [
     path('api/policy/', policy_views.InstitutionPolicyAreaAPIView.as_view()),
 
     # public api endpoints
-    path('api/institution/policy/', policy_views.get_dissco_service_list),
+    path('api/institution/policy/', policy_views.get_institution_public_policy_list),
     path('api/dissco/service/', policy_views.get_dissco_service_list),
     path('api/dissco/policy/', policy_views.get_dissco_policy_list),
 
