@@ -12,6 +12,8 @@ class Service(models.Model):
     name = models.TextField()
     # a short description of the service and its scope
     description = models.TextField(blank=True)
+    # service URL (could be the service's homepage or another page of additional info)
+    url = models.TextField(blank=True)
 
     def __str__(self) -> str:
         return self.name
