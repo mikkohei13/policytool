@@ -14,7 +14,7 @@ class ServiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Service
-        fields = ['id', 'name', 'description', 'components']
+        fields = ['id', 'name', 'description', 'url', 'components']
 
 
 class PolicyComponentOptionSerializer(serializers.ModelSerializer):
