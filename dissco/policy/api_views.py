@@ -1,5 +1,5 @@
 from rest_framework import permissions, authentication
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 from common.models import Institution
 from policy import models
 from policy import serializers
+from policy.alignment import calculate_alignment
 from policy.models import InstitutionPolicyArea
 
 
@@ -33,6 +34,24 @@ def get_institution_public_policy_list(request: Request) -> Response:
     policies = models.InstitutionPolicyArea.objects.all()
     serializer = serializers.InstitutionPolicyAreaSerializer(policies, many=True)
     return Response(serializer.data)
+
+
+# TODO: should this be public?
+@api_view(['GET'])
+@authentication_classes([authentication.TokenAuthentication])
+@permission_classes([permissions.IsAuthenticated])
+def get_institution_alignment(request: Request) -> Response:
+    institution = request.user.institutionuser.institution
+    alignment = [
+        {
+            'service': mapping.service_component.service_id,
+            'policy': mapping.policy_component.policy_area_id,
+            'service_component': mapping.service_component_id,
+            'policy_component': mapping.policy_component_id,
+            'status': calculate_alignment(mapping.policy_component, institution),
+        } for mapping in models.ServicePolicyMapping.objects.all()
+    ]
+    return Response(alignment)
 
 
 class InstitutionPolicyAreaAPIView(APIView):

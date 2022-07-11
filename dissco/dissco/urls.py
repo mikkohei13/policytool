@@ -32,6 +32,7 @@ urlpatterns = [
     path('api/<str:pack_type>/pack/<int:pack_id>/', pack_api.get_pack),
     path('api/<str:pack_type>/pack/<int:pack_id>/<int:question_id>/', pack_api.handle_answer),
     path('api/policy/', policy_views.InstitutionPolicyAreaAPIView.as_view()),
+    path('api/policy/alignment/', policy_views.get_institution_alignment),
 
     # public api endpoints
     path('api/institution/policy/', policy_views.get_institution_public_policy_list),
