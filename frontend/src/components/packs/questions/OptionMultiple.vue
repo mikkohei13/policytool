@@ -1,11 +1,10 @@
 <template>
   <div class="flex flex-col">
-    <select v-model="value" :id="inputId" :size="Math.min(question.options.length, 10) + 1" multiple>
-      <option disabled value="">Select as many as apply (press and hold ctrl to select multiple options)</option>
-      <option v-for="option in question.options">{{ option }}</option>
-    </select>
-    <textarea v-if="allowComment" v-model="comment" :id="commentId" placeholder="Comments"
-              class="mt-8"></textarea>
+    <div v-for="(option, index) in question.options" class="flex flex-row items-center gap-2">
+      <input type="checkbox" :id="index" :value="option" v-model="value" class="cursor-pointer" />
+      <label :for="index" class="cursor-pointer">{{ option }}</label>
+    </div>
+    <textarea v-if="allowComment" v-model="comment" placeholder="Comments" class="mt-8"></textarea>
   </div>
 </template>
 
@@ -20,9 +19,6 @@ const {question, allowComment} = defineProps({
 
 const value = ref(question.answer ? question.answer.value : [])
 const comment = ref(question.answer ? question.answer.comment : null)
-
-const inputId = `optionSingle-${question.id}`
-const commentId = `optionSingle-comment-${question.id}`
 
 watch([value, comment], ([newValue, newComment]) => {
   emit('updateAnswer', question.id, newValue, newComment)
