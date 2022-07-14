@@ -9,24 +9,24 @@ def load_policies(root: Path):
         return
 
     category_defs_path = root / 'categories.yml'
+    area_defs_path = root / 'areas'
+
     if category_defs_path.exists():
         category_defs: list[dict] = load_yaml(category_defs_path)
         for category_def in category_defs:
             result = upsert_object(PolicyCategory, category_def)
             yield result.result
 
-    for policy_def_path in root.iterdir():
-        if policy_def_path == category_defs_path:
-            continue
-
-        policy_def: dict = load_yaml(policy_def_path)
-        policy_component_defs: list[dict] = policy_def.pop('components', [])
-        category_id = policy_def.pop('category')
-        category = PolicyCategory.objects.get(id=category_id)
-        policy_area, result = upsert_object(PolicyArea, policy_def, category=category)
-        yield result
-        if policy_component_defs:
-            yield from load_policy_components(policy_area, policy_component_defs)
+    if area_defs_path.exists():
+        for policy_def_path in area_defs_path.iterdir():
+            policy_def: dict = load_yaml(policy_def_path)
+            policy_component_defs: list[dict] = policy_def.pop('components', [])
+            category_id = policy_def.pop('category')
+            category = PolicyCategory.objects.get(id=category_id)
+            policy_area, result = upsert_object(PolicyArea, policy_def, category=category)
+            yield result
+            if policy_component_defs:
+                yield from load_policy_components(policy_area, policy_component_defs)
 
 
 def load_policy_components(policy_area: PolicyArea, policy_component_defs: list[dict]):
