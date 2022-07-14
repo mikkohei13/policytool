@@ -9,7 +9,8 @@
       <label :for="noId">No</label>
     </div>
     <div class="flex flex-row items-center gap-2">
-      <input v-model="value" type="radio" :id="notSpecifiedId" :name="group" value="notSpecified">
+      <input v-model="value" type="radio" :id="notSpecifiedId" :name="group"
+             value="Not specified">
       <label :for="notSpecifiedId">Not specified</label>
     </div>
     <textarea v-if="allowComment" v-model="comment" :id="commentId" placeholder="Comments"
