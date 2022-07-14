@@ -20,13 +20,13 @@ def load_policies(root: Path):
     if area_defs_path.exists():
         for policy_def_path in area_defs_path.iterdir():
             policy_def: dict = load_yaml(policy_def_path)
-            policy_component_defs: list[dict] = policy_def.pop('components', [])
             category_id = policy_def.pop('category')
             category = PolicyCategory.objects.get(id=category_id)
-            policy_area, result = upsert_object(PolicyArea, policy_def, category=category)
+            policy_area, result = upsert_object(PolicyArea, policy_def, ignore={'components'},
+                                                category=category)
             yield result
-            if policy_component_defs:
-                yield from load_policy_components(policy_area, policy_component_defs)
+            if 'components' in policy_def:
+                yield from load_policy_components(policy_area, policy_def['components'])
 
 
 def load_policy_components(policy_area: PolicyArea, policy_component_defs: list[dict]):
