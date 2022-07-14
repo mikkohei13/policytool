@@ -29,8 +29,14 @@ def load_service_components(service: Service, defs: list[dict]):
     """
     Load the service components from the service definition.
     """
+    ids = set()
+
     for service_component_def in defs:
         component_id = gen_offset_id(service.id, service_component_def.pop('ref'))
         result = upsert_object(ServiceComponent, service_component_def, object_id=component_id,
                                service=service)
         yield result.result
+        ids.add(result.object.id)
+
+    deleted, _ = ServiceComponent.objects.exclude(id__in=ids).delete()
+    yield from [UpsertResult.DELETED] * deleted
