@@ -7,7 +7,8 @@ scope: >-
   stored, exchanged, referenced for the consistent collection and interoperability of data
   across DiSSCo services, systems, users.
 components:
-  - name: Specimen data description standards
+  - ref: 1
+    name: Specimen data description standards
     question: What specimen data standards do you use?
     order: 1
     description: >-
@@ -17,16 +18,25 @@ components:
       Darwin core).
     type: options
     options:
-      - ABCD-EFG (for geological objects)
-      - Darwin Core
-      - ABCD (for biological objects)
-      - OpenDS
-      - ABCD-DNA
-      - MIDS
-      - Other
-      - Non-Specified
+      - ref: 1
+        value: ABCD-EFG (for geological objects)
+      - ref: 2
+        value: Darwin Core
+      - ref: 3
+        value: ABCD (for biological objects)
+      - ref: 4
+        value: OpenDS
+      - ref: 5
+        value: ABCD-DNA
+      - ref: 6
+        value: MIDS
+      - ref: 7
+        value: Other
+      - ref: 8
+        value: Non-Specified
 
-  - name: Collection description granularity
+  - ref: 2
+    name: Collection description granularity
     question: >-
       Does your institution have a granular collection categorisation system, like that
       described in the SYNTHESYS+ collection categorisation schema?
@@ -39,7 +49,8 @@ components:
       dashboard, which will be embedded into ELViS.
     type: bool
 
-  - name: Collection data description standards
+  - ref: 3
+    name: Collection data description standards
     question: What collection data description standards to you use?
     order: 3
     description: >-
@@ -47,12 +58,17 @@ components:
       including images and level of digitisation.
     type: options
     options:
-      - TDWG Collection Description Data Standard
-      - Other
-      - Non-specified
-      - None
+      - ref: 1
+        value: TDWG Collection Description Data Standard
+      - ref: 2
+        value: Other
+      - ref: 3
+        value: Non-specified
+      - ref: 4
+        value: None
 
-  - name: Unique persistent identifier for specimens (non digitised and digitised)
+  - ref: 4
+    name: Unique persistent identifier for specimens (non digitised and digitised)
     question: >-
       What Unique persistent identifiers to you use for specimens (non digitised and digitised)?
     order: 4
@@ -61,14 +77,21 @@ components:
       state information about the object.
     type: options
     options:
-      - CETAF stable identifiers
-      - Natural Science Identifier, NSId
-      - DOIs
-      - Other
-      - Non-specified
-      - None
+      - ref: 1
+        value: CETAF stable identifiers
+      - ref: 2
+        value: Natural Science Identifier, NSId
+      - ref: 3
+        value: DOIs
+      - ref: 4
+        value: Other
+      - ref: 5
+        value: Non-specified
+      - ref: 6
+        value: None
 
-  - name: Unique persistent identifiers for institutions
+  - ref: 5
+    name: Unique persistent identifiers for institutions
     question: What Unique persistent identifiers do you use for your institution?
     order: 5
     description: >-
@@ -76,14 +99,21 @@ components:
       internet.
     type: options
     options:
-      - GRID (Global Research Identifier Database)
-      - Wikidata
-      - ROR (Research Organisation Registry community)
-      - Other
-      - Non-specified
-      - None
+      - ref: 1
+        value: GRID (Global Research Identifier Database)
+      - ref: 2
+        value: Wikidata
+      - ref: 3
+        value: ROR (Research Organisation Registry community)
+      - ref: 4
+        value: Other
+      - ref: 5
+        value: Non-specified
+      - ref: 6
+        value: None
 
-  - name: Unique, persistent identifiers for collections.
+  - ref: 6
+    name: Unique, persistent identifiers for collections.
     question: What Unique persistent identifiers do you use for your collections?
     order: 6
     description: >-
@@ -92,8 +122,13 @@ components:
       descriptive metadata to assist discovery and verification.
     type: options
     options:
-      - GRSciColl (GBIF registry of scientific collections)
-      - DOIs
-      - Other
-      - Non-specified
-      - None
+      - ref: 1
+        value: GRSciColl (GBIF registry of scientific collections)
+      - ref: 2
+        value: DOIs
+      - ref: 3
+        value: Other
+      - ref: 4
+        value: Non-specified
+      - ref: 5
+        value: None

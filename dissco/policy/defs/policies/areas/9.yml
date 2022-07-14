@@ -6,7 +6,8 @@ scope: >-
   Refers to policy components that address institutions' strategies, prioritisations and best
   practices towards digitising their collections.
 components:
-  - name: Digitisation strategy
+  - ref: 1
+    name: Digitisation strategy
     question: Do you have a documented institutional policy on digitization strategy?
     order: 1
     description: >-
@@ -14,21 +15,34 @@ components:
       digitisation capacity, workflows, techniques, and prioritisation.
     type: options
     options:
-      - Oversight and governance
-      - Digitisation goals and prioritisation
-      - Digitisation workflows
-      - Digitisation capacity
-      - Mass digitisation
-      - 2D imaging
-      - 3D imaging
-      - DNA sequencing
-      - Digitisation data standards
-      - Other
-      - Not Specified
-      - None
+      - ref: 1
+        value: Oversight and governance
+      - ref: 2
+        value: Digitisation goals and prioritisation
+      - ref: 3
+        value: Digitisation workflows
+      - ref: 4
+        value: Digitisation capacity
+      - ref: 5
+        value: Mass digitisation
+      - ref: 6
+        value: 2D imaging
+      - ref: 7
+        value: 3D imaging
+      - ref: 8
+        value: DNA sequencing
+      - ref: 9
+        value: Digitisation data standards
+      - ref: 10
+        value: Other
+      - ref: 11
+        value: Not Specified
+      - ref: 12
+        value: None
 
   # TODO: question missing
-  - name: Minting of Digital Specimens with Unique Persistent Identifiers
+  - ref: 2
+    name: Minting of Digital Specimens with Unique Persistent Identifiers
     question: TODO
     order: 2
     description: >-
@@ -37,7 +51,8 @@ components:
       and for registering their own Digital Specimens with the DiSSCoHub infrastructure.
     type: bool
 
-  - name: Prioritisation criteria
+  - ref: 3
+    name: Prioritisation criteria
     question: >-
       Which criteria does your institution use to prioritise digitisation of your collections?
     order: 3
@@ -46,28 +61,53 @@ components:
       collections.
     type: options
     options:
-      - Institutional science strategy
-      - National science strategy
-      - Collections development
-      - Collections moves
-      - Collections conservation
-      - Digitisation workflow effectiveness
-      - Public engagement
-      - Institutional research focus
-      - Global research focus
-      - National research focus
-      - External funding
-      - Compliance with standards
-      - Object identifiers
-      - Cultural importance
-      - Relevance for economic activities
-      - Relevant for fundamental research
-      - Relevant for access to primary biodiversity data
-      - Research focused on studying processes and trends (e.g. evolution)
-      - Contribute to conservation (policy)
-      - Institutional revenue
-      - Financial donations
-      - Educational purposes
-      - Other
-      - None
-      - Not specified
+      - ref: 1
+        value: Institutional science strategy
+      - ref: 2
+        value: National science strategy
+      - ref: 3
+        value: Collections development
+      - ref: 4
+        value: Collections moves
+      - ref: 5
+        value: Collections conservation
+      - ref: 6
+        value: Digitisation workflow effectiveness
+      - ref: 7
+        value: Public engagement
+      - ref: 8
+        value: Institutional research focus
+      - ref: 9
+        value: Global research focus
+      - ref: 10
+        value: National research focus
+      - ref: 11
+        value: External funding
+      - ref: 12
+        value: Compliance with standards
+      - ref: 13
+        value: Object identifiers
+      - ref: 14
+        value: Cultural importance
+      - ref: 15
+        value: Relevance for economic activities
+      - ref: 16
+        value: Relevant for fundamental research
+      - ref: 17
+        value: Relevant for access to primary biodiversity data
+      - ref: 18
+        value: Research focused on studying processes and trends (e.g. evolution)
+      - ref: 19
+        value: Contribute to conservation (policy)
+      - ref: 20
+        value: Institutional revenue
+      - ref: 21
+        value: Financial donations
+      - ref: 22
+        value: Educational purposes
+      - ref: 23
+        value: Other
+      - ref: 24
+        value: None
+      - ref: 25
+        value: Not specified

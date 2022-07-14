@@ -19,10 +19,15 @@ def load_yaml(path: Path) -> dict | list:
     return yaml.safe_load(path.read_text(encoding='utf-8'))
 
 
+def gen_offset_id(parent_id: int, child_id: int) -> int:
+    return (parent_id * 1000) + child_id
+
+
 class UpsertResult(Enum):
     CREATED = 'created'
     UPDATED = 'updated'
     NOOP = 'noop'
+    DELETED = 'deleted'
 
     def __str__(self) -> str:
         if self == UpsertResult.NOOP:

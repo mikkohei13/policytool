@@ -8,7 +8,8 @@ scope: >-
   digital media linked to Natural Science Collections and research data derived from
   collections.
 components:
-  - name: Publication of specimen data to an open access repository
+  - ref: 1
+    name: Publication of specimen data to an open access repository
     question: Which open access repository(ies) do you use to publish specimen data?
     order: 1
     description: >-
@@ -16,21 +17,35 @@ components:
       for aggregation of data by  DiSSCo services (e.g. ELViS).
     type: options
     options:
-      - Geoscience Collections Access Service (GeoCASe)
-      - Global Biodiversity Information Facility (GBIF)
-      - Index Herbariorum
-      - Wikidata
-      - National Biodiversity Network (NBN)
-      - Global Genome Biodiversity Network (GGBN)
-      - GenBank
-      - Europeana
-      - JACQ
-      - Institution open access repository
-      - Other
-      - Not specified
-      - None
+      - ref: 1
+        value: Geoscience Collections Access Service (GeoCASe)
+      - ref: 2
+        value: Global Biodiversity Information Facility (GBIF)
+      - ref: 3
+        value: Index Herbariorum
+      - ref: 4
+        value: Wikidata
+      - ref: 5
+        value: National Biodiversity Network (NBN)
+      - ref: 6
+        value: Global Genome Biodiversity Network (GGBN)
+      - ref: 7
+        value: GenBank
+      - ref: 8
+        value: Europeana
+      - ref: 9
+        value: JACQ
+      - ref: 10
+        value: Institution open access repository
+      - ref: 11
+        value: Other
+      - ref: 12
+        value: Not specified
+      - ref: 13
+        value: None
 
-  - name: Publication of images to an open access repository
+  - ref: 2
+    name: Publication of images to an open access repository
     question: Which open access repository(ies) do you use to publish images?
     order: 2
     description: >-
@@ -38,16 +53,25 @@ components:
       aggregation of data by DiSSCo services (e.g. ELViS).
     type: options
     options:
-      - EUDAT
-      - Zenodo
-      - Wikidata
-      - Institution open access repository
-      - JACQ
-      - Other
-      - Not specified
-      - None
+      - ref: 1
+        value: EUDAT
+      - ref: 2
+        value: Zenodo
+      - ref: 3
+        value: Wikidata
+      - ref: 4
+        value: Institution open access repository
+      - ref: 5
+        value: JACQ
+      - ref: 6
+        value: Other
+      - ref: 7
+        value: Not specified
+      - ref: 8
+        value: None
 
-  - name: Default license(s) for specimen data
+  - ref: 3
+    name: Default license(s) for specimen data
     question: What default licence(s) do you use for specimen data?
     order: 3
     description: >-
@@ -55,30 +79,53 @@ components:
       object, locality, geographic origin, collector, associated annotations (label information).
     type: options
     options:
-      - Creative Commons Public Domain Dedication (CC0)
-      - Creative Commons Attribution (CC BY)
-      - Creative Commons ShareAlike (CC BY-SA)
-      - Creative commons Noncommercial ShareAlike (CC BY-NC-SA)
-      - Creative Commons NonCommercial (CC BY-NC)
-      - Creative Commons NoDerivatives (CC BY-ND)
-      - Creative CommonsNonCommercial NoDerivatives (CC BY-NC-ND)
-      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4)
-      - GNU Free Documentation License
-      - UK Open Government Licence (OGL)
-      - Open Data Commons Public Domain Dedication and License (PDDL)
-      - Open Data Commons Attribution License
-      - Open Data Commons Open Database License (ODbL)
-      - Other (Attribution)
-      - Other (Not Open)
-      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4
-      - Other (Open)
-      - Other (Public Domain)
-      - Other (request a licence)
-      - Other (Private and scientific use)
-      - None
-      - Not specified
+      - ref: 1
+        value: Creative Commons Public Domain Dedication (CC0)
+      - ref: 2
+        value: Creative Commons Attribution (CC BY)
+      - ref: 3
+        value: Creative Commons ShareAlike (CC BY-SA)
+      - ref: 4
+        value: Creative commons Noncommercial ShareAlike (CC BY-NC-SA)
+      - ref: 5
+        value: Creative Commons NonCommercial (CC BY-NC)
+      - ref: 6
+        value: Creative Commons NoDerivatives (CC BY-ND)
+      - ref: 7
+        value: Creative CommonsNonCommercial NoDerivatives (CC BY-NC-ND)
+      - ref: 8
+        value: Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4)
+      - ref: 9
+        value: GNU Free Documentation License
+      - ref: 10
+        value: UK Open Government Licence (OGL)
+      - ref: 11
+        value: Open Data Commons Public Domain Dedication and License (PDDL)
+      - ref: 12
+        value: Open Data Commons Attribution License
+      - ref: 13
+        value: Open Data Commons Open Database License (ODbL)
+      - ref: 14
+        value: Other (Attribution)
+      - ref: 15
+        value: Other (Not Open)
+      - ref: 16
+        value: Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4
+      - ref: 17
+        value: Other (Open)
+      - ref: 18
+        value: Other (Public Domain)
+      - ref: 19
+        value: Other (request a licence)
+      - ref: 20
+        value: Other (Private and scientific use)
+      - ref: 21
+        value: None
+      - ref: 22
+        value: Not specified
 
-  - name: Default license(s) for research data
+  - ref: 4
+    name: Default license(s) for research data
     question: What default license(s) do you use for research data?
     order: 4
     description: >-
@@ -86,120 +133,212 @@ components:
       information collected, stored, and processed in relation to the collection specimen.
     type: options
     options:
-      - Creative Commons Public Domain Dedication (CC0)
-      - Creative Commons Attribution (CC BY)
-      - Creative Commons ShareAlike (CC BY-SA)
-      - Creative commons Noncommercial ShareAlike (CC BY-NC-SA)
-      - Creative Commons NonCommercial (CC BY-NC)
-      - Creative Commons NoDerivatives (CC BY-ND)
-      - Creative CommonsNonCommercial NoDerivatives (CC BY-NC-ND)
-      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4)
-      - GNU Free Documentation License
-      - UK Open Government Licence (OGL)
-      - Open Data Commons Public Domain Dedication and License (PDDL)
-      - Open Data Commons Attribution License
-      - Open Data Commons Open Database License (ODbL)
-      - Other (Attribution)
-      - Other (Not Open)
-      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4
-      - Other (Open)
-      - Other (Public Domain)
-      - Other (request a licence)
-      - Other (Private and scientific use)
-      - None
-      - Not specified
+      - ref: 1
+        value: Creative Commons Public Domain Dedication (CC0)
+      - ref: 2
+        value: Creative Commons Attribution (CC BY)
+      - ref: 3
+        value: Creative Commons ShareAlike (CC BY-SA)
+      - ref: 4
+        value: Creative commons Noncommercial ShareAlike (CC BY-NC-SA)
+      - ref: 5
+        value: Creative Commons NonCommercial (CC BY-NC)
+      - ref: 6
+        value: Creative Commons NoDerivatives (CC BY-ND)
+      - ref: 7
+        value: Creative CommonsNonCommercial NoDerivatives (CC BY-NC-ND)
+      - ref: 8
+        value: Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4)
+      - ref: 9
+        value: GNU Free Documentation License
+      - ref: 10
+        value: UK Open Government Licence (OGL)
+      - ref: 11
+        value: Open Data Commons Public Domain Dedication and License (PDDL)
+      - ref: 12
+        value: Open Data Commons Attribution License
+      - ref: 13
+        value: Open Data Commons Open Database License (ODbL)
+      - ref: 14
+        value: Other (Attribution)
+      - ref: 15
+        value: Other (Not Open)
+      - ref: 16
+        value: Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4
+      - ref: 17
+        value: Other (Open)
+      - ref: 18
+        value: Other (Public Domain)
+      - ref: 19
+        value: Other (request a licence)
+      - ref: 20
+        value: Other (Private and scientific use)
+      - ref: 21
+        value: None
+      - ref: 22
+        value: Not specified
 
-  - name: Default license(s) for 2D images
+  - ref: 5
+    name: Default license(s) for 2D images
     question: What default license(s) do you use for 2D images?
     order: 5
     description: >-
       Restrictions on the copyrights/sharing and usage of 2D images.
     type: options
     options:
-      - Creative Commons Public Domain Dedication (CC0)
-      - Creative Commons Attribution (CC BY)
-      - Creative Commons ShareAlike (CC BY-SA)
-      - Creative commons Noncommercial ShareAlike (CC BY-NC-SA)
-      - Creative Commons NonCommercial (CC BY-NC)
-      - Creative Commons NoDerivatives (CC BY-ND)
-      - Creative CommonsNonCommercial NoDerivatives (CC BY-NC-ND)
-      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4)
-      - GNU Free Documentation License
-      - UK Open Government Licence (OGL)
-      - Open Data Commons Public Domain Dedication and License (PDDL)
-      - Open Data Commons Attribution License
-      - Open Data Commons Open Database License (ODbL)
-      - Other (Attribution)
-      - Other (Not Open)
-      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4
-      - Other (Open)
-      - Other (Public Domain)
-      - Other (request a licence)
-      - Other (Private and scientific use)
-      - None
-      - Not specified
+      - ref: 1
+        value: Creative Commons Public Domain Dedication (CC0)
+      - ref: 2
+        value: Creative Commons Attribution (CC BY)
+      - ref: 3
+        value: Creative Commons ShareAlike (CC BY-SA)
+      - ref: 4
+        value: Creative commons Noncommercial ShareAlike (CC BY-NC-SA)
+      - ref: 5
+        value: Creative Commons NonCommercial (CC BY-NC)
+      - ref: 6
+        value: Creative Commons NoDerivatives (CC BY-ND)
+      - ref: 7
+        value: Creative CommonsNonCommercial NoDerivatives (CC BY-NC-ND)
+      - ref: 8
+        value: Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4)
+      - ref: 9
+        value: GNU Free Documentation License
+      - ref: 10
+        value: UK Open Government Licence (OGL)
+      - ref: 11
+        value: Open Data Commons Public Domain Dedication and License (PDDL)
+      - ref: 12
+        value: Open Data Commons Attribution License
+      - ref: 13
+        value: Open Data Commons Open Database License (ODbL)
+      - ref: 14
+        value: Other (Attribution)
+      - ref: 15
+        value: Other (Not Open)
+      - ref: 16
+        value: Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4
+      - ref: 17
+        value: Other (Open)
+      - ref: 18
+        value: Other (Public Domain)
+      - ref: 19
+        value: Other (request a licence)
+      - ref: 20
+        value: Other (Private and scientific use)
+      - ref: 21
+        value: None
+      - ref: 22
+        value: Not specified
 
-  - name: Default license(s) for 3D images
+  - ref: 6
+    name: Default license(s) for 3D images
     question: What default license(s) do you use for 3D images?
     order: 6
     description: >-
       Restrictions on the copyrights/sharing and usage of 3D images
     type: options
     options:
-      - Creative Commons Public Domain Dedication (CC0)
-      - Creative Commons Attribution (CC BY)
-      - Creative Commons ShareAlike (CC BY-SA)
-      - Creative commons Noncommercial ShareAlike (CC BY-NC-SA)
-      - Creative Commons NonCommercial (CC BY-NC)
-      - Creative Commons NoDerivatives (CC BY-ND)
-      - Creative CommonsNonCommercial NoDerivatives (CC BY-NC-ND)
-      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4)
-      - GNU Free Documentation License
-      - UK Open Government Licence (OGL)
-      - Open Data Commons Public Domain Dedication and License (PDDL)
-      - Open Data Commons Attribution License
-      - Open Data Commons Open Database License (ODbL)
-      - Other (Attribution)
-      - Other (Not Open)
-      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4
-      - Other (Open)
-      - Other (Public Domain)
-      - Other (request a licence)
-      - Other (Private and scientific use)
-      - None
-      - Not specified
+      - ref: 1
+        value: Creative Commons Public Domain Dedication (CC0)
+      - ref: 2
+        value: Creative Commons Attribution (CC BY)
+      - ref: 3
+        value: Creative Commons ShareAlike (CC BY-SA)
+      - ref: 4
+        value: Creative commons Noncommercial ShareAlike (CC BY-NC-SA)
+      - ref: 5
+        value: Creative Commons NonCommercial (CC BY-NC)
+      - ref: 6
+        value: Creative Commons NoDerivatives (CC BY-ND)
+      - ref: 7
+        value: Creative CommonsNonCommercial NoDerivatives (CC BY-NC-ND)
+      - ref: 8
+        value: Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4)
+      - ref: 9
+        value: GNU Free Documentation License
+      - ref: 10
+        value: UK Open Government Licence (OGL)
+      - ref: 11
+        value: Open Data Commons Public Domain Dedication and License (PDDL)
+      - ref: 12
+        value: Open Data Commons Attribution License
+      - ref: 13
+        value: Open Data Commons Open Database License (ODbL)
+      - ref: 14
+        value: Other (Attribution)
+      - ref: 15
+        value: Other (Not Open)
+      - ref: 16
+        value: Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4
+      - ref: 17
+        value: Other (Open)
+      - ref: 18
+        value: Other (Public Domain)
+      - ref: 19
+        value: Other (request a licence)
+      - ref: 20
+        value: Other (Private and scientific use)
+      - ref: 21
+        value: None
+      - ref: 22
+        value: Not specified
 
-  - name: Default licence(s) for videos and audio recordings
+  - ref: 7
+    name: Default licence(s) for videos and audio recordings
     question: What default license(s) do you use for videos and audio recordings?
     order: 7
     description: >-
       Restrictions on the copyrights/sharing and usage of videos and audio recordings.
     type: options
     options:
-      - Creative Commons Public Domain Dedication (CC0)
-      - Creative Commons Attribution (CC BY)
-      - Creative Commons ShareAlike (CC BY-SA)
-      - Creative commons Noncommercial ShareAlike (CC BY-NC-SA)
-      - Creative Commons NonCommercial (CC BY-NC)
-      - Creative Commons NoDerivatives (CC BY-ND)
-      - Creative CommonsNonCommercial NoDerivatives (CC BY-NC-ND)
-      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4)
-      - GNU Free Documentation License
-      - UK Open Government Licence (OGL)
-      - Open Data Commons Public Domain Dedication and License (PDDL)
-      - Open Data Commons Attribution License
-      - Open Data Commons Open Database License (ODbL)
-      - Other (Attribution)
-      - Other (Not Open)
-      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4
-      - Other (Open)
-      - Other (Public Domain)
-      - Other (request a licence)
-      - Other (Private and scientific use)
-      - None
-      - Not specified
+      - ref: 1
+        value: Creative Commons Public Domain Dedication (CC0)
+      - ref: 2
+        value: Creative Commons Attribution (CC BY)
+      - ref: 3
+        value: Creative Commons ShareAlike (CC BY-SA)
+      - ref: 4
+        value: Creative commons Noncommercial ShareAlike (CC BY-NC-SA)
+      - ref: 5
+        value: Creative Commons NonCommercial (CC BY-NC)
+      - ref: 6
+        value: Creative Commons NoDerivatives (CC BY-ND)
+      - ref: 7
+        value: Creative CommonsNonCommercial NoDerivatives (CC BY-NC-ND)
+      - ref: 8
+        value: Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4)
+      - ref: 9
+        value: GNU Free Documentation License
+      - ref: 10
+        value: UK Open Government Licence (OGL)
+      - ref: 11
+        value: Open Data Commons Public Domain Dedication and License (PDDL)
+      - ref: 12
+        value: Open Data Commons Attribution License
+      - ref: 13
+        value: Open Data Commons Open Database License (ODbL)
+      - ref: 14
+        value: Other (Attribution)
+      - ref: 15
+        value: Other (Not Open)
+      - ref: 16
+        value: Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4
+      - ref: 17
+        value: Other (Open)
+      - ref: 18
+        value: Other (Public Domain)
+      - ref: 19
+        value: Other (request a licence)
+      - ref: 20
+        value: Other (Private and scientific use)
+      - ref: 21
+        value: None
+      - ref: 22
+        value: Not specified
 
-  - name: Publication of Institutional facilities data to open access repository
+  - ref: 8
+    name: Publication of Institutional facilities data to open access repository
     question: Where do you publish your institutional facilities data/information?
     order: 8
     description: >-
@@ -208,14 +347,21 @@ components:
       data by DiSSCo services (e.g. ELViS).
     type: options
     options:
-      - CETAF Registry of Collections
-      - Institution repository
-      - Wikidata
-      - Other
-      - Not specified
-      - None
+      - ref: 1
+        value: CETAF Registry of Collections
+      - ref: 2
+        value: Institution repository
+      - ref: 3
+        value: Wikidata
+      - ref: 4
+        value: Other
+      - ref: 5
+        value: Not specified
+      - ref: 6
+        value: None
 
-  - name: Publication of collection data to an open access repository
+  - ref: 9
+    name: Publication of collection data to an open access repository
     question: Where do you publish your collections data?
     order: 9
     description: >-
@@ -224,16 +370,25 @@ components:
       repository, that allows data aggregation  by  DiSSCo services (e.g ELViS).
     type: options
     options:
-      - CETAF Registry of Collections
-      - Index Herbariorum
-      - Wikidata
-      - GBIF registry of scientific collections
-      - Institution open access repository
-      - Other
-      - Not specified
-      - None
+      - ref: 1
+        value: CETAF Registry of Collections
+      - ref: 2
+        value: Index Herbariorum
+      - ref: 3
+        value: Wikidata
+      - ref: 4
+        value: GBIF registry of scientific collections
+      - ref: 5
+        value: Institution open access repository
+      - ref: 6
+        value: Other
+      - ref: 7
+        value: Not specified
+      - ref: 8
+        value: None
 
-  - name: FAIR principles
+  - ref: 10
+    name: FAIR principles
     question: Do you follow FAIR principles when publishing NSCs data?
     order: 10
     description: >-
@@ -245,7 +400,8 @@ components:
       https://www.go-fair.org/fair-principles/ July 2nd, 2021).
     type: bool
 
-  - name: Link images to IIIF compatible servers
+  - ref: 11
+    name: Link images to IIIF compatible servers
     question: Are your images linked to IIIF compatible servers?
     order: 11
     description: >-

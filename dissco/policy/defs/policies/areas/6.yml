@@ -7,7 +7,8 @@ scope: >-
   to genetic resources, related traditional knowledge and resultant benefit sharing, including
   Natural History Collection sectoral best practice.
 components:
-  - name: Acquisition of genetic resources and prior informed consent for their utilization
+  - ref: 1
+    name: Acquisition of genetic resources and prior informed consent for their utilization
     question: Does your institution regulate the acquisition of genetic resources?
     order: 1
     description: >-
@@ -18,7 +19,8 @@ components:
       prior informed consent or any mutually agreed terms he/she entered into.
     type: bool
 
-  - name: Traditional Knowledge
+  - ref: 2
+    name: Traditional Knowledge
     question: >-
       Do you have institutional policy that reflects national, EU/Supranational regulations on
       Traditional Knowledge related to genetic resources?
@@ -34,7 +36,8 @@ components:
       and mutually agreed terms established).
     type: bool
 
-  - name: Utilisation of Genetic Resources
+  - ref: 3
+    name: Utilisation of Genetic Resources
     question: >-
       Do you follow any national or EU/Supranational regulations on the utilisation of Genetic
       resources related to genetic resources?
@@ -46,7 +49,8 @@ components:
       through the application of biotechnology.
     type: bool
 
-  - name: Benefit sharing
+  - ref: 4
+    name: Benefit sharing
     question: >-
       Do you have an institutional policy that reflects national or supranational regulations on
       benefit sharing of genetic resources?
@@ -59,7 +63,8 @@ components:
       associated benefits.
     type: bool
 
-  - name: Commercial use
+  - ref: 5
+    name: Commercial use
     question: >-
       Do you have an institutional policy that reflects  national or supranational regulations on
       the commercial use of genetic resources?
@@ -73,7 +78,8 @@ components:
       obey the terms for benefit-sharing.
     type: bool
 
-  - name: Access to information and associated data on genetic resources
+  - ref: 6
+    name: Access to information and associated data on genetic resources
     question: >-
       Do you have an institutional policy that reflects national or supranational regulations on
       providing access to information and associated data on genetic resources?

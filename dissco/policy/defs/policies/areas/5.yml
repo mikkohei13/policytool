@@ -5,7 +5,8 @@ number: 5
 scope: >-
   Refers to policy components related to collection loan management
 components:
-  - name: Incoming and outgoing loans
+  - ref: 1
+    name: Incoming and outgoing loans
     question: Does your institution follow a documented loans policy?
     order: 1
     description: >-

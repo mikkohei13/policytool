@@ -6,7 +6,8 @@ scope: >-
   This covers the maintenance, security and risk management of collection and specimen data.
   Data curation is concerned with curating digital specimen and collection data
 components:
-  - name: Data management plan
+  - ref: 1
+    name: Data management plan
     question: Does your institution follow a documented data management plan?
     order: 1
     description: >-
@@ -14,7 +15,8 @@ components:
       specimen, collection, research and institutional data.
     type: bool
 
-  - name: Protection of sensitive data
+  - ref: 2
+    name: Protection of sensitive data
     question: >-
       Do you have procedure or policy on the protection of sensitive data that is not covered by
       GDPR?
@@ -28,7 +30,8 @@ components:
       sensitive data.
     type: bool
 
-  - name: Information incident management processes defined
+  - ref: 3
+    name: Information incident management processes defined
     question: >-
       Does your institution have a documented incident management process for breaches of data
       security?

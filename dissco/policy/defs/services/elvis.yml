@@ -3,14 +3,16 @@ name: ELViS
 description: The European Loans and Visits System
 url: https://elvis.dissco.eu/
 components:
-  - name: Providing people data
+  - ref: 1
+    name: Providing people data
     description: >-
       This refers to providing people data to ELViS. ELViS will provide detailed information on
       requesters, TAF admins, and experts associated with institutions' collections (Curators,
       Collection Managers). People data include: Name, Email, Affiliation, ORCID's, Researcher and
       Expertise profiles. People will need to be uniquely identified.
 
-  - name: Providing specimen data
+  - ref: 2
+    name: Providing specimen data
     description: >-
       This refers to the workflow of providing data on your institutions' specimen holdings via
       authoritative data sources. ELViS is a transactional platform and so will not store data but
@@ -20,7 +22,8 @@ components:
       persistent identifiers, collection holder names, textual, image, digitisation level, Usage
       policy as (URL).
 
-  - name: Providing collection data
+  - ref: 3
+    name: Providing collection data
     description: >-
       This refers to the workflow of providing data via authoritative data sources on your
       institutions' collection holdings. ELViS will provide a catalogue of Institutional Collections
@@ -29,13 +32,15 @@ components:
       include: unique persistent identifiers, collection holder names, image, collection strength
       (free text), total specimen counts, digitisation level, Usage policy as (URL).
 
-  - name: Providing Institution/facilities data
+  - ref: 4
+    name: Providing Institution/facilities data
     description: >-
       This refers to the workflow of providing data via authoritative data sources on your
       institution and facilities. ELViS requires institutions to provide the following information:
       Institution names, identifiers, facilities, digitisation priority, policy and workflow.
 
-  - name: User Authentication and Authorisation Infrastructure (AAI)
+  - ref: 5
+    name: User Authentication and Authorisation Infrastructure (AAI)
     description: >-
       The AAI layer provides authentication (ascertaining that somebody really is who they claim to
       be / who you are) and authorisation (refers to rules and policies that determine who is
@@ -43,7 +48,8 @@ components:
       credentials (or ORCID if institution cannot provide the attributes and be federated) to a
       DiSSCo service (i.e., ELViS).
 
-  - name: Providing virtual access through Digitisation on Demand (DOD)
+  - ref: 6
+    name: Providing virtual access through Digitisation on Demand (DOD)
     description: >-
       This service category workflow  refers to the requirements needed to fulfill digitisation on
       demand requests: from dealing with the requesters proposal, the ability to carry-out the
@@ -55,7 +61,8 @@ components:
       digitisation status, collection citation and research output tracking. ELViS will display this
       information via an online collections dashboard.
 
-  - name: Providing physical access
+  - ref: 7
+    name: Providing physical access
     description: >-
       This service category refers to the policies needed for the for physical visits to
       collections: receiving the application from the researcher, processing the requesters
@@ -65,7 +72,8 @@ components:
       numbers of physical access) digitisation status, collection citation and research output
       tracking. ELViS will display this information via an online collections dashboard.
 
-  - name: Providing loans
+  - ref: 8
+    name: Providing loans
     description: >-
       This refers to the workflow of dealing with loan requests, which involves processing requester
       information (i.e. names and contact details)  As part of ELViS institutions will need provide
@@ -73,12 +81,14 @@ components:
       collection citation and research output tracking. ELViS will display this information via an
       online collections dashboard.
 
-  - name: Integrating local collection management systems
+  - ref: 9
+    name: Integrating local collection management systems
     description: >-
       This refers to technical requirements for linking ELViS to the institutional Collection
       management systems. API Criteria etc.
 
-  - name: Providing destructive sampling
+  - ref: 10
+    name: Providing destructive sampling
     description: >-
       This refers to the workflow of dealing with sampling requests, which involves processing
       requester information (i.e. names and contact details). These requests may form part of a

@@ -6,7 +6,8 @@ scope: >-
   Policies that refer to any information that relates to an identified or identifiable living
   individual.
 components:
-  - name: Identifiers for person authentication
+  - ref: 1
+    name: Identifiers for person authentication
     question: What system do you use for authenticating institution personal?
     order: 1
     description: >-
@@ -15,14 +16,21 @@ components:
       descriptive metadata to assist discovery and verification.
     type: options
     options:
-      - ORCID IDs
-      - VIAF
-      - Institution credentials
-      - Other
-      - Non-specified
-      - None
+      - ref: 1
+        value: ORCID IDs
+      - ref: 2
+        value: VIAF
+      - ref: 3
+        value: Institution credentials
+      - ref: 4
+        value: Other
+      - ref: 5
+        value: Non-specified
+      - ref: 6
+        value: None
 
-  - name: General Data Protection Regulation (EU) 2016/679 (GDPR)
+  - ref: 2
+    name: General Data Protection Regulation (EU) 2016/679 (GDPR)
     question: Do you follow the General Data Protection Regulation (GDPR) (EU)?
     order: 2
     description: >-

@@ -1,99 +1,114 @@
 service: 1
 mappings:
-  - service_component: Providing people data
+  - service_component: 1
     policy_components:
-      - name: Identifiers for person authentication
+      - area: 3
+        ref: 1
         rule: or
         options:
-          - ORCID IDs
-          - Institution credentials
+          - 1
+          - 3
 
-      - name: General Data Protection Regulation (EU) 2016/679 (GDPR)
+      - area: 3
+        ref: 2
         rule: equal
         value: yes
 
-  - service_component: Providing specimen data
+  - service_component: 2
     policy_components:
-      - name: Publication of specimen data to an open access repository
+      - area: 1
+        ref: 1
         rule: or
         options:
-          - Geoscience Collections Access Service (GeoCASe)
-          - Global Biodiversity Information Facility (GBIF)
-          - Wikidata
-          - National Biodiversity Network (NBN)
-          - Global Genome Biodiversity Network (GGBN)
-          - GenBank
-          - Europeana
-          - Institution open access repository
-          - Other
+          - 1
+          - 2
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 10
+          - 11
 
-      - name: Publication of images to an open access repository
+      - area: 1
+        ref: 2
         rule: or
         options:
-          - EUDAT
-          - Zenodo
-          - Wikidata
-          - Institution open access repository
-          - Other
+          - 1
+          - 2
+          - 3
+          - 4
+          - 6
 
-      - name: Default license(s) for specimen data
+      - area: 1
+        ref: 3
         rule: or
         options:
-          - Creative Commons Public Domain Dedication (CC0)
-          - Creative Commons Attribution (CC BY)
+          - 1
+          - 2
 
-      - name: Default license(s) for research data
+      - area: 1
+        ref: 4
         rule: or
         options:
-          - Creative Commons Public Domain Dedication (CC0)
-          - Creative Commons Attribution (CC BY)
+          - 1
+          - 2
 
-      - name: Default license(s) for 2D images
+      - area: 1
+        ref: 5
         rule: or
         options:
-          - Creative Commons Public Domain Dedication (CC0)
-          - Creative Commons Attribution (CC BY)
+          - 1
+          - 2
 
-      - name: Default license(s) for 3D images
+      - area: 1
+        ref: 6
         rule: or
         options:
-          - Creative Commons Public Domain Dedication (CC0)
-          - Creative Commons Attribution (CC BY)
+          - 1
+          - 2
 
-      - name: Default licence(s) for videos and audio recordings
+      - area: 1
+        ref: 7
         rule: or
         options:
-          - Creative Commons Public Domain Dedication (CC0)
-          - Creative Commons Attribution (CC BY)
+          - 1
+          - 2
 
-      - name: FAIR principles
+      - area: 1
+        ref: 10
         rule: equal
         value: yes
 
-      - name: Specimen data description standards
+      - area: 2
+        ref: 1
         rule: or
         options:
-          - ABCD-EFG (for geological objects)
-          - Darwin Core
-          - ABCD (for biological objects)
-          - ABCD-DNA
+          - 1
+          - 2
+          - 3
+          - 5
 
-      - name: Unique persistent identifier for specimens (non digitised and digitised)
+      - area: 2
+        ref: 4
         rule: or
         options:
-          - CETAF stable identifiers
-          - Natural Science Identifier, NSId
-          - DOIs
-          - Other
+          - 1
+          - 2
+          - 3
+          - 4
 
-      - name: Data management plan
+      - area: 4
+        ref: 1
         rule: equal
         value: yes
 
-      - name: Protection of sensitive data
+      - area: 4
+        ref: 2
         rule: equal
         value: yes
 
-      - name: Information incident management processes defined
+      - area: 4
+        ref: 3
         rule: equal
         value: yes

@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from policy.loading.utils import upsert_object, load_yaml
+from policy.loading.utils import upsert_object, load_yaml, gen_offset_id
 from policy.models import Service, ServiceComponent
 
 
@@ -23,8 +23,8 @@ def load_service_components(service: Service, defs: list[dict]):
     """
     Load the service components from the service definition.
     """
-    id_start = (service.id * 1000) + 1
-    for component_id, service_component_def in enumerate(defs, start=id_start):
+    for service_component_def in defs:
+        component_id = gen_offset_id(service.id, service_component_def.pop('ref'))
         result = upsert_object(ServiceComponent, service_component_def, object_id=component_id,
                                service=service)
         yield result.result

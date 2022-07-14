@@ -8,7 +8,8 @@ scope: >-
   innovation, with the aim to foster the design of inclusive and sustainable research and
   innovation.
 components:
-  - name: Public Engagement
+  - ref: 1
+    name: Public Engagement
     question: TODO
     order: 1
     description: >-
@@ -18,7 +19,8 @@ components:
       own policy that is in line with the EU or equivalent.
     type: bool
 
-  - name: Gender equality plan/strategy
+  - ref: 2
+    name: Gender equality plan/strategy
     question: Does your institution have a public gender equality plan?
     order: 2
     description: >-
@@ -42,7 +44,8 @@ components:
         5. Measures against gender-based violence, including sexual harassment
     type: bool
 
-  - name: Ethics
+  - ref: 3
+    name: Ethics
     question: >-
       Does your institution have a research ethics approval procedure? How do you receive advice on
       ethics?
