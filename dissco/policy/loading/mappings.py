@@ -17,10 +17,10 @@ def find_service_component(service_id: int, ref: int) -> ServiceComponent:
     return ServiceComponent.objects.get(id=component_id)
 
 
-def find_policy_component_option(policy_component: PolicyComponent,
-                                 ref: int) -> PolicyComponentOption:
-    option_id = gen_offset_id(policy_component.id, ref)
-    return PolicyComponentOption.objects.get(id=option_id)
+def find_policy_component_options(policy_component: PolicyComponent,
+                                 refs: list[int]) -> list[PolicyComponentOption]:
+    ids = [gen_offset_id(policy_component.id, ref) for ref in refs]
+    return list(PolicyComponentOption.objects.filter(id__in=ids))
 
 
 def load_mappings(root: Path):
@@ -45,12 +45,12 @@ def load_mappings(root: Path):
             for mapping_def in sc_mappings_def['policy_components']:
                 policy_component = find_policy_component(mapping_def.pop('area'),
                                                          mapping_def.pop('ref'))
-                options = mapping_def.pop('options', [])
+                option_values = mapping_def.pop('options', [])
                 # if the policy component is option based but the user has defined a single allowed
                 # option as the value, move it over. This is technically an error on the user's
                 # part, but we can account for it easily enough
                 if policy_component.is_option_based() and 'value' in mapping_def:
-                    options = [mapping_def.pop('value')]
+                    option_values = [mapping_def.pop('value')]
 
                 if 'value' in mapping_def:
                     # convert the value to a string as that's all we store in the db
@@ -63,15 +63,24 @@ def load_mappings(root: Path):
                                                 policy_component=policy_component)
                 yield result
 
-                if policy_component.is_option_based() and options:
+                if policy_component.is_option_based() and option_values:
                     existing_options = mapping.allowed_options.all()
-                    for value in options:
-                        option = find_policy_component_option(policy_component, value)
+                    options = find_policy_component_options(policy_component, option_values)
+
+                    # sync the options in the def to the db
+                    for option in options:
                         if option not in existing_options:
                             mapping.allowed_options.add(option)
                             yield UpsertResult.UPDATED
                         else:
                             yield UpsertResult.NOOP
+
+                    # remove any options that don't exist in the def anymore
+                    for option in existing_options:
+                        if option not in options:
+                            mapping.allowed_options.remove(option)
+                            yield UpsertResult.DELETED
+
                     mapping.save()
 
     deleted, _ = ServicePolicyMapping.objects.filter(id__gte=next(offset_counter)).delete()
