@@ -20,8 +20,11 @@ def load_policies(root: Path):
     if area_defs_path.exists():
         for policy_def_path in area_defs_path.iterdir():
             policy_def: dict = load_yaml(policy_def_path)
+
+            # convert the category id into a category object
             category_id = policy_def.pop('category')
             category = PolicyCategory.objects.get(id=category_id)
+
             policy_area, result = upsert_object(PolicyArea, policy_def, ignore={'components'},
                                                 category=category)
             yield result
@@ -31,13 +34,13 @@ def load_policies(root: Path):
 
 def load_policy_components(policy_area: PolicyArea, policy_component_defs: list[dict]):
     id_start = (policy_area.id * 1000) + 1
-    for pc_id, policy_component_def in enumerate(policy_component_defs, start=id_start):
-        options = policy_component_def.pop('options', [])
-        policy_component, result = upsert_object(PolicyComponent, policy_component_def,
+    for pc_id, component_def in enumerate(policy_component_defs, start=id_start):
+        policy_component, result = upsert_object(PolicyComponent, component_def, ignore={'options'},
                                                  object_id=pc_id, policy_area=policy_area)
         yield result
-        if policy_component_def['type'] == 'options' and options:
-            yield from load_policy_component_options(policy_component, options)
+
+        if policy_component.is_option_based() and 'options' in component_def:
+            yield from load_policy_component_options(policy_component, component_def['options'])
 
 
 def load_policy_component_options(policy_component: PolicyComponent, options: list[str]):
