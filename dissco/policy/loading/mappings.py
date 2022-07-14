@@ -73,3 +73,6 @@ def load_mappings(root: Path):
                         else:
                             yield UpsertResult.NOOP
                     mapping.save()
+
+    deleted, _ = ServicePolicyMapping.objects.filter(id__gte=next(offset_counter)).delete()
+    yield from [UpsertResult.DELETED] * deleted
