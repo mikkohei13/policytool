@@ -1,0 +1,12 @@
+- id: 1
+  name: Data Strategy and Management
+  scope: >-
+    Covers policy areas on data related to people, natural science collections and research, and
+    its governance and stewardship: data accessibility, usability, reuse, shareability, protection
+    from misuse, privacy, standards, quality, publication and attribution.
+
+- id: 2
+  name: Physical Collections Strategy and Management
+  scope: >-
+    Covers policy areas related to care, conservation, compliance and digital transformation of
+    Natural Science Collections.

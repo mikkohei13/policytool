@@ -1,0 +1,15 @@
+id: 5
+name: Collections loans management
+category: 2
+number: 5
+scope: >-
+  Refers to policy components related to collection loan management
+components:
+  - name: Incoming and outgoing loans
+    question: Does your institution follow a documented loans policy?
+    order: 1
+    description: >-
+      A policy that governs the provision and return of loans  e.g. timeframes, number of objects,
+      cataloging and documentation, assessment, location control.This includes internal and external
+      loans for exhibitions and research.
+    type: bool

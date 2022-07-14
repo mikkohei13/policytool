@@ -1,0 +1,54 @@
+id: 7
+name: Responsible Research & Innovation (RRI)
+category: 2
+number: 7
+scope: >-
+  Policy components referring to responsible research and innovation that anticipates and
+  assesses potential implications and societal expectations with regard to research and
+  innovation, with the aim to foster the design of inclusive and sustainable research and
+  innovation.
+components:
+  - name: Public Engagement
+    question: TODO
+    order: 1
+    description: >-
+      Public engagement is about "co-creating the future with the public and civil society
+      organisations and also bringing on board the widest possible diversity of people that would
+      not normally interact on matters of science and technology". An institution should have their
+      own policy that is in line with the EU or equivalent.
+    type: bool
+
+  - name: Gender equality plan/strategy
+    question: Does your institution have a public gender equality plan?
+    order: 2
+    description: >-
+      A Gender Equality Plan (GEP) is a set of commitments and actions that aim to promote gender
+      equality in an organisation through institutional and cultural change. When developing a GEP
+      there are some essential elements – 'building blocks' – which must be included. To comply with
+      the Horizon Europe GEP eligibility criterion, a GEP must meet four mandatory process-related
+      requirements:
+      
+        1. Public document
+        2. Dedicated resources
+        3. Data collection and monitoring
+        4. Training
+      
+      Also five recommended content-related (thematic) areas:
+      
+        1. Work-life balance and organisational culture
+        2. Gender balance in leadership and decision-making
+        3. Gender equality in recruitment and career progression
+        4. Integration of the gender dimension into research and teaching content
+        5. Measures against gender-based violence, including sexual harassment
+    type: bool
+
+  - name: Ethics
+    question: >-
+      Does your institution have a research ethics approval procedure? How do you receive advice on
+      ethics?
+    order: 3
+    description: >-
+      A institutional policy, which promotes the highest standards of ethics and integrity in the
+      performance and governance of research, outreach and innovation actions, in alignment with EU
+      policy or equivalent.
+    type: bool

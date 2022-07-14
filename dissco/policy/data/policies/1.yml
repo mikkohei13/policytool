@@ -1,0 +1,257 @@
+id: 1
+name: Data & Digital Media sharing and publication
+category: 1
+number: 1
+scope: >-
+  Relates to policies covering the releasing of data in published form for external use by
+  others. The area covers FAIR and open data principles, licences, publication of data and
+  digital media linked to Natural Science Collections and research data derived from
+  collections.
+components:
+  - name: Publication of specimen data to an open access repository
+    question: Which open access repository(ies) do you use to publish specimen data?
+    order: 1
+    description: >-
+      Publish specimen data to a trusted publicly accessible (no restrictions) repository, to allow
+      for aggregation of data by  DiSSCo services (e.g. ELViS).
+    type: options
+    options:
+      - Geoscience Collections Access Service (GeoCASe)
+      - Global Biodiversity Information Facility (GBIF)
+      - Index Herbariorum
+      - Wikidata
+      - National Biodiversity Network (NBN)
+      - Global Genome Biodiversity Network (GGBN)
+      - GenBank
+      - Europeana
+      - JACQ
+      - Institution open access repository
+      - Other
+      - Not specified
+      - None
+
+  - name: Publication of images to an open access repository
+    question: Which open access repository(ies) do you use to publish images?
+    order: 2
+    description: >-
+      Publish images to a trusted publicly accessible (no restrictions) repository, to allow for
+      aggregation of data by DiSSCo services (e.g. ELViS).
+    type: options
+    options:
+      - EUDAT
+      - Zenodo
+      - Wikidata
+      - Institution open access repository
+      - JACQ
+      - Other
+      - Not specified
+      - None
+
+  - name: Default license(s) for specimen data
+    question: What default licence(s) do you use for specimen data?
+    order: 3
+    description: >-
+      The restrictions on sharing and usage of specimen data. Specimen data including Name, type of
+      object, locality, geographic origin, collector, associated annotations (label information).
+    type: options
+    options:
+      - Creative Commons Public Domain Dedication (CC0)
+      - Creative Commons Attribution (CC BY)
+      - Creative Commons ShareAlike (CC BY-SA)
+      - Creative commons Noncommercial ShareAlike (CC BY-NC-SA)
+      - Creative Commons NonCommercial (CC BY-NC)
+      - Creative Commons NoDerivatives (CC BY-ND)
+      - Creative CommonsNonCommercial NoDerivatives (CC BY-NC-ND)
+      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4)
+      - GNU Free Documentation License
+      - UK Open Government Licence (OGL)
+      - Open Data Commons Public Domain Dedication and License (PDDL)
+      - Open Data Commons Attribution License
+      - Open Data Commons Open Database License (ODbL)
+      - Other (Attribution)
+      - Other (Not Open)
+      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4
+      - Other (Open)
+      - Other (Public Domain)
+      - Other (request a licence)
+      - Other (Private and scientific use)
+      - None
+      - Not specified
+
+  - name: Default license(s) for research data
+    question: What default license(s) do you use for research data?
+    order: 4
+    description: >-
+      Restrictions on the copyrights/sharing and usage of research data. Research data meaning  any
+      information collected, stored, and processed in relation to the collection specimen.
+    type: options
+    options:
+      - Creative Commons Public Domain Dedication (CC0)
+      - Creative Commons Attribution (CC BY)
+      - Creative Commons ShareAlike (CC BY-SA)
+      - Creative commons Noncommercial ShareAlike (CC BY-NC-SA)
+      - Creative Commons NonCommercial (CC BY-NC)
+      - Creative Commons NoDerivatives (CC BY-ND)
+      - Creative CommonsNonCommercial NoDerivatives (CC BY-NC-ND)
+      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4)
+      - GNU Free Documentation License
+      - UK Open Government Licence (OGL)
+      - Open Data Commons Public Domain Dedication and License (PDDL)
+      - Open Data Commons Attribution License
+      - Open Data Commons Open Database License (ODbL)
+      - Other (Attribution)
+      - Other (Not Open)
+      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4
+      - Other (Open)
+      - Other (Public Domain)
+      - Other (request a licence)
+      - Other (Private and scientific use)
+      - None
+      - Not specified
+
+  - name: Default license(s) for 2D images
+    question: What default license(s) do you use for 2D images?
+    order: 5
+    description: >-
+      Restrictions on the copyrights/sharing and usage of 2D images.
+    type: options
+    options:
+      - Creative Commons Public Domain Dedication (CC0)
+      - Creative Commons Attribution (CC BY)
+      - Creative Commons ShareAlike (CC BY-SA)
+      - Creative commons Noncommercial ShareAlike (CC BY-NC-SA)
+      - Creative Commons NonCommercial (CC BY-NC)
+      - Creative Commons NoDerivatives (CC BY-ND)
+      - Creative CommonsNonCommercial NoDerivatives (CC BY-NC-ND)
+      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4)
+      - GNU Free Documentation License
+      - UK Open Government Licence (OGL)
+      - Open Data Commons Public Domain Dedication and License (PDDL)
+      - Open Data Commons Attribution License
+      - Open Data Commons Open Database License (ODbL)
+      - Other (Attribution)
+      - Other (Not Open)
+      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4
+      - Other (Open)
+      - Other (Public Domain)
+      - Other (request a licence)
+      - Other (Private and scientific use)
+      - None
+      - Not specified
+
+  - name: Default license(s) for 3D images
+    question: What default license(s) do you use for 3D images?
+    order: 6
+    description: >-
+      Restrictions on the copyrights/sharing and usage of 3D images
+    type: options
+    options:
+      - Creative Commons Public Domain Dedication (CC0)
+      - Creative Commons Attribution (CC BY)
+      - Creative Commons ShareAlike (CC BY-SA)
+      - Creative commons Noncommercial ShareAlike (CC BY-NC-SA)
+      - Creative Commons NonCommercial (CC BY-NC)
+      - Creative Commons NoDerivatives (CC BY-ND)
+      - Creative CommonsNonCommercial NoDerivatives (CC BY-NC-ND)
+      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4)
+      - GNU Free Documentation License
+      - UK Open Government Licence (OGL)
+      - Open Data Commons Public Domain Dedication and License (PDDL)
+      - Open Data Commons Attribution License
+      - Open Data Commons Open Database License (ODbL)
+      - Other (Attribution)
+      - Other (Not Open)
+      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4
+      - Other (Open)
+      - Other (Public Domain)
+      - Other (request a licence)
+      - Other (Private and scientific use)
+      - None
+      - Not specified
+
+  - name: Default licence(s) for videos and audio recordings
+    question: What default license(s) do you use for videos and audio recordings?
+    order: 7
+    description: >-
+      Restrictions on the copyrights/sharing and usage of videos and audio recordings.
+    type: options
+    options:
+      - Creative Commons Public Domain Dedication (CC0)
+      - Creative Commons Attribution (CC BY)
+      - Creative Commons ShareAlike (CC BY-SA)
+      - Creative commons Noncommercial ShareAlike (CC BY-NC-SA)
+      - Creative Commons NonCommercial (CC BY-NC)
+      - Creative Commons NoDerivatives (CC BY-ND)
+      - Creative CommonsNonCommercial NoDerivatives (CC BY-NC-ND)
+      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4)
+      - GNU Free Documentation License
+      - UK Open Government Licence (OGL)
+      - Open Data Commons Public Domain Dedication and License (PDDL)
+      - Open Data Commons Attribution License
+      - Open Data Commons Open Database License (ODbL)
+      - Other (Attribution)
+      - Other (Not Open)
+      - Creative commons license version (CCPL1/CCPL2/CCPL3/CCPL4
+      - Other (Open)
+      - Other (Public Domain)
+      - Other (request a licence)
+      - Other (Private and scientific use)
+      - None
+      - Not specified
+
+  - name: Publication of Institutional facilities data to open access repository
+    question: Where do you publish your institutional facilities data/information?
+    order: 8
+    description: >-
+      Publish institutional facilities data/information  (e.g. technical equipment, expertise) 
+      to a trusted publicly accessible (no restrictions) repository, to allow for aggregation of
+      data by DiSSCo services (e.g. ELViS).
+    type: options
+    options:
+      - CETAF Registry of Collections
+      - Institution repository
+      - Wikidata
+      - Other
+      - Not specified
+      - None
+
+  - name: Publication of collection data to an open access repository
+    question: Where do you publish your collections data?
+    order: 9
+    description: >-
+      Publish collection data (e.g. Object types, size of collection, digitisation status,
+      geographic origin, location were held, preservation type) to a trusted and publicly accessible
+      repository, that allows data aggregation  by  DiSSCo services (e.g ELViS).
+    type: options
+    options:
+      - CETAF Registry of Collections
+      - Index Herbariorum
+      - Wikidata
+      - GBIF registry of scientific collections
+      - Institution open access repository
+      - Other
+      - Not specified
+      - None
+
+  - name: FAIR principles
+    question: Do you follow FAIR principles when publishing NSCs data?
+    order: 10
+    description: >-
+      Guidelines to improve the Findability, Accessibility, Interoperability, and Reuse of digital
+      assets. The principles emphasise machine-actionability (i.e., the capacity of computational
+      systems to find, access, interoperate, and reuse data with none or minimal human intervention)
+      because humans increasingly rely on computational support to deal with data as a result of the
+      increase in volume, complexity, and creation speed of data. (from
+      https://www.go-fair.org/fair-principles/ July 2nd, 2021).
+    type: bool
+
+  - name: Link images to IIIF compatible servers
+    question: Are your images linked to IIIF compatible servers?
+    order: 11
+    description: >-
+      International Image Interoperability Framework ((IIIF, pronounced ‘triple eye eff’) is an open
+      standard for delivering high-quality, attributed digital objects online at scale. Over the
+      long-term DiSSCo aims to apply the recommendations of the International Image Interoperability
+      Framework for access to digital images, particularly images from cultural heritage
+      institutions, museums, libraries and archives, which includes natural science collections.
+    type: bool

@@ -1,0 +1,40 @@
+id: 8
+name: Physical collections management
+category: 2
+number: 8
+scope: >-
+  Policies components related to collection curation, development, housing, environment, care and
+  preservation.
+components:
+  - name: Visitor access
+    question: Is there a documented policy of how non-staff access your collections?
+    order: 1
+    description: >-
+      Policies governing access to the collections by non staff.
+    type: bool
+
+  - name: Recording visitor numbers
+    question: Are visitor numbers to your collection recorded?
+    order: 2
+    description: >-
+      The number of non staff visitors to your collections.
+    type: bool
+
+  - name: Culturally sensitive objects
+    question: >-
+      Does your institution follow a documented management plan for culturally sensitive objects?
+    order: 3
+    description: >-
+      Management plan on the care and conservation of culturally sensitive objects, including the
+      handling, use and movement of those objects.
+    type: bool
+
+  - name: Destructive sampling
+    question: >-
+      How is destructive sampling managed in your institution? Do you have a documented policy?
+    order: 4
+    description: >-
+      Destructive sampling is the removal of material from a specimen, or permanent modification of
+      a specimen, including molecular analyses, SEM studies and chemical analyses. A policy that
+      directs the permission and procedures for destructive sampling of specimens.
+    type: bool

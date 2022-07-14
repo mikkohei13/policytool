@@ -1,0 +1,73 @@
+id: 9
+name: Digitisation strategy & prioritisation
+category: 2
+number: 9
+scope: >-
+  Refers to policy components that address institutions' strategies, prioritisations and best
+  practices towards digitising their collections.
+components:
+  - name: Digitisation strategy
+    question: Do you have a documented institutional policy on digitization strategy?
+    order: 1
+    description: >-
+      For Digitisation on Demand, institutions should have digitisation strategy that includes their
+      digitisation capacity, workflows, techniques, and prioritisation.
+    type: options
+    options:
+      - Oversight and governance
+      - Digitisation goals and prioritisation
+      - Digitisation workflows
+      - Digitisation capacity
+      - Mass digitisation
+      - 2D imaging
+      - 3D imaging
+      - DNA sequencing
+      - Digitisation data standards
+      - Other
+      - Not Specified
+      - None
+
+  # TODO: question missing
+  - name: Minting of Digital Specimens with Unique Persistent Identifiers
+    question: TODO
+    order: 2
+    description: >-
+      Each DiSSCo Facility shall be responsible for creating (minting) and managing their own Unique
+      Persistent Identifiers in accordance with the DiSSCo policy for Persistent Unique Identifiers,
+      and for registering their own Digital Specimens with the DiSSCoHub infrastructure.
+    type: bool
+
+  - name: Prioritisation criteria
+    question: >-
+      Which criteria does your institution use to prioritise digitisation of your collections?
+    order: 3
+    description: >-
+      The criteria/factors that guide the institution's strategy on the digitisation of their
+      collections.
+    type: options
+    options:
+      - Institutional science strategy
+      - National science strategy
+      - Collections development
+      - Collections moves
+      - Collections conservation
+      - Digitisation workflow effectiveness
+      - Public engagement
+      - Institutional research focus
+      - Global research focus
+      - National research focus
+      - External funding
+      - Compliance with standards
+      - Object identifiers
+      - Cultural importance
+      - Relevance for economic activities
+      - Relevant for fundamental research
+      - Relevant for access to primary biodiversity data
+      - Research focused on studying processes and trends (e.g. evolution)
+      - Contribute to conservation (policy)
+      - Institutional revenue
+      - Financial donations
+      - Educational purposes
+      - Other
+      - None
+      - Not specified

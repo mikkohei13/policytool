@@ -1,0 +1,99 @@
+id: 2
+name: Data standards
+category: 1
+number: 2
+scope: >-
+  Policies that refer to technical specifications that describes how data should be organised,
+  stored, exchanged, referenced for the consistent collection and interoperability of data
+  across DiSSCo services, systems, users.
+components:
+  - name: Specimen data description standards
+    question: What specimen data standards do you use?
+    order: 1
+    description: >-
+      Controlled metadata schemas/vocabularies used to describe specimen data, including images and
+      level of digitisation. The Open Digital Specimen is at the core of the DiSSCo research
+      infrastructure and its services, and will be based on TDWG data standards (e.g. ABCD, and
+      Darwin core).
+    type: options
+    options:
+      - ABCD-EFG (for geological objects)
+      - Darwin Core
+      - ABCD (for biological objects)
+      - OpenDS
+      - ABCD-DNA
+      - MIDS
+      - Other
+      - Non-Specified
+
+  - name: Collection description granularity
+    question: >-
+      Does your institution have a granular collection categorisation system, like that
+      described in the SYNTHESYS+ collection categorisation schema?
+    order: 2
+    description: >-
+      Collection description granularity should be based on the categorization presented in of the
+      SYNTHESYS+ collection classification schema, to at least the lowest granularity (broadest
+      categories). See here (https://twk.pm/3ax5evp2mm) for more information about the SYNTHESYS+
+      collection classification schema. The SYNTHESYS+ classification scheme is used for the DiSSCo
+      dashboard, which will be embedded into ELViS.
+    type: bool
+
+  - name: Collection data description standards
+    question: What collection data description standards to you use?
+    order: 3
+    description: >-
+      Controlled metadata schemas/vocabularies used to describe natural science collection's,
+      including images and level of digitisation.
+    type: options
+    options:
+      - TDWG Collection Description Data Standard
+      - Other
+      - Non-specified
+      - None
+
+  - name: Unique persistent identifier for specimens (non digitised and digitised)
+    question: >-
+      What Unique persistent identifiers to you use for specimens (non digitised and digitised)?
+    order: 4
+    description: >-
+      The identifier can be persistently resolved (digitally actionable) to meaningful metadata
+      state information about the object.
+    type: options
+    options:
+      - CETAF stable identifiers
+      - Natural Science Identifier, NSId
+      - DOIs
+      - Other
+      - Non-specified
+      - None
+
+  - name: Unique persistent identifiers for institutions
+    question: What Unique persistent identifiers do you use for your institution?
+    order: 5
+    description: >-
+      A globally unique and persistent identifier that is resolved to the geo-coordinates on the
+      internet.
+    type: options
+    options:
+      - GRID (Global Research Identifier Database)
+      - Wikidata
+      - ROR (Research Organisation Registry community)
+      - Other
+      - Non-specified
+      - None
+
+  - name: Unique, persistent identifiers for collections.
+    question: What Unique persistent identifiers do you use for your collections?
+    order: 6
+    description: >-
+      A globally unique and persistent identifier for collections. Collection data sets should have
+      community recognised globally Unique Persistent Identifiers that are resolvable on the web and
+      descriptive metadata to assist discovery and verification.
+    type: options
+    options:
+      - GRSciColl (GBIF registry of scientific collections)
+      - DOIs
+      - Other
+      - Non-specified
+      - None

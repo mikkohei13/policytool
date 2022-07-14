@@ -1,0 +1,99 @@
+service: 1
+mappings:
+  - service_component: Providing people data
+    policy_components:
+      - name: Identifiers for person authentication
+        rule: or
+        options:
+          - ORCID IDs
+          - Institution credentials
+
+      - name: General Data Protection Regulation (EU) 2016/679 (GDPR)
+        rule: equal
+        value: yes
+
+  - service_component: Providing specimen data
+    policy_components:
+      - name: Publication of specimen data to an open access repository
+        rule: or
+        options:
+          - Geoscience Collections Access Service (GeoCASe)
+          - Global Biodiversity Information Facility (GBIF)
+          - Wikidata
+          - National Biodiversity Network (NBN)
+          - Global Genome Biodiversity Network (GGBN)
+          - GenBank
+          - Europeana
+          - Institution open access repository
+          - Other
+
+      - name: Publication of images to an open access repository
+        rule: or
+        options:
+          - EUDAT
+          - Zenodo
+          - Wikidata
+          - Institution open access repository
+          - Other
+
+      - name: Default license(s) for specimen data
+        rule: or
+        options:
+          - Creative Commons Public Domain Dedication (CC0)
+          - Creative Commons Attribution (CC BY)
+
+      - name: Default license(s) for research data
+        rule: or
+        options:
+          - Creative Commons Public Domain Dedication (CC0)
+          - Creative Commons Attribution (CC BY)
+
+      - name: Default license(s) for 2D images
+        rule: or
+        options:
+          - Creative Commons Public Domain Dedication (CC0)
+          - Creative Commons Attribution (CC BY)
+
+      - name: Default license(s) for 3D images
+        rule: or
+        options:
+          - Creative Commons Public Domain Dedication (CC0)
+          - Creative Commons Attribution (CC BY)
+
+      - name: Default licence(s) for videos and audio recordings
+        rule: or
+        options:
+          - Creative Commons Public Domain Dedication (CC0)
+          - Creative Commons Attribution (CC BY)
+
+      - name: FAIR principles
+        rule: equal
+        value: yes
+
+      - name: Specimen data description standards
+        rule: or
+        options:
+          - ABCD-EFG (for geological objects)
+          - Darwin Core
+          - ABCD (for biological objects)
+          - ABCD-DNA
+
+      - name: Unique persistent identifier for specimens (non digitised and digitised)
+        rule: or
+        options:
+          - CETAF stable identifiers
+          - Natural Science Identifier, NSId
+          - DOIs
+          - Other
+
+      - name: Data management plan
+        rule: equal
+        value: yes
+
+      - name: Protection of sensitive data
+        rule: equal
+        value: yes
+
+      - name: Information incident management processes defined
+        rule: equal
+        value: yes

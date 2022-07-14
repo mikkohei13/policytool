@@ -1,0 +1,35 @@
+id: 3
+name: Personal data
+category: 1
+number: 3
+scope: >-
+  Policies that refer to any information that relates to an identified or identifiable living
+  individual.
+components:
+  - name: Identifiers for person authentication
+    question: What system do you use for authenticating institution personal?
+    order: 1
+    description: >-
+      A globally unique and persistent identifier for collections. Collection data sets should have
+      community recognised globally Unique Persistent Identifiers that are resolvable on the web and
+      descriptive metadata to assist discovery and verification.
+    type: options
+    options:
+      - ORCID IDs
+      - VIAF
+      - Institution credentials
+      - Other
+      - Non-specified
+      - None
+
+  - name: General Data Protection Regulation (EU) 2016/679 (GDPR)
+    question: Do you follow the General Data Protection Regulation (GDPR) (EU)?
+    order: 2
+    description: >-
+      A policy inline or equivalent to GDPR requirements. Definition provided by EU GDPR regulation:
+      processing: means any operation or set of operations which is performed on personal data or on
+      sets of personal data, whether or not by automated means, such as collection, recording,
+      organisation, structuring, storage, adaptation or alteration, retrieval, consultation, use,
+      disclosure by transmission, dissemination or otherwise making available, alignment or
+      combination, restriction, erasure or destruction.
+    type: bool

@@ -201,8 +201,15 @@ class ServicePolicyMapping(models.Model):
     Value and rules representing the requirement of a specific service component with respect to a
     specific policy component.
     """
+    class Rule(models.TextChoices):
+        EQUAL = 'equal'
+        OR = 'or'
+
     # the service component this mapping applies to
     service_component = models.ForeignKey(ServiceComponent, on_delete=models.CASCADE)
     # the policy component this mapping applies to
     policy_component = models.ForeignKey(PolicyComponent, on_delete=models.CASCADE)
-    # TODO: values and rules
+    # the rule that defines how this mapping is validated
+    rule = models.TextField(choices=Rule.choices)
+    allowed_value = models.TextField(blank=True)
+    allowed_options = models.ManyToManyField(PolicyComponentOption)

@@ -1,0 +1,88 @@
+id: 6
+name: Collections loans management
+category: 2
+number: 6
+scope: >-
+  Refers to policy components related to compliance with national laws on access and on access
+  to genetic resources, related traditional knowledge and resultant benefit sharing, including
+  Natural History Collection sectoral best practice.
+components:
+  - name: Acquisition of genetic resources and prior informed consent for their utilization
+    question: Does your institution regulate the acquisition of genetic resources?
+    order: 1
+    description: >-
+      Some countries regulate access to their genetic resources, in this case genetic resources need
+      not only be legally collected, but certain uses require a prior informed consent by a
+      competent authority of this country. Upon acquisition of a genetic resource by a
+      museum/institution, the collector should be asked to provide information on the necessity of a
+      prior informed consent or any mutually agreed terms he/she entered into.
+    type: bool
+
+  - name: Traditional Knowledge
+    question: >-
+      Do you have institutional policy that reflects national, EU/Supranational regulations on
+      Traditional Knowledge related to genetic resources?
+    order: 2
+    description: >-
+      An institutional policy that reflects national, EU or supranational (e.g. EU) regulations on
+      Traditional knowledge related to genetic resources. Traditional knowledge refers to the
+      knowledge, innovations and practices of indigenous and local communities (IPLCs) related to
+      genetic resources (e.g. Know-how, innovations, practices, medicines etc.) that are relevant
+      for the conservation and sustainable use of biological diversity. ‘User’ countries need to
+      take measures to ensure that genetic resources used in their country were accessed in
+      accordance with the ABS rules of the provider country (with prior informed consent obtained
+      and mutually agreed terms established).
+    type: bool
+
+  - name: Utilisation of Genetic Resources
+    question: >-
+      Do you follow any national or EU/Supranational regulations on the utilisation of Genetic
+      resources related to genetic resources?
+    order: 3
+    description: >-
+      A institutional policy that reflects national, EU or inter supranational (e.g. EU)
+      regulations on the utilisation of genetic resources’ i.e. means to conducting research and
+      development on the genetic and/or biochemical composition of genetic resources, including
+      through the application of biotechnology.
+    type: bool
+
+  - name: Benefit sharing
+    question: >-
+      Do you have an institutional policy that reflects national or supranational regulations on
+      benefit sharing of genetic resources?
+    order: 4
+    description: >-
+      An institutional policy that reflects national, EU or supranational regulations on benefit
+      sharing of genetic resources.  benefit-sharing is based on prior informed consent (PIC) being
+      granted by a provider to a user and negotiations between both parties to develop mutually
+      agreed terms (MAT) to ensure the fair and equitable sharing of genetic resources and
+      associated benefits.
+    type: bool
+
+  - name: Commercial use
+    question: >-
+      Do you have an institutional policy that reflects  national or supranational regulations on
+      the commercial use of genetic resources?
+    order: 5
+    description: >-
+      A policy that covers the protocols for users intending to borrow specimens (or receive tissue
+      samples from specimens) originating in a country/an area with benefit-sharing obligations.
+      I.e. they should be advised to check whether arranging Mutually Agreed Terms (MAT) is
+      necessary for their intended work, check with the lending institution whether appropriate MAT
+      exist, if necessary negotiate MAT with the country, share it with the lending institution and
+      obey the terms for benefit-sharing.
+    type: bool
+
+  - name: Access to information and associated data on genetic resources
+    question: >-
+      Do you have an institutional policy that reflects national or supranational regulations on
+      providing access to information and associated data on genetic resources?
+    order: 6
+    description: >-
+      An institutional policy that reflects national, EU or supranational regulations o providing
+      access to information and associated data from genetic resources, that includes the protocols
+      on providing upon request available information and relevant documents on 1) date and place of
+      access to the genetic resource-GR and/or associated traditional knowledge-sTK, 2) description
+      of GR or aTK, 3) source of GR or aTK, 4) presece or absence of ABS-rights or ABS-obligations,
+      5) access permits, 6) relevant content of mutually agreed terms-MAT".
+    type: bool
