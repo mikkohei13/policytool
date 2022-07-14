@@ -9,4 +9,4 @@ DEFAULT_DATA_DIR = BASE_DIR / 'policy' / 'defs'
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        load(DEFAULT_DATA_DIR)
+        load(DEFAULT_DATA_DIR, self.stdout, self.stderr)

@@ -1,7 +1,8 @@
 from dataclasses import dataclass
+from enum import Enum
 from itertools import chain
 from pathlib import Path
-from typing import TypeVar, Type
+from typing import TypeVar, Type, Generic
 
 import yaml
 from django.db.models import Model
@@ -18,32 +19,32 @@ def load_yaml(path: Path) -> dict | list:
     return yaml.safe_load(path.read_text(encoding='utf-8'))
 
 
-@dataclass
-class PolicyLoadSummary:
-    created: int = 0
-    updated: int = 0
-    nooped: int = 0
+class UpsertResult(Enum):
+    CREATED = 'created'
+    UPDATED = 'updated'
+    NOOP = 'noop'
 
-    def reset(self):
-        self.created = 0
-        self.updated = 0
-        self.nooped = 0
-
-    def update(self):
-        self.updated += 1
-
-    def create(self):
-        self.created += 1
-
-    def noop(self):
-        self.nooped += 1
+    def __str__(self) -> str:
+        if self == UpsertResult.NOOP:
+            return 'no change'
+        return self.value
 
 
 M = TypeVar('M', bound=Model)
 
 
+@dataclass
+class Result(Generic[M]):
+    object: M
+    result: UpsertResult
+
+    def __iter__(self):
+        yield self.object
+        yield self.result
+
+
 def upsert_object(model: Type[M], definition: dict | None = None, object_id: int | None = None,
-                  ignore: set | None = None, **kwargs) -> M:
+                  ignore: set | None = None, **kwargs) -> Result[M]:
     if definition is None:
         definition = {}
 
@@ -53,8 +54,10 @@ def upsert_object(model: Type[M], definition: dict | None = None, object_id: int
 
     try:
         model_object = model.objects.get(id=object_id)
+        result = UpsertResult.UPDATED
     except model.DoesNotExist:
         model_object = model(id=object_id)
+        result = UpsertResult.CREATED
 
     if ignore is None:
         ignore = set()
@@ -72,4 +75,7 @@ def upsert_object(model: Type[M], definition: dict | None = None, object_id: int
 
     if changed:
         model_object.save()
-    return model_object
+    else:
+        result = UpsertResult.NOOP
+
+    return Result(model_object, result)

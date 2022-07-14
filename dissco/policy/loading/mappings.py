@@ -40,9 +40,11 @@ def load_mappings(root: Path):
                 if 'value' in mapping_def:
                     mapping_def['allowed_value'] = str(mapping_def.pop('value'))
 
-                mapping = upsert_object(ServicePolicyMapping, mapping_def, object_id=mapping_id,
-                                        service_component=service_component,
-                                        policy_component=policy_component)
+                mapping, result = upsert_object(ServicePolicyMapping, mapping_def,
+                                                object_id=mapping_id,
+                                                service_component=service_component,
+                                                policy_component=policy_component)
+                yield result
                 if policy_component.is_option_based() and options:
                     for value in options:
                         try:
