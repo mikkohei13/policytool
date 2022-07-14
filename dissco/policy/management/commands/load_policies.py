@@ -1,12 +1,12 @@
 from django.core.management import BaseCommand
 
-from policy.loader import PolicyLoader
+from dissco.settings.base import BASE_DIR
+from policy.loading import load
+
+DEFAULT_DATA_DIR = BASE_DIR / 'policy' / 'data'
 
 
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        loader = PolicyLoader()
-        summary = loader.load()
-        self.stdout.write(f'Summary: created {summary.created}, updated {summary.updated}, '
-                          f'no ops: {summary.nooped}')
+        load(DEFAULT_DATA_DIR)
