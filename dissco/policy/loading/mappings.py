@@ -64,11 +64,10 @@ def load_mappings(root: Path, upsert_manager: UpsertManager):
 
                 if policy_component.is_option_based() and option_values:
                     existing_options = set(mapping.allowed_options.all())
-                    options = find_policy_component_options(policy_component, option_values)
+                    options = set(find_policy_component_options(policy_component, option_values))
                     mapping.allowed_options.set(options)
                     mapping.save()
 
-                    options = set(options)
                     upsert_manager.add(UpsertResult.DELETED, len(existing_options - options))
                     upsert_manager.add(UpsertResult.NOOP, len(existing_options & options))
                     upsert_manager.add(UpsertResult.CREATED, len(options - existing_options))
