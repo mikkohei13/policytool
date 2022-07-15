@@ -109,6 +109,7 @@ class PolicyComponentOption(models.Model):
     Data policy.
     """
     value = models.TextField()
+    order = models.IntegerField(default=0)
     # the component this option belongs to
     policy_component = models.ForeignKey(PolicyComponent, related_name='options',
                                          on_delete=models.CASCADE)

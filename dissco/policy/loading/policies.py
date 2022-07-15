@@ -43,7 +43,7 @@ def load_policy_components(policy_area: PolicyArea, policy_component_defs: list[
 
 def load_policy_component_options(policy_component: PolicyComponent, options: list[dict],
                                   upsert_manager: UpsertManager):
-    for option_def in options:
+    for order, option_def in enumerate(options, start=1):
         pco_id = gen_offset_id(policy_component.id, option_def.pop('ref'))
         upsert_manager.upsert(PolicyComponentOption, option_def, object_id=pco_id,
-                              policy_component=policy_component)
+                              policy_component=policy_component, order=order)
