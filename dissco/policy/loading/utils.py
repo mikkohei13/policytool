@@ -70,6 +70,7 @@ class UpsertManager:
         if ignore is None:
             ignore = set()
         changed = False
+        # TODO: need to handle unsetting of attributes
         for field, value in chain(definition.items(), kwargs.items()):
             if field not in ignore:
                 if hasattr(model_object, field):
