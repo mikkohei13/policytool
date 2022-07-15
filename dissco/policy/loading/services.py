@@ -1,42 +1,28 @@
 from pathlib import Path
 
-from policy.loading.utils import upsert_object, load_yaml, gen_offset_id, UpsertResult
+from policy.loading.utils import load_yaml, gen_offset_id, UpsertManager
 from policy.models import Service, ServiceComponent
 
 
-def load_services(root: Path):
+def load_services(root: Path, upsert_manager: UpsertManager):
     """
     Load the services from the service definition files.
     """
     if not root.exists():
         return
 
-    ids = set()
-
     for service_def_path in root.iterdir():
         service_def = load_yaml(service_def_path)
-        service, result = upsert_object(Service, service_def, ignore={'components'})
-        yield result
-        ids.add(service.id)
+        service = upsert_manager.upsert(Service, service_def, ignore={'components'})
         if 'components' in service_def:
-            yield from load_service_components(service, service_def['components'])
-
-    deleted, _ = Service.objects.exclude(id__in=ids).delete()
-    yield from [UpsertResult.DELETED] * deleted
+            load_service_components(service, service_def['components'], upsert_manager)
 
 
-def load_service_components(service: Service, defs: list[dict]):
+def load_service_components(service: Service, defs: list[dict], upsert_manager: UpsertManager):
     """
     Load the service components from the service definition.
     """
-    ids = set()
-
     for service_component_def in defs:
         component_id = gen_offset_id(service.id, service_component_def.pop('ref'))
-        result = upsert_object(ServiceComponent, service_component_def, object_id=component_id,
-                               service=service)
-        yield result.result
-        ids.add(result.object.id)
-
-    deleted, _ = ServiceComponent.objects.exclude(id__in=ids).delete()
-    yield from [UpsertResult.DELETED] * deleted
+        upsert_manager.upsert(ServiceComponent, service_component_def, object_id=component_id,
+                              service=service)

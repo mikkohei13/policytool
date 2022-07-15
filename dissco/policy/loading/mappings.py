@@ -1,8 +1,8 @@
 from itertools import count
 from pathlib import Path
 
-from policy.loading.utils import load_yaml, PolicyLoadError, upsert_object, gen_offset_id, \
-    UpsertResult
+from policy.loading.utils import load_yaml, PolicyLoadError, gen_offset_id, UpsertResult, \
+    UpsertManager
 from policy.models import Service, ServiceComponent, PolicyComponent, ServicePolicyMapping, \
     PolicyComponentOption
 
@@ -18,12 +18,12 @@ def find_service_component(service_id: int, ref: int) -> ServiceComponent:
 
 
 def find_policy_component_options(policy_component: PolicyComponent,
-                                 refs: list[int]) -> list[PolicyComponentOption]:
+                                  refs: list[int]) -> list[PolicyComponentOption]:
     ids = [gen_offset_id(policy_component.id, ref) for ref in refs]
     return list(PolicyComponentOption.objects.filter(id__in=ids))
 
 
-def load_mappings(root: Path):
+def load_mappings(root: Path, upsert_manager: UpsertManager):
     if not root.exists():
         return
 
@@ -57,31 +57,18 @@ def load_mappings(root: Path):
                     mapping_def['allowed_value'] = str(mapping_def.pop('value'))
 
                 mapping_id = next(offset_counter)
-                mapping, result = upsert_object(ServicePolicyMapping, mapping_def,
+                mapping = upsert_manager.upsert(ServicePolicyMapping, mapping_def,
                                                 object_id=mapping_id,
                                                 service_component=service_component,
                                                 policy_component=policy_component)
-                yield result
 
                 if policy_component.is_option_based() and option_values:
-                    existing_options = mapping.allowed_options.all()
+                    existing_options = set(mapping.allowed_options.all())
                     options = find_policy_component_options(policy_component, option_values)
-
-                    # sync the options in the def to the db
-                    for option in options:
-                        if option not in existing_options:
-                            mapping.allowed_options.add(option)
-                            yield UpsertResult.UPDATED
-                        else:
-                            yield UpsertResult.NOOP
-
-                    # remove any options that don't exist in the def anymore
-                    for option in existing_options:
-                        if option not in options:
-                            mapping.allowed_options.remove(option)
-                            yield UpsertResult.DELETED
-
+                    mapping.allowed_options.set(options)
                     mapping.save()
 
-    deleted, _ = ServicePolicyMapping.objects.filter(id__gte=next(offset_counter)).delete()
-    yield from [UpsertResult.DELETED] * deleted
+                    options = set(options)
+                    upsert_manager.add(UpsertResult.DELETED, len(existing_options - options))
+                    upsert_manager.add(UpsertResult.NOOP, len(existing_options & options))
+                    upsert_manager.add(UpsertResult.CREATED, len(options - existing_options))
