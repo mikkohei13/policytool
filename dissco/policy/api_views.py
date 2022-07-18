@@ -44,11 +44,12 @@ def get_institution_alignment(request: Request) -> Response:
     institution = request.user.institutionuser.institution
     alignment = [
         {
+            'mapping': mapping.id,
             'service': mapping.service_component.service_id,
             'policy': mapping.policy_component.policy_area_id,
             'service_component': mapping.service_component_id,
             'policy_component': mapping.policy_component_id,
-            'status': calculate_alignment(mapping.policy_component, institution),
+            'status': calculate_alignment(mapping, institution).to_dict(),
         } for mapping in models.ServicePolicyMapping.objects.all()
     ]
     return Response(alignment)
