@@ -2,15 +2,15 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from common.models import Institution
 from policy.models import PolicyArea, PolicyComponent, PolicyComponentOption, \
-    InstitutionPolicyComponent
+    InstitutionPolicyComponent, PolicyComponentOptionType
 from qa.packs import PackProvider, Pack, Answer, Question, PackDoesNotExist, QuestionDoesNotExist, \
     QuestionType, PackSummary
 
-option_mapping: dict[PolicyComponent.PolicyComponentOptionType, QuestionType] = {
-    PolicyComponent.PolicyComponentOptionType.BOOL: QuestionType.BOOL,
-    PolicyComponent.PolicyComponentOptionType.NUMBER: QuestionType.NUMBER,
-    PolicyComponent.PolicyComponentOptionType.OPTION_SINGLE: QuestionType.OPTION_SINGLE,
-    PolicyComponent.PolicyComponentOptionType.OPTION_MULTIPLE: QuestionType.OPTION_MULTIPLE,
+option_mapping: dict[PolicyComponentOptionType, QuestionType] = {
+    PolicyComponentOptionType.BOOL: QuestionType.BOOL,
+    PolicyComponentOptionType.NUMBER: QuestionType.NUMBER,
+    PolicyComponentOptionType.OPTION_SINGLE: QuestionType.OPTION_SINGLE,
+    PolicyComponentOptionType.OPTION_MULTIPLE: QuestionType.OPTION_MULTIPLE,
 }
 
 

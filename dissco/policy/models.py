@@ -64,22 +64,23 @@ class PolicyArea(models.Model):
         return f'{self.name} [{self.category}]'
 
 
+# define the options for the value type
+class PolicyComponentOptionType(models.TextChoices):
+    BOOL = 'bool'
+    NUMBER = 'number'
+    OPTION_SINGLE = 'option'
+    OPTION_MULTIPLE = 'options'
+
+    @property
+    def requires_options(self) -> bool:
+        return self in (PolicyComponentOptionType.OPTION_SINGLE,
+                        PolicyComponentOptionType.OPTION_MULTIPLE)
+
+
 class PolicyComponent(models.Model):
     """
     Granular policy element within the policy area.
     """
-
-    # define the options for the value type
-    class PolicyComponentOptionType(models.TextChoices):
-        BOOL = 'bool'
-        NUMBER = 'number'
-        OPTION_SINGLE = 'option'
-        OPTION_MULTIPLE = 'options'
-
-        @property
-        def requires_options(self) -> bool:
-            return self in (PolicyComponent.PolicyComponentOptionType.OPTION_SINGLE,
-                            PolicyComponent.PolicyComponentOptionType.OPTION_MULTIPLE)
 
     # the name of the policy component
     name = models.TextField()
@@ -96,7 +97,7 @@ class PolicyComponent(models.Model):
         return f'{self.name}, {self.type} on {self.policy_area}'
 
     def get_type(self) -> PolicyComponentOptionType:
-        return PolicyComponent.PolicyComponentOptionType(self.type)
+        return PolicyComponentOptionType(self.type)
 
     def is_option_based(self) -> bool:
         return self.get_type().requires_options
