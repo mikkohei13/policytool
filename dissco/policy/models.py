@@ -198,6 +198,11 @@ class InstitutionPolicyComponent(models.Model):
                                          on_delete=models.CASCADE)
 
 
+class Rule(models.TextChoices):
+    EQUAL = 'equal'
+    OR = 'or'
+
+
 class ServicePolicyMapping(models.Model):
     """
     Value and rules representing the requirement of a specific service component with respect to a
@@ -215,3 +220,6 @@ class ServicePolicyMapping(models.Model):
     rule = models.TextField(choices=Rule.choices)
     allowed_value = models.TextField(blank=True)
     allowed_options = models.ManyToManyField(PolicyComponentOption)
+
+    def get_rule(self) -> Rule:
+        return Rule(self.rule)
