@@ -55,6 +55,23 @@ def get_institution_alignment(request: Request) -> Response:
     return Response(alignment)
 
 
+@api_view(['GET'])
+@authentication_classes([authentication.TokenAuthentication])
+@permission_classes([permissions.IsAuthenticated])
+def get_institution_alignment_mapping(request: Request, mapping_id: int) -> Response:
+    institution = request.user.institutionuser.institution
+    mapping = models.ServicePolicyMapping.objects.get(id=mapping_id)
+    alignment = {
+        'mapping': mapping.id,
+        'service': mapping.service_component.service_id,
+        'policy': mapping.policy_component.policy_area_id,
+        'service_component': mapping.service_component_id,
+        'policy_component': mapping.policy_component_id,
+        'status': calculate_alignment(mapping, institution).to_dict(),
+    }
+    return Response(alignment)
+
+
 class InstitutionPolicyAreaAPIView(APIView):
     authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
