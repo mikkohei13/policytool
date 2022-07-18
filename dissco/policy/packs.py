@@ -58,7 +58,7 @@ def to_question(institution: Institution, policy_component: PolicyComponent) -> 
     except ObjectDoesNotExist:
         answer = None
 
-    # TODO: right now all questions are required...
+    # TODO: could use the presence of a mapping entity to determine if a question is required?
     return Question(q_id=policy_component.id, order=policy_component.order,
                     text=policy_component.question, hint=policy_component.description,
                     q_type=option_mapping[policy_component.get_type()], options=options,
