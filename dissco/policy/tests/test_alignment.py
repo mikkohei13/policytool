@@ -5,7 +5,7 @@ import pytest
 from common.models import Institution
 from policy.alignment import validators
 from policy.models import ServicePolicyMapping, InstitutionPolicyComponent, PolicyComponent, \
-    PolicyComponentOptionType, Rule, ServiceComponent, PolicyComponentOption, Service, PolicyArea, \
+    PolicyComponentType, Rule, ServiceComponent, PolicyComponentOption, Service, PolicyArea, \
     PolicyCategory
 
 bool_equal_scenarios = [
@@ -24,7 +24,7 @@ bool_equal_scenarios = [
 
 @pytest.mark.parametrize('allowed_value, answer_value, ok', bool_equal_scenarios)
 def test_bool_equal(allowed_value: str, answer_value: str, ok: bool):
-    policy_component = PolicyComponent(type=PolicyComponentOptionType.BOOL)
+    policy_component = PolicyComponent(type=PolicyComponentType.BOOL)
     mapping = ServicePolicyMapping(allowed_value=allowed_value, policy_component=policy_component,
                                    rule=Rule.EQUAL)
     answer = InstitutionPolicyComponent(value=answer_value)
@@ -46,7 +46,7 @@ number_equal_scenarios = [
 
 @pytest.mark.parametrize('allowed_value, answer_value, ok', number_equal_scenarios)
 def test_number_equal(allowed_value: str, answer_value: str, ok: bool):
-    policy_component = PolicyComponent(type=PolicyComponentOptionType.NUMBER)
+    policy_component = PolicyComponent(type=PolicyComponentType.NUMBER)
     mapping = ServicePolicyMapping(allowed_value=allowed_value, policy_component=policy_component,
                                    rule=Rule.EQUAL)
     answer = InstitutionPolicyComponent(value=answer_value)
@@ -54,7 +54,7 @@ def test_number_equal(allowed_value: str, answer_value: str, ok: bool):
     assert result.passed == ok
 
 
-def create_mapping(options: list[str], allowed: list[str], option_type: PolicyComponentOptionType,
+def create_mapping(options: list[str], allowed: list[str], component_type: PolicyComponentType,
                    rule: Rule) -> ServicePolicyMapping:
     def random_str() -> str:
         return str(uuid4())
@@ -71,7 +71,7 @@ def create_mapping(options: list[str], allowed: list[str], option_type: PolicyCo
     policy_area = PolicyArea(name=random_str(), number=1, category=policy_category)
     policy_area.save()
 
-    policy_component = PolicyComponent(type=option_type, policy_area=policy_area)
+    policy_component = PolicyComponent(type=component_type, policy_area=policy_area)
     policy_component.save()
 
     allowed_options = []
@@ -97,7 +97,7 @@ class TestOptionSingleEqual:
 
     def test_no_choice(self):
         mapping = create_mapping(['a', 'b', 'c', 'd'], ['b'],
-                                 PolicyComponentOptionType.OPTION_SINGLE, Rule.EQUAL)
+                                 PolicyComponentType.OPTION_SINGLE, Rule.EQUAL)
 
         institution = Institution(name='test institution')
         institution.save()
@@ -109,7 +109,7 @@ class TestOptionSingleEqual:
 
     def test_valid_choice(self):
         mapping = create_mapping(['a', 'b', 'c', 'd'], ['b'],
-                                 PolicyComponentOptionType.OPTION_SINGLE, Rule.EQUAL)
+                                 PolicyComponentType.OPTION_SINGLE, Rule.EQUAL)
 
         institution = Institution(name='test institution')
         institution.save()
@@ -123,7 +123,7 @@ class TestOptionSingleEqual:
 
     def test_invalid_choice(self):
         mapping = create_mapping(['a', 'b', 'c', 'd'], ['b'],
-                                 PolicyComponentOptionType.OPTION_SINGLE, Rule.EQUAL)
+                                 PolicyComponentType.OPTION_SINGLE, Rule.EQUAL)
 
         institution = Institution(name='test institution')
         institution.save()
@@ -149,7 +149,7 @@ option_single_equal_scenarios = [
 @pytest.mark.django_db
 @pytest.mark.parametrize('options, allowed_options, choice, ok', option_single_equal_scenarios)
 def test_option_single_equal(options: list[str], allowed_options: list[str], choice: str, ok: bool):
-    mapping = create_mapping(options, allowed_options, PolicyComponentOptionType.OPTION_SINGLE,
+    mapping = create_mapping(options, allowed_options, PolicyComponentType.OPTION_SINGLE,
                              Rule.EQUAL)
     institution = Institution(name='test institution')
     institution.save()
@@ -177,7 +177,7 @@ option_single_equal_scenarios = [
 @pytest.mark.django_db
 @pytest.mark.parametrize('options, allowed_options, choice, ok', option_single_equal_scenarios)
 def test_option_single_equal(options: list[str], allowed_options: list[str], choice: str, ok: bool):
-    mapping = create_mapping(options, allowed_options, PolicyComponentOptionType.OPTION_SINGLE,
+    mapping = create_mapping(options, allowed_options, PolicyComponentType.OPTION_SINGLE,
                              Rule.EQUAL)
     institution = Institution(name='test institution')
     institution.save()
@@ -205,7 +205,7 @@ option_single_or_scenarios = [
 @pytest.mark.django_db
 @pytest.mark.parametrize('options, allowed_options, choice, ok', option_single_or_scenarios)
 def test_option_single_or(options: list[str], allowed_options: list[str], choice: str, ok: bool):
-    mapping = create_mapping(options, allowed_options, PolicyComponentOptionType.OPTION_SINGLE,
+    mapping = create_mapping(options, allowed_options, PolicyComponentType.OPTION_SINGLE,
                              Rule.OR)
     institution = Institution(name='test institution')
     institution.save()
@@ -236,7 +236,7 @@ option_multiple_equal_scenarios = [
 @pytest.mark.parametrize('options, allowed_options, choices, ok', option_multiple_equal_scenarios)
 def test_option_multiple_equal(options: list[str], allowed_options: list[str], choices: list[str],
                                ok: bool):
-    mapping = create_mapping(options, allowed_options, PolicyComponentOptionType.OPTION_MULTIPLE,
+    mapping = create_mapping(options, allowed_options, PolicyComponentType.OPTION_MULTIPLE,
                              Rule.EQUAL)
     institution = Institution(name='test institution')
     institution.save()
@@ -269,7 +269,7 @@ option_multiple_or_scenarios = [
 @pytest.mark.parametrize('options, allowed_options, choices, ok', option_multiple_or_scenarios)
 def test_option_multiple_or(options: list[str], allowed_options: list[str], choices: list[str],
                             ok: bool):
-    mapping = create_mapping(options, allowed_options, PolicyComponentOptionType.OPTION_MULTIPLE,
+    mapping = create_mapping(options, allowed_options, PolicyComponentType.OPTION_MULTIPLE,
                              Rule.OR)
     institution = Institution(name='test institution')
     institution.save()

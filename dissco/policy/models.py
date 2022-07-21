@@ -64,8 +64,8 @@ class PolicyArea(models.Model):
         return f'{self.name} [{self.category}]'
 
 
-# define the options for the value type
-class PolicyComponentOptionType(models.TextChoices):
+# define the options for the component type
+class PolicyComponentType(models.TextChoices):
     BOOL = 'bool'
     NUMBER = 'number'
     OPTION_SINGLE = 'option'
@@ -73,8 +73,7 @@ class PolicyComponentOptionType(models.TextChoices):
 
     @property
     def requires_options(self) -> bool:
-        return self in (PolicyComponentOptionType.OPTION_SINGLE,
-                        PolicyComponentOptionType.OPTION_MULTIPLE)
+        return self in (PolicyComponentType.OPTION_SINGLE, PolicyComponentType.OPTION_MULTIPLE)
 
 
 class PolicyComponent(models.Model):
@@ -89,15 +88,15 @@ class PolicyComponent(models.Model):
     # a short and informative description of the policy component
     description = models.TextField(blank=True)
     # the type of data representing the component
-    type = models.TextField(choices=PolicyComponentOptionType.choices)
+    type = models.TextField(choices=PolicyComponentType.choices)
     # the policy area this component belongs to
     policy_area = models.ForeignKey(PolicyArea, related_name='components', on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return f'{self.name}, {self.type} on {self.policy_area}'
 
-    def get_type(self) -> PolicyComponentOptionType:
-        return PolicyComponentOptionType(self.type)
+    def get_type(self) -> PolicyComponentType:
+        return PolicyComponentType(self.type)
 
     def is_option_based(self) -> bool:
         return self.get_type().requires_options

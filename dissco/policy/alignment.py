@@ -2,8 +2,8 @@ from dataclasses import dataclass
 from typing import Iterable, Any
 
 from common.models import Institution
-from policy.models import InstitutionPolicyComponent, ServicePolicyMapping, \
-    PolicyComponentOptionType, Rule, PolicyComponentOption
+from policy.models import InstitutionPolicyComponent, ServicePolicyMapping, PolicyComponentType, \
+    Rule, PolicyComponentOption
 
 
 def join_options(options: Iterable[PolicyComponentOption]) -> str:
@@ -27,9 +27,9 @@ class AlignmentValidatorRegistry:
     def __init__(self):
         self._validators = {}
 
-    def register(self, option_type: PolicyComponentOptionType, rule: Rule):
+    def register(self, component_type: PolicyComponentType, rule: Rule):
         def decorator(function):
-            self._validators[(option_type, rule)] = function
+            self._validators[(component_type, rule)] = function
             return function
 
         return decorator
@@ -56,7 +56,7 @@ def calculate_alignment(mapping: ServicePolicyMapping, institution: Institution)
         return AlignmentResult(False, 'No answer provided')
 
 
-@validators.register(PolicyComponentOptionType.BOOL, Rule.EQUAL)
+@validators.register(PolicyComponentType.BOOL, Rule.EQUAL)
 def validate_bool_equal(mapping: ServicePolicyMapping,
                         answer: InstitutionPolicyComponent) -> AlignmentResult:
     if not answer.value:
@@ -67,7 +67,7 @@ def validate_bool_equal(mapping: ServicePolicyMapping,
         return AlignmentResult(False, f'must be {mapping.allowed_value}, not {answer.value}')
 
 
-@validators.register(PolicyComponentOptionType.NUMBER, Rule.EQUAL)
+@validators.register(PolicyComponentType.NUMBER, Rule.EQUAL)
 def validate_number_equal(mapping: ServicePolicyMapping,
                           answer: InstitutionPolicyComponent) -> AlignmentResult:
     if not answer.value:
@@ -78,7 +78,7 @@ def validate_number_equal(mapping: ServicePolicyMapping,
         return AlignmentResult(False, f'must be {mapping.allowed_value}, not {answer.value}')
 
 
-@validators.register(PolicyComponentOptionType.OPTION_SINGLE, Rule.EQUAL)
+@validators.register(PolicyComponentType.OPTION_SINGLE, Rule.EQUAL)
 def validate_option_single_equal(mapping: ServicePolicyMapping,
                                  answer: InstitutionPolicyComponent) -> AlignmentResult:
     chosen: PolicyComponentOption | None = answer.chosen_options.first()
@@ -91,7 +91,7 @@ def validate_option_single_equal(mapping: ServicePolicyMapping,
         return AlignmentResult(False, f'must be {allowed.value}, not {chosen.value}')
 
 
-@validators.register(PolicyComponentOptionType.OPTION_SINGLE, Rule.OR)
+@validators.register(PolicyComponentType.OPTION_SINGLE, Rule.OR)
 def validate_option_single_or(mapping: ServicePolicyMapping,
                               answer: InstitutionPolicyComponent) -> AlignmentResult:
     chosen: PolicyComponentOption | None = answer.chosen_options.first()
@@ -105,7 +105,7 @@ def validate_option_single_or(mapping: ServicePolicyMapping,
                                       f'not {chosen.value}')
 
 
-@validators.register(PolicyComponentOptionType.OPTION_MULTIPLE, Rule.EQUAL)
+@validators.register(PolicyComponentType.OPTION_MULTIPLE, Rule.EQUAL)
 def validate_option_multiple_equal(mapping: ServicePolicyMapping,
                                    answer: InstitutionPolicyComponent) -> AlignmentResult:
     chosen: set[PolicyComponentOption] = set(answer.chosen_options.all())
@@ -120,7 +120,7 @@ def validate_option_multiple_equal(mapping: ServicePolicyMapping,
                                       f'misaligned: {join_options(not_allowed)}')
 
 
-@validators.register(PolicyComponentOptionType.OPTION_MULTIPLE, Rule.OR)
+@validators.register(PolicyComponentType.OPTION_MULTIPLE, Rule.OR)
 def validate_option_multiple_or(mapping: ServicePolicyMapping,
                                 answer: InstitutionPolicyComponent) -> AlignmentResult:
     chosen: set[PolicyComponentOption] = set(answer.chosen_options.all())

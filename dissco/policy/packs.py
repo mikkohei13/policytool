@@ -1,16 +1,16 @@
 from django.core.exceptions import ObjectDoesNotExist
 
 from common.models import Institution
-from policy.models import PolicyArea, PolicyComponent, PolicyComponentOption, \
-    InstitutionPolicyComponent, PolicyComponentOptionType
+from policy.models import PolicyArea, PolicyComponent, PolicyComponentOption, PolicyComponentType, \
+    InstitutionPolicyComponent
 from qa.packs import PackProvider, Pack, Answer, Question, PackDoesNotExist, QuestionDoesNotExist, \
     QuestionType, PackSummary
 
-option_mapping: dict[PolicyComponentOptionType, QuestionType] = {
-    PolicyComponentOptionType.BOOL: QuestionType.BOOL,
-    PolicyComponentOptionType.NUMBER: QuestionType.NUMBER,
-    PolicyComponentOptionType.OPTION_SINGLE: QuestionType.OPTION_SINGLE,
-    PolicyComponentOptionType.OPTION_MULTIPLE: QuestionType.OPTION_MULTIPLE,
+type_mapping: dict[PolicyComponentType, QuestionType] = {
+    PolicyComponentType.BOOL: QuestionType.BOOL,
+    PolicyComponentType.NUMBER: QuestionType.NUMBER,
+    PolicyComponentType.OPTION_SINGLE: QuestionType.OPTION_SINGLE,
+    PolicyComponentType.OPTION_MULTIPLE: QuestionType.OPTION_MULTIPLE,
 }
 
 
@@ -61,7 +61,7 @@ def to_question(institution: Institution, policy_component: PolicyComponent) -> 
     # TODO: could use the presence of a mapping entity to determine if a question is required?
     return Question(q_id=policy_component.id, order=policy_component.order,
                     text=policy_component.question, hint=policy_component.description,
-                    q_type=option_mapping[policy_component.get_type()], options=options,
+                    q_type=type_mapping[policy_component.get_type()], options=options,
                     answer=answer)
 
 
