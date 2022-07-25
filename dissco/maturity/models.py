@@ -36,6 +36,9 @@ class Responder(models.Model):
             models.UniqueConstraint(fields=['name', 'owner'], name='unique_name_owner'),
         ]
 
+    def __str__(self) -> str:
+        return f'{self.type}: {self.name} [owner: {self.owner.username}]'
+
 
 class Answer(models.Model):
     value = models.IntegerField()
