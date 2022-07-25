@@ -31,6 +31,11 @@ class Responder(models.Model):
     comment = models.TextField(blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['name', 'owner'], name='unique_name_owner'),
+        ]
+
 
 class Answer(models.Model):
     value = models.IntegerField()
