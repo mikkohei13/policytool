@@ -1,8 +1,7 @@
 from itertools import count
 from pathlib import Path
 
-from policy.loading.utils import load_yaml, PolicyLoadError, gen_offset_id, UpsertResult, \
-    UpsertManager
+from common.loading_utils import load_yaml, LoadError, gen_offset_id, UpsertResult, UpsertManager
 from policy.models import Service, ServiceComponent, PolicyComponent, ServicePolicyMapping, \
     PolicyComponentOption
 
@@ -35,7 +34,7 @@ def load_mappings(root: Path, upsert_manager: UpsertManager):
         # ensure the service we're mapping into exists
         service_id = mapping_def['service']
         if not Service.objects.filter(id=service_id).exists():
-            raise PolicyLoadError(f"Couldn't find service {service_id} in {mapping_path}")
+            raise LoadError(f"Couldn't find service {service_id} in {mapping_path}")
 
         for sc_mappings_def in mapping_def['mappings']:
             # find the service component with the given ref

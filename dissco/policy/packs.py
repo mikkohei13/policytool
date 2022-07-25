@@ -14,8 +14,8 @@ type_mapping: dict[PolicyComponentType, QuestionType] = {
 }
 
 
-def to_pack_summary(pack_type: str, institution: Institution, policy_area: PolicyArea) \
-        -> PackSummary:
+def to_pack_summary(pack_type: str, institution: Institution,
+                    policy_area: PolicyArea) -> PackSummary:
     question_count = 0
     answered_count = 0
     for policy_component in policy_area.components.all():
@@ -82,19 +82,22 @@ class PolicyPackProvider(PackProvider):
         - Answer -> InstitutionPolicyComponent (answer) + PolicyComponentOption (choices)
     """
 
-    def get_packs(self, institution: Institution) -> list[PackSummary]:
+    def get_packs(self, institution_id: int) -> list[PackSummary]:
+        institution = Institution.objects.get(id=institution_id)
         return [
             to_pack_summary(self.pack_type, institution, policy_area)
             for policy_area in PolicyArea.objects.all().order_by('id')
         ]
 
-    def get_pack(self, institution: Institution, pack_id: int) -> Pack:
+    def get_pack(self, institution_id: int, pack_id: int) -> Pack:
+        institution = Institution.objects.get(id=institution_id)
         try:
             return to_pack(self.pack_type, institution, PolicyArea.objects.get(pk=pack_id))
         except ObjectDoesNotExist as e:
             raise PackDoesNotExist() from e
 
-    def save_answer(self, institution: Institution, pack_id: int, question_id: int, answer: Answer):
+    def save_answer(self, institution_id: int, pack_id: int, question_id: int, answer: Answer):
+        institution = Institution.objects.get(id=institution_id)
         try:
             policy_component = PolicyComponent.objects.get(pk=question_id)
         except ObjectDoesNotExist as e:
@@ -118,7 +121,8 @@ class PolicyPackProvider(PackProvider):
             ipc.value = answer.value
         ipc.save()
 
-    def delete_answer(self, institution: Institution, pack_id: int, question_id: int):
+    def delete_answer(self, institution_id: int, pack_id: int, question_id: int):
+        institution = Institution.objects.get(id=institution_id)
         try:
             policy_component = PolicyComponent.objects.get(pk=question_id)
         except ObjectDoesNotExist as e:

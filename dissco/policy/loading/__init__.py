@@ -3,10 +3,10 @@ from pathlib import Path
 from django.core.management.base import OutputWrapper
 from django.db import transaction
 
+from common.loading_utils import UpsertManager
 from policy.loading.mappings import load_mappings
 from policy.loading.policies import load_policies
 from policy.loading.services import load_services
-from policy.loading.utils import UpsertResult, UpsertManager
 
 
 @transaction.atomic

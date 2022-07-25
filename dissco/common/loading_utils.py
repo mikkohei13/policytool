@@ -9,9 +9,9 @@ from django.core.management.base import OutputWrapper
 from django.db.models import Model
 
 
-class PolicyLoadError(Exception):
+class LoadError(Exception):
     """
-    Generic policy loading error, all errors we can detect will be raised using this
+    Generic loading error, all errors we can detect will be raised using this
     """
     pass
 
@@ -56,7 +56,7 @@ class UpsertManager:
 
         object_id: int = definition.pop('id', object_id)
         if object_id is None:
-            raise PolicyLoadError(f'{model.__name__} id must be defined')
+            raise LoadError(f'{model.__name__} id must be defined')
 
         self._seen[model].add(object_id)
 

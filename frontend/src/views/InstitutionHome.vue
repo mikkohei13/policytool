@@ -32,9 +32,10 @@ const {institution} = storeToRefs(useAuth())
 const policies = ref([])
 
 const updatePolicies = async () => {
-  policies.value = await api.get(`/api/policy/`)
+  policies.value = await api.get(`/api/policy/${institution.value.id}/pack`)
 }
 
 onMounted(updatePolicies)
 
 </script>
+-

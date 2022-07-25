@@ -64,6 +64,8 @@ import {api} from '@/utils/api'
 import {notify} from '@kyvg/vue3-notification'
 import {clamp} from '@/utils/utils'
 import {useRouter} from 'vue-router'
+import {useAuth} from '@/store/auth'
+import {storeToRefs} from 'pinia'
 
 const types = {
   'bool': Bool,
@@ -81,6 +83,9 @@ const pack = ref({})
 const updatedQuestionIds = new Set()
 const questionGroups = ref([])
 const groupIndex = ref(0)
+
+const authStore = useAuth()
+const {institution} = storeToRefs(authStore)
 
 const showPrevious = computed(() => groupIndex.value !== 0)
 const showNext = computed(() => {
@@ -112,7 +117,8 @@ const leave = async () => {
 const saveAnswers = async () => {
   if (updatedQuestionIds.size) {
     for (const questionId of updatedQuestionIds) {
-      await api.post(`/api/${type}/pack/${id}/${questionId}/`, getQuestion(questionId).answer)
+      await api.post(`/api/${type}/${institution.value.id}/pack/${id}/${questionId}/`,
+          getQuestion(questionId).answer)
     }
     updatedQuestionIds.clear()
     notify({
@@ -125,7 +131,7 @@ const saveAnswers = async () => {
 }
 
 const updatePack = async () => {
-  pack.value = await api.get(`/api/${type}/pack/${id}`)
+  pack.value = await api.get(`/api/${type}/${institution.value.id}/pack/${id}`)
 
   // group the questions by order value in an array
   questionGroups.value = []

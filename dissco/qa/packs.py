@@ -5,8 +5,6 @@ from typing import Any
 
 from django.utils.module_loading import import_string
 
-from common.models import Institution
-
 
 class QuestionType(Enum):
     BOOL = 'bool'
@@ -127,19 +125,19 @@ class PackProvider(ABC):
         self.pack_type = pack_type
 
     @abstractmethod
-    def get_packs(self, institution: Institution) -> list[PackSummary]:
+    def get_packs(self, responder_id: int) -> list[PackSummary]:
         ...
 
     @abstractmethod
-    def get_pack(self, institution: Institution, pack_id: int) -> Pack:
+    def get_pack(self, responder_id: int, pack_id: int) -> Pack:
         ...
 
     @abstractmethod
-    def save_answer(self, institution: Institution, pack_id: int, question_id: int, answer: Answer):
+    def save_answer(self, responder_id: int, pack_id: int, question_id: int, answer: Answer):
         ...
 
     @abstractmethod
-    def delete_answer(self, institution: Institution, pack_id: int, question_id: int):
+    def delete_answer(self, responder_id: int, pack_id: int, question_id: int):
         ...
 
 

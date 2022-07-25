@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from policy.loading.utils import load_yaml, gen_offset_id, UpsertManager
+from common.loading_utils import load_yaml, gen_offset_id, UpsertManager
 from policy.models import PolicyCategory, PolicyArea, PolicyComponent, PolicyComponentOption
 
 

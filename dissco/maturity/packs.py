@@ -1,17 +1,17 @@
 from django.core.exceptions import ObjectDoesNotExist
 
-from common.models import Institution
-from maturity.models import Category, SubCategory, InstitutionSubCategory
+from maturity.models import Category, Question as MaturityQuestion, Answer as MaturityAnswer, \
+    Responder
 from qa.packs import PackProvider, Answer, Pack, PackSummary, Question, QuestionType, \
     PackDoesNotExist, QuestionDoesNotExist
 
 
-def to_pack_summary(pack_type: str, institution: Institution, category: Category) -> PackSummary:
+def to_pack_summary(pack_type: str, responder: Responder, category: Category) -> PackSummary:
     question_count = 0
     answered_count = 0
-    for subcategory in category.subcategories.all():
+    for question in category.questions.all():
         question_count += 1
-        if subcategory.institution_subcategories.filter(institution=institution).exists():
+        if question.answers.filter(responder=responder).exists():
             answered_count += 1
 
     return PackSummary(p_id=category.id, name=category.name, p_type=pack_type,
@@ -19,60 +19,61 @@ def to_pack_summary(pack_type: str, institution: Institution, category: Category
                        description=category.description)
 
 
-def to_pack(pack_type: str, institution: Institution, category: Category) -> Pack:
+def to_pack(pack_type: str, responder: Responder, category: Category) -> Pack:
     questions = []
-    for subcategory in category.subcategories.all().order_by('order', 'id'):
-        questions.append(to_question(institution, subcategory))
+    for question in category.questions.all().order_by('order', 'id'):
+        questions.append(to_question(responder, question))
     return Pack(p_id=category.id, name=category.name, p_type=pack_type, questions=questions,
                 description=category.description)
 
 
-def to_question(institution: Institution, subcategory: SubCategory) -> Question:
+def to_question(responder: Responder, question: MaturityQuestion) -> Question:
     try:
-        institution_subcategory = subcategory.institution_subcategories.get(institution=institution)
-        answer = Answer(institution_subcategory.value, institution_subcategory.comment)
+        db_answer = question.answers.get(responder=responder)
+        answer = Answer(db_answer.value, db_answer.comment)
     except ObjectDoesNotExist:
         answer = None
 
     # TODO: right now all questions are required...
-    return Question(q_id=subcategory.id, order=subcategory.order, text=subcategory.prompt,
-                    q_type=QuestionType.MATURITY, answer=answer, period=subcategory.period)
+    return Question(q_id=question.id, order=question.order, text=question.prompt,
+                    q_type=QuestionType.MATURITY, answer=answer, period=question.period)
 
 
 class DigitalMaturityPackProvider(PackProvider):
 
-    def get_packs(self, institution: Institution) -> list[PackSummary]:
+    def get_packs(self, responder_id: int) -> list[PackSummary]:
+        responder = Responder.objects.get(id=responder_id)
         return [
-            to_pack_summary(self.pack_type, institution, category)
+            to_pack_summary(self.pack_type, responder, category)
             for category in Category.objects.all().order_by('id')
         ]
 
-    def get_pack(self, institution: Institution, pack_id: int) -> Pack:
+    def get_pack(self, responder_id: int, pack_id: int) -> Pack:
+        responder = Responder.objects.get(id=responder_id)
         try:
-            return to_pack(self.pack_type, institution, Category.objects.get(pk=pack_id))
+            return to_pack(self.pack_type, responder, Category.objects.get(pk=pack_id))
         except ObjectDoesNotExist as e:
             raise PackDoesNotExist() from e
 
-    def save_answer(self, institution: Institution, pack_id: int, question_id: int, answer: Answer):
+    def save_answer(self, responder_id: int, pack_id: int, question_id: int, answer: Answer):
+        responder = Responder.objects.get(id=responder_id)
         try:
-            subcategory = SubCategory.objects.get(pk=question_id)
+            question = MaturityQuestion.objects.get(pk=question_id)
         except ObjectDoesNotExist as e:
             raise QuestionDoesNotExist() from e
 
-        if (InstitutionSubCategory.objects.filter(institution=institution, subcategory=subcategory)
-                .exists()):
-            # this will actually delete all previous answers
-            self.delete_answer(institution, pack_id, question_id)
+        if MaturityAnswer.objects.filter(responder=responder, question=question).exists():
+            self.delete_answer(responder, pack_id, question_id)
 
-        # create a new institution subcomponent as an answer
-        isub = InstitutionSubCategory(value=int(answer.value), comment=answer.comment,
-                                      institution=institution, subcategory=subcategory)
-        isub.save()
+        db_answer = MaturityAnswer(value=int(answer.value), comment=answer.comment,
+                                   responder=responder, question=question)
+        db_answer.save()
 
-    def delete_answer(self, institution: Institution, pack_id: int, question_id: int):
+    def delete_answer(self, responder_id: int, pack_id: int, question_id: int):
+        responder = Responder.objects.get(id=responder_id)
         try:
-            subcategory = SubCategory.objects.get(pk=question_id)
+            question = MaturityQuestion.objects.get(pk=question_id)
         except ObjectDoesNotExist as e:
             raise QuestionDoesNotExist() from e
 
-        subcategory.institution_subcategories.filter(institution=institution).delete()
+        question.answers.filter(responder=responder).delete()

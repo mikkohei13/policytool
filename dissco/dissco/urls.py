@@ -28,9 +28,10 @@ urlpatterns = [
 
     # authed api endpoints
     path('api/whoami/', whoami),
-    path('api/<str:pack_type>/pack/', pack_api.get_packs),
-    path('api/<str:pack_type>/pack/<int:pack_id>/', pack_api.get_pack),
-    path('api/<str:pack_type>/pack/<int:pack_id>/<int:question_id>/', pack_api.handle_answer),
+    path('api/<str:pack_type>/<int:responder_id>/pack/', pack_api.get_packs),
+    path('api/<str:pack_type>/<int:responder_id>/pack/<int:pack_id>/', pack_api.get_pack),
+    path('api/<str:pack_type>/<int:responder_id>/pack/<int:pack_id>/<int:question_id>/',
+         pack_api.handle_answer),
     path('api/policy/', policy_views.InstitutionPolicyAreaAPIView.as_view()),
     path('api/policy/alignment/', policy_views.get_institution_alignment),
     path('api/policy/alignment/<int:mapping_id>/', policy_views.get_institution_alignment_mapping),

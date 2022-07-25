@@ -56,10 +56,16 @@ import PackItem from '@/components/packs/PackItem.vue'
 import {computed, onMounted, ref} from 'vue'
 import {calcPackStatus, PACK_STATUS} from '@/utils/utils'
 import {api} from '@/utils/api'
+import {useAuth} from '@/store/auth'
+import {storeToRefs} from 'pinia'
+
 
 const {type, title} = defineProps(['type', 'title'])
 const packs = ref([])
 const showPicker = ref(false)
+
+const authStore = useAuth()
+const {institution} = storeToRefs(authStore)
 
 const completedPacks = computed(() => {
   return packs.value.filter(pack => calcPackStatus(pack) === PACK_STATUS.COMPLETE)
@@ -74,7 +80,7 @@ const notStartedPacks = computed(() => {
 })
 
 const updatePolicyPacks = async () => {
-  packs.value = await api.get(`/api/${type}/pack`)
+  packs.value = await api.get(`/api/${type}/${institution.value.id}/pack`)
 }
 
 onMounted(updatePolicyPacks)
