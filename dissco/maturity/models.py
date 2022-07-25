@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -28,6 +29,7 @@ class Responder(models.Model):
     type = models.TextField(choices=ResponderType.choices)
     name = models.TextField()
     comment = models.TextField(blank=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class Answer(models.Model):
