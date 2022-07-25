@@ -14,7 +14,7 @@ import {ref, watch} from 'vue'
 
 const emit = defineEmits(['updateAnswer'])
 const {question, allowComment} = defineProps({
-  'question': {type: Array},
+  'question': {type: Object},
   'allowComment': {type: Boolean, default: true}
 })
 
