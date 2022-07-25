@@ -37,6 +37,7 @@ urlpatterns = [
     path('api/policy/alignment/', policy_views.get_institution_alignment),
     path('api/policy/alignment/<int:mapping_id>/', policy_views.get_institution_alignment_mapping),
     path('api/maturity/responder', ResponderAPIView.as_view()),
+    path('api/maturity/responder/<int:responder_id>', ResponderAPIView.as_view()),
 
     # public api endpoints
     path('api/institution/policy/', policy_views.get_institution_public_policy_list),
