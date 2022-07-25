@@ -12,7 +12,7 @@
         <VueFeather type="chevron-right" size="2rem" class="align-middle "></VueFeather>
       </router-link>
       <router-link :to="{name: 'maturity'}" class="bg-yellow p-3 rounded hover:bg-yellow-dark">
-        Review institutional maturity
+        Review maturity
         <VueFeather type="chevron-right" size="2rem" class="align-middle "></VueFeather>
       </router-link>
     </template>
