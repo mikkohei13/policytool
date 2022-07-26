@@ -80,6 +80,10 @@ class PackStatus(Enum):
     NOT_STARTED = 'not_started'
 
 
+def serialise_datetime(dt: datetime | None) -> str | None:
+    return dt.isoformat(sep=' ') if dt else None
+
+
 class PackSummary:
 
     def __init__(self, p_id: int, name: str, p_type: str, size: int, answered: int,
@@ -99,7 +103,7 @@ class PackSummary:
             'type': self.type,
             'size': self.size,
             'answered': self.answered,
-            'finished_at': self.finished_at.isoformat(sep=' ') if self.finished_at else None,
+            'finished_at': serialise_datetime(self.finished_at),
             **self.extra,
         }
 
@@ -121,7 +125,7 @@ class Pack:
             'name': self.name,
             'type': self.type,
             'questions': [question.to_dict() for question in self.questions],
-            'finished_at': self.finished_at.isoformat(sep=' ') if not None else None,
+            'finished_at': serialise_datetime(self.finished_at),
             **self.extra,
         }
 
