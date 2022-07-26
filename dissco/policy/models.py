@@ -197,6 +197,18 @@ class InstitutionPolicyComponent(models.Model):
                                          on_delete=models.CASCADE)
 
 
+class InstitutionResponse(models.Model):
+    institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
+    policy_area = models.ForeignKey(PolicyArea, on_delete=models.CASCADE)
+    finished_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['institution', 'policy_area'],
+                                    name='unique_policy_response'),
+        ]
+
+
 class Rule(models.TextChoices):
     EQUAL = 'equal'
     OR = 'or'

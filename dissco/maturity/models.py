@@ -45,3 +45,15 @@ class Answer(models.Model):
     comment = models.TextField(blank=True)
     question = models.ForeignKey(Question, related_name='answers', on_delete=models.CASCADE)
     responder = models.ForeignKey(Responder, related_name='answers', on_delete=models.CASCADE)
+
+
+class Response(models.Model):
+    responder = models.ForeignKey(Responder, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    finished_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['responder', 'category'],
+                                    name='unique_maturity_response'),
+        ]
