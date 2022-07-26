@@ -38,4 +38,3 @@ const updatePolicies = async () => {
 onMounted(updatePolicies)
 
 </script>
--
