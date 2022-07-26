@@ -11,7 +11,7 @@ class ResponderAPIView(APIView):
     authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
 
-    def get(self, request: Request, responder_id: int | None):
+    def get(self, request: Request, responder_id: int | None = None):
         if responder_id is not None:
             responder = Responder.objects.get(owner=request.user, id=responder_id)
             serializer = serializers.ResponderSerializer(responder)

@@ -1,8 +1,11 @@
+from datetime import datetime
+
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils import timezone
 
 from common.models import Institution
 from policy.models import PolicyArea, PolicyComponent, PolicyComponentOption, PolicyComponentType, \
-    InstitutionPolicyComponent
+    InstitutionPolicyComponent, InstitutionResponse
 from qa.packs import PackProvider, Pack, Answer, Question, PackDoesNotExist, QuestionDoesNotExist, \
     QuestionType, PackSummary
 
@@ -14,6 +17,14 @@ type_mapping: dict[PolicyComponentType, QuestionType] = {
 }
 
 
+def get_finished_datetime(institution: Institution, policy_area: PolicyArea) -> datetime | None:
+    try:
+        response = InstitutionResponse.objects.get(institution=institution, policy_area=policy_area)
+        return response.finished_at
+    except ObjectDoesNotExist:
+        return None
+
+
 def to_pack_summary(pack_type: str, institution: Institution,
                     policy_area: PolicyArea) -> PackSummary:
     question_count = 0
@@ -23,8 +34,11 @@ def to_pack_summary(pack_type: str, institution: Institution,
         if policy_component.institution_policy_components.filter(institution=institution).exists():
             answered_count += 1
 
+    finished_at = get_finished_datetime(institution, policy_area)
+
     return PackSummary(p_id=policy_area.id, name=policy_area.name, p_type=pack_type,
-                       size=question_count, answered=answered_count, **get_pack_extras(policy_area))
+                       size=question_count, answered=answered_count, finished_at=finished_at,
+                       **get_pack_extras(policy_area))
 
 
 def to_pack(pack_type: str, institution: Institution, policy_area: PolicyArea) -> Pack:
@@ -131,3 +145,16 @@ class PolicyPackProvider(PackProvider):
         policy_component.institution_policy_components \
             .filter(institution=institution) \
             .delete()
+
+    def finish(self, institution_id: int, pack_id: int, state: bool):
+        institution = Institution.objects.get(id=institution_id)
+        policy_area = PolicyArea.objects.get(id=pack_id)
+
+        try:
+            response = InstitutionResponse.objects.get(institution=institution,
+                                                       policy_area=policy_area)
+        except ObjectDoesNotExist as e:
+            response = InstitutionResponse(institution=institution, policy_area=policy_area)
+
+        response.finished_at = timezone.now() if state else None
+        response.save()

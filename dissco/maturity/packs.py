@@ -1,9 +1,20 @@
+from datetime import datetime
+
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils import timezone
 
 from maturity.models import Category, Question as MaturityQuestion, Answer as MaturityAnswer, \
-    Responder
+    Responder, Response
 from qa.packs import PackProvider, Answer, Pack, PackSummary, Question, QuestionType, \
     PackDoesNotExist, QuestionDoesNotExist
+
+
+def get_finished_datetime(responder: Responder, category: Category) -> datetime | None:
+    try:
+        response = Response.objects.get(responder=responder, category=category)
+        return response.finished_at
+    except ObjectDoesNotExist:
+        return None
 
 
 def to_pack_summary(pack_type: str, responder: Responder, category: Category) -> PackSummary:
@@ -14,17 +25,22 @@ def to_pack_summary(pack_type: str, responder: Responder, category: Category) ->
         if question.answers.filter(responder=responder).exists():
             answered_count += 1
 
+    finished_at = get_finished_datetime(responder, category)
+
     return PackSummary(p_id=category.id, name=category.name, p_type=pack_type,
                        size=question_count, answered=answered_count,
-                       description=category.description)
+                       description=category.description, finished_at=finished_at)
 
 
 def to_pack(pack_type: str, responder: Responder, category: Category) -> Pack:
     questions = []
     for question in category.questions.all().order_by('order', 'id'):
         questions.append(to_question(responder, question))
+
+    finished_at = get_finished_datetime(responder, category)
+
     return Pack(p_id=category.id, name=category.name, p_type=pack_type, questions=questions,
-                description=category.description)
+                description=category.description, finished_at=finished_at)
 
 
 def to_question(responder: Responder, question: MaturityQuestion) -> Question:
@@ -77,3 +93,14 @@ class DigitalMaturityPackProvider(PackProvider):
             raise QuestionDoesNotExist() from e
 
         question.answers.filter(responder=responder).delete()
+
+    def finish(self, responder_id: int, pack_id: int, state: bool):
+        responder = Responder.objects.get(id=responder_id)
+        category = Category.objects.get(pk=pack_id)
+        try:
+            response = Response.objects.get(responder=responder, category=category)
+        except ObjectDoesNotExist as e:
+            response = Response(responder=responder, category=category)
+
+        response.finished_at = timezone.now() if state else None
+        response.save()

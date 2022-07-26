@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
+from datetime import datetime
 from enum import Enum
 from typing import Any
 
@@ -81,12 +82,14 @@ class PackStatus(Enum):
 
 class PackSummary:
 
-    def __init__(self, p_id: int, name: str, p_type: str, size: int, answered: int, **extra):
+    def __init__(self, p_id: int, name: str, p_type: str, size: int, answered: int,
+                 finished_at: datetime | None, **extra):
         self.id = p_id
         self.name = name
         self.type = p_type
         self.size = size
         self.answered = answered
+        self.finished_at = finished_at
         self.extra = extra
 
     def to_dict(self) -> dict[str, Any]:
@@ -96,17 +99,20 @@ class PackSummary:
             'type': self.type,
             'size': self.size,
             'answered': self.answered,
+            'finished_at': self.finished_at.isoformat(sep=' ') if self.finished_at else None,
             **self.extra,
         }
 
 
 class Pack:
 
-    def __init__(self, p_id: int, name: str, p_type: str, questions: list[Question], **extra):
+    def __init__(self, p_id: int, name: str, p_type: str, questions: list[Question],
+                 finished_at: datetime | None, **extra):
         self.id = p_id
         self.name = name
         self.type = p_type
         self.questions = questions
+        self.finished_at = finished_at
         self.extra = extra
 
     def to_dict(self) -> dict[str, Any]:
@@ -115,6 +121,7 @@ class Pack:
             'name': self.name,
             'type': self.type,
             'questions': [question.to_dict() for question in self.questions],
+            'finished_at': self.finished_at.isoformat(sep=' ') if not None else None,
             **self.extra,
         }
 
@@ -138,6 +145,10 @@ class PackProvider(ABC):
 
     @abstractmethod
     def delete_answer(self, responder_id: int, pack_id: int, question_id: int):
+        ...
+
+    @abstractmethod
+    def finish(self, responder_id: int, pack_id: int, state: bool):
         ...
 
 
