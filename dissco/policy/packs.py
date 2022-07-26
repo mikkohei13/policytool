@@ -45,8 +45,9 @@ def to_pack(pack_type: str, institution: Institution, policy_area: PolicyArea) -
     questions = []
     for policy_component in policy_area.components.all().order_by('order', 'id'):
         questions.append(to_question(institution, policy_component))
+    finished_at = get_finished_datetime(institution, policy_area)
     return Pack(p_id=policy_area.id, name=policy_area.name, p_type=pack_type,
-                questions=questions, **get_pack_extras(policy_area))
+                questions=questions, finished_at=finished_at, **get_pack_extras(policy_area))
 
 
 def get_pack_extras(policy_area: PolicyArea) -> dict:
