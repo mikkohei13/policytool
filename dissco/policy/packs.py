@@ -3,7 +3,7 @@ from datetime import datetime
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 
-from common.models import Institution
+from common.models import Institution, InstitutionUser
 from policy.models import PolicyArea, PolicyComponent, PolicyComponentOption, PolicyComponentType, \
     InstitutionPolicyComponent, InstitutionResponse
 from qa.packs import PackProvider, Pack, Answer, Question, PackDoesNotExist, QuestionDoesNotExist, \
@@ -97,6 +97,10 @@ class PolicyPackProvider(PackProvider):
         - Question -> PolicyComponent (question) + PolicyComponentOption (options)
         - Answer -> InstitutionPolicyComponent (answer) + PolicyComponentOption (choices)
     """
+
+    def has_permission(self, user: InstitutionUser, institution_id: int) -> bool:
+        institution = Institution.objects.get(id=institution_id)
+        return institution == user.institution
 
     def get_packs(self, institution_id: int) -> list[PackSummary]:
         institution = Institution.objects.get(id=institution_id)

@@ -3,6 +3,7 @@ from datetime import datetime
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 
+from common.models import InstitutionUser
 from maturity.models import Category, Question as MaturityQuestion, Answer as MaturityAnswer, \
     Responder, Response
 from qa.packs import PackProvider, Answer, Pack, PackSummary, Question, QuestionType, \
@@ -56,6 +57,10 @@ def to_question(responder: Responder, question: MaturityQuestion) -> Question:
 
 
 class DigitalMaturityPackProvider(PackProvider):
+
+    def has_permission(self, user: InstitutionUser, responder_id: int) -> bool:
+        responder = Responder.objects.get(id=responder_id)
+        return responder.owner == user
 
     def get_packs(self, responder_id: int) -> list[PackSummary]:
         responder = Responder.objects.get(id=responder_id)

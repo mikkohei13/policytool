@@ -1,6 +1,7 @@
 from django.conf import settings
 from rest_framework import authentication, permissions
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.exceptions import PermissionDenied
 from rest_framework.request import Request
 from rest_framework.response import Response
 
@@ -20,6 +21,8 @@ def get_provider(pack_type: str) -> PackProvider:
 @permission_classes([permissions.IsAuthenticated])
 def get_packs(request: Request, responder_id: int, pack_type: str) -> Response:
     provider = get_provider(pack_type)
+    if not provider.has_permission(request.user.institutionuser, responder_id):
+        raise PermissionDenied()
     return Response([pack.to_dict() for pack in provider.get_packs(responder_id)])
 
 
@@ -28,6 +31,8 @@ def get_packs(request: Request, responder_id: int, pack_type: str) -> Response:
 @permission_classes([permissions.IsAuthenticated])
 def get_pack(request: Request, responder_id: int, pack_type: str, pack_id: int) -> Response:
     provider = get_provider(pack_type)
+    if not provider.has_permission(request.user.institutionuser, responder_id):
+        raise PermissionDenied()
     return Response(provider.get_pack(responder_id, pack_id).to_dict())
 
 
@@ -37,6 +42,8 @@ def get_pack(request: Request, responder_id: int, pack_type: str, pack_id: int) 
 def handle_answer(request: Request, responder_id: int, pack_type: str, pack_id: int,
                   question_id: int) -> Response:
     provider = get_provider(pack_type)
+    if not provider.has_permission(request.user.institutionuser, responder_id):
+        raise PermissionDenied()
     match request.method:
         case 'POST':
             return create_answer(provider, responder_id, pack_id, question_id, request.data)
@@ -62,6 +69,8 @@ def delete_answer(provider: PackProvider, responder_id: int, pack_id: int,
 @permission_classes([permissions.IsAuthenticated])
 def finish_pack(request: Request, responder_id: int, pack_type: str, pack_id: int) -> Response:
     provider = get_provider(pack_type)
+    if not provider.has_permission(request.user.institutionuser, responder_id):
+        raise PermissionDenied()
     # an empty/request without a finished field implies completion
     state = request.data.get('finished', True)
     provider.finish(responder_id, pack_id, state)

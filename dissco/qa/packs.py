@@ -4,8 +4,10 @@ from datetime import datetime
 from enum import Enum
 from typing import Any
 
-from django.http import Http404, HttpResponseBadRequest
+from django.http import Http404
 from django.utils.module_loading import import_string
+
+from common.models import InstitutionUser
 
 
 class QuestionType(Enum):
@@ -139,6 +141,10 @@ class PackProvider(ABC):
 
     def __init__(self, pack_type: str):
         self.pack_type = pack_type
+
+    @abstractmethod
+    def has_permission(self, user: InstitutionUser, responder_id: int) -> bool:
+        ...
 
     @abstractmethod
     def get_packs(self, responder_id: int) -> list[PackSummary]:
