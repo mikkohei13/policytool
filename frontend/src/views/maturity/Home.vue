@@ -14,7 +14,7 @@
           </div>
           <div class="grow"></div>
           <router-link :to="{name: 'maturity_create_team'}"
-              class="bg-yellow rounded py-1 pr-3 pl-1 hover:bg-yellow-dark">
+                       class="bg-yellow rounded py-1 pr-3 pl-1 hover:bg-yellow-dark text-lg">
             <VueFeather type="plus" size="1.4rem" class="align-middle mx-1 -mt-1"/>
             Create new team
           </router-link>
@@ -36,7 +36,7 @@
                 <div class="grow"/>
                 <router-link
                     :to="{name: 'maturity_responder_home', params: {id: responder.id}}"
-                    class="py-1 pl-4 pr-2 rounded bg-yellow hover:bg-yellow-dark">
+                    class="py-1 pl-4 pr-2 rounded bg-blue hover:bg-blue-dark">
                   View
                   <VueFeather type="chevron-right" size="1.4rem" class="align-middle -mt-1"/>
                 </router-link>
@@ -50,9 +50,8 @@
 </template>
 
 <script setup>
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
 import {api} from "@/utils/api";
-import {onMounted} from 'vue'
 import pluralize from 'pluralize'
 
 const typeIcons = {
