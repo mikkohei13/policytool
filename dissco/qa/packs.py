@@ -4,6 +4,7 @@ from datetime import datetime
 from enum import Enum
 from typing import Any
 
+from django.http import Http404, HttpResponseBadRequest
 from django.utils.module_loading import import_string
 
 
@@ -160,15 +161,15 @@ class PackProvider(ABC):
         ...
 
 
-class PackDoesNotExist(Exception):
+class PackDoesNotExist(Http404):
     pass
 
 
-class QuestionDoesNotExist(Exception):
+class QuestionDoesNotExist(Http404):
     pass
 
 
-class PackTypeDoesNotExist(Exception):
+class PackTypeDoesNotExist(Http404):
     pass
 
 
