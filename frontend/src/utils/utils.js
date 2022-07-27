@@ -8,10 +8,10 @@ export const PACK_STATUS = {
 
 export const calcPackStatus = (pack) => {
     pack = unref(pack)
-    if (pack['answered'] === 0) {
-        return PACK_STATUS.NOT_STARTED
-    } else if (pack['answered'] === pack['size']) {
+    if (!!pack.finished_at) {
         return PACK_STATUS.COMPLETE
+    } else if (pack['answered'] === 0) {
+        return PACK_STATUS.NOT_STARTED
     } else {
         return PACK_STATUS.INCOMPLETE
     }
