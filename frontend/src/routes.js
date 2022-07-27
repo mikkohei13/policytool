@@ -59,5 +59,5 @@ export const routes = [
         name: 'resetPassword',
         meta: {title: 'Reset Password'}
     },
-    {path: '/:path(.*)', component: NotFound, meta: {title: 'Page not found'}},
+    {path: '/', component: NotFound, name: 'not_found', meta: {title: 'Page not found'}},
 ]
