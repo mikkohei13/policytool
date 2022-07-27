@@ -7,7 +7,8 @@
 
   <div class="flex flex-col lg:flex-row gap-8">
     <div class="w-full lg:w-3/5">
-      <PackStatusList type="policy" title="Review Policy Alignment Responses"></PackStatusList>
+      <PackStatusList type="policy" title="Review Policy Alignment Responses"
+                      :responderId="institution.id"></PackStatusList>
     </div>
     <div class="w-full lg:w-2/5 border-2 bg-white p-3">
       <div class="text-black text-2xl pb-2 border-b-2 border-black">

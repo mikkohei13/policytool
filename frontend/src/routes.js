@@ -6,7 +6,8 @@ import Logout from '@/views/auth/Logout.vue'
 import RequestAccount from '@/views/auth/RequestAccount.vue'
 import ResetPassword from '@/views/auth/ResetPassword.vue'
 import Pack from '@/views/Pack.vue'
-import MaturityHome from '@/views/MaturityHome.vue'
+import MaturityHome from '@/views/maturity/Home.vue'
+import ResponderHome from '@/views/maturity/ResponderHome.vue'
 
 /** @type {import('vue-router').RouterOptions['routes']} */
 export const routes = [
@@ -24,7 +25,14 @@ export const routes = [
         meta: {title: 'Maturity Home', auth: true}
     },
     {
-        path: '/pack/:type/:id',
+        path: '/maturity/:id',
+        component: ResponderHome,
+        name: 'maturity_responder_home',
+        meta: {title: 'Maturity Home', auth: true},
+        props: true
+    },
+    {
+        path: '/pack/:responderId/:type/:id',
         component: Pack,
         name: 'pack',
         meta: {title: 'Question Pack', auth: true},

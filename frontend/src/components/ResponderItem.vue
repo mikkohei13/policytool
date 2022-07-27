@@ -15,25 +15,5 @@
 </template>
 
 <script setup>
-import {computed} from 'vue'
-import {calcPackStatus, PACK_STATUS} from '@/utils/utils'
-
-const options = {
-  [PACK_STATUS.NOT_STARTED]: {
-    'class': ['bg-yellow', 'hover:bg-yellow-dark'],
-    'text': 'Start'
-  },
-  [PACK_STATUS.INCOMPLETE]: {
-    'class': ['bg-blue', 'hover:bg-blue-dark'],
-    'text': 'Continue'
-  },
-  [PACK_STATUS.COMPLETE]: {
-    'class': ['bg-status-approved', 'hover:bg-statusDark-approved'],
-    'text': 'Edit'
-  }
-}
-
-const {pack} = defineProps(['pack'])
-const statusOption = computed(() => options[calcPackStatus(pack)])
 
 </script>

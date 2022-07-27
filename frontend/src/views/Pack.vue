@@ -1,23 +1,27 @@
 <template>
   <div class="w-full bg-white rounded p-4">
     <div class="flex flex-row border-b-2 border-b-yellow">
-      <div class="p-4 text-2xl">
-        {{ pack.name }}
+      <div class="p-2 pl-4 text-2xl">
+        <span v-if="state === states.start">Introduction</span>
+        <span v-else-if="state === states.end">Finish</span>
+        <span v-else>{{ pack.name }}</span>
       </div>
       <div class="grow"></div>
       <div class="flex flex-row gap-2 h-10">
         <div class="self-center pr-2 border-r-2">
-          {{ groupIndex + 1 }} / {{ questionGroups.length }}
+          <span v-if="state === states.questions">
+            {{ groupIndex + 1 }} / {{ questionGroups.length }}
+          </span>
         </div>
         <div class="h-10 w-10">
-          <button class="bg-grey p-1 w-full h-full rounded hover:bg-grey-dark" v-if="showPrevious"
-                  @click="move(-1)">
+          <button class="bg-grey p-1 w-full h-full rounded hover:bg-grey-dark"
+                  v-if="state !== states.start" @click="move(-1)">
             <VueFeather type="chevron-left" size="2rem" class="cursor-pointer"/>
           </button>
         </div>
         <div class="h-10 w-10">
           <button class="bg-grey p-1 w-full h-full rounded hover:bg-grey-dark p-1 h-10 w-10"
-                  v-if="showNext" @click="move(1)">
+                  v-if="state !== states.end" @click="move(1)">
             <VueFeather type="chevron-right" size="2rem" class="cursor-pointer"/>
           </button>
         </div>
@@ -32,19 +36,36 @@
 
     <div class="px-12">
       <div class="grow justify-self-start">
-        <div v-for="(question, index) in questionGroups[groupIndex]" :key="question.id">
-          <div class="p-4">
-            <div class="text-xl pb-2 font-bold" v-if="index === 0">
-              {{ groupIndex + 1 }}. {{ question.text }}
-            </div>
-            <div class="pb-6">
-              <Markdown :markdown="question.hint"></Markdown>
-            </div>
-            <component :is="types[question.type]" :question="question" :allowComment="commentable()"
-                       @update-answer="updateAnswer">
-            </component>
-          </div>
+        <div v-if="state === states.start">
+          <PolicyPackStart v-if="pack.type === 'policy'" :pack="pack"/>
+          <MaturityPackStart v-if="pack.type === 'maturity'" :pack="pack"/>
+
+          <button
+              class="mt-6 p-2 pl-4 w-full flex flex-row justify-center items-center rounded bg-yellow hover:bg-yellow-dark"
+              @click="move(1)">
+            <span class="text-lg">Click here to begin</span>
+            <VueFeather type="chevron-right" size="2rem" class="cursor-pointer"/>
+          </button>
         </div>
+
+        <PackEnd v-else-if="state === states.end" :pack="pack"/>
+
+        <template v-else>
+          <div v-for="(question, index) in questionGroups[groupIndex]" :key="question.id">
+            <div class="p-4">
+              <div class="text-xl pb-2 font-bold" v-if="index === 0">
+                {{ groupIndex + 1 }}. {{ question.text }}
+              </div>
+              <div class="pb-6">
+                <Markdown :markdown="question.hint"></Markdown>
+              </div>
+              <component :is="types[question.type]" :question="question"
+                         :allowComment="commentable()"
+                         @update-answer="updateAnswer">
+              </component>
+            </div>
+          </div>
+        </template>
       </div>
     </div>
   </div>
@@ -59,13 +80,13 @@ import OptionSingle from '@/components/packs/questions/OptionSingle.vue'
 import OptionMultiple from '@/components/packs/questions/OptionMultiple.vue'
 import Maturity from '@/components/packs/questions/Maturity.vue'
 import Markdown from '@/components/Markdown.vue'
-import {computed, onMounted, ref} from 'vue'
+import PolicyPackStart from '@/components/packs/PolicyPackStart.vue'
+import MaturityPackStart from '@/components/packs/MaturityPackStart.vue'
+import PackEnd from '@/components/packs/PackEnd.vue'
+import {onMounted, ref} from 'vue'
 import {api} from '@/utils/api'
 import {notify} from '@kyvg/vue3-notification'
-import {clamp} from '@/utils/utils'
 import {useRouter} from 'vue-router'
-import {useAuth} from '@/store/auth'
-import {storeToRefs} from 'pinia'
 
 const types = {
   'bool': Bool,
@@ -76,25 +97,19 @@ const types = {
   'options': OptionMultiple,
   'maturity': Maturity,
 }
+const states = {
+  'start': 'start',
+  'end': 'end',
+  'questions': 'questions',
+}
 
-const {id, type} = defineProps(['id', 'type'])
+const {id, type, responderId} = defineProps(['id', 'type', 'responderId'])
 const router = useRouter()
 const pack = ref({})
 const updatedQuestionIds = new Set()
 const questionGroups = ref([])
 const groupIndex = ref(0)
-
-const authStore = useAuth()
-const {institution} = storeToRefs(authStore)
-
-const showPrevious = computed(() => groupIndex.value !== 0)
-const showNext = computed(() => {
-  if (!questionGroups.value) {
-    return false
-  } else {
-    return groupIndex.value < questionGroups.value.length - 1
-  }
-})
+const state = ref(states.start)
 
 const getQuestion = (questionId) => {
   return pack.value.questions.find((question) => question.id === questionId)
@@ -105,7 +120,18 @@ const getQuestion = (questionId) => {
 const commentable = () => type !== 'policy'
 
 const move = async (distance) => {
-  groupIndex.value = clamp(groupIndex.value + distance, 0, questionGroups.value.length - 1)
+  if (state.value === states.start || state.value === states.end) {
+    state.value = states.questions
+  } else {
+    const target = groupIndex.value + distance
+    if (target < 0) {
+      state.value = states.start
+    } else if (target > questionGroups.value.length - 1) {
+      state.value = states.end
+    } else {
+      groupIndex.value = target
+    }
+  }
   await saveAnswers()
 }
 
@@ -117,7 +143,7 @@ const leave = async () => {
 const saveAnswers = async () => {
   if (updatedQuestionIds.size) {
     for (const questionId of updatedQuestionIds) {
-      await api.post(`/api/${type}/${institution.value.id}/pack/${id}/${questionId}/`,
+      await api.post(`/api/${type}/${responderId}/pack/${id}/${questionId}/`,
           getQuestion(questionId).answer)
     }
     updatedQuestionIds.clear()
@@ -131,7 +157,7 @@ const saveAnswers = async () => {
 }
 
 const updatePack = async () => {
-  pack.value = await api.get(`/api/${type}/${institution.value.id}/pack/${id}`)
+  pack.value = await api.get(`/api/${type}/${responderId}/pack/${id}`)
 
   // group the questions by order value in an array
   questionGroups.value = []
@@ -160,6 +186,7 @@ onMounted(async () => {
       (questions) => questions.some(question => !question.answer)
   )
   groupIndex.value = Math.max(index, 0)
+  state.value = groupIndex.value === 0 ? states.start : states.questions
 })
 
 const updateAnswer = (questionId, value, comment) => {
