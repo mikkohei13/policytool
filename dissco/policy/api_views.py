@@ -4,7 +4,6 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from common.models import Institution
 from policy import models
 from policy import serializers
 from policy.alignment import calculate_alignment
@@ -92,12 +91,3 @@ class InstitutionPolicyAreaAPIView(APIView):
         policy = InstitutionPolicyArea(**valid_data)
         policy.save()
         return Response({'id': policy.id}, status=201)
-
-
-class InstitutionPolicyComponentAPIView(APIView):
-
-    def get(self, request: Request, institution_id: int):
-        institution = Institution.objects.get(id=institution_id)
-        serializer = serializers.InstitutionPolicyComponentSerializer(institution.components,
-                                                                      many=True)
-        return Response(serializer.data)
