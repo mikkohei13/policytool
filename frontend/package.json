@@ -13,6 +13,7 @@
     "luxon": "^2.4.0",
     "marked": "^4.0.17",
     "pinia": "^2.0.14",
+    "pluralize": "^8.0.0",
     "vue": "^3.2.33",
     "vue-feather": "^2.0.0",
     "vue-router": "^4.0.15"
