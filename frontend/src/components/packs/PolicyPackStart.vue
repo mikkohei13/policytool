@@ -27,8 +27,7 @@
           assessment, the lack of response may be marked as inadequate for policy alignment
         </li>
         <li>Your responses are automatically saved as you navigate through the questions</li>
-        <li>Click the home button at any time to go back to your institution's policy home page. Any
-          changes made prior to navigating away will be saved automatically</li>
+        <li>Click the home button at any time to go back to your institution's policy home page</li>
       </ul>
     </div>
   </div>
