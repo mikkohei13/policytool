@@ -8,6 +8,7 @@ import ResetPassword from '@/views/auth/ResetPassword.vue'
 import Pack from '@/views/Pack.vue'
 import MaturityHome from '@/views/maturity/Home.vue'
 import ResponderHome from '@/views/maturity/ResponderHome.vue'
+import CreateTeam from '@/views/maturity/CreateTeam.vue'
 
 /** @type {import('vue-router').RouterOptions['routes']} */
 export const routes = [
@@ -30,6 +31,12 @@ export const routes = [
         name: 'maturity_responder_home',
         meta: {title: 'Maturity Home', auth: true},
         props: true
+    },
+    {
+        path: '/maturity/create',
+        component: CreateTeam,
+        name: 'maturity_create_team',
+        meta: {title: 'Create new maturity assessment team', auth: true}
     },
     {
         path: '/pack/:responderId/:type/:id',
