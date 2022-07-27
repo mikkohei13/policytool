@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-white rounded p-4">
+  <div v-if="Object.keys(pack).length > 0" class="w-full bg-white rounded p-4">
     <div class="flex flex-row border-b-2 border-b-yellow">
       <div class="p-2 pl-4 text-2xl">
         <span v-if="state === states.start">Introduction</span>
@@ -157,7 +157,14 @@ const saveAnswers = async () => {
 }
 
 const updatePack = async () => {
-  pack.value = await api.get(`/api/${type}/${responderId}/pack/${id}`)
+  try {
+    pack.value = await api.get(`/api/${type}/${responderId}/pack/${id}`)
+  } catch (e) {
+    if (e.response.status === 404) {
+      await router.push({name: 'not_found', params: {path: router.currentRoute.value.fullPath}})
+      return
+    }
+  }
 
   // group the questions by order value in an array
   questionGroups.value = []
