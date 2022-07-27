@@ -25,7 +25,7 @@ def load_category(source: Path, upsert_manager: UpsertManager):
     category_def = load_yaml(source)
 
     category = upsert_manager.upsert(Category, object_id=category_def['id'],
-                                     name=category_def['name'])
+                                     definition=category_def, ignore={'id', 'questions'})
 
     gen_question_id = count(gen_offset_id(category.id, 0))
 
