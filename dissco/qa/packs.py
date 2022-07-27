@@ -86,11 +86,12 @@ def serialise_datetime(dt: datetime | None) -> str | None:
 
 class PackSummary:
 
-    def __init__(self, p_id: int, name: str, p_type: str, size: int, answered: int,
-                 finished_at: datetime | None, **extra):
+    def __init__(self, p_id: int, name: str, p_type: str, responder_id: int, size: int,
+                 answered: int, finished_at: datetime | None, **extra):
         self.id = p_id
         self.name = name
         self.type = p_type
+        self.responder_id = responder_id
         self.size = size
         self.answered = answered
         self.finished_at = finished_at
@@ -101,6 +102,7 @@ class PackSummary:
             'id': self.id,
             'name': self.name,
             'type': self.type,
+            'responder_id': self.responder_id,
             'size': self.size,
             'answered': self.answered,
             'finished_at': serialise_datetime(self.finished_at),
@@ -110,11 +112,12 @@ class PackSummary:
 
 class Pack:
 
-    def __init__(self, p_id: int, name: str, p_type: str, questions: list[Question],
-                 finished_at: datetime | None, **extra):
+    def __init__(self, p_id: int, name: str, p_type: str, responder_id: int,
+                 questions: list[Question], finished_at: datetime | None, **extra):
         self.id = p_id
         self.name = name
         self.type = p_type
+        self.responder_id = responder_id
         self.questions = questions
         self.finished_at = finished_at
         self.extra = extra
@@ -124,6 +127,7 @@ class Pack:
             'id': self.id,
             'name': self.name,
             'type': self.type,
+            'responder_id': self.responder_id,
             'questions': [question.to_dict() for question in self.questions],
             'finished_at': serialise_datetime(self.finished_at),
             **self.extra,

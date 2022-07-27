@@ -28,7 +28,7 @@ def to_pack_summary(pack_type: str, responder: Responder, category: Category) ->
     finished_at = get_finished_datetime(responder, category)
 
     return PackSummary(p_id=category.id, name=category.name, p_type=pack_type,
-                       size=question_count, answered=answered_count,
+                       responder_id=responder.id, size=question_count, answered=answered_count,
                        description=category.description, finished_at=finished_at)
 
 
@@ -39,8 +39,8 @@ def to_pack(pack_type: str, responder: Responder, category: Category) -> Pack:
 
     finished_at = get_finished_datetime(responder, category)
 
-    return Pack(p_id=category.id, name=category.name, p_type=pack_type, questions=questions,
-                description=category.description, finished_at=finished_at)
+    return Pack(p_id=category.id, name=category.name, p_type=pack_type, responder_id=responder.id,
+                questions=questions, description=category.description, finished_at=finished_at)
 
 
 def to_question(responder: Responder, question: MaturityQuestion) -> Question:

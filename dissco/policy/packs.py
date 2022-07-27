@@ -37,8 +37,8 @@ def to_pack_summary(pack_type: str, institution: Institution,
     finished_at = get_finished_datetime(institution, policy_area)
 
     return PackSummary(p_id=policy_area.id, name=policy_area.name, p_type=pack_type,
-                       size=question_count, answered=answered_count, finished_at=finished_at,
-                       **get_pack_extras(policy_area))
+                       responder_id=institution.id, size=question_count, answered=answered_count,
+                       finished_at=finished_at, **get_pack_extras(policy_area))
 
 
 def to_pack(pack_type: str, institution: Institution, policy_area: PolicyArea) -> Pack:
@@ -47,7 +47,8 @@ def to_pack(pack_type: str, institution: Institution, policy_area: PolicyArea) -
         questions.append(to_question(institution, policy_component))
     finished_at = get_finished_datetime(institution, policy_area)
     return Pack(p_id=policy_area.id, name=policy_area.name, p_type=pack_type,
-                questions=questions, finished_at=finished_at, **get_pack_extras(policy_area))
+                responder_id=institution.id, questions=questions, finished_at=finished_at,
+                **get_pack_extras(policy_area))
 
 
 def get_pack_extras(policy_area: PolicyArea) -> dict:
