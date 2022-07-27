@@ -28,9 +28,11 @@ def load_category(source: Path, upsert_manager: UpsertManager):
                                      definition=category_def, ignore={'id', 'questions'})
 
     gen_question_id = count(gen_offset_id(category.id, 0))
+    gen_order = count(0)
 
     for subcategory, questions in category_def['questions'].items():
-        for order, question in enumerate(questions):
+        for question in questions:
+            order = next(gen_order)
             for period in [Period.CURRENT, Period.FUTURE_12]:
                 question_id = next(gen_question_id)
                 upsert_manager.upsert(Question, object_id=question_id,
