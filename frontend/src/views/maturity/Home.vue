@@ -10,7 +10,7 @@
       <div class="border-2 bg-white p-3">
         <div class="flex flex-row gap-2 pb-3 border-b-2 border-black">
           <div class="text-black text-2xl">
-            Your responses
+            Your teams
           </div>
           <div class="grow"></div>
           <router-link :to="{name: 'maturity_create_team'}"
@@ -37,7 +37,7 @@
                 <router-link
                     :to="{name: 'maturity_responder_home', params: {id: responder.id}}"
                     class="py-1 pl-4 pr-2 rounded bg-blue hover:bg-blue-dark">
-                  View
+                  View responses
                   <VueFeather type="chevron-right" size="1.4rem" class="align-middle -mt-1"/>
                 </router-link>
               </div>
