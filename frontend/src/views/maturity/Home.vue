@@ -13,10 +13,11 @@
             Your responses
           </div>
           <div class="grow"></div>
-          <button class="bg-yellow rounded py-1 pr-3 pl-1 hover:bg-yellow-dark">
+          <router-link :to="{name: 'maturity_create_team'}"
+              class="bg-yellow rounded py-1 pr-3 pl-1 hover:bg-yellow-dark">
             <VueFeather type="plus" size="1.4rem" class="align-middle mx-1 -mt-1"/>
-            Start a new response
-          </button>
+            Create new team
+          </router-link>
         </div>
 
         <template v-for="(respondents, type) in types">
