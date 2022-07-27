@@ -31,8 +31,8 @@ const displayName = computed(() => {
 })
 
 const items = reactive([
-  {title: 'Institution Policies', to: {name: 'policy'}, visible: loggedIn},
-  {title: 'Institution Maturity', to: {name: 'maturity'}, visible: loggedIn},
+  {title: 'Policies Home', to: {name: 'policy'}, visible: loggedIn},
+  {title: 'Maturity Home', to: {name: 'maturity'}, visible: loggedIn},
   {title: 'Log in', to: {name: 'login'}, visible: notLoggedIn},
   {title: 'Log out', to: {name: 'logout'}, visible: loggedIn}
 ])
