@@ -165,9 +165,13 @@ const updatePack = async () => {
   try {
     pack.value = await api.get(`/api/${type}/${responderId}/pack/${id}`)
   } catch (e) {
-    if (e.response.status === 404) {
-      await router.push({name: 'not_found', params: {path: router.currentRoute.value.fullPath}})
-      return
+    switch (e.response.status) {
+      case 404:
+        await router.push({name: 'not_found', params: {path: router.currentRoute.value.fullPath}})
+        return
+      case 403:
+        await router.push({name: 'login'})
+        return
     }
   }
 
