@@ -1,5 +1,5 @@
 import Home from '@/views/Home.vue'
-import InstitutionHome from '@/views/InstitutionHome.vue'
+import InstitutionHome from '@/views/policy/Home.vue'
 import NotFound from '@/views/NotFound.vue'
 import Login from '@/views/auth/Login.vue'
 import Logout from '@/views/auth/Logout.vue'
