@@ -52,6 +52,18 @@ class API {
         const response = await this.api.get(path);
         return response.data;
     }
+
+    /**
+     * Calls an API endpoint using a PUT request with the body as a JSON payload.
+     *
+     * @param path the URL path
+     * @param body the object body that will be sent with the PUT request as JSON
+     * @returns {Promise<Object>} the response JSON
+     */
+    async put(path, body) {
+        const response = await this.api.put(path, body);
+        return response.data;
+    }
 }
 
 
