@@ -66,10 +66,10 @@ class InstitutionPolicyAreaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.InstitutionPolicyArea
-        fields = ['id', 'status', 'documentation_date', 'documentation_next_review_date',
-                  'documentation_public', 'documentation_shareable', 'documentation_provided',
-                  'documentation_details', 'policy_summary', 'additional_notes', 'institution',
-                  'policy_area', 'owners', 'languages']
+        fields = ['id', 'name', 'status', 'documentation_date', 'documentation_next_review_date',
+                  'documentation_public', 'documentation_shareable', 'documentation_details',
+                  'policy_summary', 'additional_notes', 'institution', 'policy_area', 'owners',
+                  'languages']
 
 
 # TODO: should this be publicly available? (maybe?)

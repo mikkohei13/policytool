@@ -131,6 +131,8 @@ class InstitutionPolicyArea(models.Model):
         UNDOCUMENTED = 'undocumented'
         NOT_IN_PLACE = 'not_in_place'
 
+    # a name for the policy
+    name = models.TextField()
     # whether the institution has a formally documented policy, undocumented procedure, or nothing
     # at all
     status = models.TextField(choices=PolicyImplementationStatus.choices)
@@ -144,9 +146,6 @@ class InstitutionPolicyArea(models.Model):
     # whether the institution is willing and able to openly share the policy documentation
     # TODO: should this be a choice?
     documentation_shareable = models.TextField(blank=True)
-    # whether the documentation (or links to the relevant documentation) has been provided to the
-    # DiSSCo Self Assessment tool
-    documentation_provided = models.BooleanField(blank=True, null=True)
     # details of one or more documents provided that are relevant to the subject. This may include
     # file/document names, links to online documentation, and details of the relevant sections
     # within the documentation if required. The same documentation may cover more than one of the
