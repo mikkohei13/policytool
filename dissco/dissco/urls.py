@@ -16,6 +16,9 @@ from qa import api as pack_api
 STATIC_ROOT: Path = settings.BASE_DIR / 'static'
 FRONTEND_ROOT: Path = STATIC_ROOT / 'frontend'
 
+# change the admin login title
+admin.site.site_header = 'DiSSCo Admin Login'
+
 urlpatterns = [
     # admin site
     path('admin/', admin.site.urls),
