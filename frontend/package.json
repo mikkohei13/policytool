@@ -8,12 +8,14 @@
   },
   "dependencies": {
     "@kyvg/vue3-notification": "^2.3.4",
+    "@vuepic/vue-datepicker": "^3.3.1",
     "@vueuse/core": "^8.6.0",
     "axios": "^0.27.2",
     "luxon": "^2.4.0",
     "marked": "^4.0.17",
     "pinia": "^2.0.14",
     "pluralize": "^8.0.0",
+    "uuid": "^8.3.2",
     "vue": "^3.2.33",
     "vue-feather": "^2.0.0",
     "vue-router": "^4.0.15"
