@@ -14,12 +14,12 @@
     </div>
 
     <div class="flex flex-col pt-4">
-      <div v-for="policy in policies" class="border-b-2 border-grey p-4 hover:bg-grey-lighter">
+      <div v-for="policy in policies" class="border-b-2 first:border-t-2 border-grey p-4 hover:bg-grey-lighter">
         <div class="text-2xl capitalize underline">{{ policy.name }}</div>
         <div class="flex flex-row gap-6">
-          <Markdown class="w-3/5 text-base"
+          <Markdown class="basis-3/5 text-base"
                     :markdown="policy.documentation_details || policy.policy_summary"></Markdown>
-          <div class="w-2/5 flex flex-col">
+          <div class="basis-2/5 flex flex-col">
             <div><span class="font-bold">Status: </span><span class="italic">{{
                 policy.status
               }}</span></div>
