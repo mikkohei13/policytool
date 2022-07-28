@@ -22,8 +22,8 @@
             <router-link
                 :to="{name: 'pack', params: {id: policyAreaId, type: 'policy', responderId: institution.id}}"
                 class="bg-yellow hover:bg-yellow-dark py-2 pl-4 pr-2 rounded">
-              <span class="pr-2">Address issues</span>
-              <VueFeather type="tool" size="1.4rem" class="align-middle -mt-1"/>
+              <span>Review</span>
+              <VueFeather type="chevron-right" size="1.4rem" class="align-middle -mt-1"/>
             </router-link>
           </div>
           <div v-for="alignment in policyAreaAlignments"
@@ -68,7 +68,7 @@ const {institution} = storeToRefs(useAuth())
 
 const service = ref({})
 const alignments = ref({})
-const status = ref(false)
+const status = ref(true)
 const loaded = ref(false)
 const showStatus = ref(false)
 
