@@ -141,7 +141,7 @@ const leave = async () => {
   if (type === 'maturity') {
     await router.push({name: 'maturity_responder_home', params: {id: responderId}})
   } else {
-    await router.push({name: type})
+    await router.push({name: 'policy_assessments'})
   }
 }
 

@@ -9,6 +9,9 @@ import Pack from '@/views/Pack.vue'
 import MaturityHome from '@/views/maturity/Home.vue'
 import ResponderHome from '@/views/maturity/ResponderHome.vue'
 import CreateTeam from '@/views/maturity/CreateTeam.vue'
+import CreatePolicyDoc from '@/views/policy/CreatePolicyDoc.vue'
+import InsitutionPolicyAssessments from '@/views/policy/Assessments.vue'
+import InsitutionPolicies from '@/views/policy/Policies.vue'
 
 /** @type {import('vue-router').RouterOptions['routes']} */
 export const routes = [
@@ -18,6 +21,24 @@ export const routes = [
         component: InstitutionHome,
         name: 'policy',
         meta: {title: 'Policy', auth: true}
+    },
+    {
+        path: '/policy/assessments',
+        component: InsitutionPolicyAssessments,
+        name: 'policy_assessments',
+        meta: {title: 'Policy assessments', auth: true}
+    },
+    {
+        path: '/policy/policies',
+        component: InsitutionPolicies,
+        name: 'policy_policies',
+        meta: {title: 'Policies', auth: true}
+    },
+    {
+        path: '/policy/create',
+        component: CreatePolicyDoc,
+        name: 'policy_create_doc',
+        meta: {title: 'Add Policy Document', auth: true}
     },
     {
         path: '/maturity',
