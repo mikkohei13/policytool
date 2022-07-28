@@ -58,9 +58,9 @@ def to_question(responder: Responder, question: MaturityQuestion) -> Question:
 
 class DigitalMaturityPackProvider(PackProvider):
 
-    def has_permission(self, user: InstitutionUser, responder_id: int) -> bool:
+    def has_permission(self, institutional_user: InstitutionUser, responder_id: int) -> bool:
         responder = Responder.objects.get(id=responder_id)
-        return responder.owner == user
+        return responder.owner == institutional_user.user
 
     def get_packs(self, responder_id: int) -> list[PackSummary]:
         responder = Responder.objects.get(id=responder_id)
