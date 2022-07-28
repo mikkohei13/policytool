@@ -12,7 +12,7 @@ mappings:
       - area: 3
         ref: 2
         rule: equal
-        value: yes
+        value: 'yes'
 
   - service_component: 2
     policy_components:
@@ -78,7 +78,7 @@ mappings:
       - area: 1
         ref: 10
         rule: equal
-        value: yes
+        value: 'yes'
 
       - area: 2
         ref: 1
@@ -101,14 +101,14 @@ mappings:
       - area: 4
         ref: 1
         rule: equal
-        value: yes
+        value: 'yes'
 
       - area: 4
         ref: 2
         rule: equal
-        value: yes
+        value: 'yes'
 
       - area: 4
         ref: 3
         rule: equal
-        value: yes
+        value: 'yes'
