@@ -14,7 +14,10 @@
     </div>
 
     <div class="flex flex-col pt-4">
-      <div v-for="policy in policies" class="border-b-2 first:border-t-2 border-grey p-4 hover:bg-grey-lighter">
+      <div v-if="policies.length == 0">
+        <div class="text-lg italic">No policies defined yet...</div>
+      </div>
+      <div v-else v-for="policy in policies" class="border-b-2 first:border-t-2 border-grey p-4 hover:bg-grey-lighter">
         <div class="text-2xl capitalize underline">{{ policy.name }}</div>
         <div class="flex flex-row gap-6">
           <Markdown class="basis-3/5 text-base"
