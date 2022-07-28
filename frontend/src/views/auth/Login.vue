@@ -5,15 +5,6 @@
     <button @click.prevent="submit" class="bg-yellow my-4 p-3 rounded hover:bg-yellow-dark w-72">
       Login
     </button>
-
-    <div class="flex flex-col items-center">
-      <router-link :to="{name: 'resetPassword'}" class="text-white py-2 border-b border-white">
-        Click here to reset your password
-      </router-link>
-      <router-link :to="{name: 'requestAccount'}" class="text-white py-2">
-        Request an account
-      </router-link>
-    </div>
   </form>
 </template>
 
@@ -21,7 +12,7 @@
 import {onMounted, ref} from 'vue'
 import {useAuth} from '@/store/auth'
 import {storeToRefs} from 'pinia'
-import {useRouter, useRoute} from 'vue-router'
+import {useRoute, useRouter} from 'vue-router'
 import {notify} from '@kyvg/vue3-notification'
 
 const username = ref(null)
