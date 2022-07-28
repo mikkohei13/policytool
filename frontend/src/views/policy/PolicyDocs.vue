@@ -6,7 +6,7 @@
         Institutional Policies
       </div>
       <div class="grow"></div>
-      <router-link :to="{name: 'policy_create_doc'}"
+      <router-link :to="{name: 'policy_doc_create'}"
                    class="bg-yellow rounded py-1 pr-3 pl-1 hover:bg-yellow-dark text-lg">
         <VueFeather type="plus" size="1.4rem" class="align-middle mx-1 -mt-1"/>
         Add policy

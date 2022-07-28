@@ -5,14 +5,18 @@
     </div>
   </div>
 
-  <PackStatusList type="policy" title="Review Policy Alignment Responses"
-                  :responderId="institution.id"></PackStatusList>
+  <div class="flex flex-col lg:flex-row gap-8">
+    <div class="w-full">
+      <PackStatusList type="policy" title="All Policy Responses"
+                      :responderId="institution.id"></PackStatusList>
+    </div>
+  </div>
 </template>
 
 <script setup>
 import PackStatusList from '@/components/packs/PackStatusList.vue'
-import {useAuth} from '@/store/auth'
 import {storeToRefs} from 'pinia'
+import {useAuth} from '@/store/auth'
 
 const {institution} = storeToRefs(useAuth())
 </script>

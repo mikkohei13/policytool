@@ -17,6 +17,7 @@
         {{ title }}
       </div>
       <div class="grow"></div>
+      <slot></slot>
       <button class="bg-yellow rounded py-1 pr-3 pl-1 hover:bg-yellow-dark"
               @click="showPicker = true">
         <VueFeather type="plus" size="1.4rem" class="align-middle mx-1 -mt-1"/>
@@ -58,7 +59,16 @@ import {calcPackStatus, PACK_STATUS} from '@/utils/utils'
 import {api} from '@/utils/api'
 
 
-const {type, title, responderId} = defineProps(['type', 'title', 'responderId'])
+const {type, title, responderId, filter} = defineProps({
+      type: {type: String, required: true},
+      title: {type: String, required: true},
+      responderId: {type: Number, required: true},
+      filter: {
+        type: Function,
+        default: () => true
+      },
+    }
+)
 const packs = ref([])
 const showPicker = ref(false)
 
@@ -75,7 +85,8 @@ const notStartedPacks = computed(() => {
 })
 
 const updatePolicyPacks = async () => {
-  packs.value = await api.get(`/api/${type}/${responderId}/pack`)
+  const allPacks = await api.get(`/api/${type}/${responderId}/pack`)
+  packs.value = allPacks.filter(filter)
 }
 
 onMounted(updatePolicyPacks)

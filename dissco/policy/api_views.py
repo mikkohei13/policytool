@@ -18,6 +18,13 @@ def get_dissco_service_list(request: Request) -> Response:
 
 
 @api_view(['GET'])
+def get_dissco_service(request: Request, service_id: int) -> Response:
+    service = models.Service.objects.prefetch_related('components').get(id=service_id)
+    serializer = serializers.ServiceSerializer(service)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
 def get_dissco_policy_list(request: Request) -> Response:
     policies = models.PolicyArea.objects \
         .prefetch_related('category') \

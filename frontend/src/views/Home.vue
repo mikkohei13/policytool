@@ -9,17 +9,17 @@
     <template v-if="loggedIn">
       <router-link :to="{name: 'policy'}" class="bg-yellow p-3 rounded hover:bg-yellow-dark">
         Review institutional policies
-        <VueFeather type="chevron-right" size="2rem" class="align-middle "></VueFeather>
+        <VueFeather type="chevron-right" size="2rem" class="align-middle"></VueFeather>
       </router-link>
       <router-link :to="{name: 'maturity'}" class="bg-yellow p-3 rounded hover:bg-yellow-dark">
         Review maturity
-        <VueFeather type="chevron-right" size="2rem" class="align-middle "></VueFeather>
+        <VueFeather type="chevron-right" size="2rem" class="align-middle"></VueFeather>
       </router-link>
     </template>
     <template v-else>
       <router-link :to="{name: 'login'}" class="bg-yellow p-3 rounded hover:bg-yellow-dark">
         Login/Register
-        <VueFeather type="chevron-right" size="2rem" class="align-middle "></VueFeather>
+        <VueFeather type="chevron-right" size="2rem" class="align-middle"></VueFeather>
       </router-link>
     </template>
   </div>

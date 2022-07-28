@@ -10,8 +10,10 @@ import MaturityHome from '@/views/maturity/Home.vue'
 import ResponderHome from '@/views/maturity/ResponderHome.vue'
 import CreateTeam from '@/views/maturity/CreateTeam.vue'
 import CreatePolicyDoc from '@/views/policy/CreatePolicyDoc.vue'
-import InsitutionPolicyAssessments from '@/views/policy/Assessments.vue'
-import InsitutionPolicies from '@/views/policy/Policies.vue'
+import PolicyDocs from '@/views/policy/PolicyDocs.vue'
+import ServiceAlignment from '@/views/policy/ServiceAlignment.vue'
+import ServiceHome from '@/views/policy/ServiceHome.vue'
+import AllPolicies from '@/views/policy/AllPolicies.vue'
 
 /** @type {import('vue-router').RouterOptions['routes']} */
 export const routes = [
@@ -23,22 +25,36 @@ export const routes = [
         meta: {title: 'Policy', auth: true}
     },
     {
-        path: '/policy/assessments',
-        component: InsitutionPolicyAssessments,
-        name: 'policy_assessments',
-        meta: {title: 'Policy assessments', auth: true}
-    },
-    {
-        path: '/policy/policies',
-        component: InsitutionPolicies,
-        name: 'policy_policies',
+        path: '/policy/docs',
+        component: PolicyDocs,
+        name: 'policy_docs',
         meta: {title: 'Policies', auth: true}
     },
     {
         path: '/policy/create',
         component: CreatePolicyDoc,
-        name: 'policy_create_doc',
+        name: 'policy_doc_create',
         meta: {title: 'Add Policy Document', auth: true}
+    },
+    {
+        path: '/policy/all',
+        component: AllPolicies,
+        name: 'policy_all',
+        meta: {title: 'All Policies', auth: true}
+    },
+    {
+        path: '/policy/service/:id',
+        component: ServiceHome,
+        name: 'policy_service_home',
+        meta: {title: 'DiSSCo Service', auth: true},
+        props: true
+    },
+    {
+        path: '/policy/service/:id/alignment',
+        component: ServiceAlignment,
+        name: 'policy_service_alignment',
+        meta: {title: 'DiSSCo Service policy alignment', auth: true},
+        props: true
     },
     {
         path: '/maturity',

@@ -137,12 +137,8 @@ const move = async (distance) => {
 
 const leave = async () => {
   await saveAnswers()
-  // TODO: once we create an policy landing page similar to the maturity one this logic can go
-  if (type === 'maturity') {
-    await router.push({name: 'maturity_responder_home', params: {id: responderId}})
-  } else {
-    await router.push({name: 'policy_assessments'})
-  }
+  // just go back as you can get to the pack pages from different places
+  await router.go(-1)
 }
 
 const saveAnswers = async () => {

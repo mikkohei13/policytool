@@ -44,6 +44,7 @@ urlpatterns = [
     # public api endpoints
     path('api/institution/policy/', policy_views.get_institution_public_policy_list),
     path('api/dissco/service/', policy_views.get_dissco_service_list),
+    path('api/dissco/service/<int:service_id>/', policy_views.get_dissco_service),
     path('api/dissco/policy/', policy_views.get_dissco_policy_list),
 
     # catch the base URL at / and serve the Vite generated index.html

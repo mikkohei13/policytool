@@ -209,7 +209,7 @@ const create = async () => {
       additional_notes: additionalNotes.value,
       policy_area: policyArea.value
     })
-    await router.push({name: 'policy_policies'})
+    await router.push({name: 'policy_docs'})
   } catch (e) {
     const returnedErrors = e.response.data
     errors.value = {}
