@@ -86,7 +86,7 @@ const errors = ref({})
 
 const create = async () => {
   try {
-    await api.post('api/maturity/responder', {
+    await api.post('/api/maturity/responder', {
       name: name.value,
       comment: comment.value,
       type: teamType.value

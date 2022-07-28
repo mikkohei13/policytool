@@ -60,7 +60,7 @@ const {institution} = storeToRefs(useAuth())
 const services = ref([])
 
 const getServices = async () => {
-  services.value = await api.get('api/dissco/service')
+  services.value = await api.get('/api/dissco/service')
 }
 
 onMounted(getServices)

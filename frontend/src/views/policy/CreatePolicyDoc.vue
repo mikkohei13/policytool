@@ -197,7 +197,7 @@ const policyAreas = ref([])
 
 const create = async () => {
   try {
-    await api.post('api/policy/', {
+    await api.post('/api/policy/', {
       name: name.value,
       status: status.value,
       documentation_date: documentationDate.value || null,
@@ -223,7 +223,7 @@ const createButtonEnabled = () => required.every(field => !!field.value)
 
 
 const getOptions = async () => {
-  policyAreas.value = await api.get('api/dissco/policy/')
+  policyAreas.value = await api.get('/api/dissco/policy/')
 }
 
 onMounted(getOptions)

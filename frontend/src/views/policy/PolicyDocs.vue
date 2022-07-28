@@ -58,9 +58,9 @@ const optionalFields = [
 ]
 
 const updatePolicies = async () => {
-  policies.value = await api.get(`api/policy/`)
+  policies.value = await api.get(`/api/policy/`)
 
-  const disscoPoliciesArray = await api.get('api/dissco/policy/')
+  const disscoPoliciesArray = await api.get('/api/dissco/policy/')
   disscoPoliciesArray.forEach(disscoPolicy => {
     disscoPolicies.value[disscoPolicy.id] = disscoPolicy
   })
