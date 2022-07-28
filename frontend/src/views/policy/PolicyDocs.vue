@@ -14,7 +14,7 @@
     </div>
 
     <div class="flex flex-col pt-4">
-      <div v-if="policies.length == 0">
+      <div v-if="policies.length === 0">
         <div class="text-lg italic">No policies defined yet...</div>
       </div>
       <div v-else v-for="policy in policies" class="border-b-2 first:border-t-2 border-grey p-4 hover:bg-grey-lighter">
