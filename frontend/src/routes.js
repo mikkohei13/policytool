@@ -3,8 +3,6 @@ import InstitutionHome from '@/views/policy/Home.vue'
 import NotFound from '@/views/NotFound.vue'
 import Login from '@/views/auth/Login.vue'
 import Logout from '@/views/auth/Logout.vue'
-import RequestAccount from '@/views/auth/RequestAccount.vue'
-import ResetPassword from '@/views/auth/ResetPassword.vue'
 import Pack from '@/views/Pack.vue'
 import MaturityHome from '@/views/maturity/Home.vue'
 import ResponderHome from '@/views/maturity/ResponderHome.vue'
@@ -84,17 +82,5 @@ export const routes = [
     },
     {path: '/login', component: Login, name: 'login', meta: {title: 'Login'}},
     {path: '/logout', component: Logout, name: 'logout', meta: {title: 'Logout'}},
-    {
-        path: '/register',
-        component: RequestAccount,
-        name: 'requestAccount',
-        meta: {title: 'Request Account'}
-    },
-    {
-        path: '/reset',
-        component: ResetPassword,
-        name: 'resetPassword',
-        meta: {title: 'Reset Password'}
-    },
     {path: '/', component: NotFound, name: 'not_found', meta: {title: 'Page not found'}},
 ]
