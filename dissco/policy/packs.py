@@ -117,7 +117,7 @@ class PolicyPackProvider(PackProvider):
             raise PackDoesNotExist() from e
 
     def save_answer(self, institution_id: int, pack_id: int, question_id: int, answer: Answer):
-        institution = Institution.objects.get(id=institution_id)
+        institution: Institution = Institution.objects.get(id=institution_id)
         try:
             policy_component = PolicyComponent.objects.get(pk=question_id)
         except ObjectDoesNotExist as e:
@@ -126,7 +126,7 @@ class PolicyPackProvider(PackProvider):
         if (InstitutionPolicyComponent.objects
                 .filter(institution=institution, policy_component=policy_component).exists()):
             # this will actually delete all previous answers
-            self.delete_answer(institution, pack_id, question_id)
+            self.delete_answer(institution_id, pack_id, question_id)
 
         # create a new institution policy component as an answer
         ipc = InstitutionPolicyComponent(comment=answer.comment, institution=institution,

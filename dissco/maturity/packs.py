@@ -77,14 +77,14 @@ class DigitalMaturityPackProvider(PackProvider):
             raise PackDoesNotExist() from e
 
     def save_answer(self, responder_id: int, pack_id: int, question_id: int, answer: Answer):
-        responder = Responder.objects.get(id=responder_id)
+        responder: Responder = Responder.objects.get(id=responder_id)
         try:
             question = MaturityQuestion.objects.get(pk=question_id)
         except ObjectDoesNotExist as e:
             raise QuestionDoesNotExist() from e
 
         if MaturityAnswer.objects.filter(responder=responder, question=question).exists():
-            self.delete_answer(responder, pack_id, question_id)
+            self.delete_answer(responder_id, pack_id, question_id)
 
         db_answer = MaturityAnswer(value=int(answer.value), comment=answer.comment,
                                    responder=responder, question=question)
