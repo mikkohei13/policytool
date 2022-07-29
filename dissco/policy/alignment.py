@@ -137,7 +137,6 @@ def validate_option_multiple_or(mapping: ServicePolicyMapping,
         return AlignmentResult(True, mapping)
     else:
         not_allowed = chosen.difference(allowed)
-        return AlignmentResult(False, mapping, 'You must choose at least one of '
-                                               f'"{join_options(allowed)}", but you chose '
-                                               f'"{join_options(not_allowed)}" which aren not '
-                                               'allowed')
+        message = f'You must choose at least one of "{join_options(allowed)}", but you chose: ' \
+                  f'"{join_options(not_allowed)}"'
+        return AlignmentResult(False, mapping, message)
