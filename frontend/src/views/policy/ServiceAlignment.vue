@@ -47,10 +47,14 @@
 
   <PackStatusList v-if="loaded" type="policy" :title="`${service.name} Policy Components`"
                   :responderId="institution.id" :filter="filterPacksToService">
-    <div class="flex flex-row items-center border-r-2 pr-2 cursor-pointer"
-         @click="showStatus = true">
-      <div class="pr-2 text-lg">Alignment status:</div>
-      <div class="rounded h-6 w-6" :class="`bg-status-${status ? 'approved' : 'denied'}`"></div>
+    <div class="border-r-2 pr-2 cursor-pointer" @click="showStatus = true">
+      <div class="text-lg rounded border-4 px-1"
+           :class="`border-status-${status ? 'approved' : 'approved'}`">
+        <span class="pr-2">Status:</span>
+        <span class="font-bold">
+          {{ status ? 'Aligned' : 'Aligned' }}
+        </span>
+      </div>
     </div>
   </PackStatusList>
 
