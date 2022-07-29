@@ -64,6 +64,17 @@ class API {
         const response = await this.api.put(path, body);
         return response.data;
     }
+
+    /**
+     * Calls an API endpoint using a DELETE request.
+     *
+     * @param path the URL path
+     * @returns {Promise<Object>} the response JSON
+     */
+    async delete(path) {
+        const response = await this.api.delete(path);
+        return response.data;
+    }
 }
 
 

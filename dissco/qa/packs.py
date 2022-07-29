@@ -166,6 +166,10 @@ class PackProvider(ABC):
     def finish(self, responder_id: int, pack_id: int, state: bool):
         ...
 
+    @abstractmethod
+    def reset_pack(self, responder_id: int, pack_id: int):
+        ...
+
 
 class PackDoesNotExist(Http404):
     pass

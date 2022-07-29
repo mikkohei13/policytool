@@ -164,3 +164,11 @@ class PolicyPackProvider(PackProvider):
 
         response.finished_at = timezone.now() if state else None
         response.save()
+
+    def reset_pack(self, responder_id: int, pack_id: int):
+        policy_area = PolicyArea.objects.get(id=pack_id)
+
+        self.finish(responder_id, pack_id, False)
+
+        for policy_component in policy_area.components.all():
+            self.delete_answer(responder_id, pack_id, policy_component.id)

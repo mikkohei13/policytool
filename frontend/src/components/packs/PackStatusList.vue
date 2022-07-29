@@ -7,7 +7,7 @@
         Select an option from the list below to start a response.
       </div>
 
-      <PackItem v-for="pack in notStartedPacks" :pack="pack"></PackItem>
+      <PackItem v-for="pack in notStartedPacks" :pack="pack" @refresh="updatePolicyPacks" />
     </div>
   </div>
 
@@ -33,7 +33,7 @@
         <div class="pl-2 text-grey-dark">Your complete responses will appear here</div>
       </template>
       <template v-else>
-        <PackItem v-for="pack in completedPacks" :pack="pack"></PackItem>
+        <PackItem v-for="pack in completedPacks" :pack="pack" @refresh="updatePolicyPacks" />
       </template>
     </div>
 
@@ -45,7 +45,7 @@
         <div class="pl-2 text-grey-dark">Your in progress responses will appear here</div>
       </template>
       <template v-else>
-        <PackItem v-for="pack in inProgressPacks" :pack="pack"></PackItem>
+        <PackItem v-for="pack in inProgressPacks" :pack="pack" @refresh="updatePolicyPacks" />
       </template>
     </div>
   </div>

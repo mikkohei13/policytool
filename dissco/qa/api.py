@@ -26,14 +26,20 @@ def get_packs(request: Request, responder_id: int, pack_type: str) -> Response:
     return Response([pack.to_dict() for pack in provider.get_packs(responder_id)])
 
 
-@api_view(['GET'])
+@api_view(['GET', 'DELETE'])
 @authentication_classes([authentication.TokenAuthentication])
 @permission_classes([permissions.IsAuthenticated])
 def get_pack(request: Request, responder_id: int, pack_type: str, pack_id: int) -> Response:
     provider = get_provider(pack_type)
     if not provider.has_permission(request.user.institutionuser, responder_id):
         raise PermissionDenied()
-    return Response(provider.get_pack(responder_id, pack_id).to_dict())
+
+    match request.method:
+        case 'GET':
+            return Response(provider.get_pack(responder_id, pack_id).to_dict())
+        case 'DELETE':
+            provider.reset_pack(responder_id, pack_id)
+            return Response(status=200)
 
 
 @api_view(['POST', 'DELETE'])

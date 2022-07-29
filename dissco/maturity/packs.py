@@ -109,3 +109,11 @@ class DigitalMaturityPackProvider(PackProvider):
 
         response.finished_at = timezone.now() if state else None
         response.save()
+
+    def reset_pack(self, responder_id: int, pack_id: int):
+        category = Category.objects.get(pk=pack_id)
+
+        self.finish(responder_id, pack_id, False)
+
+        for question in category.questions.all():
+            self.delete_answer(responder_id, pack_id, question.id)
