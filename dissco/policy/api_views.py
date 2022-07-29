@@ -37,8 +37,7 @@ def get_dissco_policy_list(request: Request) -> Response:
 
 @api_view(['GET'])
 def get_institution_public_policy_list(request: Request) -> Response:
-    # TODO: filter for public policies
-    policies = models.InstitutionPolicyArea.objects.all()
+    policies = models.InstitutionPolicyArea.objects.filter(documentation_shareable='public').all()
     serializer = serializers.InstitutionPolicyAreaSerializer(policies, many=True)
     return Response(serializer.data)
 
