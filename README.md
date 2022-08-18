@@ -1,7 +1,5 @@
 # DiSSCo Policy Tool
 
-***This repository is in active development***
-
 A tool allowing DiSSCo partners to self-assess their alignment with the DiSSCo policies that govern the various DiSSCo services.
 
 ## Key Documents
