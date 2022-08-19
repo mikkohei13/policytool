@@ -1,4 +1,5 @@
 # DiSSCo Policy Tool
+[![DOI](https://zenodo.org/badge/409189014.svg)](https://zenodo.org/badge/latestdoi/409189014)
 
 A tool allowing DiSSCo partners to self-assess their alignment with the DiSSCo policies that govern the various DiSSCo services.
 
