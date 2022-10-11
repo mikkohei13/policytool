@@ -49,10 +49,10 @@
                   :responderId="institution.id" :filter="filterPacksToService">
     <div class="border-r-2 pr-2 cursor-pointer" @click="showStatus = true">
       <div class="text-lg rounded border-4 px-1"
-           :class="`border-status-${status ? 'approved' : 'approved'}`">
+           :class="`border-status-${status ? 'approved' : 'denied'}`">
         <span class="pr-2">Status:</span>
         <span class="font-bold">
-          {{ status ? 'Aligned' : 'Aligned' }}
+          {{ status ? 'Aligned' : 'Not aligned' }}
         </span>
       </div>
     </div>
