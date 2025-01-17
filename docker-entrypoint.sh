@@ -2,8 +2,15 @@
 
 cd dissco
 
-# Wait for database to be ready (if using PostgreSQL)
-# while ! nc -z db 5432; do sleep 1; done
+# Wait for database to be ready
+while ! nc -z db 5432; do
+    echo "Waiting for postgres..."
+    sleep 1
+done
+echo "PostgreSQL started"
+
+# Set Django settings module to docker
+export DJANGO_SETTINGS_MODULE=dissco.settings.docker
 
 # Run migrations
 python manage.py migrate
