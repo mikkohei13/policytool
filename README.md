@@ -3,6 +3,13 @@
 
 A tool allowing DiSSCo partners to self-assess their alignment with the DiSSCo policies that govern the various DiSSCo services.
 
+## Setup (preliminary)
+
+- `docker compose up; docker compose down;`
+- Create superuser with `docker compose exec -e DJANGO_SETTINGS_MODULE=dissco.settings.docker backend python dissco/manage.py createsuperuser`
+- Login to http://localhost:5000/admin to setup user and institution
+- Clear cookies if yoh have logged in, and login again
+
 ## Key Documents
 
 User Stories and Requirements Document: https://docs.google.com/spreadsheets/d/1EG8DRhbr5_bT_P2c19DXozxd1s1f4wIcErIgvTxeY0w/edit?usp=sharing
